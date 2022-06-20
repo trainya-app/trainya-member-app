@@ -36,6 +36,7 @@ export default {
         bg: '#FFFAF0',
         main: '#F4A52D',
       },
+      white: '#FFFFFF',
     },
   },
   dark: {
@@ -75,6 +76,7 @@ export default {
         bg: '#FFFAF0',
         main: '#F4A52D',
       },
+      white: '',
     },
   },
   fonts: {

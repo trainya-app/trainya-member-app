@@ -11,8 +11,8 @@ import {
 
 import { ThemeProvider } from 'styled-components/native';
 
-import { Home } from './src/screens/Home';
 import theme from './src/global/styles/theme';
+import { Login } from './src/screens/Login';
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -44,7 +44,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <Login />
     </ThemeProvider>
   );
 };
