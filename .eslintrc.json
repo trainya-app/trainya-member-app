@@ -19,11 +19,21 @@
       { "extensions": [".jsx", ".js", ".ts", "tsx"] }
     ],
     "react/style-prop-object": "off",
-    "linebreak-style": "off",
-    "import/prefer-default-export": "off",
-    "import/extensions": "off",
+    "camelcase": "off",
+    "linebreak-style": 0,
     "react/function-component-definition": "off",
-    "camelcase": "off"
+    "import/prefer-default-export": "off",
+    "react/jsx-no-bind": "off",
+    "no-unneeded-ternary": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "implicit-arrow-linebreak": "off",
+    "object-curly-newline": "off",
+    "import/extensions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "comma-dangle": "off",
+    "func-names": "off"
   },
   "settings": {
     "import/resolver": {

@@ -1,7 +1,10 @@
-import { Container, Title } from './styles';
+import { Heading } from '../../components/Heading';
+import { Container } from './styles';
 
 export const Home = () => (
   <Container>
-    <Title>Home</Title>
+    <Heading isBlack themePreference="light">
+      Home
+    </Heading>
   </Container>
 );
