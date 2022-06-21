@@ -38,6 +38,13 @@ export default {
       },
       white: '#FFFFFF',
     },
+    fonts: {
+    medium: 'Montserrat_500Medium',
+    semibold: 'Montserrat_600SemiBold',
+    bold: 'Montserrat_700Bold',
+    extrabold: 'Montserrat_800ExtraBold',
+    black: 'Montserrat_900Black',
+  },
   },
   dark: {
     title: 'dark',
@@ -78,12 +85,13 @@ export default {
       },
       white: '',
     },
+      fonts: {
+      medium: 'Montserrat_500Medium',
+      semibold: 'Montserrat_600SemiBold',
+      bold: 'Montserrat_700Bold',
+      extrabold: 'Montserrat_800ExtraBold',
+      black: 'Montserrat_900Black',
   },
-  fonts: {
-    medium: 'Montserrat_500Medium',
-    semibold: 'Montserrat_600SemiBold',
-    bold: 'Montserrat_700Bold',
-    extrabold: 'Montserrat_800ExtraBold',
-    black: 'Montserrat_900Black',
   },
+
 };

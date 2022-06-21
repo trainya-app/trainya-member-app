@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import {
@@ -9,13 +10,21 @@ import {
   Montserrat_900Black,
 } from '@expo-google-fonts/montserrat';
 
+import { ThemeContextProvider } from './src/contexts/ThemeContext';
 import { ThemeProvider } from 'styled-components/native';
+import { useTheme } from './src/hooks/useTheme';
 
 import theme from './src/global/styles/theme';
 import { Login } from './src/screens/Login';
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
+  
+  // TODO: grab the async storage
+  
+  const colorMode = 'light';
+
+  console.log('app', colorMode)
 
   useEffect(() => {
     (async () => {
@@ -42,10 +51,14 @@ const App = () => {
     return null;
   }
 
+
   return (
-    <ThemeProvider theme={theme}>
-      <Login />
-    </ThemeProvider>
+    <ThemeContextProvider>
+      <StatusBar backgroundColor={theme[colorMode].colors.blue[500]}/>
+      <ThemeProvider theme={theme[colorMode]}>
+        <Login />
+      </ThemeProvider>
+    </ThemeContextProvider>
   );
 };
 
