@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { Keyboard } from 'react-native';
-import { useTheme } from '../../hooks/useTheme';
+import { useState } from 'react';
 
 import {
   Container,
@@ -16,25 +14,34 @@ import { TextInput } from '../../components/TextInput';
 import { Button } from '../../components/Button';
 
 export const Login = () => {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  
-  const colorMode = useTheme();
-  console.log({ colorMode })
+  const [loginInput, setLoginInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+
+  function handleLogin(login: string, password: string) {
+    // eslint-disable-next-line no-console
+    console.log({ login, password });
+  }
   return (
-  <Container>
-    <Header>
-      <LogoImage source={{ uri: 'https://i.imgur.com/GdUz4Lv.png' }} />
-    </Header>
-    <LoginContent>
-      <Title>Login</Title>
-      <TextInput placeholder="Login..." onChangeText={(loginInput: string) => setLogin(loginInput)}/>
-      <TextInput placeholder="Senha..." onChangeText={(passwordInput: string) => setPassword(passwordInput)}/>
-      <Button />
-      <ForgotPasswordWrapper>
-        <ForgotPasswordText>Esqueceu sua senha?</ForgotPasswordText>
-      </ForgotPasswordWrapper>
-    </LoginContent>
-  </Container>
-);
-}
+    <Container>
+      <Header>
+        <LogoImage source={{ uri: 'https://i.imgur.com/GdUz4Lv.png' }} />
+      </Header>
+      <LoginContent>
+        <Title>Login</Title>
+        <TextInput
+          placeholder="Login..."
+          onChangeText={(loginValue) => setLoginInput(loginValue)}
+        />
+        <TextInput
+          placeholder="Senha..."
+          onChangeText={(passwordValue) => setPasswordInput(passwordValue)}
+          hideText
+        />
+        <Button onPress={() => handleLogin(loginInput, passwordInput)} />
+        <ForgotPasswordWrapper>
+          <ForgotPasswordText>Esqueceu sua senha?</ForgotPasswordText>
+        </ForgotPasswordWrapper>
+      </LoginContent>
+    </Container>
+  );
+};

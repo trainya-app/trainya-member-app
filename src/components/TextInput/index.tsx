@@ -1,19 +1,19 @@
-import { useContext } from 'react';
-import { ThemeContext } from 'styled-components/native';
-
-import theme from '../../global/styles/theme';
+import { useTheme } from '../../hooks/useTheme';
 import { Container, InputText } from './styles';
-// import { useTheme } from '../../'
 
 interface TextInputProps {
   placeholder: string;
-  onChangeText: (inputText: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  onChangeText: (input: string) => void;
+  hideText?: boolean;
 }
 
-export const TextInput = ({ placeholder, onChangeText }: TextInputProps) => {
-  // const theme = useContext(ThemeContext);
-  // const colorMode = useTheme();
-
+export const TextInput = ({
+  placeholder,
+  onChangeText,
+  hideText,
+}: TextInputProps) => {
+  const { theme } = useTheme();
 
   return (
     <Container>
@@ -21,6 +21,7 @@ export const TextInput = ({ placeholder, onChangeText }: TextInputProps) => {
         placeholder={placeholder}
         placeholderTextColor={theme.colors.gray[500]}
         onChangeText={onChangeText}
+        secureTextEntry={hideText}
       />
     </Container>
   );

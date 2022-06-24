@@ -29,6 +29,7 @@ export const LoginContent = styled.View`
 `;
 
 export const Title = styled.Text`
+  color: ${({ theme }) => theme.colors.blue[900]}
   font-family: ${({ theme }) => theme.fonts.extrabold};
   font-size: ${RFValue(40)}px;
   margin-bottom: ${RFValue(48)}px;
@@ -41,7 +42,7 @@ export const ForgotPasswordWrapper = styled.TouchableOpacity.attrs({
 export const ForgotPasswordText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.semibold};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.gray[500]};
+  color: ${({ theme }) => theme.colors.gray[600]};
   margin-top: 16px;
   margin-bottom: ${RFValue(32)}px;
 `;
