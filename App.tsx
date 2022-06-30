@@ -12,7 +12,6 @@ import {
 
 import { ThemeProvider } from 'styled-components/native';
 import { ThemeContextProvider } from './src/contexts/ThemeContext';
-import { useTheme } from './src/hooks/useTheme';
 
 import theme from './src/global/styles/theme';
 import { Login } from './src/screens/Login';
@@ -20,7 +19,7 @@ import { Login } from './src/screens/Login';
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
   // TODO: grab the async storage
-  const colorMode = 'light';
+  const colorMode = 'dark';
 
   useEffect(() => {
     (async () => {

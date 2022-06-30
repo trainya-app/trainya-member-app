@@ -29,7 +29,7 @@ export const LoginContent = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: ${({ theme }) => theme.colors.blue[900]}
+  color: ${({ theme }) => theme.colors.blue[900]};
   font-family: ${({ theme }) => theme.fonts.extrabold};
   font-size: ${RFValue(40)}px;
   margin-bottom: ${RFValue(48)}px;

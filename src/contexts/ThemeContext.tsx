@@ -14,6 +14,5 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     <ThemeContext.Provider value={{ colorMode, setColorMode }}>
       {children}
     </ThemeContext.Provider>
-  )
-
-}
+  );
+};

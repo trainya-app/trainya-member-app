@@ -4,7 +4,6 @@ import {
   Container,
   Header,
   LoginContent,
-  LogoImage,
   Title,
   ForgotPasswordWrapper,
   ForgotPasswordText,
@@ -12,6 +11,7 @@ import {
 
 import { TextInput } from '../../components/TextInput';
 import { Button } from '../../components/Button';
+import { LogoSvg } from '../../components/LogoSvg';
 
 export const Login = () => {
   const [loginInput, setLoginInput] = useState('');
@@ -24,7 +24,7 @@ export const Login = () => {
   return (
     <Container>
       <Header>
-        <LogoImage source={{ uri: 'https://i.imgur.com/GdUz4Lv.png' }} />
+        <LogoSvg />
       </Header>
       <LoginContent>
         <Title>Login</Title>
