@@ -6,6 +6,8 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.shape};
   border-radius: ${RFValue(20)}px;
   margin-bottom: 24px;
+  shadow-color: rgba(0, 0, 0, 0.4);
+  elevation: 2;
 `;
 
 export const InputText = styled.TextInput`

@@ -41,7 +41,7 @@ export const ForgotPasswordWrapper = styled.TouchableOpacity.attrs({
 
 export const ForgotPasswordText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.semibold};
-  font-size: ${RFValue(16)}px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.gray[600]};
   margin-top: 16px;
   margin-bottom: ${RFValue(32)}px;

@@ -19,7 +19,7 @@ import { Login } from './src/screens/Login';
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
   // TODO: grab the async storage
-  const colorMode = 'dark';
+  const colorMode = 'light';
 
   useEffect(() => {
     (async () => {

@@ -10,6 +10,9 @@ export const Container = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: ${RFValue(20)}px;
+
+  shadow-color: rgba(0, 0, 0, 0.4);
+  elevation: 2;
 `;
 
 export const TextButton = styled.Text`
