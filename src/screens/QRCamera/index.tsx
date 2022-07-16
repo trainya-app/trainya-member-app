@@ -1,8 +1,8 @@
 import { Heading } from '../../components/Heading';
 import { Container } from './styles';
 
-export const Home = () => (
+export const QRCamera = () => (
   <Container>
-    <Heading isBlack>Home</Heading>
+    <Heading isBlack>QRCamera</Heading>
   </Container>
 );

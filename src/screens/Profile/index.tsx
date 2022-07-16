@@ -1,8 +1,8 @@
 import { Heading } from '../../components/Heading';
 import { Container } from './styles';
 
-export const Home = () => (
+export const Profile = () => (
   <Container>
-    <Heading isBlack>Home</Heading>
+    <Heading isBlack>Profile</Heading>
   </Container>
 );

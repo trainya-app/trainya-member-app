@@ -10,11 +10,14 @@ import {
   Montserrat_900Black,
 } from '@expo-google-fonts/montserrat';
 
+import { NavigationContainer } from '@react-navigation/native';
+
 import { ThemeProvider } from 'styled-components/native';
+import { AppRoutes } from './src/routes/app.routes';
+
 import { ThemeContextProvider } from './src/contexts/ThemeContext';
 
 import theme from './src/global/styles/theme';
-import { Login } from './src/screens/Login';
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -49,7 +52,9 @@ const App = () => {
     <ThemeContextProvider>
       <StatusBar backgroundColor={theme[colorMode].colors.blue[500]} />
       <ThemeProvider theme={theme[colorMode]}>
-        <Login />
+        <NavigationContainer>
+          <AppRoutes />
+        </NavigationContainer>
       </ThemeProvider>
     </ThemeContextProvider>
   );

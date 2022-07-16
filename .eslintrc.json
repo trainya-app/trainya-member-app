@@ -34,7 +34,8 @@
     "jsx-a11y/no-static-element-interactions": "off",
     "comma-dangle": "off",
     "func-names": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react/no-unstable-nested-components": "off"
   },
   "settings": {
     "import/resolver": {
