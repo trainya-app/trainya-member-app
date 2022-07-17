@@ -18,6 +18,7 @@ import { AppRoutes } from './src/routes/app.routes';
 import { ThemeContextProvider } from './src/contexts/ThemeContext';
 
 import theme from './src/global/styles/theme';
+import { FirstSteps } from './src/screens/FirstSteps';
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -50,11 +51,11 @@ const App = () => {
   }
   return (
     <ThemeContextProvider>
-      <StatusBar backgroundColor={theme[colorMode].colors.blue[500]} />
       <ThemeProvider theme={theme[colorMode]}>
-        <NavigationContainer>
+        {/* <NavigationContainer>
           <AppRoutes />
-        </NavigationContainer>
+        </NavigationContainer> */}
+        <FirstSteps />
       </ThemeProvider>
     </ThemeContextProvider>
   );
