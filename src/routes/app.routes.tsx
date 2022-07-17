@@ -14,8 +14,6 @@ import QRIcon from '../assets/qr_icon.svg';
 import WorkoutsIcon from '../assets/halter_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
 
-import { useTheme } from '../hooks/useTheme';
-
 const { Navigator, Screen } = createBottomTabNavigator();
 
 export const AppRoutes = () => (
