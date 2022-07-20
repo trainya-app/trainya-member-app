@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { StatusBar } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import {
@@ -18,7 +17,7 @@ import { AppRoutes } from './src/routes/app.routes';
 import { ThemeContextProvider } from './src/contexts/ThemeContext';
 
 import theme from './src/global/styles/theme';
-import { FirstSteps } from './src/screens/FirstSteps';
+import { FirstStep } from './src/screens/FirstSteps/FirstStep';
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -52,10 +51,10 @@ const App = () => {
   return (
     <ThemeContextProvider>
       <ThemeProvider theme={theme[colorMode]}>
-        {/* <NavigationContainer>
+        <NavigationContainer>
           <AppRoutes />
-        </NavigationContainer> */}
-        <FirstSteps />
+        </NavigationContainer>
+        {/* <FirstStep /> */}
       </ThemeProvider>
     </ThemeContextProvider>
   );

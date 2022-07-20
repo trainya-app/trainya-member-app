@@ -9,7 +9,7 @@ import {
   ForgotPasswordText,
 } from './styles';
 
-import { TextInput } from '../../components/TextInput';
+import { TextInput } from './components/TextInput';
 import { Button } from '../../components/Button';
 import { LogoSvg } from '../../components/LogoSvg';
 

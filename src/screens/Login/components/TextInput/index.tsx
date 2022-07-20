@@ -1,4 +1,4 @@
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../../../hooks/useTheme';
 import { Container, InputText } from './styles';
 
 interface TextInputProps {
