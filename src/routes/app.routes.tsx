@@ -18,6 +18,7 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
+
   return (
     <Navigator
       screenOptions={{

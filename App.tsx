@@ -18,6 +18,7 @@ import { ThemeContextProvider } from './src/contexts/ThemeContext';
 
 import theme from './src/global/styles/theme';
 import { FirstStep } from './src/screens/FirstSteps/FirstStep';
+import { Login } from './src/screens/Login';
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -52,7 +53,7 @@ const App = () => {
     <ThemeContextProvider>
       <ThemeProvider theme={theme[colorMode]}>
         <NavigationContainer>
-          <AppRoutes />
+          <Login />
         </NavigationContainer>
         {/* <FirstStep /> */}
       </ThemeProvider>

@@ -2,7 +2,12 @@
   "env": {
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -35,7 +40,8 @@
     "comma-dangle": "off",
     "func-names": "off",
     "react/require-default-props": "off",
-    "react/no-unstable-nested-components": "off"
+    "react/no-unstable-nested-components": "off",
+    "no-unused-vars": "off"
   },
   "settings": {
     "import/resolver": {

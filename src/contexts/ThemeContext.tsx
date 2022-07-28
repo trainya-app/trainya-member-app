@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { ThemeContext as ThemeContextProps } from '../types/ThemeContext';
 
