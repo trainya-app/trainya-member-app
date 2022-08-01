@@ -53,9 +53,8 @@ const App = () => {
     <ThemeContextProvider>
       <ThemeProvider theme={theme[colorMode]}>
         <NavigationContainer>
-          <Login />
+          <AppRoutes />
         </NavigationContainer>
-        {/* <FirstStep /> */}
       </ThemeProvider>
     </ThemeContextProvider>
   );

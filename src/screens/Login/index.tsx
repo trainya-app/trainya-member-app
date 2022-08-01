@@ -37,7 +37,10 @@ export const Login = () => {
           onChangeText={(passwordValue) => setPasswordInput(passwordValue)}
           hideText
         />
-        <Button onPress={() => handleLogin(loginInput, passwordInput)} />
+        <Button
+          onPress={() => handleLogin(loginInput, passwordInput)}
+          title="Entrar"
+        />
         <ForgotPasswordWrapper>
           <ForgotPasswordText>Esqueceu sua senha?</ForgotPasswordText>
         </ForgotPasswordWrapper>
