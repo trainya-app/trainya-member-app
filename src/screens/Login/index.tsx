@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import {
   Container,
   Header,
@@ -43,6 +42,7 @@ export const Login = () => {
           title="Entrar"
           height={56}
           width={100}
+          fontSize={14}
         />
         <ForgotPasswordWrapper>
           <ForgotPasswordText>Esqueceu sua senha?</ForgotPasswordText>

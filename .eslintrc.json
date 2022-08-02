@@ -41,7 +41,8 @@
     "func-names": "off",
     "react/require-default-props": "off",
     "react/no-unstable-nested-components": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-empty-interface": "off"
   },
   "settings": {
     "import/resolver": {

@@ -67,7 +67,7 @@ export const AppRoutes = () => {
                 width: height > 700 ? 90 : 80,
                 height: height > 700 ? 90 : 80,
                 backgroundColor: '#00378F',
-                borderRadius: 45,
+                borderRadius: 999,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}

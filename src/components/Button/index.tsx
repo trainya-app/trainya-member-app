@@ -7,6 +7,7 @@ interface ButtonProps {
   width: number;
   height: number;
   style?: object;
+  fontSize: number;
 }
 
 export const Button = ({
@@ -16,6 +17,7 @@ export const Button = ({
   width,
   height,
   style,
+  fontSize,
 }: ButtonProps) => (
   <Container
     onPress={onPress}
@@ -25,6 +27,6 @@ export const Button = ({
     height={height}
     style={style}
   >
-    <TextButton>{title}</TextButton>
+    <TextButton fontSize={fontSize}>{title}</TextButton>
   </Container>
 );
