@@ -4,16 +4,18 @@ import styled from 'styled-components/native';
 
 interface ButtonProps {
   isRounded: boolean;
+  width: number;
+  height: number;
 }
 export const Container = styled.TouchableOpacity<ButtonProps>`
-  width: 100%;
-  height: ${RFValue(56)}px;
+  width: ${({ width }) => width}%;
+  height: ${({ height }) => RFValue(height)}px;
   background-color: #2176ff;
 
   align-items: center;
   justify-content: center;
-  border-radius: ${({ isRounded }) =>
-    isRounded ? RFValue(999) : RFValue(20)}px;
+  border-radius: ${({ isRounded, width }) =>
+    isRounded ? RFValue(999) : RFValue(width * 0.2)}px;
 `;
 
 export const TextButton = styled.Text`

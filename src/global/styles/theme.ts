@@ -37,6 +37,7 @@ export default {
         main: '#F4A52D',
       },
       shape: '#FFFFFF',
+      progressbar: '#BABECE',
     },
     fonts: {
       medium: 'Montserrat_500Medium',
@@ -84,6 +85,7 @@ export default {
         main: '#F4A52D',
       },
       shape: '#000',
+      progressbar: '#013259',
     },
     fonts: {
       medium: 'Montserrat_500Medium',

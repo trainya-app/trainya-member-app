@@ -3,8 +3,7 @@
     "name": "trainya-member-app",
     "slug": "trainya-member-app",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "orientation": "portrait",
+    "assetBundlePatterns": ["**/*"]
   }
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import {
   Container,
   Header,
@@ -40,6 +41,8 @@ export const Login = () => {
         <Button
           onPress={() => handleLogin(loginInput, passwordInput)}
           title="Entrar"
+          height={56}
+          width={100}
         />
         <ForgotPasswordWrapper>
           <ForgotPasswordText>Esqueceu sua senha?</ForgotPasswordText>

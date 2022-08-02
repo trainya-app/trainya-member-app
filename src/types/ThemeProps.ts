@@ -35,7 +35,8 @@ export interface RootTheme {
       bg: string;
       main: string;
     };
-    white: string;
+    shape: string;
+    progressbar: string;
   };
   fonts: {
     medium: string;
