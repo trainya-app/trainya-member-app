@@ -120,7 +120,7 @@ export const Home = () => {
             width={45}
             isRounded
             height={40}
-            style={{ marginTop: 24 }}
+            style={{ marginTop: 24, marginBottom: 24 }}
             fontSize={13}
           />
 
@@ -135,9 +135,11 @@ export const Home = () => {
                   Pessoas
                 </InfoText>
               </InfosContainer>
+
               <InfosContainer>
                 <InfoText fontSize={32}> / </InfoText>
               </InfosContainer>
+
               <InfosContainer>
                 <InfoText fontSize={32}>{capacity}</InfoText>
                 <InfoText fontSize={10}>Máximo</InfoText>
@@ -154,20 +156,19 @@ export const Home = () => {
                 </InfoText>
                 <InfoText fontSize={8}>Semanas de treino consecutivas</InfoText>
               </ActivityInfoWrapper>
+
+              <ActivityProgressBar>
+                <ActivityUserProgress />
+              </ActivityProgressBar>
+
               <ActivityInfoWrapper>
-                <Infos>
-                  <ActivityProgressBar>
-                    <ActivityUserProgress />
-                  </ActivityProgressBar>
-                  <ActivityInfo>
-                    <InfoText color="#000" fontSize={24}>
-                      Alto
-                    </InfoText>
-                    <InfoText fontSize={8}>Engajamento com a academia</InfoText>
-                  </ActivityInfo>
-                </Infos>
+                <InfoText color="#000" fontSize={24}>
+                  Alto
+                </InfoText>
+                <InfoText fontSize={8}>Engajamento com a academia</InfoText>
               </ActivityInfoWrapper>
             </Infos>
+
             <ActivityGreeting>
               <InfoText fontSize={10} color={theme.colors.blue[500]}>
                 Bom trabalho! Assim você vai longe

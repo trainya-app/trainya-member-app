@@ -102,11 +102,11 @@ export const WorkoutsProgress = styled.Text`
 export const InfoMainContainer = styled.View`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.shape};
-  padding: 24px 0;
+  padding: 24px;
   border-radius: 24px;
   align-items: center;
   justify-content: center;
-  margin-top: 28px;
+  margin: 16px 0 32px;
   elevation: 2;
 `;
 
@@ -116,18 +116,21 @@ export const InfosContainer = styled.View`
 
 export const Infos = styled.View`
   flex-direction: row;
+  width: 100%;
+  justify-content: center;
 `;
 
 export const InfoTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(18)}px;
   color: ${({ theme }) => theme.colors.gray[500]};
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 `;
 
 export const InfoText = styled.Text<TextProps>`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ fontSize }) => RFValue(fontSize)}px;
+  text-align: center;
   color: ${({ color, theme }) => (color ? color : theme.colors.gray[500])};
 `;
 
@@ -135,11 +138,12 @@ export const ContainerTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${({ theme }) => theme.colors.gray[700]};
   font-size: ${RFValue(18)}px;
-  margin-top: 32px;
 `;
 
 export const ActivityInfoWrapper = styled.View`
-  width: ${RFPercentage(18)}px;
+  /* width: ${RFPercentage(18)}px; */
+  flex: 1;
+  align-items: center;
 `;
 
 export const ActivityInfo = styled.View`
@@ -149,7 +153,7 @@ export const ActivityInfo = styled.View`
 export const ActivityProgressBar = styled.View`
   width: 10px;
   height: 100%;
-  margin-right: 24px;
+  margin: 0 24px;
   border-radius: 999px;
   background-color: ${({ theme }) => theme.colors.progressbar};
 `;
@@ -166,7 +170,7 @@ export const ActivityUserProgress = styled.View`
 
 export const ActivityGreeting = styled.View`
   background-color: ${({ theme }) => theme.colors.blue[100]};
-  width: 80%;
+  width: 100%;
   border-radius: 999px;
   margin-top: 20px;
   padding: 12px 0;
