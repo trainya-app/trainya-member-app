@@ -54,13 +54,13 @@ export const Subtitle = styled.Text`
 
 export const NotificationIcon = styled(NotificationIconSVG)`
   position: absolute;
-  left: 32px;
+  left: 24px;
   top: ${18 + Number(StatusBarHeight)}px;
 `;
 
 export const ConfigIcon = styled(ConfigIconSVG)`
   position: absolute;
-  right: 32px;
+  right: 24px;
   top: ${18 + Number(StatusBarHeight)}px;
 `;
 

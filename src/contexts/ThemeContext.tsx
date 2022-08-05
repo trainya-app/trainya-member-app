@@ -1,19 +1,21 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, Dispatch, SetStateAction } from 'react';
 import { ThemeContext as ThemeContextProps } from '../types/ThemeContext';
+
+interface Props {
+  children: ReactNode;
+  colorMode: 'light' | 'dark';
+  setColorMode: Dispatch<SetStateAction<'light' | 'dark'>>;
+}
 
 export const ThemeContext = createContext({} as ThemeContextProps);
 
-export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
-  const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
-
-  useEffect(() => {
-    // Grab the color mode of async storage
-  }, []);
-
-  return (
-    <ThemeContext.Provider value={{ colorMode, setColorMode }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
+export const ThemeContextProvider = ({
+  children,
+  colorMode,
+  setColorMode,
+}: Props) => (
+  <ThemeContext.Provider value={{ colorMode, setColorMode }}>
+    {children}
+  </ThemeContext.Provider>
+);

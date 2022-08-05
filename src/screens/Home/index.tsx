@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
+import { useTheme } from 'styled-components/native';
+import { useCustomTheme } from '../../hooks/useCustomTheme';
 import {
   Container,
   Header,
@@ -32,7 +34,6 @@ import {
 
 import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
-import { useTheme } from '../../hooks/useTheme';
 
 export const Home = () => {
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
@@ -60,6 +61,9 @@ export const Home = () => {
     return '#05CA77';
   }
 
+  const theme = useTheme();
+  const customTheme = useCustomTheme();
+
   useEffect(() => {
     if (time >= 6 && time < 12) {
       setGreeting(`Bom dia, ${user}`);
@@ -68,9 +72,8 @@ export const Home = () => {
     } else {
       setGreeting(`Boa noite, ${user}`);
     }
-  });
+  }, []);
 
-  const { theme } = useTheme();
   return (
     <Container>
       <StatusBar translucent />
@@ -82,7 +85,9 @@ export const Home = () => {
           <Title>{greeting}</Title>
           <Subtitle>Seu treino de {workout} está te esperando</Subtitle>
           <Button
-            onPress={() => console.log('a')}
+            onPress={() => {
+              customTheme.handleToggleColorMode();
+            }}
             title="Treinar"
             width={50}
             height={40}
@@ -114,8 +119,9 @@ export const Home = () => {
           </ProgressSection>
 
           <ProgressBar progress_percentage={progress_percentage} />
+
           <Button
-            onPress={() => console.log('a')}
+            onPress={() => console.log('fd')}
             title="Ver treinos"
             width={45}
             isRounded
@@ -151,7 +157,7 @@ export const Home = () => {
           <InfoMainContainer>
             <Infos>
               <ActivityInfoWrapper>
-                <InfoText color="#000" fontSize={24}>
+                <InfoText color={theme.colors.blue[900]} fontSize={24}>
                   01
                 </InfoText>
                 <InfoText fontSize={8}>Semanas de treino consecutivas</InfoText>
@@ -162,7 +168,7 @@ export const Home = () => {
               </ActivityProgressBar>
 
               <ActivityInfoWrapper>
-                <InfoText color="#000" fontSize={24}>
+                <InfoText color={theme.colors.blue[900]} fontSize={24}>
                   Alto
                 </InfoText>
                 <InfoText fontSize={8}>Engajamento com a academia</InfoText>

@@ -21,9 +21,9 @@ import { FirstStep } from './src/screens/FirstSteps/FirstStep';
 import { Login } from './src/screens/Login';
 
 const App = () => {
+  const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
   const [appIsReady, setAppIsReady] = useState(false);
   // TODO: grab the async storage
-  const colorMode = 'light';
 
   useEffect(() => {
     (async () => {
@@ -50,7 +50,7 @@ const App = () => {
     return null;
   }
   return (
-    <ThemeContextProvider>
+    <ThemeContextProvider colorMode={colorMode} setColorMode={setColorMode}>
       <ThemeProvider theme={theme[colorMode]}>
         <NavigationContainer>
           <AppRoutes />
