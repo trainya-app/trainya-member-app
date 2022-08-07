@@ -33,6 +33,7 @@ import {
 
 import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
+import { Slider } from '../../components/Slider';
 
 export const Home = () => {
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
@@ -182,6 +183,8 @@ export const Home = () => {
               </InfoText>
             </ActivityGreeting>
           </CardContainer>
+          <CardContainerTitle>Aulas Marcadas</CardContainerTitle>
+          <Slider />
         </MainContainer>
       </Scroll>
     </Container>
