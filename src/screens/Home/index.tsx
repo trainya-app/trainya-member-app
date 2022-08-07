@@ -19,14 +19,13 @@ import {
   ProgressPercentage,
   Workouts,
   WorkoutsProgress,
-  InfoMainContainer,
-  InfoTitle,
+  CardContainerTitle,
+  CardContainer,
+  CardTitle,
   InfosContainer,
   Infos,
   InfoText,
-  ContainerTitle,
   ActivityInfoWrapper,
-  ActivityInfo,
   ActivityProgressBar,
   ActivityUserProgress,
   ActivityGreeting,
@@ -96,12 +95,14 @@ export const Home = () => {
           />
         </HeaderContent>
       </Header>
+
       <Scroll>
         <MainContainer>
           <ProgressSection>
             <Progress>
               <Label>Progresso</Label>
               <ProgressPercentage>
+                {/* Adding 0 at the left of the number, in case it's lower than 10 */}
                 {progress_percentage.toString().length === 1
                   ? `0${progress_percentage}`
                   : progress_percentage}
@@ -130,8 +131,8 @@ export const Home = () => {
             fontSize={13}
           />
 
-          <InfoMainContainer>
-            <InfoTitle>Agora na academia</InfoTitle>
+          <CardContainer>
+            <CardTitle>Agora na academia</CardTitle>
             <Infos>
               <InfosContainer>
                 <InfoText color={capacityColor()} fontSize={32}>
@@ -151,10 +152,10 @@ export const Home = () => {
                 <InfoText fontSize={10}>Máximo</InfoText>
               </InfosContainer>
             </Infos>
-          </InfoMainContainer>
+          </CardContainer>
 
-          <ContainerTitle>Sua atividade</ContainerTitle>
-          <InfoMainContainer>
+          <CardContainerTitle>Sua atividade</CardContainerTitle>
+          <CardContainer>
             <Infos>
               <ActivityInfoWrapper>
                 <InfoText color={theme.colors.blue[900]} fontSize={24}>
@@ -180,7 +181,7 @@ export const Home = () => {
                 Bom trabalho! Assim você vai longe
               </InfoText>
             </ActivityGreeting>
-          </InfoMainContainer>
+          </CardContainer>
         </MainContainer>
       </Scroll>
     </Container>

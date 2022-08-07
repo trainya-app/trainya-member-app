@@ -99,7 +99,13 @@ export const WorkoutsProgress = styled.Text`
   color: ${({ theme }) => theme.colors.blue[900]};
 `;
 
-export const InfoMainContainer = styled.View`
+export const CardContainerTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.gray[700]};
+  font-size: ${RFValue(18)}px;
+`;
+
+export const CardContainer = styled.View`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.shape};
   padding: 24px;
@@ -120,7 +126,7 @@ export const Infos = styled.View`
   justify-content: center;
 `;
 
-export const InfoTitle = styled.Text`
+export const CardTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(18)}px;
   color: ${({ theme }) => theme.colors.gray[500]};
@@ -132,12 +138,6 @@ export const InfoText = styled.Text<TextProps>`
   font-size: ${({ fontSize }) => RFValue(fontSize)}px;
   text-align: center;
   color: ${({ color, theme }) => (color ? color : theme.colors.gray[500])};
-`;
-
-export const ContainerTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.bold};
-  color: ${({ theme }) => theme.colors.gray[700]};
-  font-size: ${RFValue(18)}px;
 `;
 
 export const ActivityInfoWrapper = styled.View`
