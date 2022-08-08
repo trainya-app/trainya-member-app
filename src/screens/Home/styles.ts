@@ -102,7 +102,7 @@ export const WorkoutsProgress = styled.Text`
 export const CardContainerTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${({ theme }) => theme.colors.gray[700]};
-  font-size: ${RFValue(18)}px;
+  font-size: ${RFValue(16)}px;
 `;
 
 export const CardContainer = styled.View`

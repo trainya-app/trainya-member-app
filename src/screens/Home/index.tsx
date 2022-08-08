@@ -31,11 +31,42 @@ import {
   ActivityGreeting,
 } from './styles';
 
+import { SliderProps, Slider } from '../../components/Slider';
+
 import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
-import { Slider } from '../../components/Slider';
 
 export const Home = () => {
+  const schedule_classes: SliderProps[] = [
+    {
+      title: 'Natação',
+      url: 'https://i.imgur.com/1gCjdZo.jpeg',
+    },
+    {
+      title: 'Boxe',
+      url: 'https://i.imgur.com/pil1SdG.jpeg',
+    },
+    {
+      title: 'Pilates',
+      url: 'https://i.imgur.com/JLiVcK8.jpeg',
+    },
+  ];
+
+  const home_workouts: SliderProps[] = [
+    {
+      title: 'Cardio',
+      url: 'https://i.imgur.com/kvD2fSZ.jpg',
+    },
+    {
+      title: 'Força',
+      url: 'https://i.imgur.com/M4n35v8.png',
+    },
+    {
+      title: 'Flexibilidade',
+      url: 'https://i.imgur.com/uoQYf1c.jpg',
+    },
+  ];
+
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
   const user = 'Mariana';
   const workout = 'pernas';
@@ -184,7 +215,9 @@ export const Home = () => {
             </ActivityGreeting>
           </CardContainer>
           <CardContainerTitle>Aulas Marcadas</CardContainerTitle>
-          <Slider />
+          <Slider data={schedule_classes} />
+          <CardContainerTitle>Treinos para fazer em casa</CardContainerTitle>
+          <Slider data={home_workouts} />
         </MainContainer>
       </Scroll>
     </Container>

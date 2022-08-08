@@ -55,9 +55,19 @@ export const SlideImage = styled.Image`
   border-radius: 24px;
 `;
 
+export const Blur = styled.View`
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  position: absolute;
+  background-color: black;
+  opacity: 0.2;
+`;
+
 export const Title = styled.Text`
   font-size: ${RFValue(32)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
   color: white;
   position: absolute;
+  z-index: 1;
 `;
