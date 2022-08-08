@@ -84,7 +84,7 @@ export default {
         bg: '#FFFAF0',
         main: '#F4A52D',
       },
-      shape: '#000',
+      shape: '#002766',
       progressbar: '#013259',
     },
     fonts: {
