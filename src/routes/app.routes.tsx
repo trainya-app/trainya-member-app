@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Dimensions, View } from 'react-native';
 
@@ -7,6 +8,7 @@ import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
 import { Workouts } from '../screens/Workouts';
 import { Profile } from '../screens/Profile';
+import { Configurations } from '../screens/Configurations';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -14,13 +16,29 @@ import QRIcon from '../assets/qr_icon.svg';
 import WorkoutsIcon from '../assets/halter_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
 
-const { Navigator, Screen } = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+const HomeStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+      animation: 'slide_from_right',
+      contentStyle: {
+        marginTop: 24,
+      },
+    }}
+  >
+    <Stack.Screen name="HomeStack" component={Home} />
+    <Stack.Screen name="Configurations" component={Configurations} />
+  </Stack.Navigator>
+);
 
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
 
   return (
-    <Navigator
+    <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -35,9 +53,9 @@ export const AppRoutes = () => {
         },
       }}
     >
-      <Screen
+      <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ marginLeft: 16 }}>
@@ -46,7 +64,7 @@ export const AppRoutes = () => {
           ),
         }}
       />
-      <Screen
+      <Tab.Screen
         name="Progress"
         component={Progress}
         options={{
@@ -57,7 +75,7 @@ export const AppRoutes = () => {
           ),
         }}
       />
-      <Screen
+      <Tab.Screen
         name="QRCamera"
         component={QRCamera}
         options={{
@@ -77,7 +95,7 @@ export const AppRoutes = () => {
           ),
         }}
       />
-      <Screen
+      <Tab.Screen
         name="Workouts"
         component={Workouts}
         options={{
@@ -88,7 +106,7 @@ export const AppRoutes = () => {
           ),
         }}
       />
-      <Screen
+      <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
@@ -99,6 +117,6 @@ export const AppRoutes = () => {
           ),
         }}
       />
-    </Navigator>
+    </Tab.Navigator>
   );
 };

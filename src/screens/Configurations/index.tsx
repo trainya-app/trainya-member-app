@@ -8,14 +8,15 @@ import {
   OptionsContainer,
   OptionsContainerItem as Item,
 } from '../../components/OptionsContainer';
+import { NavigationProps } from '../../types/NavigationProps';
 
-export const Configurations = () => {
+export const Configurations = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
 
   return (
     <Container>
       <StatusBar backgroundColor={theme.colors.blue[100]} />
-      <Heading title="Configurações" />
+      <Heading title="Configurações" onGoBack={() => navigation.goBack()} />
       <OptionsContainer label="Conteúdo">
         <Item title="Editar Perfil" />
         <Item title="Minha Conta" />

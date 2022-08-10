@@ -14,15 +14,12 @@ interface OptionsContainerItemProps {
 export const OptionsContainer = ({
   label,
   children,
-}: OptionsContainerProps) => {
-  const a = 'a';
-  return (
-    <>
-      <Label>{label}</Label>
-      <Container>{children}</Container>
-    </>
-  );
-};
+}: OptionsContainerProps) => (
+  <>
+    <Label>{label}</Label>
+    <Container>{children}</Container>
+  </>
+);
 
 export const OptionsContainerItem = ({
   title,

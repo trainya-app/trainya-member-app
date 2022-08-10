@@ -1,14 +1,18 @@
-import { StatusBar } from 'react-native';
-import { Container, BackIcon, Title, ConfigIcon } from './styles';
+import { Container, IconWrapper, BackIcon, Title, ConfigIcon } from './styles';
 
 interface HeadingProps {
   title: string;
+  onGoBack: () => void;
 }
 
-export const Heading = ({ title }: HeadingProps) => (
+export const Heading = ({ title, onGoBack }: HeadingProps) => (
   <Container>
-    <BackIcon />
+    <IconWrapper onPress={onGoBack}>
+      <BackIcon />
+    </IconWrapper>
     <Title>{title}</Title>
-    <ConfigIcon />
+    <IconWrapper>
+      <ConfigIcon />
+    </IconWrapper>
   </Container>
 );

@@ -31,12 +31,14 @@ import {
   ActivityGreeting,
 } from './styles';
 
+import { NavigationProps as Props } from '../../types/NavigationProps';
+
 import { SliderProps, Slider } from '../../components/Slider';
 
 import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
 
-export const Home = () => {
+export const Home = ({ navigation }: Props) => {
   const schedule_classes: SliderProps[] = [
     {
       title: 'Natação',
@@ -119,7 +121,7 @@ export const Home = () => {
       <Header>
         <HeaderImage source={{ uri: image_url }} />
         <NotificationIcon />
-        <ConfigIcon />
+        <ConfigIcon onPress={() => navigation.navigate('Configurations')} />
         <HeaderContent>
           <Title>{greeting}</Title>
           <Subtitle>Seu treino de {workout} está te esperando</Subtitle>

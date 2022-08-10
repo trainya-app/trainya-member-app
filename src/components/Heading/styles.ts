@@ -15,6 +15,12 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.extrabold};
 `;
 
+export const IconWrapper = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
+  padding: 0 4px;
+`;
+
 export const BackIcon = styled(BackIconSVG)``;
 
 export const ConfigIcon = styled(ConfigIconSVG)``;
