@@ -19,6 +19,7 @@ import { ThemeContextProvider } from './src/contexts/ThemeContext';
 import theme from './src/global/styles/theme';
 import { FirstStep } from './src/screens/FirstSteps/FirstStep';
 import { Login } from './src/screens/Login';
+import { Configurations } from './src/screens/Configurations';
 
 const App = () => {
   const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
@@ -53,7 +54,8 @@ const App = () => {
     <ThemeContextProvider colorMode={colorMode} setColorMode={setColorMode}>
       <ThemeProvider theme={theme[colorMode]}>
         <NavigationContainer>
-          <AppRoutes />
+          {/* <AppRoutes /> */}
+          <Configurations />
         </NavigationContainer>
       </ThemeProvider>
     </ThemeContextProvider>

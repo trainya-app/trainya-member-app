@@ -55,7 +55,7 @@ export const Slider = ({ data }: Props) => {
               </Slide>
             ) : (
               index === 3 && (
-                <Slide key="4">
+                <Slide key="4" onPress={() => console.log('Ver mais +')}>
                   <SeeMoreSlideContainer>
                     <Title isActive>Ver mais +</Title>
                   </SeeMoreSlideContainer>
