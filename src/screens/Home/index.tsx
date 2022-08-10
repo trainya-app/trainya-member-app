@@ -65,6 +65,14 @@ export const Home = () => {
       title: 'Flexibilidade',
       url: 'https://i.imgur.com/uoQYf1c.jpg',
     },
+    {
+      title: 'Pilates',
+      url: 'https://i.imgur.com/JLiVcK8.jpeg',
+    },
+    {
+      title: 'Pilates',
+      url: 'https://i.imgur.com/JLiVcK8.jpeg',
+    },
   ];
 
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
