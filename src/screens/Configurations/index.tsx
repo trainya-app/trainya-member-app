@@ -18,7 +18,10 @@ export const Configurations = ({ navigation }: NavigationProps) => {
       <StatusBar backgroundColor={theme.colors.blue[100]} />
       <Heading title="Configurações" onGoBack={() => navigation.goBack()} />
       <OptionsContainer label="Conteúdo">
-        <Item title="Editar Perfil" />
+        <Item
+          title="Editar Perfil"
+          actionComponent={<LogoutButtonText>Sair</LogoutButtonText>}
+        />
         <Item title="Minha Conta" />
         <Item title="Favoritos" lastOption />
       </OptionsContainer>

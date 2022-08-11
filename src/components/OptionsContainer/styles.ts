@@ -15,11 +15,16 @@ export const Container = styled.View`
   border-radius: 16px;
 `;
 
+export const ContainerItemBox = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const ContainerItem = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.gray[500]};
-  margin-left: 12px;
+  margin: 0 12px;
 `;
 
 export const ItemSeparator = styled.View`
