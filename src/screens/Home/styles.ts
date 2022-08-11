@@ -55,13 +55,13 @@ export const Subtitle = styled.Text`
 export const NotificationIcon = styled(NotificationIconSVG)`
   position: absolute;
   left: 24px;
-  top: ${18 + Number(StatusBarHeight)}px;
+  top: ${Number(StatusBarHeight)}px;
 `;
 
 export const ConfigIcon = styled(ConfigIconSVG)`
   position: absolute;
   right: 24px;
-  top: ${18 + Number(StatusBarHeight)}px;
+  top: ${Number(StatusBarHeight)}px;
 `;
 
 export const Scroll = styled.ScrollView.attrs({
