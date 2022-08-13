@@ -21,13 +21,13 @@ export const Configurations = ({ navigation }: NavigationProps) => {
       <OptionsContainer label="Conteúdo">
         <Item title="Editar Perfil" />
         <Item title="Minha Conta" />
-        <Item title="Favoritos" lastOption />
+        <Item title="Favoritos" isLastOption />
       </OptionsContainer>
       <OptionsContainer label="Preferências">
         <Item title="Tema" actionComponent={<ToggleThemeButton />} />
         <Item title="Privacidade" />
         <Item title="Segurança" />
-        <Item title="Notificações" lastOption />
+        <Item title="Notificações" isLastOption />
       </OptionsContainer>
       <LogoutButtonContainer>
         <LogoutButtonText>Sair</LogoutButtonText>

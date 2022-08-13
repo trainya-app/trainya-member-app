@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
   Label,
   Container,
@@ -9,12 +8,13 @@ import {
 
 interface OptionsContainerProps {
   label: string;
-  children: ReactNode;
+  children: JSX.Element | JSX.Element[];
 }
 
 interface OptionsContainerItemProps {
   title: string;
-  lastOption?: boolean;
+  onPress?: () => void;
+  isLastOption?: boolean;
   actionComponent?: JSX.Element;
 }
 
@@ -30,14 +30,15 @@ export const OptionsContainer = ({
 
 export const OptionsContainerItem = ({
   title,
-  lastOption,
+  onPress,
+  isLastOption,
   actionComponent,
 }: OptionsContainerItemProps) => (
   <>
     <ContainerItemBox>
-      <ContainerItem>{title}</ContainerItem>
+      <ContainerItem onPress={onPress}>{title}</ContainerItem>
       {actionComponent}
     </ContainerItemBox>
-    {!lastOption && <ItemSeparator />}
+    {!isLastOption && <ItemSeparator />}
   </>
 );

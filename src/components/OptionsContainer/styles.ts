@@ -15,7 +15,9 @@ export const Container = styled.View`
   border-radius: 16px;
 `;
 
-export const ContainerItemBox = styled.View`
+export const ContainerItemBox = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
   flex-direction: row;
   justify-content: space-between;
 `;
