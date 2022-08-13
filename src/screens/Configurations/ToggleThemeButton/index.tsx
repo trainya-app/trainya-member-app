@@ -8,11 +8,10 @@ import {
   Container,
   ButtonContainer,
   ButtonIndicator,
-  ButtonIcon,
   ButtonIconContainer,
 } from './styles';
 
-export const ToggleThemeButton = ({ size, onPress, isActive }) => {
+export const ToggleThemeButton = () => {
   const { colorMode, handleToggleColorMode } = useCustomTheme();
   const [theme, setTheme] = useState(colorMode);
 
