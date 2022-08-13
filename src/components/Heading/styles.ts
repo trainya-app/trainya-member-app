@@ -1,7 +1,13 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import BackIconSVG from '../../assets/back_icon_black.svg';
-import ConfigIconSVG from '../../assets/config_icon_black.svg';
+import BackIconSVGDark from '../../assets/back_icon_black.svg';
+import ConfigIconSVGDark from '../../assets/config_icon_black.svg';
+import BackIconSVG from '../../assets/back_icon.svg';
+import ConfigIconSVG from '../../assets/config_icon.svg';
+
+interface TitleProps {
+  colorMode: string;
+}
 
 export const Container = styled.View`
   width: 100%;
@@ -10,9 +16,10 @@ export const Container = styled.View`
   justify-content: space-between;
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text<TitleProps>`
   font-size: ${RFValue(24)}px;
   font-family: ${({ theme }) => theme.fonts.extrabold};
+  color: ${({ colorMode }) => (colorMode === 'light' ? '#000' : '#FFF')};
 `;
 
 export const IconWrapper = styled.TouchableOpacity.attrs({
@@ -21,6 +28,10 @@ export const IconWrapper = styled.TouchableOpacity.attrs({
   padding: 0 4px;
 `;
 
-export const BackIcon = styled(BackIconSVG)``;
+export const BackIcon = styled(BackIconSVGDark)``;
 
-export const ConfigIcon = styled(ConfigIconSVG)``;
+export const ConfigIcon = styled(ConfigIconSVGDark)``;
+
+export const BackIconDark = styled(BackIconSVG)``;
+
+export const ConfigIconDark = styled(ConfigIconSVG)``;

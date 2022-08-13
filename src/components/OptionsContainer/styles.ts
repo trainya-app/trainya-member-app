@@ -21,15 +21,17 @@ export const ContainerItemBox = styled.View`
 `;
 
 export const ContainerItem = styled.Text`
+  flex: 1;
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(14)}px;
-  color: ${({ theme }) => theme.colors.gray[500]};
-  margin: 0 12px;
+  color: ${({ theme }) => theme.colors.gray[800]};
+  margin: 6px 12px;
+  justify-content: center;
 `;
 
 export const ItemSeparator = styled.View`
   background-color: ${({ theme }) => theme.colors.gray[200]};
-  margin: 12px 0;
+  margin: 8px 0;
   width: 100%;
   height: 1px;
 `;

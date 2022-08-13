@@ -36,7 +36,7 @@ export const OptionsContainerItem = ({
   <>
     <ContainerItemBox>
       <ContainerItem>{title}</ContainerItem>
-      <ContainerItem>{actionComponent}</ContainerItem>
+      {actionComponent}
     </ContainerItemBox>
     {!lastOption && <ItemSeparator />}
   </>
