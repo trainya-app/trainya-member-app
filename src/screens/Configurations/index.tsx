@@ -21,7 +21,11 @@ export const Configurations = ({ navigation }: NavigationProps) => {
       <OptionsContainer label="Conteúdo">
         <Item title="Editar Perfil" />
         <Item title="Minha Conta" />
-        <Item title="Favoritos" isLastOption />
+        <Item
+          title="Favoritos"
+          isLastOption
+          onPress={() => navigation.navigate('Favorites')}
+        />
       </OptionsContainer>
       <OptionsContainer label="Preferências">
         <Item title="Tema" actionComponent={<ToggleThemeButton />} />

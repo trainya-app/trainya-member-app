@@ -14,6 +14,9 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
+  top: 24px;
+  align-self: center;
 `;
 
 export const Title = styled.Text<TitleProps>`
