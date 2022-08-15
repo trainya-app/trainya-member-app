@@ -17,9 +17,6 @@ import { AppRoutes } from './src/routes/app.routes';
 import { ThemeContextProvider } from './src/contexts/ThemeContext';
 
 import theme from './src/global/styles/theme';
-import { FirstStep } from './src/screens/FirstSteps/FirstStep';
-import { Login } from './src/screens/Login';
-import { Configurations } from './src/screens/Configurations';
 
 const App = () => {
   const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');

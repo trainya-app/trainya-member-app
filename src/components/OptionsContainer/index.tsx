@@ -35,8 +35,8 @@ export const OptionsContainerItem = ({
   actionComponent,
 }: OptionsContainerItemProps) => (
   <>
-    <ContainerItemBox>
-      <ContainerItem onPress={onPress}>{title}</ContainerItem>
+    <ContainerItemBox onPress={onPress}>
+      <ContainerItem>{title}</ContainerItem>
       {actionComponent}
     </ContainerItemBox>
     {!isLastOption && <ItemSeparator />}

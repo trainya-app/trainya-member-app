@@ -1,7 +1,7 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
-const { getDefaultConfig } = require('expo/metro-config');
+import { getDefaultConfig } from 'expo/metro-config';
 
-module.exports = (() => {
+export default (() => {
   const config = getDefaultConfig(__dirname);
 
   const { transformer, resolver } = config;
