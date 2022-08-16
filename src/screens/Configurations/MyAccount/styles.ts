@@ -14,14 +14,16 @@ export const Header = styled.View`
   padding: 32px 0;
 `;
 
-export const ProfileImageContainer = styled.View``;
-
-export const ProfilePhoto = styled.Image`
+export const ProfileImageContainer = styled.View`
   width: ${RFValue(100)}px;
   height: ${RFValue(100)}px;
   border-radius: 999px;
   border-width: 3px;
-  border-color: ${({ theme }) => theme.colors.blue[600]};
+  border-color: ${({ theme }) => theme.colors.blue[600]};`;
+
+export const ProfilePhoto = styled.Image`
+  flex: 1;
+  border-radius: 999px;
 `;
 
 export const ChangePhotoIconContainer = styled.TouchableOpacity.attrs({
