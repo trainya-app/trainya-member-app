@@ -35,10 +35,10 @@ export const MyAccount = ({ navigation }: NavigationProps) => {
           <Username>Mariana Santos</Username>
           <Button
             title="Editar informações"
-            width={60}
-            height={40}
+            width={70}
+            height={36}
             style={{ marginTop: 12 }}
-            fontSize={12}
+            fontSize={11}
           />
         </ProfileInfoContainer>
       </Header>

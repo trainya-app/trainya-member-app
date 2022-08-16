@@ -25,7 +25,7 @@ export const ProfilePhoto = styled.Image`
 `;
 
 export const ChangePhotoIconContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.95,
+  activeOpacity: 0.7,
 })`
   position: absolute;
   background-color: white;
@@ -46,7 +46,7 @@ export const ProfileInfoContainer = styled.View`
 
 export const Username = styled.Text`
   font-family: ${({ theme }) => theme.fonts.extrabold};
-  font-size: ${RFValue(20)}px;
+  font-size: 28px;
   text-transform: uppercase;
 `;
 
@@ -67,6 +67,7 @@ export const GymName = styled.Text`
 
 export const BoxDirectionRow = styled.View`
   flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const Scroll = styled.ScrollView.attrs({
