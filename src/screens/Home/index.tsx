@@ -164,7 +164,6 @@ export const Home = ({ navigation }: Props) => {
           <ProgressBar progress_percentage={progress_percentage} />
 
           <Button
-            onPress={() => console.log('fd')}
             title="Ver treinos"
             width={45}
             isRounded

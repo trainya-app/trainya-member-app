@@ -1,7 +1,7 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
-import StarIconSVG from '../../assets/star.svg';
-import StarIconDarkSVG from '../../assets/star_dark.svg';
+import StarIconSVG from '../../../assets/star.svg';
+import StarIconDarkSVG from '../../../assets/star_dark.svg';
 
 export const Container = styled.View`
   flex: 1;

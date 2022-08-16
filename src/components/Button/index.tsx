@@ -1,7 +1,7 @@
 import { Container, TextButton } from './styles';
 
 interface ButtonProps {
-  onPress: () => void;
+  onPress?: () => void;
   title: string;
   isRounded?: boolean;
   width: number;

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Dimensions } from 'react-native';
-import { useCustomTheme } from '../../../hooks/useCustomTheme';
-import LightThemeIcon from '../../../assets/light_theme_icon.svg';
-import DarkThemeIcon from '../../../assets/dark_theme_icon.svg';
+import { useCustomTheme } from '../../../../hooks/useCustomTheme';
+import LightThemeIcon from '../../../../assets/light_theme_icon.svg';
+import DarkThemeIcon from '../../../../assets/dark_theme_icon.svg';
 
 import {
   Container,

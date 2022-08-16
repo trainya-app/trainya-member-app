@@ -9,7 +9,8 @@ import { QRCamera } from '../screens/QRCamera';
 import { Workouts } from '../screens/Workouts';
 import { Profile } from '../screens/Profile';
 import { Configurations } from '../screens/Configurations';
-import { Favorites } from '../screens/Favorites';
+import { Favorites } from '../screens/Configurations/Favorites';
+import { MyAccount } from '../screens/Configurations/MyAccount';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -33,6 +34,7 @@ const HomeStack = () => (
     <Stack.Screen name="HomeStack" component={Home} />
     <Stack.Screen name="Configurations" component={Configurations} />
     <Stack.Screen name="Favorites" component={Favorites} />
+    <Stack.Screen name="MyAccount" component={MyAccount} />
   </Stack.Navigator>
 );
 

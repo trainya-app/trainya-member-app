@@ -1,6 +1,6 @@
-import { Heading } from '../../components/Heading';
-import { useCustomTheme } from '../../hooks/useCustomTheme';
-import { NavigationProps } from '../../types/NavigationProps';
+import { Heading } from '../../../components/Heading';
+import { useCustomTheme } from '../../../hooks/useCustomTheme';
+import { NavigationProps } from '../../../types/NavigationProps';
 import { Container, StarIcon, StarIconDark, StrongText, Text } from './styles';
 
 export const Favorites = ({ navigation }: NavigationProps) => {

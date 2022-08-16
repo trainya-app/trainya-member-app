@@ -9,7 +9,7 @@ import {
   OptionsContainerItem as Item,
 } from '../../components/OptionsContainer';
 import { NavigationProps } from '../../types/NavigationProps';
-import { ToggleThemeButton } from './ToggleThemeButton';
+import { ToggleThemeButton } from './components/ToggleThemeButton';
 
 export const Configurations = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
@@ -20,7 +20,10 @@ export const Configurations = ({ navigation }: NavigationProps) => {
       <Heading title="Configurações" onGoBack={() => navigation.goBack()} />
       <OptionsContainer label="Conteúdo">
         <Item title="Editar Perfil" />
-        <Item title="Minha Conta" />
+        <Item
+          title="Minha Conta"
+          onPress={() => navigation.navigate('MyAccount')}
+        />
         <Item
           title="Favoritos"
           isLastOption
