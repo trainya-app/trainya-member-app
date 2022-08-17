@@ -2,7 +2,12 @@
   "env": {
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -19,10 +24,25 @@
       { "extensions": [".jsx", ".js", ".ts", "tsx"] }
     ],
     "react/style-prop-object": "off",
-    "linebreak-style": "off",
+    "camelcase": "off",
+    "linebreak-style": 0,
+    "react/function-component-definition": "off",
     "import/prefer-default-export": "off",
+    "react/jsx-no-bind": "off",
+    "no-unneeded-ternary": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "implicit-arrow-linebreak": "off",
+    "object-curly-newline": "off",
     "import/extensions": "off",
-    "react/function-component-definition": "off"
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "comma-dangle": "off",
+    "func-names": "off",
+    "react/require-default-props": "off",
+    "react/no-unstable-nested-components": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-empty-interface": "off"
   },
   "settings": {
     "import/resolver": {
