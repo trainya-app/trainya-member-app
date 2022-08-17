@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Dimensions, View } from 'react-native';
+import { Dimensions, Platform, View } from 'react-native';
 
 import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
@@ -54,6 +54,7 @@ export const AppRoutes = () => {
           elevation: 0,
           height: height > 700 ? 70 : 60,
           position: 'absolute',
+          paddingTop: Platform.OS === 'ios' ? 24 : 0,
         },
       }}
     >
