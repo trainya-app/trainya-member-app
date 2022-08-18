@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Dimensions, Platform, View } from 'react-native';
+import { Dimensions, Keyboard, Platform, View } from 'react-native';
 
+import { useEffect, useState } from 'react';
 import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
@@ -11,6 +12,7 @@ import { Profile } from '../screens/Profile';
 import { Configurations } from '../screens/Configurations';
 import { Favorites } from '../screens/Configurations/Favorites';
 import { MyAccount } from '../screens/Configurations/MyAccount';
+import { EditProfile } from '../screens/Configurations/EditProfile';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -35,12 +37,27 @@ const HomeStack = () => (
     <Stack.Screen name="Configurations" component={Configurations} />
     <Stack.Screen name="Favorites" component={Favorites} />
     <Stack.Screen name="MyAccount" component={MyAccount} />
+    <Stack.Screen name="EditProfile" component={EditProfile} />
   </Stack.Navigator>
 );
 
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
+  const [keyboardActive, setKeyboardActive] = useState(false);
 
+  useEffect(() => {
+    const showTabbar = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardActive(true);
+    });
+    const hideTabbar = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardActive(false);
+    });
+
+    return () => {
+      showTabbar.remove();
+      hideTabbar.remove();
+    };
+  }, []);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -49,11 +66,11 @@ export const AppRoutes = () => {
         tabBarStyle: {
           backgroundColor: '#2176FF',
           borderRadius: 20,
-          bottom: 25,
           marginHorizontal: 24,
+          position: 'absolute',
+          bottom: keyboardActive ? 0 : 25,
           elevation: 0,
           height: height > 700 ? 70 : 60,
-          position: 'absolute',
           paddingTop: Platform.OS === 'ios' ? 24 : 0,
         },
       }}
@@ -67,6 +84,7 @@ export const AppRoutes = () => {
               <HomeIcon />
             </View>
           ),
+          tabBarHideOnKeyboard: true,
         }}
       />
       <Tab.Screen

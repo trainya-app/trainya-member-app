@@ -19,7 +19,8 @@ export const ProfileImageContainer = styled.View`
   height: ${RFValue(100)}px;
   border-radius: 999px;
   border-width: 3px;
-  border-color: ${({ theme }) => theme.colors.blue[600]};`;
+  border-color: ${({ theme }) => theme.colors.blue[600]};
+`;
 
 export const ProfilePhoto = styled.Image`
   flex: 1;

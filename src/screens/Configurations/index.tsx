@@ -19,7 +19,10 @@ export const Configurations = ({ navigation }: NavigationProps) => {
       <StatusBar backgroundColor={theme.colors.blue[100]} />
       <Heading title="Configurações" onGoBack={() => navigation.goBack()} />
       <OptionsContainer label="Conteúdo">
-        <Item title="Editar Perfil" />
+        <Item
+          title="Editar Perfil"
+          onPress={() => navigation.navigate('EditProfile')}
+        />
         <Item
           title="Minha Conta"
           onPress={() => navigation.navigate('MyAccount')}

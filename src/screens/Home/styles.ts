@@ -1,12 +1,8 @@
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
-import { StatusBar } from 'react-native';
-
 import NotificationIconSVG from '../../assets/notification_icon.svg';
 import ConfigIconSVG from '../../assets/config_icon.svg';
-
-const StatusBarHeight = StatusBar.currentHeight;
 
 interface TextProps {
   color?: string;
