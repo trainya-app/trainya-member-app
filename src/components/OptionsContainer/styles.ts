@@ -19,6 +19,7 @@ export const ContainerItemBox = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
 })`
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 `;
 
