@@ -6,7 +6,7 @@ import StarIconDarkSVG from '../../../assets/star_dark.svg';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};
-  padding: 24px;
+  padding: 0 24px;
   align-items: center;
   justify-content: center;
 `;

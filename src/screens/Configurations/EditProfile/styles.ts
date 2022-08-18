@@ -6,7 +6,7 @@ import EditIcon from '../../../assets/edit_profile_icon.svg';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};
-  padding: 80px 24px 0px 24px;
+  padding: 0 24px;
 `;
 
 export const ProfileImageContainer = styled.View`
@@ -37,7 +37,7 @@ export const TextInput = styled.TextInput`
   border-radius: 16px;
   elevation: 2;
   margin: 8px 0;
-  padding: 0 16px;
+  padding: 16px 16px;
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(12)}px;
 `;

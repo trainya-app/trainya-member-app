@@ -68,7 +68,7 @@ export const AppRoutes = () => {
           borderRadius: 20,
           marginHorizontal: 24,
           position: 'absolute',
-          bottom: keyboardActive ? 0 : 25,
+          bottom: 25,
           elevation: 0,
           height: height > 700 ? 70 : 60,
           paddingTop: Platform.OS === 'ios' ? 24 : 0,

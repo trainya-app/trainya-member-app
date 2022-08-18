@@ -6,12 +6,12 @@ import EditIcon from '../../../assets/edit_profile_icon.svg';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};
-  padding: 56px 24px 20% 24px;
+  padding: 0 24px;
 `;
 
 export const Header = styled.View`
   flex-direction: row;
-  padding: 32px 0;
+  margin-bottom: 24px;
 `;
 
 export const ProfileImageContainer = styled.View`

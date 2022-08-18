@@ -15,33 +15,36 @@ export const Configurations = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
 
   return (
-    <Container>
-      <StatusBar backgroundColor={theme.colors.blue[100]} />
+    <>
       <Heading title="Configurações" onGoBack={() => navigation.goBack()} />
-      <OptionsContainer label="Conteúdo">
-        <Item
-          title="Editar Perfil"
-          onPress={() => navigation.navigate('EditProfile')}
-        />
-        <Item
-          title="Minha Conta"
-          onPress={() => navigation.navigate('MyAccount')}
-        />
-        <Item
-          title="Favoritos"
-          isLastOption
-          onPress={() => navigation.navigate('Favorites')}
-        />
-      </OptionsContainer>
-      <OptionsContainer label="Preferências">
-        <Item title="Tema" actionComponent={<ToggleThemeButton />} />
-        <Item title="Privacidade" />
-        <Item title="Segurança" />
-        <Item title="Notificações" isLastOption />
-      </OptionsContainer>
-      <LogoutButtonContainer>
-        <LogoutButtonText>Sair</LogoutButtonText>
-      </LogoutButtonContainer>
-    </Container>
+      <Container>
+        <StatusBar backgroundColor={theme.colors.blue[100]} />
+
+        <OptionsContainer label="Conteúdo">
+          <Item
+            title="Editar Perfil"
+            onPress={() => navigation.navigate('EditProfile')}
+          />
+          <Item
+            title="Minha Conta"
+            onPress={() => navigation.navigate('MyAccount')}
+          />
+          <Item
+            title="Favoritos"
+            isLastOption
+            onPress={() => navigation.navigate('Favorites')}
+          />
+        </OptionsContainer>
+        <OptionsContainer label="Preferências">
+          <Item title="Tema" actionComponent={<ToggleThemeButton />} />
+          <Item title="Privacidade" />
+          <Item title="Segurança" />
+          <Item title="Notificações" isLastOption />
+        </OptionsContainer>
+        <LogoutButtonContainer>
+          <LogoutButtonText>Sair</LogoutButtonText>
+        </LogoutButtonContainer>
+      </Container>
+    </>
   );
 };
