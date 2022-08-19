@@ -10,7 +10,7 @@ import {
 } from '../../components/OptionsContainer';
 import { NavigationProps } from '../../types/NavigationProps';
 import { ToggleThemeButton } from './components/ToggleThemeButton';
-import { ToggleTheme } from './components/ToggleButton';
+import { ToggleButton } from './components/ToggleButton';
 
 export const Configurations = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
@@ -38,7 +38,7 @@ export const Configurations = ({ navigation }: NavigationProps) => {
         </OptionsContainer>
         <OptionsContainer label="Preferências">
           <Item title="Tema" actionComponent={<ToggleThemeButton />} />
-          <Item title="Privacidade" actionComponent={<ToggleTheme />} />
+          <Item title="Privacidade" actionComponent={<ToggleButton />} />
           <Item title="Segurança" />
           <Item title="Notificações" isLastOption />
         </OptionsContainer>

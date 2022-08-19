@@ -15,7 +15,8 @@ export const ButtonContainer = styled(MotiView)`
   width: 100%;
   border-radius: 999px;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.blue[500]};
+  background-color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.blue[500] : theme.colors.gray[300]};
 `;
 
 export const ButtonIconContainer = styled.View`

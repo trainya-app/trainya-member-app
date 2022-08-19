@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Dimensions } from 'react-native';
 import { Container, ButtonContainer, ButtonIndicator } from './styles';
 
-export const ToggleTheme = () => {
+export const ToggleButton = () => {
   const [isActive, setIsActive] = useState(true);
 
   function getSpacingLeft() {
@@ -16,10 +16,10 @@ export const ToggleTheme = () => {
 
   return (
     <Container onPress={handleToggleButton}>
-      <ButtonContainer>
+      <ButtonContainer isActive={isActive}>
         <ButtonIndicator
-          from={{ left: isActive ? getSpacingLeft() : '0%' }}
-          animate={{ left: isActive ? '0%' : getSpacingLeft() }}
+          from={{ left: isActive ? '0%' : getSpacingLeft() }}
+          animate={{ left: isActive ? getSpacingLeft() : '0%' }}
           transition={{
             type: 'timing',
             duration: 200,
