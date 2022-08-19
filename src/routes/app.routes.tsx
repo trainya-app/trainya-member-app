@@ -43,20 +43,7 @@ const HomeStack = () => (
 
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
-  const [keyboardActive, setKeyboardActive] = useState(false);
 
-  useEffect(() => {
-    const showTabbar = Keyboard.addListener('keyboardDidShow', () => {
-      setKeyboardActive(true);
-    });
-    const hideTabbar = Keyboard.addListener('keyboardDidHide', () => {
-      setKeyboardActive(false);
-    });
-
-    return () => {
-      showTabbar.remove();
-      hideTabbar.remove();
-    };
   }, []);
   return (
     <Tab.Navigator
