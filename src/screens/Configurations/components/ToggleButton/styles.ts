@@ -10,7 +10,6 @@ export const Container = styled.TouchableOpacity.attrs({
 })`
   width: 42px;
   height: 24px;
-  margin: 0 12px;
 `;
 
 export const ButtonContainer = styled(MotiView)<ButtonContainerProps>`

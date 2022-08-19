@@ -5,7 +5,7 @@ import {
 } from '../../../components/OptionsContainer';
 import { NavigationProps } from '../../../types/NavigationProps';
 import { ToggleButton } from '../components/ToggleButton';
-import { Container } from './styles';
+import { Container, ShareIcon, TermsIcon, PrivacyPolicyIcon } from './styles';
 
 export const Privacy = ({ navigation }: NavigationProps) => (
   <>
@@ -13,14 +13,19 @@ export const Privacy = ({ navigation }: NavigationProps) => (
     <Container>
       <OptionsContainer label="Informações">
         <Item
+          icon={<ShareIcon />}
           title="Compartilhar dados"
-          isLastOption
           actionComponent={<ToggleButton />}
+          isLastOption
         />
       </OptionsContainer>
       <OptionsContainer label="Saiba mais">
-        <Item title="Termos e condições" />
-        <Item title="Políticas de privacidade" isLastOption />
+        <Item icon={<TermsIcon />} title="Termos e condições" />
+        <Item
+          icon={<PrivacyPolicyIcon />}
+          title="Políticas de privacidade"
+          isLastOption
+        />
       </OptionsContainer>
     </Container>
   </>
