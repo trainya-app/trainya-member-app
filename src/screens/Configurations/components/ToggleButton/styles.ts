@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import { MotiView } from 'moti';
 
+interface ButtonContainerProps {
+  isActive: boolean;
+}
+
 export const Container = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8,
 })`
@@ -9,7 +13,7 @@ export const Container = styled.TouchableOpacity.attrs({
   margin: 0 12px;
 `;
 
-export const ButtonContainer = styled(MotiView)`
+export const ButtonContainer = styled(MotiView)<ButtonContainerProps>`
   flex: 1;
   flex-direction: row;
   width: 100%;
