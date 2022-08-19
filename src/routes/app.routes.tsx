@@ -12,6 +12,7 @@ import { Favorites } from '../screens/Configurations/Favorites';
 import { MyAccount } from '../screens/Configurations/MyAccount';
 import { EditProfile } from '../screens/Configurations/EditProfile';
 import { Privacy } from '../screens/Configurations/Privacy';
+import { NotificationsConfig } from '../screens/Configurations/NotificationsConfig';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -38,6 +39,7 @@ const HomeStack = () => (
     <Stack.Screen name="MyAccount" component={MyAccount} />
     <Stack.Screen name="EditProfile" component={EditProfile} />
     <Stack.Screen name="Privacy" component={Privacy} />
+    <Stack.Screen name="NotificationsConfig" component={NotificationsConfig} />
   </Stack.Navigator>
 );
 

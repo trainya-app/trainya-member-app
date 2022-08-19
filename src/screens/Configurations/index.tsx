@@ -43,7 +43,11 @@ export const Configurations = ({ navigation }: NavigationProps) => {
             onPress={() => navigation.navigate('Privacy')}
           />
           <Item title="Segurança" />
-          <Item title="Notificações" isLastOption />
+          <Item
+            title="Notificações"
+            onPress={() => navigation.navigate('NotificationsConfig')}
+            isLastOption
+          />
         </OptionsContainer>
         <LogoutButtonContainer>
           <LogoutButtonText>Sair</LogoutButtonText>
