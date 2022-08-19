@@ -1,9 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Dimensions, Keyboard, Platform, View } from 'react-native';
-
-import { useEffect, useState } from 'react';
+import { Dimensions, Platform, View } from 'react-native';
 import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
@@ -13,6 +11,7 @@ import { Configurations } from '../screens/Configurations';
 import { Favorites } from '../screens/Configurations/Favorites';
 import { MyAccount } from '../screens/Configurations/MyAccount';
 import { EditProfile } from '../screens/Configurations/EditProfile';
+import { Privacy } from '../screens/Configurations/Privacy';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -38,13 +37,13 @@ const HomeStack = () => (
     <Stack.Screen name="Favorites" component={Favorites} />
     <Stack.Screen name="MyAccount" component={MyAccount} />
     <Stack.Screen name="EditProfile" component={EditProfile} />
+    <Stack.Screen name="Privacy" component={Privacy} />
   </Stack.Navigator>
 );
 
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
 
-  }, []);
   return (
     <Tab.Navigator
       screenOptions={{

@@ -38,7 +38,10 @@ export const Configurations = ({ navigation }: NavigationProps) => {
         </OptionsContainer>
         <OptionsContainer label="Preferências">
           <Item title="Tema" actionComponent={<ToggleThemeButton />} />
-          <Item title="Privacidade" />
+          <Item
+            title="Privacidade"
+            onPress={() => navigation.navigate('Privacy')}
+          />
           <Item title="Segurança" />
           <Item title="Notificações" isLastOption />
         </OptionsContainer>
