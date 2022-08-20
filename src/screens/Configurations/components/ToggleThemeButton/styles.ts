@@ -6,7 +6,7 @@ export const Container = styled.TouchableOpacity.attrs({
 })`
   flex: 0.6;
   align-items: flex-end;
-  margin: 0 12px;
+  margin-left: 12px;
 `;
 
 export const ButtonContainer = styled(MotiView)`

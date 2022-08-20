@@ -26,7 +26,10 @@ export const Configurations = ({ navigation }: NavigationProps) => {
             title="Editar Perfil"
             onPress={() => navigation.navigate('EditProfile')}
           />
-          <Item title="Minha Conta" onPress={() => navigation.navigate('')} />
+          <Item
+            title="Minha Conta"
+            onPress={() => navigation.navigate('MyAccount')}
+          />
           <Item
             title="Favoritos"
             isLastOption
