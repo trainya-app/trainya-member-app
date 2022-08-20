@@ -10,7 +10,6 @@ import {
 } from '../../components/OptionsContainer';
 import { NavigationProps } from '../../types/NavigationProps';
 import { ToggleThemeButton } from './components/ToggleThemeButton';
-import { ToggleButton } from './components/ToggleButton';
 
 export const Configurations = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
@@ -42,7 +41,10 @@ export const Configurations = ({ navigation }: NavigationProps) => {
             title="Privacidade"
             onPress={() => navigation.navigate('Privacy')}
           />
-          <Item title="Segurança" />
+          <Item
+            title="Segurança"
+            onPress={() => navigation.navigate('Security')}
+          />
           <Item
             title="Notificações"
             onPress={() => navigation.navigate('NotificationsConfig')}
