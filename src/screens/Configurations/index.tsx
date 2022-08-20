@@ -16,7 +16,11 @@ export const Configurations = ({ navigation }: NavigationProps) => {
 
   return (
     <>
-      <Heading title="Configurações" onGoBack={() => navigation.goBack()} />
+      <Heading
+        title="Configurações"
+        onGoBack={() => navigation.goBack()}
+        onPressConfig={() => navigation.navigate('Configurations')}
+      />
       <Container>
         <StatusBar backgroundColor={theme.colors.blue[100]} />
 

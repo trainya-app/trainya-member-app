@@ -11,7 +11,11 @@ import {
 
 export const EditProfile = ({ navigation }: NavigationProps) => (
   <>
-    <Heading title="Editar Perfil" onGoBack={() => navigation.goBack()} />
+    <Heading
+      title="Editar Perfil"
+      onGoBack={() => navigation.goBack()}
+      onPressConfig={() => navigation.navigate('Configurations')}
+    />
     <Container>
       <BoxRow>
         <ProfileImageContainer>

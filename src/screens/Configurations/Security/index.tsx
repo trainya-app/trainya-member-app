@@ -15,7 +15,11 @@ import { ToggleButton } from '../components/ToggleButton';
 
 export const Security = ({ navigation }: NavigationProps) => (
   <>
-    <Heading title="Segurança" onGoBack={() => navigation.goBack()} />
+    <Heading
+      title="Segurança"
+      onGoBack={() => navigation.goBack()}
+      onPressConfig={() => navigation.navigate('Configurations')}
+    />
     <Container>
       <OptionsContainer label="Segurança e acesso à conta">
         <Item

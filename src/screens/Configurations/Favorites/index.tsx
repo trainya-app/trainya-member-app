@@ -8,7 +8,11 @@ export const Favorites = ({ navigation }: NavigationProps) => {
 
   return (
     <>
-      <Heading title="Favoritos" onGoBack={() => navigation.goBack()} />
+      <Heading
+        title="Favoritos"
+        onGoBack={() => navigation.goBack()}
+        onPressConfig={() => navigation.navigate('Configurations')}
+      />
       <Container>
         {colorMode === 'dark' ? <StarIconDark /> : <StarIcon />}
         <StrongText>Você ainda não tem nenhum treino salvo.</StrongText>

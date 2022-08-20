@@ -9,7 +9,11 @@ import {
 
 export const MyAccount = ({ navigation }: NavigationProps) => (
   <>
-    <Heading title="Minha Conta" onGoBack={() => navigation.goBack()} />
+    <Heading
+      title="Minha Conta"
+      onGoBack={() => navigation.goBack()}
+      onPressConfig={() => navigation.navigate('Configurations')}
+    />
     <Container>
       <OptionsContainer label="Conteúdo">
         <Item

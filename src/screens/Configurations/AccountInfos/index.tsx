@@ -23,7 +23,11 @@ export const AccountInfos = ({ navigation }: NavigationProps) => {
 
   return (
     <>
-      <Heading title="Informações" onGoBack={() => navigation.goBack()} />
+      <Heading
+        title="Informações"
+        onGoBack={() => navigation.goBack()}
+        onPressConfig={() => navigation.navigate('Configurations')}
+      />
       <Container>
         <Header>
           <ProfileImageContainer>

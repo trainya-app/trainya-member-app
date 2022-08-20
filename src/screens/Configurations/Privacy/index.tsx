@@ -9,7 +9,11 @@ import { Container, ShareIcon, TermsIcon, PrivacyPolicyIcon } from './styles';
 
 export const Privacy = ({ navigation }: NavigationProps) => (
   <>
-    <Heading title="Privacidade" onGoBack={() => navigation.goBack()} />
+    <Heading
+      title="Privacidade"
+      onGoBack={() => navigation.goBack()}
+      onPressConfig={() => navigation.navigate('Configurations')}
+    />
     <Container>
       <OptionsContainer label="Informações">
         <Item

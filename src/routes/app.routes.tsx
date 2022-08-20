@@ -35,7 +35,7 @@ const HomeStack = () => (
       },
     }}
   >
-    <Stack.Screen name="HomeStack" component={Home} />
+    <Stack.Screen name="Home" component={Home} />
     <Stack.Screen name="Configurations" component={Configurations} />
     <Stack.Screen name="Favorites" component={Favorites} />
     <Stack.Screen name="AccountInfos" component={AccountInfos} />
@@ -68,7 +68,7 @@ export const AppRoutes = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="HomeStack"
         component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) => (

@@ -10,7 +10,11 @@ import { ToggleButton } from '../components/ToggleButton';
 
 export const NotificationsConfig = ({ navigation }: NavigationProps) => (
   <>
-    <Heading title="Notificações" onGoBack={() => navigation.goBack()} />
+    <Heading
+      title="Notificações"
+      onGoBack={() => navigation.goBack()}
+      onPressConfig={() => navigation.navigate('Configurations')}
+    />
     <Container>
       <OptionsContainer label="Notificações do sistema">
         <Item title="Novidades do app" actionComponent={<ToggleButton />} />
