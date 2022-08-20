@@ -18,7 +18,7 @@ import { NavigationProps } from '../../../types/NavigationProps';
 import { Button } from '../../../components/Button';
 import { CardContainer } from './components/CardContainer';
 
-export const MyAccount = ({ navigation }: NavigationProps) => {
+export const AccountInfos = ({ navigation }: NavigationProps) => {
   const a = 'a';
 
   return (

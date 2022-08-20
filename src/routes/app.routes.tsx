@@ -9,7 +9,7 @@ import { Workouts } from '../screens/Workouts';
 import { Profile } from '../screens/Profile';
 import { Configurations } from '../screens/Configurations';
 import { Favorites } from '../screens/Configurations/Favorites';
-import { MyAccount } from '../screens/Configurations/MyAccount';
+import { AccountInfos } from '../screens/Configurations/AccountInfos';
 import { EditProfile } from '../screens/Configurations/EditProfile';
 import { Privacy } from '../screens/Configurations/Privacy';
 import { NotificationsConfig } from '../screens/Configurations/NotificationsConfig';
@@ -36,7 +36,7 @@ const HomeStack = () => (
     <Stack.Screen name="HomeStack" component={Home} />
     <Stack.Screen name="Configurations" component={Configurations} />
     <Stack.Screen name="Favorites" component={Favorites} />
-    <Stack.Screen name="MyAccount" component={MyAccount} />
+    <Stack.Screen name="AccountInfos" component={AccountInfos} />
     <Stack.Screen name="EditProfile" component={EditProfile} />
     <Stack.Screen name="Privacy" component={Privacy} />
     <Stack.Screen name="NotificationsConfig" component={NotificationsConfig} />
