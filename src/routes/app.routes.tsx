@@ -15,6 +15,7 @@ import { EditProfile } from '../screens/Configurations/EditProfile';
 import { Privacy } from '../screens/Configurations/Privacy';
 import { NotificationsConfig } from '../screens/Configurations/NotificationsConfig';
 import { Security } from '../screens/Configurations/Security';
+import { ChangePassword } from '../screens/Configurations/ChangePassword';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -44,6 +45,7 @@ const HomeStack = () => (
     <Stack.Screen name="Privacy" component={Privacy} />
     <Stack.Screen name="NotificationsConfig" component={NotificationsConfig} />
     <Stack.Screen name="Security" component={Security} />
+    <Stack.Screen name="ChangePassword" component={ChangePassword} />
   </Stack.Navigator>
 );
 

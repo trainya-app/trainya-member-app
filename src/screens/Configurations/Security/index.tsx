@@ -1,11 +1,6 @@
 import { Heading } from '../../../components/Heading';
 import { NavigationProps } from '../../../types/NavigationProps';
-import {
-  Container,
-  PasswordIcon,
-  CellPhoneIcon,
-  TwoFactorsIcon,
-} from './styles';
+import { Container, PasswordIcon, TwoFactorsIcon } from './styles';
 
 import {
   OptionsContainer,
