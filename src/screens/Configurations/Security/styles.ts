@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import PasswordIconSVG from '../../../assets/password_icon.svg';
-import CellPhoneIconSVG from '../../../assets/cellphone_icon.svg';
 import TwoFactorsIconSVG from '../../../assets/twofactors_icon.svg';
 
 export const Container = styled.View`
@@ -10,10 +9,6 @@ export const Container = styled.View`
 `;
 
 export const PasswordIcon = styled(PasswordIconSVG)`
-  margin-right: 12px;
-`;
-
-export const CellPhoneIcon = styled(CellPhoneIconSVG)`
   margin-right: 12px;
 `;
 

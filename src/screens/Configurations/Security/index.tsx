@@ -28,11 +28,6 @@ export const Security = ({ navigation }: NavigationProps) => (
           onPress={() => navigation.navigate('ChangePassword')}
         />
         <Item
-          icon={<CellPhoneIcon />}
-          title="Dispositivos conectados"
-          onPress={() => navigation.navigate('ConnectedDevices')}
-        />
-        <Item
           icon={<TwoFactorsIcon />}
           title="Login em duas etapas"
           actionComponent={<ToggleButton />}
