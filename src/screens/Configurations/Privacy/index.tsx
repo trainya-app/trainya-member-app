@@ -24,10 +24,15 @@ export const Privacy = ({ navigation }: NavigationProps) => (
         />
       </OptionsContainer>
       <OptionsContainer label="Saiba mais">
-        <Item icon={<TermsIcon />} title="Termos e condições" />
+        <Item
+          icon={<TermsIcon />}
+          title="Termos e condições"
+          onPress={() => navigation.navigate('TermsAndConditions')}
+        />
         <Item
           icon={<PrivacyPolicyIcon />}
           title="Políticas de privacidade"
+          onPress={() => navigation.navigate('PrivacyPolicy')}
           isLastOption
         />
       </OptionsContainer>

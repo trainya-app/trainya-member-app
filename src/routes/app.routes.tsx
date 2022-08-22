@@ -16,6 +16,9 @@ import { Privacy } from '../screens/Configurations/Privacy';
 import { NotificationsConfig } from '../screens/Configurations/NotificationsConfig';
 import { Security } from '../screens/Configurations/Security';
 import { ChangePassword } from '../screens/Configurations/ChangePassword';
+import { PrivacyPolicy } from '../screens/Configurations/Privacy/PrivacyPolicy';
+import { TermsAndConditions } from '../screens/Configurations/Privacy/TermsAndConditions';
+import { Payments } from '../screens/Configurations/Payments';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -46,6 +49,9 @@ const HomeStack = () => (
     <Stack.Screen name="NotificationsConfig" component={NotificationsConfig} />
     <Stack.Screen name="Security" component={Security} />
     <Stack.Screen name="ChangePassword" component={ChangePassword} />
+    <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+    <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
+    <Stack.Screen name="Payments" component={Payments} />
   </Stack.Navigator>
 );
 
