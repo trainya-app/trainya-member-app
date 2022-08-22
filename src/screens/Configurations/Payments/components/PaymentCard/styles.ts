@@ -38,14 +38,14 @@ export const Label = styled.Text`
 `;
 
 export const PaymentValue = styled.Text<PaymentProps>`
-  font-size: ${RFValue(14)}px;
+  font-size: ${RFValue(15)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
   margin-top: 4px;
   color: ${({ theme }) => theme.colors.red.main};
 `;
 
 export const PaymentStatus = styled.Text<PaymentProps>`
-  font-size: ${RFValue(14)}px;
+  font-size: ${RFValue(15)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
   margin-top: 4px;
   color: ${({ theme, paymentStatus }) =>

@@ -27,7 +27,9 @@ export const PaymentCard = ({
     </Header>
     <Wrapper>
       <Label>Total:</Label>
-      <PaymentValue paymentStatus={paymentStatus}>{paymentValue}</PaymentValue>
+      <PaymentValue paymentStatus={paymentStatus}>{`R$${paymentValue
+        .toFixed(2)
+        .replace('.', ',')}`}</PaymentValue>
     </Wrapper>
 
     <BoxRow>
