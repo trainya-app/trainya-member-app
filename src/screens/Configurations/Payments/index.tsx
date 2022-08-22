@@ -13,7 +13,25 @@ export const Payments = ({ navigation }: NavigationProps) => {
     },
     {
       id: 2,
+      date: '29 de Julho de 2022',
+      value: 109.9,
+      status: 'paid',
+    },
+    {
+      id: 3,
+      date: '29 de Junho de 2022',
+      value: 109.9,
+      status: 'paid',
+    },
+    {
+      id: 4,
       date: '29 de Maio de 2022',
+      value: 109.9,
+      status: 'paid',
+    },
+    {
+      id: 5,
+      date: '29 de Abril de 2022',
       value: 109.9,
       status: 'paid',
     },
