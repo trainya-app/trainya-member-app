@@ -9,4 +9,7 @@ export const Container = styled.View`
 export const Scroll = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   overScrollMode: 'never',
+  contentContainerStyle: {
+    paddingBottom: 12,
+  },
 })``;
