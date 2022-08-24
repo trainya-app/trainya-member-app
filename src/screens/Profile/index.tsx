@@ -4,6 +4,10 @@ import { Container } from './styles';
 
 export const Profile = ({ navigation }: NavigationProps) => (
   <Container>
-    <Heading title="Profile" onGoBack={() => navigation.goBack()} />
+    <Heading
+      title="Profile"
+      onGoBack={() => navigation.goBack()}
+      onPressConfig={() => navigation.navigate('Configurations')}
+    />
   </Container>
 );

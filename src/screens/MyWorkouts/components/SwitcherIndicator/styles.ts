@@ -25,7 +25,7 @@ export const SwitcherButton = styled.TouchableOpacity.attrs({
 `;
 
 export const SwitcherIndicator = styled(MotiView)`
-  background-color: ${({ theme }) => theme.colors.blue[100]};
+  background-color: ${({ theme }) => theme.colors.shape};
   height: ${RFValue(28)}px;
   width: 50%;
   border-radius: 999px;

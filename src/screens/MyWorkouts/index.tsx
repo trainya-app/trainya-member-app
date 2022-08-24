@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationProps } from '../../types/NavigationProps';
 
 import { Heading } from '../../components/Heading';
 import { DateScroll } from './components/DateScroll';
-import { Container } from './styles';
+import { Container, Separator } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => (
@@ -21,6 +20,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => (
     <Container>
       <ScreenSwitcher />
       <DateScroll />
+      <Separator />
     </Container>
   </>
 );

@@ -11,7 +11,7 @@ export const DateScroll = () => {
         </DateWrapper>
         <DateWrapper>
           <Day>seg</Day>
-          <DayNumber>01</DayNumber>
+          <DayNumber>02</DayNumber>
         </DateWrapper>
         <DateWrapper>
           <Day>seg</Day>

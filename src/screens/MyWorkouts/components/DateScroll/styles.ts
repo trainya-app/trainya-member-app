@@ -12,6 +12,7 @@ export const Container = styled.View`
 export const Scroll = styled.ScrollView.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
+  overScrollMode: 'never',
 })``;
 
 export const DateWrapper = styled.View`

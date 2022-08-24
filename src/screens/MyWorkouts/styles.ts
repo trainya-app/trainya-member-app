@@ -6,3 +6,9 @@ export const Container = styled.View`
   padding: 0 24px;
   align-items: center;
 `;
+
+export const Separator = styled.View`
+  background-color: ${({ theme }) => theme.colors.blue[300]};
+  height: 1px;
+  width: 100%;
+`;
