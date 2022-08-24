@@ -1,4 +1,4 @@
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { useTheme } from 'styled-components/native';
 
 import { Container, LogoutButtonContainer, LogoutButtonText } from './styles';
@@ -16,14 +16,13 @@ export const Configurations = ({ navigation }: NavigationProps) => {
 
   return (
     <>
+      <StatusBar backgroundColor="#FFF" />
       <Heading
         title="Configurações"
         onGoBack={() => navigation.goBack()}
         onPressConfig={() => navigation.navigate('Configurations')}
       />
       <Container>
-        <StatusBar backgroundColor={theme.colors.blue[100]} />
-
         <OptionsContainer label="Conteúdo">
           <Item
             title="Editar Perfil"

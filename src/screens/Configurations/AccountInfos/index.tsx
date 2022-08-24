@@ -44,6 +44,7 @@ export const AccountInfos = ({ navigation }: NavigationProps) => {
               height={36}
               style={{ marginTop: 12 }}
               fontSize={11}
+              onPress={() => navigation.navigate('EditProfile')}
             />
           </ProfileInfoContainer>
         </Header>

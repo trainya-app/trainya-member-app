@@ -1,4 +1,4 @@
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { NavigationProps } from '../../types/NavigationProps';
 
 import { Heading } from '../../components/Heading';

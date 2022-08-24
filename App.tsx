@@ -12,12 +12,12 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 
 import { ThemeProvider } from 'styled-components/native';
+import { StatusBar } from 'expo-status-bar';
 import { AppRoutes } from './src/routes/app.routes';
 
 import { ThemeContextProvider } from './src/contexts/ThemeContext';
 
 import theme from './src/global/styles/theme';
-import { MyWorkouts } from './src/screens/MyWorkouts';
 
 const App = () => {
   const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
@@ -52,8 +52,7 @@ const App = () => {
     <ThemeContextProvider colorMode={colorMode} setColorMode={setColorMode}>
       <ThemeProvider theme={theme[colorMode]}>
         <NavigationContainer>
-          {/* <AppRoutes /> */}
-          <MyWorkouts />
+          <AppRoutes />
         </NavigationContainer>
       </ThemeProvider>
     </ThemeContextProvider>

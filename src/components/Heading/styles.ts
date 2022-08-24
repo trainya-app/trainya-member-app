@@ -20,7 +20,8 @@ export const Container = styled.View<ContainerProps>`
   justify-content: space-between;
   align-self: center;
   padding: 24px 24px;
-  background-color: ${({ theme, b }) => (b ? b : theme.colors.blue[100])};
+  margin-top: 24px;
+  background-color: ${({ theme }) => theme.colors.blue[500]};
   z-index: 999;
 `;
 

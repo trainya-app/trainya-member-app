@@ -5,7 +5,7 @@ import { Dimensions, Platform, View } from 'react-native';
 import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
-import { Workouts } from '../screens/Workouts';
+import { MyWorkouts } from '../screens/MyWorkouts';
 import { Profile } from '../screens/Profile';
 import { Configurations } from '../screens/Configurations';
 import { Favorites } from '../screens/Configurations/Favorites';
@@ -34,9 +34,6 @@ const HomeStack = () => (
     screenOptions={{
       headerShown: false,
       animation: 'slide_from_right',
-      contentStyle: {
-        marginTop: 24,
-      },
     }}
   >
     <Stack.Screen name="Home" component={Home} />
@@ -120,7 +117,7 @@ export const AppRoutes = () => {
       />
       <Tab.Screen
         name="Workouts"
-        component={Workouts}
+        component={MyWorkouts}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ marginLeft: 16 }}>
