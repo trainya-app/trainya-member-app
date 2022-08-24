@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { useTheme } from 'styled-components/native';
 import { useCustomTheme } from '../../hooks/useCustomTheme';
 import {
@@ -117,7 +117,7 @@ export const Home = ({ navigation }: Props) => {
 
   return (
     <Container>
-      <StatusBar translucent />
+      <StatusBar backgroundColor="#000" />
       <Header>
         <HeaderImage source={{ uri: image_url }} />
         <NotificationIcon />

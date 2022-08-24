@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { NavigationProps } from '../../types/NavigationProps';
 
 import { Heading } from '../../components/Heading';
@@ -61,7 +60,6 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
   ];
   return (
     <>
-      <StatusBar backgroundColor="#FFF" />
       <Heading
         title="Meus treinos"
         b="#FFF"

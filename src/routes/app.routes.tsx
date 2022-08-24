@@ -29,14 +29,8 @@ import ProfileIcon from '../assets/profile_icon.svg';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerShown: false,
-      animation: 'slide_from_right',
-    }}
-  >
-    <Stack.Screen name="Home" component={Home} />
+const ConfigStack = () => (
+  <>
     <Stack.Screen name="Configurations" component={Configurations} />
     <Stack.Screen name="Favorites" component={Favorites} />
     <Stack.Screen name="AccountInfos" component={AccountInfos} />
@@ -49,6 +43,42 @@ const HomeStack = () => (
     <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
     <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
     <Stack.Screen name="Payments" component={Payments} />
+  </>
+);
+
+const HomeStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+      animation: 'slide_from_right',
+    }}
+  >
+    <Stack.Screen name="Home" component={Home} />
+    {ConfigStack()}
+  </Stack.Navigator>
+);
+
+const ProgressStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+      animation: 'slide_from_right',
+    }}
+  >
+    <Stack.Screen name="Home" component={Progress} />
+    {ConfigStack()}
+  </Stack.Navigator>
+);
+
+const MyWorkoutsStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+      animation: 'slide_from_right',
+    }}
+  >
+    <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
+    {ConfigStack()}
   </Stack.Navigator>
 );
 
@@ -58,6 +88,7 @@ export const AppRoutes = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        unmountOnBlur: true,
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -86,7 +117,7 @@ export const AppRoutes = () => {
       />
       <Tab.Screen
         name="Progress"
-        component={Progress}
+        component={ProgressStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ marginRight: 16 }}>
@@ -117,7 +148,7 @@ export const AppRoutes = () => {
       />
       <Tab.Screen
         name="Workouts"
-        component={MyWorkouts}
+        component={MyWorkoutsStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ marginLeft: 16 }}>
