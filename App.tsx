@@ -12,7 +12,6 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 
 import { ThemeProvider } from 'styled-components/native';
-import { StatusBar } from 'expo-status-bar';
 import { AppRoutes } from './src/routes/app.routes';
 
 import { ThemeContextProvider } from './src/contexts/ThemeContext';

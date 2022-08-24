@@ -7,6 +7,7 @@ import {
   Header,
   HeaderImage,
   Title,
+  Loading,
   Subtitle,
   NotificationIcon,
   ConfigIcon,
@@ -123,7 +124,11 @@ export const Home = ({ navigation }: Props) => {
         <NotificationIcon />
         <ConfigIcon onPress={() => navigation.navigate('Configurations')} />
         <HeaderContent>
-          <Title>{greeting}</Title>
+          {greeting ? (
+            <Title>{greeting}</Title>
+          ) : (
+            <Loading size={48} color={theme.colors.gray[200]} />
+          )}
           <Subtitle>Seu treino de {workout} está te esperando</Subtitle>
           <Button
             onPress={() => {

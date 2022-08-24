@@ -39,6 +39,8 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.extrabold};
 `;
 
+export const Loading = styled.ActivityIndicator``;
+
 export const Subtitle = styled.Text`
   color: #ffffff;
   font-size: ${RFValue(16)}px;

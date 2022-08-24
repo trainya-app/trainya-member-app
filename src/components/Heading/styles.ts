@@ -10,7 +10,7 @@ interface TitleProps {
 }
 
 interface ContainerProps {
-  b: string;
+  b?: string | undefined;
 }
 
 export const Container = styled.View<ContainerProps>`

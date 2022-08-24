@@ -1,5 +1,3 @@
-import { useTheme } from 'styled-components/native';
-
 import { Container, LogoutButtonContainer, LogoutButtonText } from './styles';
 
 import { Heading } from '../../components/Heading';
