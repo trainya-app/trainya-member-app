@@ -7,7 +7,9 @@ import {
 } from './styles';
 
 export const ScreenSwitcher = () => {
+  // if active, free workouts is showing, else, workouts plan is showing
   const [isActive, setIsActive] = useState(false);
+
   return (
     <Switcher>
       <SwitcherButton onPress={() => setIsActive(false)}>

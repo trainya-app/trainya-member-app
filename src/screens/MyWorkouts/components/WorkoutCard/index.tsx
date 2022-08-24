@@ -6,17 +6,18 @@ import {
 } from './styles';
 
 interface WorkoutCardProps {
-  workoutname: string;
+  workoutName: string;
+  workoutId: string;
 }
 
-export const WorkoutCard = () => {
+export const WorkoutCard = ({ workoutName, workoutId }: WorkoutCardProps) => {
   const a = 'a';
   return (
     <Container>
       <WorkoutSquare>
-        <WorkoutSquareText>A</WorkoutSquareText>
+        <WorkoutSquareText>{workoutId}</WorkoutSquareText>
       </WorkoutSquare>
-      <WorkoutName>Braço</WorkoutName>
+      <WorkoutName>{workoutName}</WorkoutName>
     </Container>
   );
 };
