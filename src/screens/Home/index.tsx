@@ -131,9 +131,6 @@ export const Home = ({ navigation }: Props) => {
           )}
           <Subtitle>Seu treino de {workout} está te esperando</Subtitle>
           <Button
-            onPress={() => {
-              customTheme.handleToggleColorMode();
-            }}
             title="Treinar"
             width={50}
             height={40}
