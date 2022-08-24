@@ -6,7 +6,7 @@ interface PaymentProps {
 }
 
 export const Container = styled.View`
-  height: ${RFValue(172)}px;
+  height: ${RFValue(190)}px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.shape};
   border-radius: 24px;
@@ -16,7 +16,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: 30%;
+  height: 28%;
   justify-content: center;
   padding: 0 24px;
   background-color: ${({ theme }) => theme.colors.blue[500]};

@@ -1,6 +1,12 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
+export const ConfigWrapper = styled.View`
+  flex: 1;
+  background-color: blue;
+  margin-top: 32px;
+`;
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};

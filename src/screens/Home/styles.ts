@@ -1,4 +1,5 @@
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
 import NotificationIconSVG from '../../assets/notification_icon.svg';
@@ -17,7 +18,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: 40%;
+  height: ${Number(Dimensions.get('window').height) > 700 ? '40%' : '45%'};
   align-items: center;
 `;
 export const HeaderImage = styled.Image`

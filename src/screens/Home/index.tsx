@@ -116,7 +116,6 @@ export const Home = ({ navigation }: Props) => {
 
   return (
     <Container>
-      <StatusBar backgroundColor="#000" />
       <Header>
         <HeaderImage source={{ uri: image_url }} />
         <NotificationIcon />

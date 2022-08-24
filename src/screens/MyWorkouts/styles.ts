@@ -16,7 +16,7 @@ export const Separator = styled.View`
 
 export const WorkoutsContainer = styled.View`
   width: 100%;
-  flex: 0.82;
+  flex: 0.83;
 `;
 
 export const Scroll = styled.ScrollView.attrs({

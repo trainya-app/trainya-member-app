@@ -49,6 +49,9 @@ const ConfigStack = () => (
 const HomeStack = () => (
   <Stack.Navigator
     screenOptions={{
+      contentStyle: {
+        marginTop: 24,
+      },
       headerShown: false,
       animation: 'slide_from_right',
     }}
@@ -61,6 +64,9 @@ const HomeStack = () => (
 const ProgressStack = () => (
   <Stack.Navigator
     screenOptions={{
+      contentStyle: {
+        marginTop: 24,
+      },
       headerShown: false,
       animation: 'slide_from_right',
     }}
@@ -73,11 +79,29 @@ const ProgressStack = () => (
 const MyWorkoutsStack = () => (
   <Stack.Navigator
     screenOptions={{
+      contentStyle: {
+        marginTop: 24,
+      },
       headerShown: false,
       animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
+    {ConfigStack()}
+  </Stack.Navigator>
+);
+
+const ProfileStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      contentStyle: {
+        marginTop: 24,
+      },
+      headerShown: false,
+      animation: 'slide_from_right',
+    }}
+  >
+    <Stack.Screen name="Profile" component={Profile} />
     {ConfigStack()}
   </Stack.Navigator>
 );
@@ -116,7 +140,7 @@ export const AppRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="Progress"
+        name="ProgressStack"
         component={ProgressStack}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -147,7 +171,7 @@ export const AppRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="Workouts"
+        name="MyWorkoutsStack"
         component={MyWorkoutsStack}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -158,8 +182,8 @@ export const AppRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="ProfileStack"
+        component={ProfileStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ marginRight: 16 }}>

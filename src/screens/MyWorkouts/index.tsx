@@ -1,11 +1,11 @@
 import { NavigationProps } from '../../types/NavigationProps';
 
 import { Heading } from '../../components/Heading';
-import { DateScroll } from './components/DateScroll';
-import { WorkoutCard } from './components/WorkoutCard';
+// import { DateScroll } from './components/DateScroll';
+// import { WorkoutCard } from './components/WorkoutCard';
 
-import { Container, Separator, WorkoutsContainer, Scroll } from './styles';
-import { ScreenSwitcher } from './components/SwitcherIndicator';
+// import { Container, Separator, WorkoutsContainer, Scroll } from './styles';
+// import { ScreenSwitcher } from './components/SwitcherIndicator';
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => {
   const alphabet = [
@@ -66,11 +66,11 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
     <>
       <Heading
         title="Meus treinos"
-        b="#FFF"
+        // b="#FFF"
         onGoBack={() => navigation.goBack()}
         onPressConfig={() => navigation.navigate('Configurations')}
       />
-      <Container>
+      {/* <Container>
         <ScreenSwitcher />
         <DateScroll />
         <Separator />
@@ -85,7 +85,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
             ))}
           </Scroll>
         </WorkoutsContainer>
-      </Container>
+      </Container> */}
     </>
   );
 };
