@@ -1,5 +1,5 @@
-import { Heading } from '../../../components/Heading';
-import { NavigationProps } from '../../../types/NavigationProps';
+import { Heading } from '../../../../components/Heading';
+import { NavigationProps } from '../../../../types/NavigationProps';
 import {
   Container,
   ProfileImageContainer,

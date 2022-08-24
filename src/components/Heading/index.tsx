@@ -14,13 +14,19 @@ interface HeadingProps {
   title: string;
   onGoBack: () => void;
   onPressConfig: () => void;
+  b?: string;
 }
 
-export const Heading = ({ title, onGoBack, onPressConfig }: HeadingProps) => {
+export const Heading = ({
+  title,
+  onGoBack,
+  onPressConfig,
+  b,
+}: HeadingProps) => {
   const { colorMode } = useCustomTheme();
 
   return (
-    <Container>
+    <Container b={b}>
       <IconWrapper onPress={onGoBack}>
         {colorMode === 'light' ? <BackIcon /> : <BackIconDark />}
       </IconWrapper>

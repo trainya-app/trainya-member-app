@@ -9,14 +9,18 @@ interface TitleProps {
   colorMode: string;
 }
 
-export const Container = styled.View`
+interface ContainerProps {
+  b: string;
+}
+
+export const Container = styled.View<ContainerProps>`
   width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   align-self: center;
   padding: 24px 24px;
-  background-color: ${({ theme }) => theme.colors.blue[100]};
+  background-color: ${({ theme, b }) => (b ? b : theme.colors.blue[100])};
   z-index: 999;
 `;
 
