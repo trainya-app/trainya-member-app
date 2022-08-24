@@ -3,6 +3,8 @@ import { NavigationProps } from '../../types/NavigationProps';
 
 import { Heading } from '../../components/Heading';
 import { DateScroll } from './components/DateScroll';
+import { WorkoutCard } from './components/WorkoutCard';
+
 import { Container, Separator } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 
@@ -21,6 +23,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => (
       <ScreenSwitcher />
       <DateScroll />
       <Separator />
+      <WorkoutCard />
     </Container>
   </>
 );

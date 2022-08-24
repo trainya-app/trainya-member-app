@@ -11,4 +11,5 @@ export const Separator = styled.View`
   background-color: ${({ theme }) => theme.colors.blue[300]};
   height: 1px;
   width: 100%;
+  margin-bottom: 16px;
 `;
