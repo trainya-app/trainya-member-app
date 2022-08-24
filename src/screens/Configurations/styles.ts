@@ -1,16 +1,11 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
-export const ConfigWrapper = styled.View`
-  flex: 1;
-  background-color: blue;
-  margin-top: 32px;
-`;
-
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};
   padding: 0 24px;
+  padding-bottom: 96px;
 `;
 
 export const LogoutButtonContainer = styled.TouchableOpacity.attrs({
@@ -21,6 +16,7 @@ export const LogoutButtonContainer = styled.TouchableOpacity.attrs({
   align-items: center;
   justify-content: center;
   padding: 8px 0;
+
   margin-top: 32px;
   border-radius: 12px;
   elevation: 1;
@@ -31,4 +27,11 @@ export const LogoutButtonText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${({ theme }) => theme.colors.red.main};
   opacity: 0.6;
+`;
+
+export const Scroll = styled.ScrollView.attrs({
+  overScrollMode: 'never',
+  showsVerticalScrollIndicator: false,
+})`
+  width: 100%;
 `;

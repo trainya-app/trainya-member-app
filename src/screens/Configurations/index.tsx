@@ -1,4 +1,9 @@
-import { Container, LogoutButtonContainer, LogoutButtonText } from './styles';
+import {
+  Container,
+  LogoutButtonContainer,
+  LogoutButtonText,
+  Scroll,
+} from './styles';
 
 import { Heading } from '../../components/Heading';
 import {
@@ -16,40 +21,42 @@ export const Configurations = ({ navigation }: NavigationProps) => (
       onPressConfig={() => navigation.navigate('Configurations')}
     />
     <Container>
-      <OptionsContainer label="Conteúdo">
-        <Item
-          title="Editar Perfil"
-          onPress={() => navigation.navigate('EditProfile')}
-        />
-        <Item
-          title="Minha Conta"
-          onPress={() => navigation.navigate('MyAccount')}
-        />
-        <Item
-          title="Favoritos"
-          isLastOption
-          onPress={() => navigation.navigate('Favorites')}
-        />
-      </OptionsContainer>
-      <OptionsContainer label="Preferências">
-        <Item title="Tema" actionComponent={<ToggleThemeButton />} />
-        <Item
-          title="Privacidade"
-          onPress={() => navigation.navigate('Privacy')}
-        />
-        <Item
-          title="Segurança"
-          onPress={() => navigation.navigate('Security')}
-        />
-        <Item
-          title="Notificações"
-          onPress={() => navigation.navigate('NotificationsConfig')}
-          isLastOption
-        />
-      </OptionsContainer>
-      <LogoutButtonContainer>
-        <LogoutButtonText>Sair</LogoutButtonText>
-      </LogoutButtonContainer>
+      <Scroll>
+        <OptionsContainer label="Conteúdo">
+          <Item
+            title="Editar Perfil"
+            onPress={() => navigation.navigate('EditProfile')}
+          />
+          <Item
+            title="Minha Conta"
+            onPress={() => navigation.navigate('MyAccount')}
+          />
+          <Item
+            title="Favoritos"
+            isLastOption
+            onPress={() => navigation.navigate('Favorites')}
+          />
+        </OptionsContainer>
+        <OptionsContainer label="Preferências">
+          <Item title="Tema" actionComponent={<ToggleThemeButton />} />
+          <Item
+            title="Privacidade"
+            onPress={() => navigation.navigate('Privacy')}
+          />
+          <Item
+            title="Segurança"
+            onPress={() => navigation.navigate('Security')}
+          />
+          <Item
+            title="Notificações"
+            onPress={() => navigation.navigate('NotificationsConfig')}
+            isLastOption
+          />
+        </OptionsContainer>
+        <LogoutButtonContainer>
+          <LogoutButtonText>Sair</LogoutButtonText>
+        </LogoutButtonContainer>
+      </Scroll>
     </Container>
   </>
 );
