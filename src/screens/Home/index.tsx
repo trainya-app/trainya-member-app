@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useTheme } from 'styled-components/native';
-import { useCustomTheme } from '../../hooks/useCustomTheme';
 import {
   Container,
   Header,
@@ -104,7 +103,6 @@ export const Home = ({ navigation }: Props) => {
   }
 
   const theme = useTheme();
-  const customTheme = useCustomTheme();
 
   useEffect(() => {
     if (time >= 6 && time < 12) {
@@ -139,7 +137,6 @@ export const Home = ({ navigation }: Props) => {
           />
         </HeaderContent>
       </Header>
-
       <Scroll>
         <MainContainer>
           <ProgressSection>

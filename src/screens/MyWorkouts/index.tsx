@@ -4,7 +4,7 @@ import { Heading } from '../../components/Heading';
 import { DateScroll } from './components/DateScroll';
 import { WorkoutCard } from './components/WorkoutCard';
 
-import { Container, Separator } from './styles';
+import { Container, Separator, WorkoutsContainer, Scroll } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => {
@@ -57,6 +57,10 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
       id: 5,
       name: 'Costas',
     },
+    {
+      id: 6,
+      name: 'Ombro',
+    },
   ];
   return (
     <>
@@ -70,13 +74,17 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
         <ScreenSwitcher />
         <DateScroll />
         <Separator />
-        {workouts.map((workout, i) => (
-          <WorkoutCard
-            key={workout.id}
-            workoutName={workout.name}
-            workoutId={alphabet[i]}
-          />
-        ))}
+        <WorkoutsContainer>
+          <Scroll>
+            {workouts.map((workout, i) => (
+              <WorkoutCard
+                key={workout.id}
+                workoutName={workout.name}
+                workoutId={alphabet[i]}
+              />
+            ))}
+          </Scroll>
+        </WorkoutsContainer>
       </Container>
     </>
   );
