@@ -50,7 +50,7 @@ const HomeStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 24,
+        marginTop: 32,
       },
       headerShown: false,
       animation: 'slide_from_right',
@@ -65,7 +65,7 @@ const ProgressStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 24,
+        marginTop: 32,
       },
       headerShown: false,
       animation: 'slide_from_right',
@@ -80,7 +80,7 @@ const MyWorkoutsStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 24,
+        marginTop: 32,
       },
       headerShown: false,
       animation: 'slide_from_right',
@@ -95,7 +95,7 @@ const ProfileStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 24,
+        marginTop: 32,
       },
       headerShown: false,
       animation: 'slide_from_right',

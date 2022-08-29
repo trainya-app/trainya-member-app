@@ -1,4 +1,7 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
+
+const { height } = Dimensions.get('screen');
 
 export const Container = styled.View`
   flex: 1;
@@ -16,7 +19,7 @@ export const Separator = styled.View`
 
 export const WorkoutsContainer = styled.View`
   width: 100%;
-  flex: 0.75;
+  flex: ${height > 700 ? 0.8 : 0.75};
 `;
 
 export const Scroll = styled.ScrollView.attrs({
