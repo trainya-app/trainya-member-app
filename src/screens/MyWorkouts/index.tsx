@@ -63,16 +63,6 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
     },
   ];
 
-  const dayNumber = new Date().getDay();
-  const weekDayNumber = new Date().getDate();
-
-  function daysInMonth() {
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1;
-
-    return new Date(currentYear, currentMonth, 0);
-  }
-
   return (
     <>
       <Heading

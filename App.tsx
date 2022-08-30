@@ -51,7 +51,7 @@ const App = () => {
   return (
     <ThemeContextProvider colorMode={colorMode} setColorMode={setColorMode}>
       <ThemeProvider theme={theme[colorMode]}>
-        <StatusBar backgroundColor={theme[colorMode].colors.shape} translucent/>
+        <StatusBar backgroundColor="#000" translucent/>
         <NavigationContainer>
           <AppRoutes />
         </NavigationContainer>
