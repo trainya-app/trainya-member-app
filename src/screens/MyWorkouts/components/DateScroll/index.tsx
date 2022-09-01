@@ -1,72 +1,82 @@
 import { Container, Scroll, DateWrapper, Day, DayNumber } from './styles';
 
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth() + 1;
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().getMonth() + 1;
 
-  const dayNumber = new Date().getDay();
-  
+const dayNumber = new Date().getDate();
 
-  const daysInMonth: Number = new Date(currentYear, currentMonth, 0).getDate();
+console.log(dayNumber);
 
-  interface Props {
-    weekDay: string;
-    day: Number;
-  }
+const daysInMonth: number = new Date(currentYear, currentMonth, 0).getDate();
 
-  const data:Props[] = [];
+interface Props {
+  weekDay: string;
+  day: number;
+}
 
-  for(let i = 0; i <= daysInMonth; i++) {
-    const weekDayNumber = new Date(currentYear, currentMonth - 1, i).getDay();
+const data: Props[] = [];
+
+// eslint-disable-next-line no-plusplus
+for (let i = 0; i <= daysInMonth; i++) {
+  const weekDayNumber = new Date(currentYear, currentMonth - 1, i).getDay();
 
   let day = '';
 
-  switch(weekDayNumber) {
+  switch (weekDayNumber) {
     case 0:
       day = 'dom';
       break;
-    
-    case 1:
-      day= 'seg';
-      break; 
-    
-    case 2:
-      day= 'ter';
-      break; 
 
-      case 3:
-    day= 'qua';
-    break; 
+    case 1:
+      day = 'seg';
+      break;
+
+    case 2:
+      day = 'ter';
+      break;
+
+    case 3:
+      day = 'qua';
+      break;
 
     case 4:
-    day= 'qui';
-    break; 
+      day = 'qui';
+      break;
 
     case 5:
-    day= 'sex';
-    break; 
+      day = 'sex';
+      break;
 
-    case 6:
-    day= 'sab';
-    break; 
-    }
+    default:
+      day = 'sab';
+      break;
+  }
 
   data.push({
     weekDay: day,
-    day: i
-  })
-  }
+    day: i,
+  });
+}
 
-  console.log(data);
-
-  
-
-  export const DateScroll = () => {
-  
-  return (
-    <Container>
-      <Scroll>
-        
-      </Scroll>
-    </Container>
-  );
-};
+export const DateScroll = () => (
+  <Container>
+    <Scroll>
+      {data.map(
+        (date) =>
+          date.day != 0 && (
+            <DateWrapper
+              key={date.day}
+              isActive={date.day === dayNumber && true}
+            >
+              <Day isActive={date.day === dayNumber && true}>
+                {date.weekDay}
+              </Day>
+              <DayNumber isActive={date.day === dayNumber && true}>
+                {date.day}
+              </DayNumber>
+            </DateWrapper>
+          )
+      )}
+    </Scroll>
+  </Container>
+);
