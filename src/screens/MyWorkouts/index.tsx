@@ -136,8 +136,8 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
             <SliderTitle>Favoritados</SliderTitle>
             <Slider data={home_workouts} />
 
-            <SliderTitle>Favoritados</SliderTitle>
-            <Slider data={home_workouts} />
+            <SliderTitle>Aulas</SliderTitle>
+            <Slider data={home_workouts} seeMoreAction={() => navigation.navigate('AvailableWorkouts')}/>
           </Scroll>
         )}
       </Container>

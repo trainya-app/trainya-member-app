@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -6,6 +7,7 @@ import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
 import { MyWorkouts } from '../screens/MyWorkouts';
+import { AvailableWorkouts } from '../screens/MyWorkouts/screens/AvailableWorkouts';
 import { Profile } from '../screens/Profile';
 import { Configurations } from '../screens/Configurations';
 import { Favorites } from '../screens/Configurations/Favorites';
@@ -26,8 +28,8 @@ import QRIcon from '../assets/qr_icon.svg';
 import WorkoutsIcon from '../assets/halter_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
 
-const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Tab: any = createBottomTabNavigator();
+const Stack: any = createNativeStackNavigator();
 
 const ConfigStack = () => (
   <>
@@ -87,6 +89,7 @@ const MyWorkoutsStack = () => (
     }}
   >
     <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
+    <Stack.Screen name="AvailableWorkouts" component={AvailableWorkouts} />
     {ConfigStack()}
   </Stack.Navigator>
 );
