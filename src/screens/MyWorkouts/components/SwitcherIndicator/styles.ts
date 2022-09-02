@@ -15,6 +15,8 @@ export const Switcher = styled.View`
   justify-content: space-between;
   flex-direction: row;
   padding: 0 6px;
+  align-self: center;
+  margin-bottom: 16px;
 `;
 
 export const SwitcherButton = styled.TouchableOpacity.attrs({

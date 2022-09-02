@@ -8,7 +8,6 @@ interface Props {
 export const Container = styled.View`
   height: ${RFValue(96)}px;
   width: 100%;
-  margin-top: ${RFValue(24)}px;
   align-items: center;
   flex-direction: row;
 `;

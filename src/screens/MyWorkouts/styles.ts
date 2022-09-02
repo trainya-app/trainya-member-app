@@ -1,13 +1,15 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
 
+import { RFValue } from 'react-native-responsive-fontsize';
+
 const { height } = Dimensions.get('screen');
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.shape};
   padding: 24px;
-  align-items: center;
+  padding-bottom: ${RFValue(96)}px;
 `;
 
 export const Separator = styled.View`
@@ -19,7 +21,7 @@ export const Separator = styled.View`
 
 export const WorkoutsContainer = styled.View`
   width: 100%;
-  flex: ${height > 700 ? 0.8 : 0.75};
+  flex: 1;
 `;
 
 export const Scroll = styled.ScrollView.attrs({
@@ -27,4 +29,11 @@ export const Scroll = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
 })`
   width: 100%;
+`;
+
+export const SliderTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.gray[700]};
+  font-size: ${RFValue(16)}px;
+  margin-right: auto;
 `;

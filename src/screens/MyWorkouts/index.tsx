@@ -5,8 +5,15 @@ import { NavigationProps } from '../../types/NavigationProps';
 import { Heading } from '../../components/Heading';
 import { DateScroll } from './components/DateScroll';
 import { WorkoutCard } from './components/WorkoutCard';
+import { SliderProps, Slider } from '../../components/Slider';
 
-import { Container, Separator, WorkoutsContainer, Scroll } from './styles';
+import {
+  Container,
+  Separator,
+  WorkoutsContainer,
+  Scroll,
+  SliderTitle,
+} from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => {
@@ -68,6 +75,29 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
     },
   ];
 
+  const home_workouts: SliderProps[] = [
+    {
+      title: 'Cardio',
+      url: 'https://i.imgur.com/kvD2fSZ.jpg',
+    },
+    {
+      title: 'Força',
+      url: 'https://i.imgur.com/M4n35v8.png',
+    },
+    {
+      title: 'Flexibilidade',
+      url: 'https://i.imgur.com/uoQYf1c.jpg',
+    },
+    {
+      title: 'Pilates',
+      url: 'https://i.imgur.com/JLiVcK8.jpeg',
+    },
+    {
+      title: 'Pilates',
+      url: 'https://i.imgur.com/JLiVcK8.jpeg',
+    },
+  ];
+
   return (
     <>
       <Heading
@@ -96,7 +126,19 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
             </WorkoutsContainer>
           </>
         ) : (
-          <Separator />
+          <Scroll>
+            <SliderTitle>Favoritados</SliderTitle>
+            <Slider data={home_workouts} />
+
+            <SliderTitle>Favoritados</SliderTitle>
+            <Slider data={home_workouts} />
+
+            <SliderTitle>Favoritados</SliderTitle>
+            <Slider data={home_workouts} />
+
+            <SliderTitle>Favoritados</SliderTitle>
+            <Slider data={home_workouts} />
+          </Scroll>
         )}
       </Container>
     </>

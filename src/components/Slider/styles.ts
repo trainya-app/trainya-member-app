@@ -19,7 +19,7 @@ export const Container = styled.View`
 `;
 
 export const SlideContainer = styled.View`
-  height: ${RFValue(200)}px;
+  height: ${RFValue(180)}px;
   margin-left: -24px;
   width: ${width}px;
   margin-bottom: 12px;
