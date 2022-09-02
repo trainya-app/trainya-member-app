@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   Switcher,
   SwitcherButton,
@@ -6,16 +6,25 @@ import {
   SwitcherText,
 } from './styles';
 
-export const ScreenSwitcher = () => {
+interface ScreenSwitcherProps {
+  toggleIsActive: Dispatch<SetStateAction<boolean>>;
+}
+
+export const ScreenSwitcher = ({ toggleIsActive }: ScreenSwitcherProps) => {
   // if active, free workouts is showing, else, workouts plan is showing
   const [isActive, setIsActive] = useState(false);
 
+  function toggleSwitcher() {
+    setIsActive(!isActive);
+    toggleIsActive(!isActive);
+  }
+
   return (
     <Switcher>
-      <SwitcherButton onPress={() => setIsActive(false)}>
+      <SwitcherButton onPress={toggleSwitcher}>
         <SwitcherText isBlack={!isActive}>Plano de treino</SwitcherText>
       </SwitcherButton>
-      <SwitcherButton onPress={() => setIsActive(true)}>
+      <SwitcherButton onPress={toggleSwitcher}>
         <SwitcherText isBlack={isActive}>Treinos livres</SwitcherText>
       </SwitcherButton>
       <SwitcherIndicator

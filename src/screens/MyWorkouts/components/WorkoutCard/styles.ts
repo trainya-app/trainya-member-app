@@ -16,15 +16,18 @@ export const Container = styled.View<ContainerProps>`
   margin: 10px 0;
   flex-direction: row;
   align-items: center;
-  border: 2px solid
-    ${({ theme, isActive }) =>
-      isActive ? theme.colors.blue[500] : theme.colors.shape};
+  elevation: 1;
+  border: ${({ theme, isActive }) =>
+    isActive
+      ? `2px solid ${theme.colors.blue[500]}`
+      : `0px solid ${theme.colors.shape}`};
 `;
 
 export const WorkoutSquare = styled.View`
   background-color: ${({ theme }) => theme.colors.blue[500]};
   height: ${RFValue(60)}px;
   width: ${RFValue(60)}px;
+  elevation: 1;
   border-top-left-radius: ${RFValue(24)}px;
   border-bottom-left-radius: ${RFValue(24)}px;
   align-items: center;

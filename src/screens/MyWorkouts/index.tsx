@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { NavigationProps } from '../../types/NavigationProps';
 
 import { Heading } from '../../components/Heading';
@@ -8,6 +10,8 @@ import { Container, Separator, WorkoutsContainer, Scroll } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => {
+  const [isSwitcherActive, setIsSwitcherActive] = useState(false);
+
   const alphabet = [
     'A',
     'B',
@@ -73,21 +77,27 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
         onPressConfig={() => navigation.navigate('Configurations')}
       />
       <Container>
-        <ScreenSwitcher />
-        <DateScroll />
-        <Separator />
-        <WorkoutsContainer>
-          <Scroll>
-            {workouts.map((workout, i) => (
-              <WorkoutCard
-                key={workout.id}
-                workoutName={workout.name}
-                workoutId={alphabet[i]}
-                isActive={i === 0 && true}
-              />
-            ))}
-          </Scroll>
-        </WorkoutsContainer>
+        <ScreenSwitcher toggleIsActive={setIsSwitcherActive} />
+        {!isSwitcherActive ? (
+          <>
+            <DateScroll />
+            <Separator />
+            <WorkoutsContainer>
+              <Scroll>
+                {workouts.map((workout, i) => (
+                  <WorkoutCard
+                    key={workout.id}
+                    workoutName={workout.name}
+                    workoutId={alphabet[i]}
+                    isActive={i === 0 && true}
+                  />
+                ))}
+              </Scroll>
+            </WorkoutsContainer>
+          </>
+        ) : (
+          <Separator />
+        )}
       </Container>
     </>
   );
