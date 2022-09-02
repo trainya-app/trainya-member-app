@@ -14,17 +14,22 @@ export const ScreenSwitcher = ({ toggleIsActive }: ScreenSwitcherProps) => {
   // if active, free workouts is showing, else, workouts plan is showing
   const [isActive, setIsActive] = useState(false);
 
-  function toggleSwitcher() {
-    setIsActive(!isActive);
-    toggleIsActive(!isActive);
+  function toggleWorkoutPlanScreen() {
+    setIsActive(false);
+    toggleIsActive(false);
+  }
+
+  function toggleFreeWorkoutsScreen() {
+    setIsActive(true);
+    toggleIsActive(true);
   }
 
   return (
     <Switcher>
-      <SwitcherButton onPress={toggleSwitcher}>
+      <SwitcherButton onPress={toggleWorkoutPlanScreen}>
         <SwitcherText isBlack={!isActive}>Plano de treino</SwitcherText>
       </SwitcherButton>
-      <SwitcherButton onPress={toggleSwitcher}>
+      <SwitcherButton onPress={toggleFreeWorkoutsScreen}>
         <SwitcherText isBlack={isActive}>Treinos livres</SwitcherText>
       </SwitcherButton>
       <SwitcherIndicator
