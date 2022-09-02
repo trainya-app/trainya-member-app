@@ -3,23 +3,34 @@ import {
   WorkoutSquare,
   WorkoutSquareText,
   WorkoutName,
+  WorkoutIndicator,
   ArrowIcon,
 } from './styles';
 
 interface WorkoutCardProps {
   workoutName: string;
   workoutId: string;
+  isActive: boolean;
 }
 
-export const WorkoutCard = ({ workoutName, workoutId }: WorkoutCardProps) => {
+export const WorkoutCard = ({
+  workoutName,
+  workoutId,
+  isActive,
+}: WorkoutCardProps) => {
   const a = 'a';
   return (
-    <Container>
+    <Container isActive={isActive}>
       <WorkoutSquare>
         <WorkoutSquareText>{workoutId}</WorkoutSquareText>
       </WorkoutSquare>
       <WorkoutName>{workoutName}</WorkoutName>
-      <ArrowIcon />
+      {isActive && (
+        <>
+          <WorkoutIndicator>Hoje</WorkoutIndicator>
+          <ArrowIcon />
+        </>
+      )}
     </Container>
   );
 };

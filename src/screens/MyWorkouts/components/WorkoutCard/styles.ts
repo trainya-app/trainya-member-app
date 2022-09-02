@@ -4,7 +4,11 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 import ArrowIconSVG from '../../../../assets/arrow_icon.svg';
 
-export const Container = styled.View`
+interface ContainerProps {
+  isActive: boolean;
+}
+
+export const Container = styled.View<ContainerProps>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.blue[100]};
   height: ${RFValue(60)}px;
@@ -12,7 +16,9 @@ export const Container = styled.View`
   margin: 10px 0;
   flex-direction: row;
   align-items: center;
-  border: 2px solid ${({ theme }) => theme.colors.blue[500]};
+  border: 2px solid
+    ${({ theme, isActive }) =>
+      isActive ? theme.colors.blue[500] : theme.colors.shape};
 `;
 
 export const WorkoutSquare = styled.View`
@@ -36,6 +42,18 @@ export const WorkoutName = styled.Text`
   font-size: ${RFValue(20)}px;
   margin-left: ${RFValue(16)}px;
   color: #000;
+`;
+
+export const WorkoutIndicator = styled.Text`
+  position: absolute;
+  right: 56px;
+  top: -12px;
+  color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.blue[500]};
+  padding: 3px 24px;
+  border-radius: 999px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(10)}px;
 `;
 
 export const ArrowIcon = styled(ArrowIconSVG)`

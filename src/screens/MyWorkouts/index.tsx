@@ -36,6 +36,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
     'Y',
     'Z',
   ];
+
   const workouts = [
     {
       id: 1,
@@ -82,6 +83,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
                 key={workout.id}
                 workoutName={workout.name}
                 workoutId={alphabet[i]}
+                isActive={i === 0 && true}
               />
             ))}
           </Scroll>
