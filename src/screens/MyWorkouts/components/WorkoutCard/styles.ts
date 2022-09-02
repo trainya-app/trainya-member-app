@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 
+import ArrowIconSVG from '../../../../assets/arrow_icon.svg';
+
 export const Container = styled.View`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.blue[100]};
@@ -10,6 +12,7 @@ export const Container = styled.View`
   margin: 10px 0;
   flex-direction: row;
   align-items: center;
+  border: 2px solid ${({ theme }) => theme.colors.blue[500]};
 `;
 
 export const WorkoutSquare = styled.View`
@@ -33,4 +36,9 @@ export const WorkoutName = styled.Text`
   font-size: ${RFValue(20)}px;
   margin-left: ${RFValue(16)}px;
   color: #000;
+`;
+
+export const ArrowIcon = styled(ArrowIconSVG)`
+  margin-left: auto;
+  margin-right: 20px;
 `;

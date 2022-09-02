@@ -24,7 +24,6 @@ export const DateWrapper = styled.View<Props>`
   height: 60px;
   background-color: ${({ theme, isActive }) =>
     isActive ? theme.colors.blue[500] : theme.colors.shape};
-  margin-right: 4px;
   border-radius: 14px;
   align-items: center;
   justify-content: center;

@@ -3,6 +3,7 @@ import {
   WorkoutSquare,
   WorkoutSquareText,
   WorkoutName,
+  ArrowIcon,
 } from './styles';
 
 interface WorkoutCardProps {
@@ -18,6 +19,7 @@ export const WorkoutCard = ({ workoutName, workoutId }: WorkoutCardProps) => {
         <WorkoutSquareText>{workoutId}</WorkoutSquareText>
       </WorkoutSquare>
       <WorkoutName>{workoutName}</WorkoutName>
+      <ArrowIcon />
     </Container>
   );
 };
