@@ -10,10 +10,6 @@ interface TitleProps {
   isActive?: boolean;
 }
 
-interface SwiperWrapperProps {
-  isActive?: boolean;
-}
-
 export const Container = styled.View`
   flex: 1;
 `;

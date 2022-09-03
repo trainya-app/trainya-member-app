@@ -1,18 +1,27 @@
 import { Heading } from '../../../../components/Heading';
 import { NavigationProps } from '../../../../types/NavigationProps';
-import { Container, Card, CardTitle, FavoriteIcon } from './styles';
+import { Card } from './components/Card';
+import { Container, Scroll } from './styles';
 
 export const AvailableWorkouts = ({ navigation }: NavigationProps) => {
   console.log('teste');
   return (
     <>
-      <Heading title="Aulas Disponíveis" onGoBack={() => navigation.goBack()} onPressConfig={() => navigation.navigate('Configurations')} />
+      <Heading
+        title="Aulas Disponíveis"
+        onGoBack={() => navigation.goBack()}
+        onPressConfig={() => navigation.navigate('Configurations')}
+      />
       <Container>
-        <Card >
-          <CardTitle>Natação</CardTitle>
-          <FavoriteIcon />
-        </Card>
+        <Scroll>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </Scroll>
       </Container>
     </>
-  )
-}
+  );
+};
