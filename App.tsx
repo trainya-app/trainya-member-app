@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import {
@@ -12,12 +13,11 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 
 import { ThemeProvider } from 'styled-components/native';
+import { AuthContextProvider } from './src/contexts/AuthContext';
+import { ThemeContextProvider } from './src/contexts/ThemeContext';
 import { AppRoutes } from './src/routes/app.routes';
 
-import { ThemeContextProvider } from './src/contexts/ThemeContext';
-
 import theme from './src/global/styles/theme';
-import { StatusBar } from 'react-native';
 
 const App = () => {
   const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
@@ -49,14 +49,16 @@ const App = () => {
     return null;
   }
   return (
-    <ThemeContextProvider colorMode={colorMode} setColorMode={setColorMode}>
-      <ThemeProvider theme={theme[colorMode]}>
-        <StatusBar backgroundColor="#000" translucent/>
-        <NavigationContainer>
-          <AppRoutes />
-        </NavigationContainer>
-      </ThemeProvider>
-    </ThemeContextProvider>
+    <AuthContextProvider>
+      <ThemeContextProvider colorMode={colorMode} setColorMode={setColorMode}>
+        <ThemeProvider theme={theme[colorMode]}>
+          <StatusBar backgroundColor="#000" translucent />
+          <NavigationContainer>
+            <AppRoutes />
+          </NavigationContainer>
+        </ThemeProvider>
+      </ThemeContextProvider>
+    </AuthContextProvider>
   );
 };
 
