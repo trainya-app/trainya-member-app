@@ -56,11 +56,12 @@ export const DateScroll = () => {
       day: i,
     });
   }
+
   return (
     <Container>
-      <Scroll>
+      <Scroll contentOffset={{ x: dayNumber * 60 - 180, y: 0 }}>
         {data.map(
-          (date) =>
+          (date: Props) =>
             date.day !== 0 && (
               <DateWrapper
                 key={date.day}
