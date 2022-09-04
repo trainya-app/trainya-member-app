@@ -15,9 +15,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'styled-components/native';
 import { AuthContextProvider } from './src/contexts/AuthContext';
 import { ThemeContextProvider } from './src/contexts/ThemeContext';
-import { AppRoutes } from './src/routes/app.routes';
 
 import theme from './src/global/styles/theme';
+import { Routes } from './src/routes';
 
 const App = () => {
   const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
@@ -54,7 +54,7 @@ const App = () => {
         <ThemeProvider theme={theme[colorMode]}>
           <StatusBar backgroundColor="#000" translucent />
           <NavigationContainer>
-            <AppRoutes />
+            <Routes />
           </NavigationContainer>
         </ThemeProvider>
       </ThemeContextProvider>

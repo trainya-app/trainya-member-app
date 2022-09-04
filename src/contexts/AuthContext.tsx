@@ -7,7 +7,7 @@ interface Props {
 export const AuthContext = createContext({} as any);
 
 export const AuthContextProvider = ({ children }: Props) => {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState<any>();
 
   async function login({
     email,
