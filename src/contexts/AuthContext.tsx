@@ -28,9 +28,13 @@ export const AuthContextProvider = ({ children }: Props) => {
     }
   }
 
+  async function logout() {
+    setUser(null);
+  }
+
   const AuthContextProviderValue = useMemo(
-    () => ({ user, login }),
-    [user, login]
+    () => ({ user, login, logout }),
+    [user, login, logout]
   );
 
   return (
