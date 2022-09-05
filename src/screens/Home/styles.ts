@@ -175,3 +175,9 @@ export const ActivityGreeting = styled.View`
   padding: 12px 0;
   align-items: center;
 `;
+
+export const LoadingContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
