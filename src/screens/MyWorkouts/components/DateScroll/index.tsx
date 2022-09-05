@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { Container, Scroll, DateWrapper, Day, DayNumber } from './styles';
 
 export const DateScroll = () => {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
 
-  const dayNumber = new Date().getDate();
+  const dayNumber = 5;
 
   const daysInMonth: number = new Date(currentYear, currentMonth, 0).getDate();
 
