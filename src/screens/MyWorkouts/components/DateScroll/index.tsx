@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Scroll, DateWrapper, Day, DayNumber } from './styles';
 
 export const DateScroll = () => {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
 
-  const dayNumber = 5;
+  const dayNumber = new Date().getDate();
 
   const daysInMonth: number = new Date(currentYear, currentMonth, 0).getDate();
 
@@ -58,9 +58,26 @@ export const DateScroll = () => {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [ref, setRef] = useState<any>(null);
+
+  useEffect(() => {
+    if (ref) {
+      ref.scrollTo({
+        x: dayNumber * 60 - 180,
+        y: 0,
+        animated: true,
+      });
+    }
+  }, [ref]);
+
   return (
     <Container>
-      <Scroll contentOffset={{ x: dayNumber * 60 - 180, y: 0 }}>
+      <Scroll
+        ref={(ref) => {
+          setRef(ref);
+        }}
+      >
         {data.map(
           (date: Props) =>
             date.day !== 0 && (
