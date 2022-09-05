@@ -44,7 +44,9 @@ export const AuthContextProvider = ({ children }: Props) => {
   }
 
   async function logout() {
-    setToken(null);
+    await AsyncStorage.clear().then(() => {
+      setToken(null);
+    });
   }
 
   const AuthContextProviderValue = useMemo(
