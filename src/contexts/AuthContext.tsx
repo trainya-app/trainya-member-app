@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useMemo, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ToastAndroid } from 'react-native';
 
 import { api } from '../services/api';
@@ -12,6 +13,9 @@ export const AuthContext = createContext({} as any);
 export const AuthContextProvider = ({ children }: Props) => {
   const [token, setToken] = useState(null);
 
+  function showToast(text: string) {
+    ToastAndroid.showWithGravity(text, ToastAndroid.SHORT, ToastAndroid.TOP);
+  }
   async function login({
     email,
     password,
@@ -22,11 +26,10 @@ export const AuthContextProvider = ({ children }: Props) => {
     try {
       const { data } = await api.post('auth/members', { email, password });
       setToken(data.token);
-      ToastAndroid.showWithGravity('Logado com sucesso', ToastAndroid.SHORT, ToastAndroid.TOP);
-
+      showToast('Login realizado com sucesso!');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      ToastAndroid.showWithGravity(error.response.data.message, ToastAndroid.SHORT, ToastAndroid.TOP);
+      showToast(error.response.data.message);
     }
   }
 
