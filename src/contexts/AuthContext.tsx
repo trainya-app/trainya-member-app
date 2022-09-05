@@ -9,40 +9,19 @@ interface Props {
   children: ReactNode;
 }
 
-interface UserProps {
-  name: string;
-  email: string;
-  height: number;
-  weight: number;
-  phone: string;
-  state: string;
-  street: string;
-  city: string;
-}
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const AuthContext = createContext({} as any);
 
 export const AuthContextProvider = ({ children }: Props) => {
   const [token, setToken] = useState<string | null>();
-  const [userDecoded, setUserDecoded] = useState<UserProps>({
-    name: '',
-    email: '',
-    height: 0,
-    weight: 0,
-    phone: '',
-    state: '',
-    street: '',
-    city: '',
-  });
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     (async () => {
       const storagedToken = await AsyncStorage.getItem('@trainyaapp:token');
       if (storagedToken) {
         setToken(JSON.parse(storagedToken));
-        api.defaults.headers.Authorization = `Bearer ${JSON.parse(
-          storagedToken
-        )}}`;
+        api.defaults.headers.Authorization = `Bearer ${storagedToken}`;
       }
     })();
   }, []);
@@ -50,6 +29,7 @@ export const AuthContextProvider = ({ children }: Props) => {
   function showToast(text: string) {
     ToastAndroid.showWithGravity(text, ToastAndroid.SHORT, ToastAndroid.TOP);
   }
+
   async function login({
     email,
     password,
@@ -67,8 +47,6 @@ export const AuthContextProvider = ({ children }: Props) => {
       );
 
       api.defaults.headers.Authorization = `Bearer ${data.token}`;
-
-      setUserDecoded(jwt_decode(data.token));
 
       showToast('Login realizado com sucesso!');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -88,9 +66,8 @@ export const AuthContextProvider = ({ children }: Props) => {
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         token,
-        user: {
-          name: userDecoded.name,
-        },
+        user,
+        setUser,
         login,
         logout,
       }}

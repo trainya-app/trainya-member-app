@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
+import { useContext, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
+import jwt_decode from 'jwt-decode';
 import {
   Container,
   Header,
@@ -37,8 +37,25 @@ import { SliderProps, Slider } from '../../components/Slider';
 
 import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
+import { AuthContext } from '../../contexts/AuthContext';
+import { api } from '../../services/api';
 
 export const Home = ({ navigation }: Props) => {
+  const { user, setUser, token } = useContext(AuthContext);
+  useEffect(() => {
+    async function loadUserData() {
+      try {
+        const userDecoded = jwt_decode(token);
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        const { data } = await api.get(`members/${userDecoded.id}`);
+        setUser(data.member);
+      } catch (error: any) {
+        console.log(error.response.data);
+      }
+    }
+    loadUserData();
+  }, []);
+
   const schedule_classes: SliderProps[] = [
     {
       title: 'Natação',
@@ -78,7 +95,6 @@ export const Home = ({ navigation }: Props) => {
   ];
 
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
-  const user = 'Mariana';
   const workout = 'pernas';
   const total_workouts = 16;
   const workouts_finished = 9;
@@ -106,11 +122,11 @@ export const Home = ({ navigation }: Props) => {
 
   useEffect(() => {
     if (time >= 6 && time < 12) {
-      setGreeting(`Bom dia, ${user}`);
+      setGreeting(`Bom dia, ${user && user.name}`);
     } else if (time >= 12 && time < 18) {
-      setGreeting(`Boa tarde, ${user}`);
+      setGreeting(`Boa tarde, ${user && user.name}`);
     } else {
-      setGreeting(`Boa noite, ${user}`);
+      setGreeting(`Boa noite, ${user && user.name}`);
     }
   }, []);
 
