@@ -4,7 +4,7 @@ import { AppRoutes } from './app.routes';
 import { AuthRoutes } from './auth.routes';
 
 export const Routes = () => {
-  const { user, login } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
 
-  return user ? <AppRoutes /> : <AuthRoutes />;
+  return token ? <AppRoutes /> : <AuthRoutes />;
 };

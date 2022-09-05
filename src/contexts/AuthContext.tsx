@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useMemo, useState } from 'react';
+import { api } from '../services/api';
 
 interface Props {
   children: ReactNode;
@@ -7,7 +8,7 @@ interface Props {
 export const AuthContext = createContext({} as any);
 
 export const AuthContextProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<any>();
+  const [token, setToken] = useState(null);
 
   async function login({
     email,
@@ -17,24 +18,22 @@ export const AuthContextProvider = ({ children }: Props) => {
     password: string;
   }) {
     try {
-      if (email === 'trainya@app.com' && password === 'trainya') {
-        setUser(email);
-      } else {
-        console.log('Algo deu errado');
-      }
+      const { data } = await api.post('auth/members', { email, password });
+      setToken(data.token);
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log('Algo deu errado');
+      console.log(error.response.data.message);
     }
   }
 
   async function logout() {
-    setUser(null);
+    setToken(null);
   }
 
   const AuthContextProviderValue = useMemo(
-    () => ({ user, login, logout }),
-    [user, login, logout]
+    () => ({ token, login, logout }),
+    [token, login, logout]
   );
 
   return (
