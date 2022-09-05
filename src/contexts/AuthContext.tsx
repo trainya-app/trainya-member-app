@@ -1,4 +1,6 @@
 import { createContext, ReactNode, useMemo, useState } from 'react';
+import { ToastAndroid } from 'react-native';
+
 import { api } from '../services/api';
 
 interface Props {
@@ -20,10 +22,11 @@ export const AuthContextProvider = ({ children }: Props) => {
     try {
       const { data } = await api.post('auth/members', { email, password });
       setToken(data.token);
+      ToastAndroid.showWithGravity('Logado com sucesso', ToastAndroid.SHORT, ToastAndroid.TOP);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log(error.response.data.message);
+      ToastAndroid.showWithGravity(error.response.data.message, ToastAndroid.SHORT, ToastAndroid.TOP);
     }
   }
 

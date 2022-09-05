@@ -81,7 +81,7 @@ export const Home = ({ navigation }: Props) => {
   const user = 'Mariana';
   const workout = 'pernas';
   const total_workouts = 16;
-  const workouts_finished = 3;
+  const workouts_finished =9;
   const capacity = 50;
   const capacity_occupied = Math.round(Math.random() * 50);
 
