@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-import jwt_decode from 'jwt-decode';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ToastAndroid } from 'react-native';
 
