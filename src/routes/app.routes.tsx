@@ -115,7 +115,6 @@ export const AppRoutes = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        unmountOnBlur: true,
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
