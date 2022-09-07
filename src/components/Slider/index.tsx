@@ -18,9 +18,10 @@ export interface SliderProps {
 
 interface Props {
   data: SliderProps[];
+  seeMoreAction?: () => void;
 }
 
-export const Slider = ({ data }: Props) => {
+export const Slider = ({ data, seeMoreAction }: Props) => {
   const [dotActive, setDotActive] = useState(false);
   return (
     <Container>
@@ -55,7 +56,7 @@ export const Slider = ({ data }: Props) => {
               </Slide>
             ) : (
               index === 3 && (
-                <Slide key="4" onPress={() => console.log('Ver mais +')}>
+                <Slide key="4" onPress={seeMoreAction}>
                   <SeeMoreSlideContainer>
                     <Title isActive>Ver mais +</Title>
                   </SeeMoreSlideContainer>

@@ -14,6 +14,7 @@ interface OptionsContainerProps {
 interface OptionsContainerItemProps {
   title: string;
   onPress?: () => void;
+  icon?: JSX.Element;
   isLastOption?: boolean;
   actionComponent?: JSX.Element;
 }
@@ -31,11 +32,16 @@ export const OptionsContainer = ({
 export const OptionsContainerItem = ({
   title,
   onPress,
+  icon,
   isLastOption,
   actionComponent,
 }: OptionsContainerItemProps) => (
   <>
-    <ContainerItemBox onPress={onPress}>
+    <ContainerItemBox
+      activeOpacity={actionComponent ? 1 : 0.6}
+      onPress={onPress}
+    >
+      {icon}
       <ContainerItem>{title}</ContainerItem>
       {actionComponent}
     </ContainerItemBox>

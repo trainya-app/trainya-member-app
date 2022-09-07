@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import {
   Container,
@@ -12,14 +12,16 @@ import {
 import { TextInput } from './components/TextInput';
 import { Button } from '../../components/Button';
 import { LogoSvg } from '../../components/LogoSvg';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Login = () => {
   const [loginInput, setLoginInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
 
-  function handleLogin(login: string, password: string) {
-    // eslint-disable-next-line no-console
-    console.log({ login, password });
+  const { login } = useContext(AuthContext);
+
+  function handleLogin(email: string, password: string) {
+    login({ email, password });
   }
   return (
     <Container>

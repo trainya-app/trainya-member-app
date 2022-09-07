@@ -15,19 +15,19 @@ export const Container = styled.View`
   border-radius: 16px;
 `;
 
-export const ContainerItemBox = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.6,
-})`
+export const ContainerItemBox = styled.TouchableOpacity`
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  padding: 0 12px;
 `;
 
 export const ContainerItem = styled.Text`
   flex: 1;
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(14)}px;
-  color: ${({ theme }) => theme.colors.gray[800]};
-  margin: 6px 12px;
+  color: ${({ theme }) => theme.colors.gray[600]};
+  margin: 6px 0;
   justify-content: center;
 `;
 

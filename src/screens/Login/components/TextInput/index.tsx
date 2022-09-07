@@ -1,4 +1,4 @@
-import { useTheme } from '../../../../hooks/useTheme';
+import { useTheme } from 'styled-components';
 import { Container, InputText } from './styles';
 
 interface TextInputProps {
@@ -13,7 +13,7 @@ export const TextInput = ({
   onChangeText,
   hideText,
 }: TextInputProps) => {
-  const { theme } = useTheme();
+  const theme = useTheme();
 
   return (
     <Container>

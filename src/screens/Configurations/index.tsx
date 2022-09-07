@@ -1,7 +1,10 @@
-import { StatusBar } from 'react-native';
-import { useTheme } from 'styled-components/native';
-
-import { Container, LogoutButtonContainer, LogoutButtonText } from './styles';
+import { useContext } from 'react';
+import {
+  Container,
+  LogoutButtonContainer,
+  LogoutButtonText,
+  Scroll,
+} from './styles';
 
 import { Heading } from '../../components/Heading';
 import {
@@ -10,35 +13,56 @@ import {
 } from '../../components/OptionsContainer';
 import { NavigationProps } from '../../types/NavigationProps';
 import { ToggleThemeButton } from './components/ToggleThemeButton';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Configurations = ({ navigation }: NavigationProps) => {
-  const theme = useTheme();
+  const { logout } = useContext(AuthContext);
 
   return (
-    <Container>
-      <StatusBar backgroundColor={theme.colors.blue[100]} />
-      <Heading title="Configurações" onGoBack={() => navigation.goBack()} />
-      <OptionsContainer label="Conteúdo">
-        <Item title="Editar Perfil" />
-        <Item
-          title="Minha Conta"
-          onPress={() => navigation.navigate('MyAccount')}
-        />
-        <Item
-          title="Favoritos"
-          isLastOption
-          onPress={() => navigation.navigate('Favorites')}
-        />
-      </OptionsContainer>
-      <OptionsContainer label="Preferências">
-        <Item title="Tema" actionComponent={<ToggleThemeButton />} />
-        <Item title="Privacidade" />
-        <Item title="Segurança" />
-        <Item title="Notificações" isLastOption />
-      </OptionsContainer>
-      <LogoutButtonContainer>
-        <LogoutButtonText>Sair</LogoutButtonText>
-      </LogoutButtonContainer>
-    </Container>
+    <>
+      <Heading
+        title="Configurações"
+        onGoBack={() => navigation.goBack()}
+        onPressConfig={() => navigation.navigate('Configurations')}
+      />
+      <Container>
+        <Scroll>
+          <OptionsContainer label="Conteúdo">
+            <Item
+              title="Editar Perfil"
+              onPress={() => navigation.navigate('EditProfile')}
+            />
+            <Item
+              title="Minha Conta"
+              onPress={() => navigation.navigate('MyAccount')}
+            />
+            <Item
+              title="Favoritos"
+              isLastOption
+              onPress={() => navigation.navigate('Favorites')}
+            />
+          </OptionsContainer>
+          <OptionsContainer label="Preferências">
+            <Item title="Tema" actionComponent={<ToggleThemeButton />} />
+            <Item
+              title="Privacidade"
+              onPress={() => navigation.navigate('Privacy')}
+            />
+            <Item
+              title="Segurança"
+              onPress={() => navigation.navigate('Security')}
+            />
+            <Item
+              title="Notificações"
+              onPress={() => navigation.navigate('NotificationsConfig')}
+              isLastOption
+            />
+          </OptionsContainer>
+          <LogoutButtonContainer onPress={logout}>
+            <LogoutButtonText>Sair</LogoutButtonText>
+          </LogoutButtonContainer>
+        </Scroll>
+      </Container>
+    </>
   );
 };

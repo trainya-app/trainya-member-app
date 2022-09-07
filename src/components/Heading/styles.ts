@@ -9,14 +9,19 @@ interface TitleProps {
   colorMode: string;
 }
 
-export const Container = styled.View`
+interface ContainerProps {
+  b?: string | undefined;
+}
+
+export const Container = styled.View<ContainerProps>`
   width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
-  top: 24px;
   align-self: center;
+  padding: 32px 24px;
+  background-color: ${({ theme, b }) => (b ? b : theme.colors.blue[100])};
+  z-index: 999;
 `;
 
 export const Title = styled.Text<TitleProps>`

@@ -1,12 +1,9 @@
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
-
-import { StatusBar } from 'react-native';
 
 import NotificationIconSVG from '../../assets/notification_icon.svg';
 import ConfigIconSVG from '../../assets/config_icon.svg';
-
-const StatusBarHeight = StatusBar.currentHeight;
 
 interface TextProps {
   color?: string;
@@ -21,7 +18,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: 40%;
+  height: ${Number(Dimensions.get('window').height) > 700 ? '40%' : '45%'};
   align-items: center;
 `;
 export const HeaderImage = styled.Image`
@@ -42,6 +39,8 @@ export const Title = styled.Text`
   font-size: ${RFValue(26)}px;
   font-family: ${({ theme }) => theme.fonts.extrabold};
 `;
+
+export const Loading = styled.ActivityIndicator``;
 
 export const Subtitle = styled.Text`
   color: #ffffff;
@@ -175,4 +174,10 @@ export const ActivityGreeting = styled.View`
   margin-top: 20px;
   padding: 12px 0;
   align-items: center;
+`;
+
+export const LoadingContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 `;
