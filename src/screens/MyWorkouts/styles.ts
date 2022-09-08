@@ -13,7 +13,7 @@ export const Container = styled.View`
 `;
 
 export const Separator = styled.View`
-  background-color: ${({ theme }) => theme.colors.blue[300]};
+  background-color: #99C0FF;
   height: 1px;
   width: 100%;
   margin-bottom: 16px;
