@@ -47,11 +47,12 @@ export const Home = ({ navigation }: Props) => {
   useEffect(() => {
     async function loadUserData() {
       try {
-        const userDecoded = jwt_decode(token);
+        const userDecoded: {id: string} = jwt_decode(token);
         api.defaults.headers.Authorization = `Bearer ${token}`;
         const { data } = await api.get(`members/${userDecoded.id}`);
         setUser(data.member);
         setIsLoading(false);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         console.log(error.response.data);
       }

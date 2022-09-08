@@ -10,7 +10,7 @@ export const Label = styled.Text`
 
 export const Container = styled.View`
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme })=> theme.colors.text.inverted};
   padding: 20px 12px;
   border-radius: 16px;
 `;
@@ -26,7 +26,7 @@ export const ContainerItem = styled.Text`
   flex: 1;
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(14)}px;
-  color: ${({ theme }) => theme.colors.gray[600]};
+  color: ${({ theme }) => theme.colors.text.light};
   margin: 6px 0;
   justify-content: center;
 `;

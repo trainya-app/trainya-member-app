@@ -22,7 +22,7 @@ export const DateWrapper = styled.View<Props>`
   width: 60px;
   height: 60px;
   background-color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.blue[500] : theme.colors.shape};
+    isActive ? theme.colors.blue[500] : theme.colors.shape.main};
   border-radius: 14px;
   align-items: center;
   justify-content: center;
@@ -31,11 +31,11 @@ export const DateWrapper = styled.View<Props>`
 export const Day = styled.Text<Props>`
   font-family: ${({ theme }) => theme.fonts.extrabold};
   font-size: ${RFValue(12)}px;
-  color: ${({ isActive }) => (isActive ? '#FFF' : '#000')};
+  color: ${({ theme, isActive }) => (isActive ? '#FFF' : theme.colors.text.default)};
 `;
 
 export const DayNumber = styled.Text<Props>`
   font-family: ${({ theme }) => theme.fonts.extrabold};
   font-size: ${RFValue(12)}px;
-  color: ${({ isActive }) => (isActive ? '#FFF' : '#000')};
+  color: ${({ theme, isActive }) => (isActive ? '#FFF' : theme.colors.text.default)};
 `;

@@ -51,6 +51,7 @@ export const Username = styled.Text`
   font-family: ${({ theme }) => theme.fonts.extrabold};
   font-size: 28px;
   text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.text.default}
 `;
 
 export const GymLabel = styled.Text`

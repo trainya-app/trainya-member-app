@@ -36,8 +36,17 @@ export default {
         bg: '#FFFAF0',
         main: '#F4A52D',
       },
-      shape: '#FFFFFF',
+      shape:  {
+        main: '#FFFFFF',
+        light: '#EBF2FF',
+        dark: '#FFFFFF',
+      },
       progressbar: '#BABECE',
+      text: {
+        default: '#000000',
+        light: '#6C757D',
+        inverted: '#FFFFFF'
+      },
     },
     fonts: {
       medium: 'Montserrat_500Medium',
@@ -73,7 +82,7 @@ export default {
         900: '#EDF2F7',
       },
       red: {
-        bg: '#FFF5F5',
+        bg: '#000000',
         main: '#EF233C',
       },
       green: {
@@ -84,8 +93,17 @@ export default {
         bg: '#FFFAF0',
         main: '#F4A52D',
       },
-      shape: '#002766',
+      shape:  {
+        main: '#001029',
+        light: '#002766',
+        dark: '#002766',
+      },
       progressbar: '#013259',
+      text: {
+        default: '#FFFFFF',
+        light: '#FFFFFF',
+        inverted: '#000000'
+      }
     },
     fonts: {
       medium: 'Montserrat_500Medium',

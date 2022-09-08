@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import { NavigationProps } from '../../types/NavigationProps';
 
@@ -18,6 +19,8 @@ import { ScreenSwitcher } from './components/SwitcherIndicator';
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => {
   const [isSwitcherActive, setIsSwitcherActive] = useState(false);
+
+  const theme = useTheme();
 
   const alphabet = [
     'A',
@@ -102,7 +105,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
     <>
       <Heading
         title="Meus treinos"
-        b="#FFF"
+        b={theme.colors.shape.main}
         onGoBack={() => navigation.goBack()}
         onPressConfig={() => navigation.navigate('Configurations')}
       />

@@ -10,7 +10,7 @@ interface ContainerProps {
 
 export const Container = styled.View<ContainerProps>`
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.blue[100]};
+  background-color: ${({ theme }) => theme.colors.shape.light};
   height: ${RFValue(60)}px;
   border-radius: ${RFValue(24)}px;
   margin: 10px 0;
@@ -20,7 +20,7 @@ export const Container = styled.View<ContainerProps>`
   border: ${({ theme, isActive }) =>
     isActive
       ? `2px solid ${theme.colors.blue[500]}`
-      : `0px solid ${theme.colors.shape}`};
+      : `0px solid ${theme.colors.shape.light}`};
 `;
 
 export const WorkoutSquare = styled.View`
@@ -37,21 +37,21 @@ export const WorkoutSquare = styled.View`
 export const WorkoutSquareText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(24)}px;
-  color: ${({ theme }) => theme.colors.shape};
+  color: #FFFFFF;
 `;
 
 export const WorkoutName = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(20)}px;
   margin-left: ${RFValue(16)}px;
-  color: #000;
+  color: ${({ theme })=> theme.colors.text.default};
 `;
 
 export const WorkoutIndicator = styled.Text`
   position: absolute;
   right: 56px;
   top: -12px;
-  color: ${({ theme }) => theme.colors.shape};
+  color: ${({ theme }) => theme.colors.text.inverted};
   background-color: ${({ theme }) => theme.colors.blue[500]};
   padding: 3px 24px;
   border-radius: 999px;

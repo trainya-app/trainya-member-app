@@ -106,7 +106,7 @@ export const CardContainerTitle = styled.Text`
 
 export const CardContainer = styled.View`
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.shape.dark};
   padding: 24px;
   border-radius: 24px;
   align-items: center;

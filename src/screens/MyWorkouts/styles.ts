@@ -7,7 +7,7 @@ const { height } = Dimensions.get('screen');
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.shape.main};
   padding: 0 24px;
   padding-bottom: ${RFValue(96)}px;
 `;

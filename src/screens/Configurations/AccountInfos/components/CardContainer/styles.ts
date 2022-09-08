@@ -8,7 +8,7 @@ interface CardContainerProps {
 export const Container = styled.View<CardContainerProps>`
   width: ${({ half }) => (half ? '47%' : '100%')};
   padding: 24px 28px;
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.text.inverted};
   border-radius: 24px;
   margin: 8px 0;
 `;
