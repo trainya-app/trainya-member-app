@@ -33,7 +33,7 @@ export const BoxColumn = styled.View`
 
 export const TextInput = styled.TextInput`
   background-color: ${({ theme }) => theme.colors.text.inverted};
-  color: ${({ theme }) => theme.colors.text.default}
+  color: ${({ theme }) => theme.colors.text.default};
   height: 52px;
   border-radius: 16px;
   elevation: 2;

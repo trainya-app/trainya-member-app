@@ -35,7 +35,11 @@ export interface RootTheme {
       bg: string;
       main: string;
     };
-    shape: string;
+    shape: {
+      main: string;
+      light: string;
+      dark: string;
+    }
     progressbar: string;
     text: {
       default: string;
