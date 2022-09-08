@@ -19,7 +19,7 @@ export const Blur = styled.View`
 `;
 
 export const CardTitle = styled.Text`
-  color: ${({ theme }) => theme.colors.shape};
+  color: #FFFFFF;
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(28)}px;
 `;
