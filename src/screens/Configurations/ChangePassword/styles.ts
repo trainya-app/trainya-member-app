@@ -8,7 +8,7 @@ export const Container = styled.View`
 `;
 
 export const TextInput = styled.TextInput`
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.text.inverted};
   height: ${RFValue(52)}px;
   border-radius: 16px;
   elevation: 2;

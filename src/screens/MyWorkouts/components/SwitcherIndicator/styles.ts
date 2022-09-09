@@ -7,7 +7,7 @@ interface SwitcherProps {
 }
 
 export const Switcher = styled.View`
-  background-color: ${({ theme }) => theme.colors.blue[500]};
+  background-color: #2176FF;
   height: ${RFValue(36)}px;
   width: 70%;
   border-radius: 999px;

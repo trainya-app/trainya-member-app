@@ -19,12 +19,12 @@ export const Container = styled.View<ContainerProps>`
   elevation: 1;
   border: ${({ theme, isActive }) =>
     isActive
-      ? `2px solid ${theme.colors.blue[500]}`
+      ? `2px solid #2176FF`
       : `0px solid ${theme.colors.shape.light}`};
 `;
 
 export const WorkoutSquare = styled.View`
-  background-color: ${({ theme }) => theme.colors.blue[500]};
+  background-color: #2176FF;
   height: ${RFValue(60)}px;
   width: ${RFValue(60)}px;
   elevation: 1;
@@ -52,7 +52,7 @@ export const WorkoutIndicator = styled.Text`
   right: 56px;
   top: -12px;
   color: ${({ theme }) => theme.colors.text.inverted};
-  background-color: ${({ theme }) => theme.colors.blue[500]};
+  background-color: #2176FF;
   padding: 3px 24px;
   border-radius: 999px;
   font-family: ${({ theme }) => theme.fonts.bold};

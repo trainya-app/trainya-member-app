@@ -12,7 +12,7 @@ import {
 
 export const EditProfile = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
-  const placeholder = `${theme.colors.gray[500]}`;
+  const placeholder = `${theme.colors.text.light}`;
   return (
       <>
         <Heading
