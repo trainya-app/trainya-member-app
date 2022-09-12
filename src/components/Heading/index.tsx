@@ -14,6 +14,7 @@ interface HeadingProps {
   title: string;
   onGoBack: () => void;
   onPressConfig: () => void;
+  hideConfigIcon?: boolean;
   b?: string;
 }
 
@@ -21,6 +22,7 @@ export const Heading = ({
   title,
   onGoBack,
   onPressConfig,
+  hideConfigIcon,
   b,
 }: HeadingProps) => {
   const { colorMode } = useCustomTheme();
@@ -32,7 +34,9 @@ export const Heading = ({
       </IconWrapper>
       <Title colorMode={colorMode}>{title}</Title>
       <IconWrapper onPress={onPressConfig}>
-        {colorMode === 'light' ? <ConfigIcon /> : <ConfigIconDark />}
+        {!hideConfigIcon && (
+          colorMode === 'light' ? <ConfigIcon /> : <ConfigIconDark />
+        )}
       </IconWrapper>
     </Container>
   );

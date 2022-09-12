@@ -8,7 +8,9 @@ interface ContainerProps {
   isActive: boolean;
 }
 
-export const Container = styled.View<ContainerProps>`
+export const Container = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})<ContainerProps>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.shape.light};
   height: ${RFValue(60)}px;

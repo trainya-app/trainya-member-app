@@ -123,6 +123,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
                     workoutName={workout.name}
                     workoutId={alphabet[i]}
                     isActive={i === 0 && true}
+                    onPress={() => navigation.navigate('ExercisesList', { workoutTitle: workout.name })}
                   />
                 ))}
               </Scroll>

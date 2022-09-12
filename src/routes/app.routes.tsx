@@ -8,6 +8,7 @@ import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
 import { MyWorkouts } from '../screens/MyWorkouts';
 import { AvailableWorkouts } from '../screens/MyWorkouts/screens/AvailableWorkouts';
+import { ExercisesList } from '../screens/MyWorkouts/screens/ExercisesList';
 import { Profile } from '../screens/Profile';
 import { Configurations } from '../screens/Configurations';
 import { Favorites } from '../screens/Configurations/Favorites';
@@ -90,6 +91,7 @@ const MyWorkoutsStack = () => (
   >
     <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
     <Stack.Screen name="AvailableWorkouts" component={AvailableWorkouts} />
+    <Stack.Screen name="ExercisesList" component={ExercisesList} />
     {ConfigStack()}
   </Stack.Navigator>
 );
