@@ -81,6 +81,21 @@ const ProgressStack = () => (
   </Stack.Navigator>
 );
 
+const QRCameraStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      contentStyle: {
+        marginTop: 32,
+      },
+      headerShown: false,
+      animation: 'slide_from_right',
+    }}
+  >
+    <Stack.Screen name="QRCamera" component={QRCamera} />
+    {ConfigStack()}
+  </Stack.Navigator>
+);
+
 const MyWorkoutsStack = () => (
   <Stack.Navigator
     screenOptions={{
@@ -170,8 +185,8 @@ export const AppRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="QRCamera"
-        component={QRCamera}
+        name="QRCameraStack"
+        component={QRCameraStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
