@@ -1,4 +1,5 @@
 import { useTheme } from 'styled-components';
+import { Button } from '../../../../components/Button';
 import { Heading } from '../../../../components/Heading';
 import { useCustomTheme } from '../../../../hooks/useCustomTheme';
 import { Container, Scroll, ExerciseCard, Image, Wrapper, ExerciseName, ExerciseSets } from './styles';
@@ -37,8 +38,13 @@ export const ExercisesList = ({ navigation, route }: Props) => {
                         </Wrapper>
                     </ExerciseCard>
                 </Scroll>
+                <Button 
+                    title="Começar Treino"
+                    width={100}
+                    height={20}
+                    fontSize={16}
+                />
             </Container>
-
         </>
 );
 }

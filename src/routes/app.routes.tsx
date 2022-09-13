@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 import { Dimensions, Platform, View } from 'react-native';
 import { Home } from '../screens/Home';
@@ -86,7 +87,7 @@ const MyWorkoutsStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
+      animation: 'fade',
     }}
   >
     <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
@@ -113,6 +114,7 @@ const ProfileStack = () => (
 
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
+
 
   return (
     <Tab.Navigator
@@ -177,13 +179,22 @@ export const AppRoutes = () => {
       <Tab.Screen
         name="MyWorkoutsStack"
         component={MyWorkoutsStack}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View style={{ marginLeft: 16 }}>
-              <WorkoutsIcon />
-            </View>
-          ),
-        }}
+        options={({ route }) =>({ tabBarStyle: {
+          display: getFocusedRouteNameFromRoute(route) === 'ExercisesList' ? 'none' : 'flex',
+          backgroundColor: '#2176FF',
+          borderRadius: 20,
+          marginHorizontal: 24,
+          position: 'absolute',
+          bottom: 25,
+          elevation: 0,
+          height: height > 700 ? 70 : 60,
+          paddingTop: Platform.OS === 'ios' ? 24 : 0,
+        },
+        tabBarIcon: ({ focused }) => (
+          <View style={{ marginLeft: 16 }}>
+            <WorkoutsIcon />
+          </View>
+        ), })}
       />
       <Tab.Screen
         name="ProfileStack"
