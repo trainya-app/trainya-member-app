@@ -6,7 +6,7 @@ import { Container, Title, QRContainer, QR } from './styles';
 
 export const QRCamera = ({ navigation }: NavigationProps) => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
   return (
     <>
       <Heading
