@@ -33,11 +33,10 @@ export const ScreenSwitcher = ({ toggleIsActive }: ScreenSwitcherProps) => {
         <SwitcherText isBlack={isActive}>Treinos livres</SwitcherText>
       </SwitcherButton>
       <SwitcherIndicator
-        from={{ left: isActive ? '2%' : '53%' }}
         animate={{ left: isActive ? '53%' : '2%' }}
         transition={{
           type: 'timing',
-          duration: 100,
+          duration: 200,
         }}
       />
     </Switcher>
