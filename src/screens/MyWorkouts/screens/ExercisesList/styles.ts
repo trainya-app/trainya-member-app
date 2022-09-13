@@ -8,10 +8,11 @@ interface ThemeProps {
 export const Container = styled.View`
     flex: 1;
     background-color: ${({ theme }) => theme.colors.shape.main};
+    padding: 0 24px;
 `;
 
 export const Scroll = styled.ScrollView`
-    margin: 0 24px;
+   
 `;
 
 export const ExerciseCard = styled.View`

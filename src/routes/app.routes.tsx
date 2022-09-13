@@ -87,7 +87,6 @@ const MyWorkoutsStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'fade',
     }}
   >
     <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
@@ -115,23 +114,34 @@ const ProfileStack = () => (
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
 
+  function getTabBarStyle(route) {
+    const screen = getFocusedRouteNameFromRoute(route);
+    if(screen ===  'ExercisesList' || screen ===  'EditProfile' ) {
+      return 'none'
+    }
+
+    return 'flex'
+  }
 
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: '#2176FF',
-          borderRadius: 20,
-          marginHorizontal: 24,
-          position: 'absolute',
-          bottom: 25,
-          elevation: 0,
-          height: height > 700 ? 70 : 60,
-          paddingTop: Platform.OS === 'ios' ? 24 : 0,
-        },
-      }}
+      screenOptions={(route) => (
+        {
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            display: getTabBarStyle(route.route),
+            backgroundColor: '#2176FF',
+            borderRadius: 20,
+            marginHorizontal: 24,
+            position: 'absolute',
+            bottom: 25,
+            elevation: 0,
+            height: height > 700 ? 70 : 60,
+            paddingTop: Platform.OS === 'ios' ? 24 : 0,
+          },
+        }
+      )}
     >
       <Tab.Screen
         name="HomeStack"
@@ -179,22 +189,13 @@ export const AppRoutes = () => {
       <Tab.Screen
         name="MyWorkoutsStack"
         component={MyWorkoutsStack}
-        options={({ route }) =>({ tabBarStyle: {
-          display: getFocusedRouteNameFromRoute(route) === 'ExercisesList' ? 'none' : 'flex',
-          backgroundColor: '#2176FF',
-          borderRadius: 20,
-          marginHorizontal: 24,
-          position: 'absolute',
-          bottom: 25,
-          elevation: 0,
-          height: height > 700 ? 70 : 60,
-          paddingTop: Platform.OS === 'ios' ? 24 : 0,
-        },
-        tabBarIcon: ({ focused }) => (
-          <View style={{ marginLeft: 16 }}>
-            <WorkoutsIcon />
-          </View>
-        ), })}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ marginLeft: 16 }}>
+              <WorkoutsIcon />
+            </View>
+          ),
+        }}
       />
       <Tab.Screen
         name="ProfileStack"

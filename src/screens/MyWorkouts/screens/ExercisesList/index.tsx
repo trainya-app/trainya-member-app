@@ -41,7 +41,7 @@ export const ExercisesList = ({ navigation, route }: Props) => {
                 <Button 
                     title="Começar Treino"
                     width={100}
-                    height={20}
+                    height={60}
                     fontSize={16}
                 />
             </Container>
