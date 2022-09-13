@@ -12,6 +12,7 @@ interface Props {
     }
     navigation: {
         goBack: () => void;
+        navigate: (screen: string) => void;
     };
 }
 
@@ -37,12 +38,62 @@ export const ExercisesList = ({ navigation, route }: Props) => {
                             <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
                         </Wrapper>
                     </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
                 </Scroll>
                 <Button 
                     title="Começar Treino"
                     width={100}
                     height={60}
                     fontSize={16}
+                    onPress={() => navigation.navigate('Workout')}
                 />
                 <FinishWorkoutButton>
                     <FinishWorkoutButtonText>Concluir Treino</FinishWorkoutButtonText>

@@ -10,6 +10,7 @@ import { QRCamera } from '../screens/QRCamera';
 import { MyWorkouts } from '../screens/MyWorkouts';
 import { AvailableWorkouts } from '../screens/MyWorkouts/screens/AvailableWorkouts';
 import { ExercisesList } from '../screens/MyWorkouts/screens/ExercisesList';
+import { Workout } from '../screens/MyWorkouts/screens/Workout';
 import { Profile } from '../screens/Profile';
 import { Configurations } from '../screens/Configurations';
 import { Favorites } from '../screens/Configurations/Favorites';
@@ -92,6 +93,7 @@ const MyWorkoutsStack = () => (
     <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
     <Stack.Screen name="AvailableWorkouts" component={AvailableWorkouts} />
     <Stack.Screen name="ExercisesList" component={ExercisesList} />
+    <Stack.Screen name="Workout" component={Workout} />
     {ConfigStack()}
   </Stack.Navigator>
 );
@@ -114,9 +116,9 @@ const ProfileStack = () => (
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
 
-  function getTabBarStyle(route) {
+  function getTabBarStyle(route: any) {
     const screen = getFocusedRouteNameFromRoute(route);
-    if(screen ===  'ExercisesList' || screen ===  'EditProfile' ) {
+    if(screen ===  'ExercisesList' || screen ===  'EditProfile' || screen === 'Workout') {
       return 'none'
     }
 
@@ -125,12 +127,13 @@ export const AppRoutes = () => {
 
   return (
     <Tab.Navigator
-      screenOptions={(route) => (
+      screenOptions={(route: any) => (
         {
           headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: {
             display: getTabBarStyle(route.route),
+            borderTopWidth: 0,
             backgroundColor: '#2176FF',
             borderRadius: 20,
             marginHorizontal: 24,

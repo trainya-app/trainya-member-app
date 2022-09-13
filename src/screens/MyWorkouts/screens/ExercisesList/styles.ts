@@ -11,8 +11,11 @@ export const Container = styled.View`
     padding: 0 24px;
 `;
 
-export const Scroll = styled.ScrollView`
-   
+export const Scroll = styled.ScrollView.attrs({
+    showsVerticalScrollIndicator: false,
+    overScrollMode: 'never',
+})`
+   margin-bottom: 16px;
 `;
 
 export const ExerciseCard = styled.View`
@@ -20,6 +23,7 @@ export const ExerciseCard = styled.View`
     padding: 20px 16px;
     flex-direction: row;
     border-radius: 24px;
+    margin-bottom: 16px;
 `;
 
 export const Image = styled.Image`
