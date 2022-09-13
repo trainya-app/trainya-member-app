@@ -43,3 +43,16 @@ export const ExerciseSets = styled.Text<ThemeProps>`
     color: ${({ colorMode }) => colorMode === 'light' ? '#00378F' : '#6C757D'};
     font-size: ${RFValue(12)}px;
 `;
+
+export const FinishWorkoutButton = styled.TouchableOpacity`
+    width: 100%;
+    align-items: center;
+    margin-bottom: 12px;
+`;
+
+export const FinishWorkoutButtonText = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.bold};
+    font-size: ${RFValue(14)}px;
+    color: ${({ theme }) => theme.colors.blue[500]};
+    padding: 24px;
+ `;

@@ -2,7 +2,7 @@ import { useTheme } from 'styled-components';
 import { Button } from '../../../../components/Button';
 import { Heading } from '../../../../components/Heading';
 import { useCustomTheme } from '../../../../hooks/useCustomTheme';
-import { Container, Scroll, ExerciseCard, Image, Wrapper, ExerciseName, ExerciseSets } from './styles';
+import { Container, Scroll, ExerciseCard, Image, Wrapper, ExerciseName, ExerciseSets, FinishWorkoutButton, FinishWorkoutButtonText } from './styles';
 
 interface Props {
     route: {
@@ -44,6 +44,9 @@ export const ExercisesList = ({ navigation, route }: Props) => {
                     height={60}
                     fontSize={16}
                 />
+                <FinishWorkoutButton>
+                    <FinishWorkoutButtonText>Concluir Treino</FinishWorkoutButtonText>
+                </FinishWorkoutButton>
             </Container>
         </>
 );
