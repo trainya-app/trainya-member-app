@@ -1,12 +1,5 @@
 import {
   Container,
-  Header,
-  ProfileImageContainer,
-  ProfilePhoto,
-  ChangePhotoIconContainer,
-  ChangePhotoIcon,
-  ProfileInfoContainer,
-  Username,
   GymLabel,
   GymName,
   BoxDirectionRow,
@@ -14,8 +7,8 @@ import {
 } from './styles';
 
 import { Heading } from '../../../components/Heading';
+import { ProfileHeader } from '../../../components/ProfileHeader';
 import { NavigationProps } from '../../../types/NavigationProps';
-import { Button } from '../../../components/Button';
 import { CardContainer } from './components/CardContainer';
 
 export const AccountInfos = ({ navigation }: NavigationProps) => {
@@ -29,25 +22,7 @@ export const AccountInfos = ({ navigation }: NavigationProps) => {
         onPressConfig={() => navigation.navigate('Configurations')}
       />
       <Container>
-        <Header>
-          <ProfileImageContainer>
-            <ProfilePhoto source={{ uri: 'https://i.imgur.com/nRsfy96.png' }} />
-            <ChangePhotoIconContainer>
-              <ChangePhotoIcon />
-            </ChangePhotoIconContainer>
-          </ProfileImageContainer>
-          <ProfileInfoContainer>
-            <Username>Mariana Santos</Username>
-            <Button
-              title="Editar informações"
-              width={70}
-              height={36}
-              style={{ marginTop: 12 }}
-              fontSize={11}
-              onPress={() => navigation.navigate('EditProfile')}
-            />
-          </ProfileInfoContainer>
-        </Header>
+        <ProfileHeader onPressChangePhoto={() => navigation.navigate('ChangePhoto')} />
         <GymLabel>Minha academia:</GymLabel>
         <GymName>Trainya Gym</GymName>
 
