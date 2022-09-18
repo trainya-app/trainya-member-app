@@ -1,6 +1,8 @@
-import { Heading } from '../../components/Heading';
 import { NavigationProps } from '../../types/NavigationProps';
 import { Container } from './styles';
+
+import { Heading } from '../../components/Heading';
+import { ProfileHeader } from '../../components/ProfileHeader';
 
 export const Profile = ({ navigation }: NavigationProps) => (
   <>
@@ -9,6 +11,9 @@ export const Profile = ({ navigation }: NavigationProps) => (
       onGoBack={() => navigation.goBack()}
       onPressConfig={() => navigation.navigate('Configurations')}
     />
-    <Container />
+
+    <Container>
+      <ProfileHeader onPressChangePhoto={() => navigation.navigate('ChangePhoto')} />
+    </Container>
   </>
 );

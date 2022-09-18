@@ -35,4 +35,3 @@ export const ProfileHeader= ({ onPressChangePhoto }: ProfileHeaderProps) => (
         </Header>
   )
 
-export default ProfileHeader;
