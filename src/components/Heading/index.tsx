@@ -1,15 +1,10 @@
-import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 import { useCustomTheme } from '../../hooks/useCustomTheme';
 
 import {
   Container,
   IconWrapper,
-  BackIcon,
-  BackIconDark,
   Title,
-  ConfigIcon,
-  ConfigIconDark,
 } from './styles';
 
 interface HeadingProps {
@@ -35,14 +30,18 @@ export const Heading = ({
         <Feather
           name="chevron-left"
           size={48}
-          color="#000000"
+          color={colorMode === 'light' ? '#000000' : '#FFFFFF'}
           style={{ right: 16 }}
         />
       </IconWrapper>
       <Title colorMode={colorMode}>{title}</Title>
       <IconWrapper onPress={onPressConfig}>
         {!hideConfigIcon && (
-          <Feather name="settings" size={36} color="#000000" />
+          <Feather
+            name="settings"
+            size={36}
+            color={colorMode === 'light' ? '#000000' : '#FFFFFF'}
+          />
         )}
       </IconWrapper>
     </Container>
