@@ -1,11 +1,7 @@
-import { Bar, Progress } from './styles';
+import { Bar, Progress, ProgressBarProps } from './styles';
 
-interface ProgressBarProps {
-  progress_percentage: number;
-}
-
-export const ProgressBar = ({ progress_percentage }: ProgressBarProps) => (
-  <Bar>
-    <Progress progress_percentage={progress_percentage} />
+export const ProgressBar = ({ progress_percentage, size }: ProgressBarProps) => (
+  <Bar size={size}>
+    <Progress progress_percentage={progress_percentage} size={size}/>
   </Bar>
 );
