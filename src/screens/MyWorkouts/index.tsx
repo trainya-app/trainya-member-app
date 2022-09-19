@@ -121,7 +121,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
                   <WorkoutCard
                     key={workout.id}
                     workoutName={workout.name}
-                    workoutId={alphabet[i]}
+                    workoutId={workout.id}
                     isActive={i === 0 && true}
                     onPress={() => navigation.navigate('ExercisesList', { workoutTitle: workout.name })}
                   />

@@ -25,7 +25,7 @@ export const CardLabel = styled.Text`
 export const CurrentWorkoutCard = styled.View`
   height: ${RFValue(154)}px;
   margin-top: 16px;
-  background-color: ${({ theme }) => theme.colors.blue[300]};
+  background-color: #99c0ff;
   border-radius: 24px;
   overflow: hidden;
   flex-direction: row;
@@ -51,7 +51,7 @@ export const CurrentWorkoutTitleContainer = styled.View`
 `;
 
 export const CurrentWorkoutTitle = styled.Text`
-  color: ${({ theme }) => theme.colors.blue[300]};
+  color: #99c0ff;
   font-size: ${RFValue(20)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
