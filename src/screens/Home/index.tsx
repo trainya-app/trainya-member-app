@@ -26,10 +26,6 @@ import {
   InfosContainer,
   Infos,
   InfoText,
-  ActivityInfoWrapper,
-  ActivityProgressBar,
-  ActivityUserProgress,
-  ActivityGreeting,
 } from './styles';
 
 import { NavigationProps as Props } from '../../types/NavigationProps';
@@ -40,6 +36,7 @@ import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { api } from '../../services/api';
+import { ActivityContainer } from './components/ActivityContainer';
 
 export const Home = ({ navigation }: Props) => {
   const { user, setUser, token } = useContext(AuthContext);
@@ -217,35 +214,8 @@ export const Home = ({ navigation }: Props) => {
             </CardContainer>
 
             <CardContainerTitle>Sua atividade</CardContainerTitle>
-            <CardContainer>
-              <Infos>
-                <ActivityInfoWrapper>
-                  <InfoText color={theme.colors.blue[900]} fontSize={24}>
-                    01
-                  </InfoText>
-                  <InfoText fontSize={8}>
-                    Semanas de treino consecutivas
-                  </InfoText>
-                </ActivityInfoWrapper>
-
-                <ActivityProgressBar>
-                  <ActivityUserProgress />
-                </ActivityProgressBar>
-
-                <ActivityInfoWrapper>
-                  <InfoText color={theme.colors.blue[900]} fontSize={24}>
-                    Alto
-                  </InfoText>
-                  <InfoText fontSize={8}>Engajamento com a academia</InfoText>
-                </ActivityInfoWrapper>
-              </Infos>
-
-              <ActivityGreeting>
-                <InfoText fontSize={10} color={theme.colors.blue[500]}>
-                  Bom trabalho! Assim você vai longe
-                </InfoText>
-              </ActivityGreeting>
-            </CardContainer>
+            <ActivityContainer />
+            
             <CardContainerTitle>Aulas Marcadas</CardContainerTitle>
             <Slider data={schedule_classes} />
             <CardContainerTitle>Treinos para fazer em casa</CardContainerTitle>

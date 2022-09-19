@@ -6,9 +6,13 @@ export const Container = styled.View`
   align-items: center;
   padding: 0 24px;
   background-color: ${({ theme }) => theme.colors.blue[100]};
+  padding-bottom: ${RFValue(96)}px;
 `;
 
-export const Scroll = styled.ScrollView`
+export const Scroll = styled.ScrollView.attrs({
+  overScrollMode: 'never',
+  showsVerticalScrollIndicator: false,
+})`
   width: 100%;
 `;
 
@@ -26,6 +30,7 @@ export const CurrentWorkoutCard = styled.View`
   overflow: hidden;
   flex-direction: row;
   align-items: flex-end;
+  margin-bottom: 40px;
 `;
 
 export const CurrentWorkoutImage = styled.Image`

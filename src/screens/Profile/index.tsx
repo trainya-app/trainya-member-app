@@ -15,11 +15,12 @@ import {
 import { Heading } from '../../components/Heading';
 import { ProfileHeader } from '../../components/ProfileHeader';
 import { ProgressBar } from '../Home/components/ProgressBar';
+import { ActivityContainer } from '../Home/components/ActivityContainer';
 
 export const Profile = ({ navigation }: NavigationProps) => (
   <>
     <Heading
-      title="Profile"
+      title="Perfil"
       onGoBack={() => navigation.goBack()}
       onPressConfig={() => navigation.navigate('Configurations')}
     />
@@ -39,6 +40,9 @@ export const Profile = ({ navigation }: NavigationProps) => (
               <CurrentWorkoutTitle>Braço</CurrentWorkoutTitle>
             </CurrentWorkoutTitleContainer>
           </CurrentWorkoutCard>
+
+          <CardLabel>Sua atividade</CardLabel>
+          <ActivityContainer />
         </Scroll>
     </Container>
   </>
