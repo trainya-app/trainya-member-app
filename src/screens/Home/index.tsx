@@ -140,7 +140,7 @@ export const Home = ({ navigation }: Props) => {
         <HeaderContent>
           {!isLoading ? (
             <Title>
-              {greeting}, {user.name}
+              {greeting}, {user.name.split(' ')[0]}
             </Title>
           ) : (
             <Loading size={48} color={theme.colors.gray[100]} />
@@ -215,7 +215,7 @@ export const Home = ({ navigation }: Props) => {
 
             <CardContainerTitle>Sua atividade</CardContainerTitle>
             <ActivityContainer />
-            
+
             <CardContainerTitle>Aulas Marcadas</CardContainerTitle>
             <Slider data={schedule_classes} />
             <CardContainerTitle>Treinos para fazer em casa</CardContainerTitle>
