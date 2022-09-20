@@ -66,6 +66,7 @@ export const Label = styled.Text`
   color: #ffffff;
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(14)}px;
+  background-color: red;
 `;
 
 export const ProgressText = styled.Text`

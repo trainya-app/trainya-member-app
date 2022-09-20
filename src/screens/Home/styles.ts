@@ -1,4 +1,4 @@
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 

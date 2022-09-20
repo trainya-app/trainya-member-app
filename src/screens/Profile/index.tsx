@@ -1,3 +1,5 @@
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { Dimensions } from 'react-native';
 import { NavigationProps } from '../../types/NavigationProps';
 import {
   Container,
@@ -9,16 +11,16 @@ import {
   CurrentWorkoutTitle,
   WorkoutProgress,
   Label,
-  ProgressText
+  ProgressText,
 } from './styles';
 
 import { Heading } from '../../components/Heading';
 import { ProfileHeader } from '../../components/ProfileHeader';
 import { ProgressBar } from '../Home/components/ProgressBar';
 import { ActivityContainer } from '../Home/components/ActivityContainer';
-import { Slider } from '../../components/Slider';
+import { Slider, SliderProps } from '../../components/Slider';
 
-
+const { width } = Dimensions.get('window');
 
 export const Profile = ({ navigation }: NavigationProps) => {
   const home_workouts: SliderProps[] = [
@@ -53,28 +55,34 @@ export const Profile = ({ navigation }: NavigationProps) => {
       />
 
       <Container>
-        <ProfileHeader onPressChangePhoto={() => navigation.navigate('ChangePhoto')} />
-          <Scroll>
-            <CardLabel>Treino atual</CardLabel>
-            <CurrentWorkoutCard>
-              <CurrentWorkoutImage source={{ uri: 'https://images.unsplash.com/photo-1601113329251-0aebe217bdbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80' }} />
-              <WorkoutProgress>
-                <Label>Progresso</Label>
-                <ProgressText>56%</ProgressText>
-                <ProgressBar progress_percentage={56} size='sm'/>
-              </WorkoutProgress>
-              <CurrentWorkoutTitleContainer>
-                <CurrentWorkoutTitle>Braço</CurrentWorkoutTitle>
-              </CurrentWorkoutTitleContainer>
-            </CurrentWorkoutCard>
+        <ProfileHeader
+          onPressChangePhoto={() => navigation.navigate('ChangePhoto')}
+        />
+        <Scroll>
+          <CardLabel>Treino atual</CardLabel>
+          <CurrentWorkoutCard>
+            <CurrentWorkoutImage
+              source={{
+                uri: 'https://images.unsplash.com/photo-1601113329251-0aebe217bdbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+              }}
+            />
+            <WorkoutProgress>
+              <Label>Progresso</Label>
+              <ProgressText>56%</ProgressText>
+              <ProgressBar progress_percentage={56} size="sm" />
+            </WorkoutProgress>
+            <CurrentWorkoutTitleContainer>
+              <CurrentWorkoutTitle>Braço</CurrentWorkoutTitle>
+            </CurrentWorkoutTitleContainer>
+          </CurrentWorkoutCard>
 
-            <CardLabel>Sua atividade</CardLabel>
-            <ActivityContainer />
+          <CardLabel>Sua atividade</CardLabel>
+          <ActivityContainer />
 
-            <CardLabel>Favoritados</CardLabel>
-            <Slider data={home_workouts}/>
-          </Scroll>
+          <CardLabel>Favoritados</CardLabel>
+          <Slider data={home_workouts} />
+        </Scroll>
       </Container>
     </>
   );
-}
+};
