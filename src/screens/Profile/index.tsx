@@ -58,7 +58,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
 
       <Container>
         <ProfileHeader
-          onPressChangePhoto={() => navigation.navigate('ChangePhoto')}
+          onPressEditInfo={() => navigation.navigate('EditProfile')}
         />
         <Scroll>
           <CardLabel>Treino atual</CardLabel>

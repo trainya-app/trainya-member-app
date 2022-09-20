@@ -27,7 +27,7 @@ export const AccountInfos = ({ navigation }: NavigationProps) => {
       />
       <Container>
         <ProfileHeader
-          onPressChangePhoto={() => navigation.navigate('ChangePhoto')}
+          onPressEditInfo={() => navigation.navigate('EditProfile')}
         />
         <GymLabel>Minha academia:</GymLabel>
         <GymName>Trainya Gym</GymName>

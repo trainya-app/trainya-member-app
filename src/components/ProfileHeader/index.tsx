@@ -13,9 +13,9 @@ import { Button } from '../Button';
 import { AuthContext } from '../../contexts/AuthContext';
 
 interface ProfileHeaderProps {
-  onPressChangePhoto: () => void;
+  onPressEditInfo: () => void;
 }
-export const ProfileHeader = ({ onPressChangePhoto }: ProfileHeaderProps) => {
+export const ProfileHeader = ({ onPressEditInfo }: ProfileHeaderProps) => {
   const { user } = useContext(AuthContext);
   return (
     <Header>
@@ -33,7 +33,7 @@ export const ProfileHeader = ({ onPressChangePhoto }: ProfileHeaderProps) => {
           height={36}
           style={{ marginTop: 12 }}
           fontSize={11}
-          onPress={onPressChangePhoto}
+          onPress={onPressEditInfo}
         />
       </ProfileInfoContainer>
     </Header>

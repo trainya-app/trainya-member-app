@@ -133,33 +133,35 @@ export const AppRoutes = () => {
 
   function getTabBarStyle(route: any) {
     const screen = getFocusedRouteNameFromRoute(route);
-    if(screen ===  'ExercisesList' || screen ===  'EditProfile' || screen === 'Workout') {
-      return 'none'
+    if (
+      screen === 'ExercisesList' ||
+      screen === 'EditProfile' ||
+      screen === 'Workout'
+    ) {
+      return 'none';
     }
 
-    return 'flex'
+    return 'flex';
   }
 
   return (
     <Tab.Navigator
-      screenOptions={(route: any) => (
-        {
-          headerShown: false,
-          tabBarShowLabel: false,
-          tabBarStyle: {
-            display: getTabBarStyle(route.route),
-            borderTopWidth: 0,
-            backgroundColor: '#2176FF',
-            borderRadius: 20,
-            marginHorizontal: 24,
-            position: 'absolute',
-            bottom: 25,
-            elevation: 0,
-            height: height > 700 ? 70 : 60,
-            paddingTop: Platform.OS === 'ios' ? 24 : 0,
-          },
-        }
-      )}
+      screenOptions={(route: any) => ({
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          display: getTabBarStyle(route.route),
+          borderTopWidth: 0,
+          backgroundColor: '#2176FF',
+          borderRadius: 20,
+          marginHorizontal: 24,
+          position: 'absolute',
+          bottom: 25,
+          elevation: 0,
+          height: height > 700 ? 70 : 60,
+          paddingTop: Platform.OS === 'ios' ? 24 : 0,
+        },
+      })}
     >
       <Tab.Screen
         name="HomeStack"
