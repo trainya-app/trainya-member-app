@@ -11,16 +11,18 @@ interface WorkoutCardProps {
   workoutName: string;
   workoutId: string;
   isActive: boolean;
+  onPress: () => void;
 }
 
 export const WorkoutCard = ({
   workoutName,
   workoutId,
   isActive,
+  onPress,
 }: WorkoutCardProps) => {
   const a = 'a';
   return (
-    <Container isActive={isActive}>
+    <Container isActive={isActive} onPress={onPress}>
       <WorkoutSquare>
         <WorkoutSquareText>{workoutId}</WorkoutSquareText>
       </WorkoutSquare>

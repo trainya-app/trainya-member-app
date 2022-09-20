@@ -15,9 +15,10 @@ export const LogoutButtonContainer = styled.TouchableOpacity.attrs({
   width: 40%;
   align-items: center;
   justify-content: center;
-  padding: 8px 0;
+  padding: 8px;
 
   margin-top: 32px;
+  margin-bottom: 2px;
   border-radius: 12px;
   elevation: 1;
 `;

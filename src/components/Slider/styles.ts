@@ -1,6 +1,5 @@
 import { Dimensions } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import Swiper from 'react-native-swiper';
 
 import styled from 'styled-components/native';
 
@@ -15,18 +14,11 @@ export const Container = styled.View`
 `;
 
 export const SlideContainer = styled.View`
-  height: ${RFValue(180)}px;
-  margin-left: -24px;
+  margin-top: 16px;
+  margin-bottom: 32px;
+  height: ${RFValue(150)}px;
   width: ${width}px;
-  margin-bottom: 12px;
-  align-items: center;
-  justify-content: center;
 `;
-
-export const SwiperWrapper = styled(Swiper).attrs({
-  loop: false,
-  overScrollMode: 'never',
-})``;
 
 export const Slide = styled.TouchableOpacity.attrs({
   activeOpacity: 0.7,
@@ -34,7 +26,6 @@ export const Slide = styled.TouchableOpacity.attrs({
   flex: 1;
   justify-content: center;
   align-items: center;
-  border: 24px solid transparent;
 `;
 
 export const SlideImage = styled.Image`

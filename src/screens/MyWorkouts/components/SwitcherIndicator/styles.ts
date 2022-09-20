@@ -7,7 +7,7 @@ interface SwitcherProps {
 }
 
 export const Switcher = styled.View`
-  background-color: ${({ theme }) => theme.colors.blue[500]};
+  background-color: #2176FF;
   height: ${RFValue(36)}px;
   width: 70%;
   border-radius: 999px;
@@ -27,7 +27,7 @@ export const SwitcherButton = styled.TouchableOpacity.attrs({
 `;
 
 export const SwitcherIndicator = styled(MotiView)`
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: #FFFFFF;
   height: ${RFValue(28)}px;
   width: 50%;
   border-radius: 999px;

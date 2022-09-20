@@ -8,7 +8,7 @@ interface PaymentProps {
 export const Container = styled.View`
   height: ${RFValue(190)}px;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.shape.dark};
   border-radius: 24px;
   margin-top: 24px;
   elevation: 2;
@@ -28,13 +28,13 @@ export const Header = styled.View`
 export const Date = styled.Text`
   font-size: ${RFValue(14)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
-  color: ${({ theme }) => theme.colors.shape};
+  color: #FFFFFF;
 `;
 
 export const Label = styled.Text`
   font-size: ${RFValue(14)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
-  color: ${({ theme }) => theme.colors.gray[600]};
+  color: ${({ theme }) => theme.colors.text.default};
 `;
 
 export const PaymentValue = styled.Text<PaymentProps>`

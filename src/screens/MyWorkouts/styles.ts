@@ -7,13 +7,13 @@ const { height } = Dimensions.get('screen');
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.shape.main};
   padding: 0 24px;
   padding-bottom: ${RFValue(96)}px;
 `;
 
 export const Separator = styled.View`
-  background-color: ${({ theme }) => theme.colors.blue[300]};
+  background-color: #99C0FF;
   height: 1px;
   width: 100%;
   margin-bottom: 16px;

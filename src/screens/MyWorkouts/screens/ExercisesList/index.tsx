@@ -1,0 +1,104 @@
+import { useTheme } from 'styled-components';
+import { Button } from '../../../../components/Button';
+import { Heading } from '../../../../components/Heading';
+import { useCustomTheme } from '../../../../hooks/useCustomTheme';
+import { Container, Scroll, ExerciseCard, Image, Wrapper, ExerciseName, ExerciseSets, FinishWorkoutButton, FinishWorkoutButtonText } from './styles';
+
+interface Props {
+    route: {
+        params: {
+            workoutTitle: string;
+        };
+    }
+    navigation: {
+        goBack: () => void;
+        navigate: (screen: string) => void;
+    };
+}
+
+export const ExercisesList = ({ navigation, route }: Props) => {
+    const theme = useTheme();
+    const { colorMode } = useCustomTheme();
+
+    return (
+        <>
+            <Heading 
+                onGoBack={() => navigation.goBack()} 
+                title={route.params.workoutTitle} 
+                onPressConfig={() => false} 
+                hideConfigIcon
+                b={theme.colors.shape.main}
+            />
+            <Container>
+                <Scroll>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                    <ExerciseCard>
+                        <Image source={{uri: 'https://i.imgur.com/5awFGCT.png'}}/>
+                        <Wrapper>
+                            <ExerciseName colorMode={colorMode}>Barra FIxa</ExerciseName>
+                            <ExerciseSets colorMode={colorMode}>3 x 15</ExerciseSets>
+                        </Wrapper>
+                    </ExerciseCard>
+                </Scroll>
+                <Button 
+                    title="Começar Treino"
+                    width={100}
+                    height={60}
+                    fontSize={16}
+                    onPress={() => navigation.navigate('Workout')}
+                />
+                <FinishWorkoutButton>
+                    <FinishWorkoutButtonText>Concluir Treino</FinishWorkoutButtonText>
+                </FinishWorkoutButton>
+            </Container>
+        </>
+);
+}

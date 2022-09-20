@@ -74,6 +74,7 @@ export const DateScroll = () => {
   return (
     <Container>
       <Scroll
+        // eslint-disable-next-line no-shadow
         ref={(ref) => {
           setRef(ref);
         }}

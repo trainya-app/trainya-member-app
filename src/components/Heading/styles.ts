@@ -28,6 +28,7 @@ export const Title = styled.Text<TitleProps>`
   font-size: ${RFValue(24)}px;
   font-family: ${({ theme }) => theme.fonts.extrabold};
   color: ${({ colorMode }) => (colorMode === 'light' ? '#000' : '#FFF')};
+  right: 10px;
 `;
 
 export const IconWrapper = styled.TouchableOpacity.attrs({

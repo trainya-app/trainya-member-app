@@ -33,7 +33,7 @@ export const ToggleThemeButton = () => {
           animate={{ left: theme === 'light' ? '0%' : getSpacingLeft() }}
           transition={{
             type: 'timing',
-            duration: 200,
+            duration: 400,
           }}
         >
           {colorMode === 'light' ? <LightThemeIcon /> : <DarkThemeIcon />}

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 import { Dimensions, Platform, View } from 'react-native';
 import { Home } from '../screens/Home';
@@ -8,6 +9,8 @@ import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
 import { MyWorkouts } from '../screens/MyWorkouts';
 import { AvailableWorkouts } from '../screens/MyWorkouts/screens/AvailableWorkouts';
+import { ExercisesList } from '../screens/MyWorkouts/screens/ExercisesList';
+import { Workout } from '../screens/MyWorkouts/screens/Workout';
 import { Profile } from '../screens/Profile';
 import { Configurations } from '../screens/Configurations';
 import { Favorites } from '../screens/Configurations/Favorites';
@@ -78,7 +81,7 @@ const ProgressStack = () => (
   </Stack.Navigator>
 );
 
-const MyWorkoutsStack = () => (
+const QRCameraStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
@@ -88,8 +91,24 @@ const MyWorkoutsStack = () => (
       animation: 'slide_from_right',
     }}
   >
+    <Stack.Screen name="QRCamera" component={QRCamera} />
+    {ConfigStack()}
+  </Stack.Navigator>
+);
+
+const MyWorkoutsStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      contentStyle: {
+        marginTop: 32,
+      },
+      headerShown: false,
+    }}
+  >
     <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
     <Stack.Screen name="AvailableWorkouts" component={AvailableWorkouts} />
+    <Stack.Screen name="ExercisesList" component={ExercisesList} />
+    <Stack.Screen name="Workout" component={Workout} />
     {ConfigStack()}
   </Stack.Navigator>
 );
@@ -112,12 +131,27 @@ const ProfileStack = () => (
 export const AppRoutes = () => {
   const { height } = Dimensions.get('screen');
 
+  function getTabBarStyle(route: any) {
+    const screen = getFocusedRouteNameFromRoute(route);
+    if (
+      screen === 'ExercisesList' ||
+      screen === 'EditProfile' ||
+      screen === 'Workout'
+    ) {
+      return 'none';
+    }
+
+    return 'flex';
+  }
+
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={(route: any) => ({
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
+          display: getTabBarStyle(route.route),
+          borderTopWidth: 0,
           backgroundColor: '#2176FF',
           borderRadius: 20,
           marginHorizontal: 24,
@@ -127,7 +161,7 @@ export const AppRoutes = () => {
           height: height > 700 ? 70 : 60,
           paddingTop: Platform.OS === 'ios' ? 24 : 0,
         },
-      }}
+      })}
     >
       <Tab.Screen
         name="HomeStack"
@@ -153,8 +187,8 @@ export const AppRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="QRCamera"
-        component={QRCamera}
+        name="QRCameraStack"
+        component={QRCameraStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
