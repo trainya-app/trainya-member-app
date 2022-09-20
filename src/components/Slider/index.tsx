@@ -26,8 +26,10 @@ interface Props {
 
 export const Slider = ({ data, seeMoreAction }: Props) => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const dataSliced = data.slice(0, 4);
 
-  const renderItem = (item: SliderProps, index: number) =>
+
+  const renderItem = (item: SliderProps, index: number) => (
     index <= 2 ? (
       <Slide key={index} onPress={() => console.log(item.title)}>
         <SlideImage source={{ uri: item.url }} />
@@ -36,19 +38,20 @@ export const Slider = ({ data, seeMoreAction }: Props) => {
       </Slide>
     ) : (
       index === 3 && (
-        <Slide key="4" onPress={seeMoreAction}>
-          <SeeMoreSlideContainer>
-            <Title isActive>Ver mais +</Title>
-          </SeeMoreSlideContainer>
-        </Slide>
+      <Slide key="4" onPress={seeMoreAction}>
+        <SeeMoreSlideContainer>
+          <Title isActive>Ver mais +</Title>
+        </SeeMoreSlideContainer>
+      </Slide>
       )
-    );
+    )
+  )
 
   return (
     <Container>
       <SlideContainer>
         <Carousel
-          data={data}
+          data={dataSliced}
           renderItem={({ item, index }) => renderItem(item, index)}
           sliderWidth={width - 48}
           itemWidth={width - 48}
@@ -57,7 +60,7 @@ export const Slider = ({ data, seeMoreAction }: Props) => {
       </SlideContainer>
 
       <Pagination
-        dotsLength={data.length < 4 ? data.length : 4}
+        dotsLength={dataSliced.length}
         activeDotIndex={activeSlide}
         containerStyle={{
           position: 'absolute',

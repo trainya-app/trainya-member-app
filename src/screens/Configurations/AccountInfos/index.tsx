@@ -16,7 +16,6 @@ import { convertHeightNumberToString } from '../../../utils/convertHeightNumberT
 
 export const AccountInfos = ({ navigation }: NavigationProps) => {
   const { user } = useContext(AuthContext);
-  console.log(user);
 
   return (
     <>
