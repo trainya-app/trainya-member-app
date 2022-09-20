@@ -12,6 +12,9 @@ export const Container = styled.View`
 export const Scroll = styled.ScrollView.attrs({
   overScrollMode: 'never',
   showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingBottom: 8,
+  },
 })`
   width: 100%;
 `;
@@ -22,7 +25,7 @@ export const CardLabel = styled.Text`
   font-size: ${RFValue(16)}px;
 `;
 
-export const CurrentWorkoutCard = styled.View`
+export const Card = styled.View`
   height: ${RFValue(154)}px;
   margin-top: 16px;
   background-color: #99c0ff;
@@ -33,12 +36,12 @@ export const CurrentWorkoutCard = styled.View`
   margin-bottom: 40px;
 `;
 
-export const CurrentWorkoutImage = styled.Image`
+export const CardImage = styled.Image`
   width: 50%;
   height: 100%;
 `;
 
-export const CurrentWorkoutTitleContainer = styled.View`
+export const CardTitleContainer = styled.View`
   height: 25%;
   width: 55%;
   background-color: #fff;
@@ -50,13 +53,13 @@ export const CurrentWorkoutTitleContainer = styled.View`
   justify-content: center;
 `;
 
-export const CurrentWorkoutTitle = styled.Text`
+export const CardTitle = styled.Text`
   color: #99c0ff;
   font-size: ${RFValue(20)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
 
-export const WorkoutProgress = styled.View`
+export const CardInfo = styled.View`
   height: 60%;
   width: 50%;
   padding: 0 16px;
@@ -66,12 +69,18 @@ export const Label = styled.Text`
   color: #ffffff;
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(14)}px;
-  background-color: red;
 `;
 
-export const ProgressText = styled.Text`
+export const StrongText = styled.Text`
   color: #ffffff;
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(24)}px;
   margin: 3px 0;
+`;
+
+export const TimeText = styled.Text`
+  color: #ffffff;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(16)}px;
+  margin-top: -4px;
 `;

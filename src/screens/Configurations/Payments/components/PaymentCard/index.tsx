@@ -13,7 +13,7 @@ import {
 interface PaymentCardProps {
   date: string;
   paymentValue: number;
-  paymentStatus: string;
+  paymentStatus: 'paid' | 'pending';
 }
 
 export const PaymentCard = ({
