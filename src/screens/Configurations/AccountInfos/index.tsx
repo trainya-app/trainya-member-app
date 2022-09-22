@@ -35,7 +35,7 @@ export const AccountInfos = ({ navigation }: NavigationProps) => {
           <CardContainer title="E-mail" value={user.email} />
           <CardContainer title="Telefone" value={user.phone} />
           {/* TODO: take the birthdate from the user} */}
-          <CardContainer title="Data de nascimento" value="23/07/1977" />
+          <CardContainer title="Data de nascimento" value={user.birth_date} />
           <BoxDirectionRow>
             <CardContainer
               title="Altura"
