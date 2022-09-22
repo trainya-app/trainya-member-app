@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ToastAndroid } from 'react-native';
 
+import jwt_decode from 'jwt-decode';
 import { api } from '../services/api';
 
 interface Props {
@@ -12,18 +13,29 @@ interface Props {
 export const AuthContext = createContext({} as any);
 
 export const AuthContextProvider = ({ children }: Props) => {
-  const [token, setToken] = useState<string | null>();
-  const [user, setUser] = useState({});
+  const [token, setToken] = useState(false);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     (async () => {
       const storagedToken = await AsyncStorage.getItem('@trainyaapp:token');
       if (storagedToken) {
         setToken(JSON.parse(storagedToken));
-        api.defaults.headers.Authorization = `Bearer ${storagedToken}`;
       }
     })();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        const userDecoded: { id: string } = await jwt_decode(token);
+        const { data } = await api.get(`members/${userDecoded.id}`);
+        setUser(data.member);
+        // eslint-disable-next-line no-empty
+      } catch (error: any) {}
+    })();
+  }, [token]);
 
   function showToast(text: string) {
     ToastAndroid.showWithGravity(text, ToastAndroid.SHORT, ToastAndroid.TOP);
@@ -40,6 +52,7 @@ export const AuthContextProvider = ({ children }: Props) => {
       const { data } = await api.post('auth/members', { email, password });
 
       setToken(data.token);
+
       await AsyncStorage.setItem(
         '@trainyaapp:token',
         JSON.stringify(data.token)
@@ -56,7 +69,7 @@ export const AuthContextProvider = ({ children }: Props) => {
 
   async function logout() {
     await AsyncStorage.clear().then(() => {
-      setToken(null);
+      setToken(false);
     });
   }
 
@@ -66,7 +79,6 @@ export const AuthContextProvider = ({ children }: Props) => {
       value={{
         token,
         user,
-        setUser,
         login,
         logout,
       }}

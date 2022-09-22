@@ -39,23 +39,14 @@ import { api } from '../../services/api';
 import { ActivityContainer } from './components/ActivityContainer';
 
 export const Home = ({ navigation }: Props) => {
-  const { user, setUser, token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    async function loadUserData() {
-      try {
-        const userDecoded: {id: string} = jwt_decode(token);
-        api.defaults.headers.Authorization = `Bearer ${token}`;
-        const { data } = await api.get(`members/${userDecoded.id}`);
-        setUser(data.member);
-        setIsLoading(false);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: any) {
-        console.log(error.response.data);
-      }
+    if (user) {
+      setIsLoading(false);
     }
-    loadUserData();
-  }, []);
+  }, [user]);
 
   const schedule_classes: SliderProps[] = [
     {
