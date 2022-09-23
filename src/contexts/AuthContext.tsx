@@ -13,7 +13,7 @@ interface Props {
 export const AuthContext = createContext({} as any);
 
 export const AuthContextProvider = ({ children }: Props) => {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState('default');
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -21,6 +21,8 @@ export const AuthContextProvider = ({ children }: Props) => {
       const storagedToken = await AsyncStorage.getItem('@trainyaapp:token');
       if (storagedToken) {
         setToken(JSON.parse(storagedToken));
+      } else {
+        setToken('no session');
       }
     })();
   }, []);
@@ -69,7 +71,7 @@ export const AuthContextProvider = ({ children }: Props) => {
 
   async function logout() {
     await AsyncStorage.clear().then(() => {
-      setToken(false);
+      setToken('no session');
     });
   }
 
