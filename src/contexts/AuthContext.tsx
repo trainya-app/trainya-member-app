@@ -72,6 +72,7 @@ export const AuthContextProvider = ({ children }: Props) => {
   async function logout() {
     await AsyncStorage.clear().then(() => {
       setToken('no session');
+      setUser();
     });
   }
 
