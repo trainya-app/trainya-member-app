@@ -22,59 +22,39 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
 
   const theme = useTheme();
 
-  const alphabet = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z',
-  ];
-
   const workouts = [
     {
       id: 1,
       name: 'Braço',
+      exercises: [
+        {
+          title: 'Barra Fixa',
+          comment: 'Cuidado para não bater o queixo na barra',
+          sets: 3,
+          repetitions: 15,
+          duration: 50,
+        },
+      ],
     },
     {
       id: 2,
       name: 'Abdômen',
-    },
-    {
-      id: 3,
-      name: 'Peito',
-    },
-    {
-      id: 4,
-      name: 'Pernas',
-    },
-    {
-      id: 5,
-      name: 'Costas',
-    },
-    {
-      id: 6,
-      name: 'Ombro',
+      exercises: [
+        {
+          title: 'Abdominais',
+          comment: 'Mantenha o abdômen contraído',
+          sets: 5,
+          repetitions: 10,
+          duration: 30,
+        },
+        {
+          title: 'Prancha',
+          comment: 'Mantenha o abdômen contraído',
+          sets: 3,
+          repetitions: 1,
+          duration: 45,
+        },
+      ],
     },
   ];
 
@@ -123,7 +103,12 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
                     workoutName={workout.name}
                     workoutId={workout.id}
                     isActive={i === 0 && true}
-                    onPress={() => navigation.navigate('ExercisesList', { workoutTitle: workout.name })}
+                    onPress={() =>
+                      navigation.navigate('ExercisesList', {
+                        workoutTitle: workout.name,
+                        workoutExercises: workout.exercises,
+                      })
+                    }
                   />
                 ))}
               </Scroll>
@@ -141,7 +126,10 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
             <Slider data={home_workouts} />
 
             <SliderTitle>Aulas</SliderTitle>
-            <Slider data={home_workouts} seeMoreAction={() => navigation.navigate('AvailableWorkouts')}/>
+            <Slider
+              data={home_workouts}
+              seeMoreAction={() => navigation.navigate('AvailableWorkouts')}
+            />
           </Scroll>
         )}
       </Container>

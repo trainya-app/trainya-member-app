@@ -9,7 +9,7 @@ import {
 
 interface WorkoutCardProps {
   workoutName: string;
-  workoutId: string;
+  workoutId: number;
   isActive: boolean;
   onPress: () => void;
 }
