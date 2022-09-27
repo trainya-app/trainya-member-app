@@ -35,7 +35,7 @@ export const Workout = ({ navigation, route }: Props) => {
         hideConfigIcon
       />
       <Container>
-        <WorkoutProgress>0 de 6 concluidos</WorkoutProgress>
+        <WorkoutProgress>{`0 de ${exercises.length} concluídos`}</WorkoutProgress>
 
         <Carousel<Exercises>
           data={exercises}
