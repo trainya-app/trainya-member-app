@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import CheckActiveIcon from '../../../../../../assets/checkicon.svg';
+import PaperIconSVG from '../../../../../../assets/papericon.svg';
 
 interface CheckboxProps {
   isChecked: boolean;
@@ -79,6 +80,13 @@ export const WorkoutName = styled.Text`
   color: ${({ theme }) => theme.colors.blue[500]};
 `;
 
+export const Details = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
 export const Row = styled.View`
   flex-direction: row;
   margin-top: 8px;
@@ -139,4 +147,4 @@ export const PlayContainer = styled.View`
   justify-content: center;
 `;
 
-export const PlayButton = styled.View``;
+export const PaperIcon = styled(PaperIconSVG)``;

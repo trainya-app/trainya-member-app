@@ -10,8 +10,10 @@ import {
   CheckActive,
   WorkoutInfo,
   WorkoutName,
+  Details,
   Row,
   Sets,
+  PaperIcon,
   Reps,
   Label,
   Text,
@@ -43,16 +45,20 @@ export const WorkoutCard = ({ data }: Props) => {
 
       <WorkoutInfo>
         <WorkoutName>{data.exercise.name}</WorkoutName>
-        <Row>
-          <Sets>
-            <Label>Série</Label>
-            <Text>{`${data.sets}x`}</Text>
-          </Sets>
-          <Reps>
-            <Label>Repetições</Label>
-            <Text>{data.repetitions}</Text>
-          </Reps>
-        </Row>
+
+        <Details>
+          <Row>
+            <Sets>
+              <Label>Série</Label>
+              <Text>{`${data.sets}x`}</Text>
+            </Sets>
+            <Reps>
+              <Label>Repetições</Label>
+              <Text>{data.repetitions}</Text>
+            </Reps>
+          </Row>
+          <PaperIcon />
+        </Details>
       </WorkoutInfo>
     </Card>
   );
