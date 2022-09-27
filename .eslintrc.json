@@ -42,7 +42,8 @@
     "react/require-default-props": "off",
     "react/no-unstable-nested-components": "off",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-empty-interface": "off"
+    "@typescript-eslint/no-empty-interface": "off",
+    "class-methods-use-this": "off"
   },
   "settings": {
     "import/resolver": {

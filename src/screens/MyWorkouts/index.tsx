@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { NavigationProps } from '../../types/NavigationProps';
@@ -16,47 +16,20 @@ import {
   SliderTitle,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
+import * as MemberWorkoutsController from '../../services/MemberWorkouts';
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => {
   const [isSwitcherActive, setIsSwitcherActive] = useState(false);
+  const [workouts, setWorkouts] = useState([]);
 
   const theme = useTheme();
 
-  const workouts = [
-    {
-      id: 1,
-      name: 'Braço',
-      exercises: [
-        {
-          title: 'Barra Fixa',
-          comment: 'Cuidado para não bater o queixo na barra',
-          sets: 3,
-          repetitions: 15,
-          duration: 50,
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Abdômen',
-      exercises: [
-        {
-          title: 'Abdominais',
-          comment: 'Mantenha o abdômen contraído',
-          sets: 5,
-          repetitions: 10,
-          duration: 30,
-        },
-        {
-          title: 'Prancha',
-          comment: 'Mantenha o abdômen contraído',
-          sets: 3,
-          repetitions: 1,
-          duration: 45,
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    (async () => {
+      const memberWorkouts = await MemberWorkoutsController.getAll();
+      setWorkouts(memberWorkouts);
+    })();
+  }, []);
 
   const home_workouts: SliderProps[] = [
     {
@@ -97,16 +70,16 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
             <Separator />
             <WorkoutsContainer>
               <Scroll>
-                {workouts.map((workout, i) => (
+                {workouts.map(({ workout }, i) => (
                   <WorkoutCard
                     key={workout.id}
-                    workoutName={workout.name}
-                    workoutId={workout.id}
+                    workoutName={workout.title}
+                    workoutId={i + 1}
                     isActive={i === 0 && true}
                     onPress={() =>
                       navigation.navigate('ExercisesList', {
-                        workoutTitle: workout.name,
-                        workoutExercises: workout.exercises,
+                        workoutTitle: workout.title,
+                        workoutExercises: workout.workoutExercise,
                       })
                     }
                   />

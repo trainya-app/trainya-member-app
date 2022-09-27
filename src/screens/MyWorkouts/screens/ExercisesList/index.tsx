@@ -14,7 +14,7 @@ import {
   FinishWorkoutButtonText,
 } from './styles';
 
-interface Exercises {
+export interface Exercises {
   title: string;
   sets: number;
   repetitions: number;
@@ -31,7 +31,7 @@ interface Props {
   };
   navigation: {
     goBack: () => void;
-    navigate: (screen: string) => void;
+    navigate: (screen: string, params?: object) => void;
   };
 }
 
@@ -39,7 +39,7 @@ export const ExercisesList = ({ navigation, route }: Props) => {
   const theme = useTheme();
   const { colorMode } = useCustomTheme();
 
-  const exercises: Exercises[] = route.params.workoutExercises;
+  const { workoutExercises } = route.params;
 
   return (
     <>
@@ -52,16 +52,16 @@ export const ExercisesList = ({ navigation, route }: Props) => {
       />
       <Container>
         <Scroll>
-          {exercises.map((exercise: Exercises, i: number) => (
-            <ExerciseCard key={i}>
+          {workoutExercises.map((workoutExercise: Exercises) => (
+            <ExerciseCard key={workoutExercise.exercise.name}>
               <Image source={{ uri: 'https://i.imgur.com/5awFGCT.png' }} />
               <Wrapper>
                 <ExerciseName colorMode={colorMode}>
-                  {exercise.title}
+                  {workoutExercise.exercise.name}
                 </ExerciseName>
                 <ExerciseSets
                   colorMode={colorMode}
-                >{`${exercise.sets} x ${exercise.repetitions}`}</ExerciseSets>
+                >{`${workoutExercise.sets} x ${workoutExercise.repetitions}`}</ExerciseSets>
               </Wrapper>
             </ExerciseCard>
           ))}
@@ -73,7 +73,7 @@ export const ExercisesList = ({ navigation, route }: Props) => {
           fontSize={16}
           onPress={() =>
             navigation.navigate('Workout', {
-              workoutExercises: exercises,
+              workoutExercises,
             })
           }
         />
