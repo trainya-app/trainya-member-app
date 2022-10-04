@@ -23,9 +23,10 @@ import { Exercises } from '../../../ExercisesList';
 
 interface Props {
   data: Exercises;
+  toggleModalActive: () => void;
 }
 
-export const WorkoutCard = ({ data }: Props) => {
+export const WorkoutCard = ({ data, toggleModalActive }: Props) => {
   const [finished, setFinished] = useState(false);
 
   return (
@@ -57,7 +58,7 @@ export const WorkoutCard = ({ data }: Props) => {
               <Text>{data.repetitions}</Text>
             </Reps>
           </Row>
-          <PaperIcon />
+          <PaperIcon onPress={() => toggleModalActive()} />
         </Details>
       </WorkoutInfo>
     </Card>

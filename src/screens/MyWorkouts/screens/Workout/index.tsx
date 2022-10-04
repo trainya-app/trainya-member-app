@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { Dimensions } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 import { Heading } from '../../../../components/Heading';
 import { WorkoutCard } from './components/WorkoutCard';
+import { WarningModal } from './components/WarningModal';
 
 import { Exercises } from '../ExercisesList';
 
@@ -22,9 +24,14 @@ interface Props {
 }
 
 export const Workout = ({ navigation, route }: Props) => {
+  const [isModalActive, setIsModalActive] = useState(false);
   const exercises = route.params.workoutExercises;
 
   const { width } = Dimensions.get('window');
+
+  function toggleModalActive() {
+    setIsModalActive(!isModalActive);
+  }
 
   return (
     <>
@@ -39,11 +46,17 @@ export const Workout = ({ navigation, route }: Props) => {
 
         <Carousel<Exercises>
           data={exercises}
-          renderItem={({ item }) => <WorkoutCard data={item} />}
+          renderItem={({ item }) => (
+            <WorkoutCard data={item} toggleModalActive={toggleModalActive} />
+          )}
           sliderWidth={width - 48}
           itemWidth={width - 48}
         />
       </Container>
+      <WarningModal
+        visible={isModalActive}
+        toggleModalActive={toggleModalActive}
+      />
     </>
   );
 };
