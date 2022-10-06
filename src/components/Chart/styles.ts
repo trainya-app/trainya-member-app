@@ -16,6 +16,10 @@ export const Container = styled.View`
   justify-content: center;
 `;
 
+export const ChartContainer = styled.View`
+  width: 90%;
+`;
+
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(16)}px;

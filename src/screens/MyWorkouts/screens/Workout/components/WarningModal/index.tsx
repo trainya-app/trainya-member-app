@@ -12,13 +12,15 @@ import {
 interface WarningModalProps {
   visible: boolean;
   toggleModalActive: () => void;
+  warning: string;
 }
 
 export const WarningModal = ({
   visible,
   toggleModalActive,
+  warning,
 }: WarningModalProps) => (
-  <Modal visible={visible}>
+  <Modal visible={visible} animationType="slide">
     <Background>
       <Container>
         <Top>
@@ -26,8 +28,7 @@ export const WarningModal = ({
           <CloseIcon onPress={() => toggleModalActive()} />
         </Top>
         <Bottom>
-          <WarningText>Cuidado para não bater o queixo na barra</WarningText>
-          <WarningText>Segure na barra com o pulso reto</WarningText>
+          <WarningText>{warning}</WarningText>
         </Bottom>
       </Container>
     </Background>

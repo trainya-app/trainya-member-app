@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
   Container,
+  ChartContainer,
   Title,
   Scroll,
   BarContainer,
@@ -34,18 +35,20 @@ export const Chart = () => {
   return (
     <Container>
       {maxValue !== 0 ? (
-        <Scroll>
-          {chartData.map((item: IChartData) => (
-            <BarContainer key={item.month}>
-              <VerticalBarWrapper>
-                <VerticalBarShadow>
-                  <VerticalBar progress={item.progress} />
-                </VerticalBarShadow>
-              </VerticalBarWrapper>
-              <Label>{`${item.month.slice(0, 3)}.`}</Label>
-            </BarContainer>
-          ))}
-        </Scroll>
+        <ChartContainer>
+          <Scroll>
+            {chartData.map((item: IChartData) => (
+              <BarContainer key={item.month}>
+                <VerticalBarWrapper>
+                  <VerticalBarShadow>
+                    <VerticalBar progress={item.progress} />
+                  </VerticalBarShadow>
+                </VerticalBarWrapper>
+                <Label>{`${item.month.slice(0, 3)}.`}</Label>
+              </BarContainer>
+            ))}
+          </Scroll>
+        </ChartContainer>
       ) : (
         <Title>Não há dados para exibir</Title>
       )}

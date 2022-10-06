@@ -19,18 +19,31 @@ import {
   Text,
 } from './styles';
 
-import { Exercises } from '../../../ExercisesList';
+import { WarningModal } from '../WarningModal';
 
-interface Props {
-  data: Exercises;
-  toggleModalActive: () => void;
+interface IExercises {
+  exercise: {
+    comment: string;
+    name: string;
+  };
+  repetitions: number;
+  sets: number;
 }
 
-export const WorkoutCard = ({ data, toggleModalActive }: Props) => {
+interface IProps {
+  data: IExercises;
+}
+
+export const WorkoutCard = ({ data }: IProps) => {
+  const [isModalActive, setIsModalActive] = useState(false);
   const [finished, setFinished] = useState(false);
 
+  function toggleModalActive() {
+    setIsModalActive(!isModalActive);
+  }
+
   return (
-    <Card key={data.title}>
+    <Card key={data.exercise.name}>
       <Top>
         <WorkoutVideo source={{ uri: 'https://i.imgur.com/b3Gblmw.png' }} />
         <CheckboxContainer>
@@ -61,6 +74,11 @@ export const WorkoutCard = ({ data, toggleModalActive }: Props) => {
           <PaperIcon onPress={() => toggleModalActive()} />
         </Details>
       </WorkoutInfo>
+      <WarningModal
+        visible={isModalActive}
+        toggleModalActive={toggleModalActive}
+        warning={data.exercise.comment}
+      />
     </Card>
   );
 };
