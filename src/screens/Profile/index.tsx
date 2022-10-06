@@ -21,6 +21,7 @@ import { ProgressBar } from '../Home/components/ProgressBar';
 import { ActivityContainer } from '../Home/components/ActivityContainer';
 import { Slider, SliderProps } from '../../components/Slider';
 import { PaymentCard } from '../Configurations/Payments/components/PaymentCard';
+import { Chart } from '../../components/Chart';
 
 const { width } = Dimensions.get('window');
 
@@ -106,6 +107,9 @@ export const Profile = ({ navigation }: NavigationProps) => {
             sliderWidth={width - 48}
             itemWidth={width - 48}
           />
+
+          <CardLabel>Seu progresso</CardLabel>
+          <Chart />
 
           <CardLabel>Pagamentos</CardLabel>
           <PaymentCard
