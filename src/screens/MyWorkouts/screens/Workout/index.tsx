@@ -46,12 +46,8 @@ export const Workout = ({ navigation, route }: Props) => {
 
         <Carousel<Exercises>
           data={exercises}
-          renderItem={({ item, index }) => (
-            <WorkoutCard
-              data={item}
-              index={index}
-              toggleModalActive={toggleModalActive}
-            />
+          renderItem={({ item }: Exercises) => (
+            <WorkoutCard data={item} toggleModalActive={toggleModalActive} />
           )}
           sliderWidth={width - 48}
           itemWidth={width - 48}

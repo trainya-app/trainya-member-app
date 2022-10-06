@@ -1,8 +1,14 @@
 import { Heading } from '../../components/Heading';
+import { NavigationProps } from '../../types/NavigationProps';
 import { Container, Image } from './styles';
 
-export const Progress = () => (
-  <Container>
-    <Image source={{ uri: 'https://www.w3schools.com/w3css/img_lights.jpg' }} />
-  </Container>
+export const Progress = ({ navigation }: NavigationProps) => (
+  <>
+    <Heading
+      title="Meu Progresso"
+      onGoBack={() => navigation.goBack()}
+      onPressConfig={() => navigation.navigate('Configurations')}
+    />
+    <Container />
+  </>
 );
