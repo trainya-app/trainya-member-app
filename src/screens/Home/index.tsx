@@ -126,7 +126,9 @@ export const Home = ({ navigation }: Props) => {
     <Container>
       <Header>
         <HeaderImage source={{ uri: image_url }} />
-        <NotificationIcon />
+        <NotificationIcon
+          onPress={() => navigation.navigate('Notifications')}
+        />
         <ConfigIcon onPress={() => navigation.navigate('Configurations')} />
         <HeaderContent>
           {!isLoading ? (

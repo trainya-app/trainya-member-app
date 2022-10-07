@@ -31,6 +31,7 @@ import QRIcon from '../assets/qr_icon.svg';
 import WorkoutsIcon from '../assets/halter_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
 import { ScheduleClass } from '../screens/MyWorkouts/screens/ScheduleClass';
+import { Notifications } from '../screens/Notifications';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -59,10 +60,10 @@ const HomeStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="Notifications" component={Notifications} />
     {ConfigStack()}
   </Stack.Navigator>
 );
@@ -74,7 +75,6 @@ const ProgressStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="Home" component={Progress} />
@@ -89,7 +89,6 @@ const QRCameraStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="QRCamera" component={QRCamera} />
@@ -122,7 +121,6 @@ const ProfileStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="Profile" component={Profile} />
