@@ -33,7 +33,7 @@ export const Chart = () => {
 
   return (
     <Container>
-      {maxValue !== 0 ? (
+      {chartData.length !== 0 ? (
         <ChartContainer>
           <Scroll>
             {chartData.map((item: IChartData) => (
