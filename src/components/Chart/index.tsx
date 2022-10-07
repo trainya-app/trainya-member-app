@@ -27,10 +27,6 @@ export const Chart = () => {
     })();
   }, []);
 
-  const maxValue = Math.max(
-    ...chartData.map((item: IChartData) => item.progress)
-  );
-
   return (
     <Container>
       {chartData.length !== 0 ? (

@@ -12,6 +12,8 @@ import {
   Container,
   Separator,
   WorkoutsContainer,
+  WarningContainer,
+  WarningText,
   Scroll,
   SliderTitle,
 } from './styles';
@@ -78,24 +80,33 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
           <>
             <DateScroll />
             <Separator />
-            <WorkoutsContainer>
-              <Scroll>
-                {workouts.map(({ workout }, i) => (
-                  <WorkoutCard
-                    key={workout.id}
-                    workoutName={workout.title}
-                    workoutId={i + 1}
-                    isActive={i === 0 && true}
-                    onPress={() =>
-                      navigation.navigate('ExercisesList', {
-                        workoutTitle: workout.title,
-                        workoutExercises: workout.workoutExercise,
-                      })
-                    }
-                  />
-                ))}
-              </Scroll>
-            </WorkoutsContainer>
+            {workouts.length !== 0 ? (
+              <WorkoutsContainer>
+                <Scroll>
+                  {workouts.map(({ workout }, i) => (
+                    <WorkoutCard
+                      key={workout.id}
+                      workoutName={workout.title}
+                      workoutId={i + 1}
+                      isActive={i === 0 && true}
+                      onPress={() =>
+                        navigation.navigate('ExercisesList', {
+                          workoutTitle: workout.title,
+                          workoutExercises: workout.workoutExercise,
+                        })
+                      }
+                    />
+                  ))}
+                </Scroll>
+              </WorkoutsContainer>
+            ) : (
+              <WarningContainer>
+                <WarningText>
+                  Não há treinos para exibir, tente novamente mais tarde ou
+                  entre em contato com a sua academia
+                </WarningText>
+              </WarningContainer>
+            )}
           </>
         ) : (
           <Scroll>
