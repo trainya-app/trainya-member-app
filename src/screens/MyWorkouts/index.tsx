@@ -16,7 +16,7 @@ import {
   SliderTitle,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
-import * as MemberWorkoutsController from '../../services/MemberWorkouts';
+import MembersService from '../../services/MembersService';
 import { IExercises } from './screens/Workout/components/WorkoutCard';
 
 interface IWorkouts {
@@ -36,7 +36,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
 
   useEffect(() => {
     (async () => {
-      const memberWorkouts = await MemberWorkoutsController.getAll();
+      const memberWorkouts = await MembersService.getAllMemberWorkouts();
       setWorkouts(memberWorkouts);
     })();
   }, []);

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import MembersService from '../../services/MembersService';
 import {
   Container,
   ChartContainer,
@@ -11,8 +12,6 @@ import {
   Label,
 } from './styles';
 
-import * as MemberProgresses from '../../services/MemberProgresses';
-
 interface IChartData {
   month: string;
   progress: number;
@@ -23,7 +22,7 @@ export const Chart = () => {
 
   useEffect(() => {
     (async () => {
-      const data = await MemberProgresses.getMonthMemberProgresses();
+      const data = await MembersService.getMonthMemberProgresses();
       setChartData(data);
     })();
   }, []);

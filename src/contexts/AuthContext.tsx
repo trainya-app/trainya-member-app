@@ -34,6 +34,7 @@ export const AuthContextProvider = ({ children }: Props) => {
         const userDecoded: { id: string } = await jwt_decode(token);
         const { data } = await api.get(`members/${userDecoded.id}`);
         setUser(data.member);
+
         // eslint-disable-next-line no-empty
       } catch (error: any) {}
     })();
