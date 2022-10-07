@@ -30,7 +30,7 @@ export const AccountInfos = ({ navigation }: NavigationProps) => {
           onPressEditInfo={() => navigation.navigate('EditProfile')}
         />
         <GymLabel>Minha academia:</GymLabel>
-        <GymName>Trainya Gym</GymName>
+        <GymName>{user.gym.name}</GymName>
 
         <Scroll>
           <CardContainer title="E-mail" value={user.email} />

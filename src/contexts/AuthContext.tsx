@@ -4,6 +4,7 @@ import { ToastAndroid } from 'react-native';
 
 import jwt_decode from 'jwt-decode';
 import { api } from '../services/api';
+import MembersService from '../services/MembersService';
 
 interface Props {
   children: ReactNode;
@@ -33,7 +34,9 @@ export const AuthContextProvider = ({ children }: Props) => {
         api.defaults.headers.Authorization = `Bearer ${token}`;
         const userDecoded: { id: string } = await jwt_decode(token);
         const { data } = await api.get(`members/${userDecoded.id}`);
-        setUser(data.member);
+        const { gym } = await MembersService.getGymByMemberId();
+
+        setUser({ ...data.member, ...gym });
 
         // eslint-disable-next-line no-empty
       } catch (error: any) {}
