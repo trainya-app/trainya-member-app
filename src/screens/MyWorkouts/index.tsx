@@ -20,9 +20,12 @@ import * as MemberWorkoutsController from '../../services/MemberWorkouts';
 import { IExercises } from './screens/Workout/components/WorkoutCard';
 
 interface IWorkouts {
-  id: number;
-  title: string;
-  workoutExercise: IExercises[];
+  workout: {
+    duration: string;
+    id: number;
+    title: string;
+    workoutExercise: IExercises[];
+  };
 }
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => {

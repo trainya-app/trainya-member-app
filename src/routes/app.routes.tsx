@@ -30,6 +30,7 @@ import ProgressIcon from '../assets/progress_icon.svg';
 import QRIcon from '../assets/qr_icon.svg';
 import WorkoutsIcon from '../assets/halter_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
+import { ScheduleClass } from '../screens/MyWorkouts/screens/ScheduleClass';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -109,6 +110,7 @@ const MyWorkoutsStack = () => (
     <Stack.Screen name="AvailableClasses" component={AvailableClasses} />
     <Stack.Screen name="ExercisesList" component={ExercisesList} />
     <Stack.Screen name="Workout" component={Workout} />
+    <Stack.Screen name="ScheduleClass" component={ScheduleClass} />
     {ConfigStack()}
   </Stack.Navigator>
 );
