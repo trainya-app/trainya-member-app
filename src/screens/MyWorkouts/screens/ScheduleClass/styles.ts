@@ -26,15 +26,24 @@ export const ClassTitleContainer = styled.View`
   background-color: ${({ theme }) => theme.colors.blue[100]};
   position: absolute;
   align-self: center;
-  bottom: -26px;
-  padding: 12px 56px;
+  bottom: -20px;
+  padding: 8px 56px;
   border-radius: 16px;
 `;
 
 export const ClassTitle = styled.Text`
   color: ${({ theme }) => theme.colors.blue[500]};
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(20)}px;
+  font-size: ${RFValue(16)}px;
+`;
+
+export const DetailsContainer = styled.View`
+  padding: 24px 0;
+`;
+
+export const Row = styled.View`
+  flex-direction: row;
+  margin-bottom: 24px;
 `;
 
 export const Bottom = styled.View`

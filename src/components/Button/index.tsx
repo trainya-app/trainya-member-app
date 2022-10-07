@@ -1,3 +1,4 @@
+import { ViewProps } from 'react-native';
 import { Container, TextButton } from './styles';
 
 interface ButtonProps {
@@ -6,7 +7,6 @@ interface ButtonProps {
   isRounded?: boolean;
   width: number;
   height: number;
-  style?: object;
   fontSize: number;
 }
 
@@ -16,8 +16,8 @@ export const Button = ({
   isRounded,
   width,
   height,
-  style,
   fontSize,
+  ...rest
 }: ButtonProps) => (
   <Container
     onPress={onPress}
@@ -25,7 +25,7 @@ export const Button = ({
     isRounded={isRounded ? true : false}
     width={width}
     height={height}
-    style={style}
+    {...rest}
   >
     <TextButton fontSize={fontSize}>{title}</TextButton>
   </Container>

@@ -9,8 +9,12 @@ import {
   ClassImage,
   ClassTitleContainer,
   ClassTitle,
+  DetailsContainer,
+  Row,
   Bottom,
 } from './styles';
+
+import { Details } from './components/Details';
 
 export function ScheduleClass({ navigation }: NavigationProps) {
   return (
@@ -29,6 +33,31 @@ export function ScheduleClass({ navigation }: NavigationProps) {
             </ClassTitleContainer>
             <FavoriteIcon />
           </Top>
+          <Button
+            fontSize={16}
+            height={32}
+            title="Horários Disp."
+            width={80}
+            style={{ marginTop: 32, alignSelf: 'center' }}
+          />
+          <DetailsContainer>
+            <Row>
+              <Details title="Segunda-feira" detail="26/04" />
+              <Details title="Horário" detail="12:00" />
+            </Row>
+            <Row>
+              <Details title="Instrutor" detail="André" />
+              <Details title="Alunos" detail="5 - 10" />
+            </Row>
+            <Button
+              fontSize={20}
+              height={40}
+              title="Inscrever-se"
+              width={80}
+              isRounded
+              style={{ alignSelf: 'center' }}
+            />
+          </DetailsContainer>
         </ClassContainer>
         <Bottom>
           <Button fontSize={12} height={32} title="Anterior" width={40} />
