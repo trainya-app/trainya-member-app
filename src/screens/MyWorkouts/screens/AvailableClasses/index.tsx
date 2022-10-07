@@ -3,7 +3,7 @@ import { NavigationProps } from '../../../../types/NavigationProps';
 import { Card } from './components/Card';
 import { Container, Scroll } from './styles';
 
-export const AvailableWorkouts = ({ navigation }: NavigationProps) => {
+export const AvailableClasses = ({ navigation }: NavigationProps) => {
   console.log('teste');
   return (
     <>

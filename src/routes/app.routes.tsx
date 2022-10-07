@@ -8,7 +8,7 @@ import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
 import { MyWorkouts } from '../screens/MyWorkouts';
-import { AvailableWorkouts } from '../screens/MyWorkouts/screens/AvailableWorkouts';
+import { AvailableClasses } from '../screens/MyWorkouts/screens/AvailableClasses';
 import { ExercisesList } from '../screens/MyWorkouts/screens/ExercisesList';
 import { Workout } from '../screens/MyWorkouts/screens/Workout';
 import { Profile } from '../screens/Profile';
@@ -31,8 +31,8 @@ import QRIcon from '../assets/qr_icon.svg';
 import WorkoutsIcon from '../assets/halter_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
 
-const Tab: any = createBottomTabNavigator();
-const Stack: any = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const ConfigStack = () => (
   <>
@@ -106,7 +106,7 @@ const MyWorkoutsStack = () => (
     }}
   >
     <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
-    <Stack.Screen name="AvailableWorkouts" component={AvailableWorkouts} />
+    <Stack.Screen name="AvailableClasses" component={AvailableClasses} />
     <Stack.Screen name="ExercisesList" component={ExercisesList} />
     <Stack.Screen name="Workout" component={Workout} />
     {ConfigStack()}

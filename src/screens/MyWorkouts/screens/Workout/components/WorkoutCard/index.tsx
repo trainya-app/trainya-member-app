@@ -21,7 +21,7 @@ import {
 
 import { WarningModal } from '../WarningModal';
 
-interface IExercises {
+export interface IExercises {
   exercise: {
     comment: string;
     name: string;

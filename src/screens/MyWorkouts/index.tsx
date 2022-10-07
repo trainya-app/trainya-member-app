@@ -17,10 +17,17 @@ import {
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 import * as MemberWorkoutsController from '../../services/MemberWorkouts';
+import { IExercises } from './screens/Workout/components/WorkoutCard';
+
+interface IWorkouts {
+  id: number;
+  title: string;
+  workoutExercise: IExercises[];
+}
 
 export const MyWorkouts = ({ navigation }: NavigationProps) => {
   const [isSwitcherActive, setIsSwitcherActive] = useState(false);
-  const [workouts, setWorkouts] = useState([]);
+  const [workouts, setWorkouts] = useState<IWorkouts[]>([]);
 
   const theme = useTheme();
 
@@ -101,7 +108,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
             <SliderTitle>Aulas</SliderTitle>
             <Slider
               data={home_workouts}
-              seeMoreAction={() => navigation.navigate('AvailableWorkouts')}
+              seeMoreAction={() => navigation.navigate('AvailableClasses')}
             />
           </Scroll>
         )}

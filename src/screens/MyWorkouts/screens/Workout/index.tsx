@@ -3,10 +3,8 @@ import { Dimensions } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 import { Heading } from '../../../../components/Heading';
-import { WorkoutCard } from './components/WorkoutCard';
+import { IExercises, WorkoutCard } from './components/WorkoutCard';
 import { WarningModal } from './components/WarningModal';
-
-import { Exercises } from '../ExercisesList';
 
 import { Container, WorkoutProgress } from './styles';
 
@@ -14,7 +12,7 @@ interface Props {
   route: {
     params: {
       workoutTitle: string;
-      workoutExercises: Exercises[];
+      workoutExercises: IExercises[];
     };
   };
   navigation: {
@@ -24,14 +22,9 @@ interface Props {
 }
 
 export const Workout = ({ navigation, route }: Props) => {
-  const [isModalActive, setIsModalActive] = useState(false);
   const exercises = route.params.workoutExercises;
 
   const { width } = Dimensions.get('window');
-
-  function toggleModalActive() {
-    setIsModalActive(!isModalActive);
-  }
 
   return (
     <>
@@ -44,11 +37,9 @@ export const Workout = ({ navigation, route }: Props) => {
       <Container>
         <WorkoutProgress>{`0 de ${exercises.length} concluídos`}</WorkoutProgress>
 
-        <Carousel<Exercises>
+        <Carousel
           data={exercises}
-          renderItem={({ item }: Exercises) => (
-            <WorkoutCard data={item} toggleModalActive={toggleModalActive} />
-          )}
+          renderItem={({ item }) => <WorkoutCard data={item} />}
           sliderWidth={width - 48}
           itemWidth={width - 48}
         />
