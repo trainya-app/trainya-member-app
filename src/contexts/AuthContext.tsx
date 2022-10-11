@@ -6,6 +6,28 @@ import jwt_decode from 'jwt-decode';
 import { api } from '../services/api';
 import MembersService from '../services/MembersService';
 
+interface IUser {
+  id: number;
+  adress_number: string;
+  at_gym: boolean;
+  avatar_url: string;
+  birth_date: string;
+  city: string;
+  email: string;
+  gym: {
+    name: string;
+  };
+  gym_id: string;
+  height: number;
+  weight: number;
+  name: string;
+  phone: string;
+  state: string;
+  street: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 interface Props {
   children: ReactNode;
 }
@@ -15,7 +37,7 @@ export const AuthContext = createContext({} as any);
 
 export const AuthContextProvider = ({ children }: Props) => {
   const [token, setToken] = useState('default');
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<IUser>();
 
   useEffect(() => {
     (async () => {
@@ -36,9 +58,10 @@ export const AuthContextProvider = ({ children }: Props) => {
         const { data } = await api.get(`members/${userDecoded.id}`);
         const { gym } = await MembersService.getGymByMemberId();
 
-        setUser({ ...data.member, ...gym });
+        const userGym = { gym: gym.gym.name, gymId: gym.gym_id };
+        setUser({ ...data.member, ...userGym });
 
-        // eslint-disable-next-line no-empty
+        // eslint-disable-next-line no-empty, @typescript-eslint/no-explicit-any
       } catch (error: any) {}
     })();
   }, [token]);
@@ -51,7 +74,7 @@ export const AuthContextProvider = ({ children }: Props) => {
     email,
     password,
   }: {
-    email: string;
+    email: string | undefined;
     password: string;
   }) {
     try {
@@ -80,6 +103,27 @@ export const AuthContextProvider = ({ children }: Props) => {
     });
   }
 
+  async function updatePassword(
+    password: string,
+    firstNewPassword: string,
+    secondNewPassword: string
+  ) {
+    try {
+      await api.post('auth/members', {
+        email: user?.email,
+        password,
+      });
+
+      const { data } = await api.put(`members/password/${user?.id}`, {
+        firstNewPassword,
+        secondNewPassword,
+      });
+      showToast(data.message);
+    } catch (error: any) {
+      showToast(error.response.data.message);
+    }
+  }
+
   return (
     <AuthContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -88,6 +132,7 @@ export const AuthContextProvider = ({ children }: Props) => {
         user,
         login,
         logout,
+        updatePassword,
       }}
     >
       {children}
