@@ -19,7 +19,7 @@ export const PrivacyPolicy = ({ navigation }: NavigationProps) => {
     (async () => {
       try {
         const { data } = await api.get('privacy');
-        console.log(data);
+        setPrivacyPolicy(data.privacyPolicies.content);
       } catch (error: any) {
         console.log(error.response.data.message);
       }
