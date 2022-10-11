@@ -9,6 +9,14 @@ export const Container = styled.View`
   padding: 0 24px;
 `;
 
+export const Scroll = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingBottom: 32,
+  },
+  showsVerticalScrollIndicator: false,
+  overScrollMode: 'never',
+})``;
+
 export const ProfileImageContainer = styled.View`
   width: ${RFValue(100)}px;
   height: ${RFValue(100)}px;
