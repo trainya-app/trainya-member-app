@@ -13,6 +13,8 @@ export const Notifications = ({ navigation }: NavigationProps) => (
 
     <Container>
       <NotificationCard />
+      <NotificationCard />
+      <NotificationCard />
     </Container>
   </>
 );

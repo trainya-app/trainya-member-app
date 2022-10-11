@@ -8,11 +8,14 @@ export const Container = styled.View`
   border-radius: 24px;
   overflow: hidden;
   flex-direction: row;
+  margin-bottom: 16px;
 `;
 
 export const IconContainer = styled.View`
   background-color: #fff;
   width: 40%;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const NotificationTextContainer = styled.View`
