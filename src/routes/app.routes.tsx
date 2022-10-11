@@ -136,7 +136,8 @@ export const AppRoutes = () => {
     if (
       screen === 'ExercisesList' ||
       screen === 'EditProfile' ||
-      screen === 'Workout'
+      screen === 'Workout' ||
+      screen === 'ChangePassword'
     ) {
       return 'none';
     }
