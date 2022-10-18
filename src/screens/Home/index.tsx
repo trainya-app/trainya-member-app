@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
-import jwt_decode from 'jwt-decode';
 import {
   Container,
   Header,
@@ -35,7 +34,6 @@ import { SliderProps, Slider } from '../../components/Slider';
 import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
 import { AuthContext } from '../../contexts/AuthContext';
-import { api } from '../../services/api';
 import { ActivityContainer } from './components/ActivityContainer';
 
 export const Home = ({ navigation }: Props) => {

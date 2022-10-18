@@ -19,7 +19,8 @@ export const Button = ({
   fontSize,
   ...rest
 }: ButtonProps) => (
-  <Container<JSX.Element<ButtonProps>>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  <Container<ButtonProps | any>
     onPress={onPress}
     activeOpacity={0.7}
     isRounded={isRounded ? true : false}
