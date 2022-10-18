@@ -21,7 +21,7 @@ export const GoalContainerTitle = styled.Text`
 
 export const ProgressBarLabel = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(12)}px;
+  font-size: ${RFValue(10)}px;
   color: ${({ theme }) => theme.colors.blue[500]};
   margin: 8px 0;
 `;
