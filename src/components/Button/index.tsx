@@ -1,7 +1,7 @@
-import { ViewProps } from 'react-native';
+import { TouchableOpacityProps } from 'react-native';
 import { Container, TextButton } from './styles';
 
-interface ButtonProps {
+interface ButtonProps extends TouchableOpacityProps {
   onPress?: () => void;
   title: string;
   isRounded?: boolean;
@@ -19,7 +19,7 @@ export const Button = ({
   fontSize,
   ...rest
 }: ButtonProps) => (
-  <Container
+  <Container<JSX.Element<ButtonProps>>
     onPress={onPress}
     activeOpacity={0.7}
     isRounded={isRounded ? true : false}
