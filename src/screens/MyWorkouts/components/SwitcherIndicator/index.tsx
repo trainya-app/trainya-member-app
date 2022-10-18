@@ -7,10 +7,16 @@ import {
 } from './styles';
 
 interface ScreenSwitcherProps {
+  firstName: string;
+  secondName: string;
   toggleIsActive: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ScreenSwitcher = ({ toggleIsActive }: ScreenSwitcherProps) => {
+export const ScreenSwitcher = ({
+  firstName,
+  secondName,
+  toggleIsActive,
+}: ScreenSwitcherProps) => {
   // if active, free workouts is showing, else, workouts plan is showing
   const [isActive, setIsActive] = useState(false);
 
@@ -27,10 +33,10 @@ export const ScreenSwitcher = ({ toggleIsActive }: ScreenSwitcherProps) => {
   return (
     <Switcher>
       <SwitcherButton onPress={toggleWorkoutPlanScreen}>
-        <SwitcherText isBlack={!isActive}>Plano de treino</SwitcherText>
+        <SwitcherText isBlack={!isActive}>{firstName}</SwitcherText>
       </SwitcherButton>
       <SwitcherButton onPress={toggleFreeWorkoutsScreen}>
-        <SwitcherText isBlack={isActive}>Treinos livres</SwitcherText>
+        <SwitcherText isBlack={isActive}>{secondName}</SwitcherText>
       </SwitcherButton>
       <SwitcherIndicator
         animate={{ left: isActive ? '53%' : '2%' }}

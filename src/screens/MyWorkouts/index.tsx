@@ -75,7 +75,11 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
         onPressConfig={() => navigation.navigate('Configurations')}
       />
       <Container>
-        <ScreenSwitcher toggleIsActive={setIsSwitcherActive} />
+        <ScreenSwitcher
+          firstName="Plano de treino"
+          secondName="Treinos Livres"
+          toggleIsActive={setIsSwitcherActive}
+        />
         {!isSwitcherActive ? (
           <>
             <DateScroll />

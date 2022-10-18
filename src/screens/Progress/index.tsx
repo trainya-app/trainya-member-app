@@ -19,7 +19,7 @@ export const Progress = ({ navigation }: NavigationProps) => (
       onPressConfig={() => navigation.navigate('Configurations')}
     />
     <Container>
-      <ScreenSwitcher />
+      <ScreenSwitcher firstName="Fotos" secondName="Dados" />
       <Chart />
       <GoalsContainer>
         <GoalContainerTitle>Metas</GoalContainerTitle>
