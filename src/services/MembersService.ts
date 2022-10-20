@@ -24,6 +24,11 @@ class MembersService {
     const { data } = await api.get('/gyms-member');
     return data;
   }
+
+  async getMemberScheduledClasses() {
+    const { data } = await api.get('/member-classes');
+    return data.classes;
+  }
 }
 
 export default new MembersService();
