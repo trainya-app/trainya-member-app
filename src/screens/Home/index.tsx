@@ -179,6 +179,7 @@ export const Home = ({ navigation }: Props) => {
               height={40}
               style={{ marginTop: 24, marginBottom: 24 }}
               fontSize={13}
+              onPress={() => navigation.navigate('MyWorkoutsStack')}
             />
 
             <CardContainer>
