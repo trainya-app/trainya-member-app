@@ -10,15 +10,17 @@ interface ScreenSwitcherProps {
   firstName: string;
   secondName: string;
   toggleIsActive: Dispatch<SetStateAction<boolean>>;
+  isAlreadyActive: boolean;
 }
 
 export const ScreenSwitcher = ({
   firstName,
   secondName,
   toggleIsActive,
+  isAlreadyActive,
 }: ScreenSwitcherProps) => {
   // if active, free workouts is showing, else, workouts plan is showing
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(isAlreadyActive);
 
   function toggleWorkoutPlanScreen() {
     setIsActive(false);

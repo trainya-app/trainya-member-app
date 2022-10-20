@@ -143,6 +143,11 @@ export const Home = ({ navigation }: Props) => {
             height={40}
             style={{ marginTop: 24 }}
             fontSize={16}
+            onPress={() =>
+              navigation.navigate('MyWorkoutsStack', {
+                screen: 'AvailableWorkouts',
+              })
+            }
           />
         </HeaderContent>
       </Header>
@@ -179,7 +184,11 @@ export const Home = ({ navigation }: Props) => {
               height={40}
               style={{ marginTop: 24, marginBottom: 24 }}
               fontSize={13}
-              onPress={() => navigation.navigate('MyWorkoutsStack')}
+              onPress={() =>
+                navigation.navigate('MyWorkoutsStack', {
+                  screen: 'WorkoutsPlans',
+                })
+              }
             />
 
             <CardContainer>

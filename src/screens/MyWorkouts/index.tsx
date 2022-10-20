@@ -30,8 +30,10 @@ interface IWorkouts {
   };
 }
 
-export const MyWorkouts = ({ navigation }: NavigationProps) => {
-  const [isSwitcherActive, setIsSwitcherActive] = useState(false);
+export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
+  const [isSwitcherActive, setIsSwitcherActive] = useState(
+    route.params.screen === 'AvailableWorkouts' ? true : false
+  );
   const [workouts, setWorkouts] = useState<IWorkouts[]>([]);
 
   const theme = useTheme();
@@ -79,6 +81,7 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
           firstName="Plano de treino"
           secondName="Treinos Livres"
           toggleIsActive={setIsSwitcherActive}
+          isAlreadyActive={isSwitcherActive}
         />
         {!isSwitcherActive ? (
           <>

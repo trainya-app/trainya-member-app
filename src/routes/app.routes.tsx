@@ -96,7 +96,7 @@ const QRCameraStack = () => (
   </Stack.Navigator>
 );
 
-const MyWorkoutsStack = () => (
+const MyWorkoutsStack = ({ route }) => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
@@ -105,7 +105,11 @@ const MyWorkoutsStack = () => (
       headerShown: false,
     }}
   >
-    <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
+    <Stack.Screen
+      name="MyWorkouts"
+      initialParams={{ screen: route.params.screen }}
+      component={MyWorkouts}
+    />
     <Stack.Screen name="AvailableClasses" component={AvailableClasses} />
     <Stack.Screen name="ExercisesList" component={ExercisesList} />
     <Stack.Screen name="Workout" component={Workout} />
@@ -210,7 +214,9 @@ export const AppRoutes = () => {
       <Tab.Screen
         name="MyWorkoutsStack"
         component={MyWorkoutsStack}
+        initialParams={{ screen: 'WorkoutsPlans' }}
         options={{
+          unmountOnBlur: true,
           tabBarIcon: ({ focused }) => (
             <View style={{ marginLeft: 16 }}>
               <WorkoutsIcon />
