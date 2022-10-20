@@ -1,12 +1,35 @@
+import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  align-items: center;
-  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.blue[100]};
+  padding: 0 24px;
+  padding-bottom: ${RFValue(96)}px;
 `;
 
-export const Image = styled.Image`
-  width: 100px;
-  height: 100px;
+export const GoalsContainer = styled.View`
+  flex: 1;
+`;
+
+export const GoalContainerTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(20)}px;
+  color: ${({ theme }) => theme.colors.blue[500]};
+  margin-bottom: 8px;
+`;
+
+export const ProgressBarLabel = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(10)}px;
+  color: ${({ theme }) => theme.colors.blue[500]};
+  margin: 8px 0;
+`;
+
+export const ProgressBarIndicator = styled.Text`
+  position: absolute;
+  right: 8px;
+  font-family: ${({ theme }) => theme.fonts.extrabold};
+  font-size: ${RFValue(14)}px;
+  color: #fff;
 `;

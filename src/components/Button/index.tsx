@@ -1,12 +1,12 @@
+import { TouchableOpacityProps } from 'react-native';
 import { Container, TextButton } from './styles';
 
-interface ButtonProps {
+interface ButtonProps extends TouchableOpacityProps {
   onPress?: () => void;
   title: string;
   isRounded?: boolean;
   width: number;
   height: number;
-  style?: object;
   fontSize: number;
 }
 
@@ -16,16 +16,17 @@ export const Button = ({
   isRounded,
   width,
   height,
-  style,
   fontSize,
+  ...rest
 }: ButtonProps) => (
-  <Container
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  <Container<ButtonProps | any>
     onPress={onPress}
     activeOpacity={0.7}
     isRounded={isRounded ? true : false}
     width={width}
     height={height}
-    style={style}
+    {...rest}
   >
     <TextButton fontSize={fontSize}>{title}</TextButton>
   </Container>

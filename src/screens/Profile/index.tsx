@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { Dimensions } from 'react-native';
 import { NavigationProps } from '../../types/NavigationProps';
@@ -21,10 +22,21 @@ import { ProgressBar } from '../Home/components/ProgressBar';
 import { ActivityContainer } from '../Home/components/ActivityContainer';
 import { Slider, SliderProps } from '../../components/Slider';
 import { PaymentCard } from '../Configurations/Payments/components/PaymentCard';
+import { Chart } from '../../components/Chart';
+import MembersService from '../../services/MembersService';
 
 const { width } = Dimensions.get('window');
 
 export const Profile = ({ navigation }: NavigationProps) => {
+  const [memberClasses, setMemberClasses] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const data = await MembersService.getMemberScheduledClasses();
+      setMemberClasses(data);
+    })();
+  }, []);
+
   const home_workouts: SliderProps[] = [
     {
       title: 'Cardio',
@@ -77,36 +89,44 @@ export const Profile = ({ navigation }: NavigationProps) => {
               <CardTitle>Braço</CardTitle>
             </CardTitleContainer>
           </Card>
-
           <CardLabel>Sua atividade</CardLabel>
           <ActivityContainer />
 
           <CardLabel>Favoritados</CardLabel>
           <Slider data={home_workouts} />
 
-          <CardLabel>Suas aulas marcadas</CardLabel>
-          <Carousel
-            data={home_workouts}
-            renderItem={({ item, index }) => (
-              <Card>
-                <CardImage
-                  source={{ uri: item.url }}
-                  style={{ opacity: 0.9 }}
-                />
-                <CardInfo>
-                  <Label>Segunda-feira</Label>
-                  <StrongText>26/04</StrongText>
-                  <TimeText>ás 16:00</TimeText>
-                </CardInfo>
-                <CardTitleContainer>
-                  <CardTitle>{item.title}</CardTitle>
-                </CardTitleContainer>
-              </Card>
-            )}
-            sliderWidth={width - 48}
-            itemWidth={width - 48}
-          />
+          {memberClasses.length !== 0 && (
+            <>
+              <CardLabel>Suas aulas marcadas</CardLabel>
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              <Carousel<any>
+                data={memberClasses || []}
+                renderItem={({ item }) => (
+                  <Card>
+                    <CardImage
+                      source={{ uri: 'https://i.imgur.com/JLiVcK8.jpeg' }}
+                      style={{ opacity: 0.9 }}
+                    />
+                    <CardInfo>
+                      <Label>{item.class.classWeekDay[0].weekDay.name}</Label>
+                      <StrongText>Horário</StrongText>
+                      <TimeText>
+                        ás {String(item.class.hour).replace('.', ':')}
+                      </TimeText>
+                    </CardInfo>
+                    <CardTitleContainer>
+                      <CardTitle>{item.class.title}</CardTitle>
+                    </CardTitleContainer>
+                  </Card>
+                )}
+                sliderWidth={width - 48}
+                itemWidth={width - 48}
+              />
+            </>
+          )}
 
+          <CardLabel>Seu progresso</CardLabel>
+          <Chart />
           <CardLabel>Pagamentos</CardLabel>
           <PaymentCard
             date="25 de setembro de 2022"

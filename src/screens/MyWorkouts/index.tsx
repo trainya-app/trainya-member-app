@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { NavigationProps } from '../../types/NavigationProps';
@@ -12,71 +12,38 @@ import {
   Container,
   Separator,
   WorkoutsContainer,
+  WarningContainer,
+  WarningText,
   Scroll,
   SliderTitle,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
+import MembersService from '../../services/MembersService';
+import { IExercises } from './screens/Workout/components/WorkoutCard';
 
-export const MyWorkouts = ({ navigation }: NavigationProps) => {
-  const [isSwitcherActive, setIsSwitcherActive] = useState(false);
+interface IWorkouts {
+  workout: {
+    duration: string;
+    id: number;
+    title: string;
+    workoutExercise: IExercises[];
+  };
+}
+
+export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
+  const [isSwitcherActive, setIsSwitcherActive] = useState(
+    route.params.screen === 'AvailableWorkouts' ? true : false
+  );
+  const [workouts, setWorkouts] = useState<IWorkouts[]>([]);
 
   const theme = useTheme();
 
-  const alphabet = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z',
-  ];
-
-  const workouts = [
-    {
-      id: 1,
-      name: 'Braço',
-    },
-    {
-      id: 2,
-      name: 'Abdômen',
-    },
-    {
-      id: 3,
-      name: 'Peito',
-    },
-    {
-      id: 4,
-      name: 'Pernas',
-    },
-    {
-      id: 5,
-      name: 'Costas',
-    },
-    {
-      id: 6,
-      name: 'Ombro',
-    },
-  ];
+  useEffect(() => {
+    (async () => {
+      const memberWorkouts = await MembersService.getAllMemberWorkouts();
+      setWorkouts(memberWorkouts);
+    })();
+  }, []);
 
   const home_workouts: SliderProps[] = [
     {
@@ -110,24 +77,43 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
         onPressConfig={() => navigation.navigate('Configurations')}
       />
       <Container>
-        <ScreenSwitcher toggleIsActive={setIsSwitcherActive} />
+        <ScreenSwitcher
+          firstName="Plano de treino"
+          secondName="Treinos Livres"
+          toggleIsActive={setIsSwitcherActive}
+          isAlreadyActive={isSwitcherActive}
+        />
         {!isSwitcherActive ? (
           <>
             <DateScroll />
             <Separator />
-            <WorkoutsContainer>
-              <Scroll>
-                {workouts.map((workout, i) => (
-                  <WorkoutCard
-                    key={workout.id}
-                    workoutName={workout.name}
-                    workoutId={workout.id}
-                    isActive={i === 0 && true}
-                    onPress={() => navigation.navigate('ExercisesList', { workoutTitle: workout.name })}
-                  />
-                ))}
-              </Scroll>
-            </WorkoutsContainer>
+            {workouts.length !== 0 ? (
+              <WorkoutsContainer>
+                <Scroll>
+                  {workouts.map(({ workout }, i) => (
+                    <WorkoutCard
+                      key={workout.id}
+                      workoutName={workout.title}
+                      workoutId={i + 1}
+                      isActive={i === 0 && true}
+                      onPress={() =>
+                        navigation.navigate('ExercisesList', {
+                          workoutTitle: workout.title,
+                          workoutExercises: workout.workoutExercise,
+                        })
+                      }
+                    />
+                  ))}
+                </Scroll>
+              </WorkoutsContainer>
+            ) : (
+              <WarningContainer>
+                <WarningText>
+                  Não há treinos para exibir, tente novamente mais tarde ou
+                  entre em contato com a sua academia
+                </WarningText>
+              </WarningContainer>
+            )}
           </>
         ) : (
           <Scroll>
@@ -141,7 +127,10 @@ export const MyWorkouts = ({ navigation }: NavigationProps) => {
             <Slider data={home_workouts} />
 
             <SliderTitle>Aulas</SliderTitle>
-            <Slider data={home_workouts} seeMoreAction={() => navigation.navigate('AvailableWorkouts')}/>
+            <Slider
+              data={home_workouts}
+              seeMoreAction={() => navigation.navigate('AvailableClasses')}
+            />
           </Scroll>
         )}
       </Container>

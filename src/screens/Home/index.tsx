@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
-import jwt_decode from 'jwt-decode';
 import {
   Container,
   Header,
@@ -35,27 +34,17 @@ import { SliderProps, Slider } from '../../components/Slider';
 import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
 import { AuthContext } from '../../contexts/AuthContext';
-import { api } from '../../services/api';
 import { ActivityContainer } from './components/ActivityContainer';
 
 export const Home = ({ navigation }: Props) => {
-  const { user, setUser, token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    async function loadUserData() {
-      try {
-        const userDecoded: {id: string} = jwt_decode(token);
-        api.defaults.headers.Authorization = `Bearer ${token}`;
-        const { data } = await api.get(`members/${userDecoded.id}`);
-        setUser(data.member);
-        setIsLoading(false);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: any) {
-        console.log(error.response.data);
-      }
+    if (user) {
+      setIsLoading(false);
     }
-    loadUserData();
-  }, []);
+  }, [user]);
 
   const schedule_classes: SliderProps[] = [
     {
@@ -135,7 +124,9 @@ export const Home = ({ navigation }: Props) => {
     <Container>
       <Header>
         <HeaderImage source={{ uri: image_url }} />
-        <NotificationIcon />
+        <NotificationIcon
+          onPress={() => navigation.navigate('Notifications')}
+        />
         <ConfigIcon onPress={() => navigation.navigate('Configurations')} />
         <HeaderContent>
           {!isLoading ? (
@@ -152,6 +143,11 @@ export const Home = ({ navigation }: Props) => {
             height={40}
             style={{ marginTop: 24 }}
             fontSize={16}
+            onPress={() =>
+              navigation.navigate('MyWorkoutsStack', {
+                screen: 'AvailableWorkouts',
+              })
+            }
           />
         </HeaderContent>
       </Header>
@@ -188,6 +184,11 @@ export const Home = ({ navigation }: Props) => {
               height={40}
               style={{ marginTop: 24, marginBottom: 24 }}
               fontSize={13}
+              onPress={() =>
+                navigation.navigate('MyWorkoutsStack', {
+                  screen: 'WorkoutsPlans',
+                })
+              }
             />
 
             <CardContainer>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
-import * as Font from 'expo-font';
+
 import {
+  useFonts,
   Montserrat_500Medium,
   Montserrat_600SemiBold,
   Montserrat_700Bold,
@@ -18,35 +18,23 @@ import { ThemeContextProvider } from './src/contexts/ThemeContext';
 
 import theme from './src/global/styles/theme';
 import { Routes } from './src/routes';
+import { Splash } from './src/screens/Splash';
 
 const App = () => {
   const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
   const [appIsReady, setAppIsReady] = useState(false);
   // TODO: grab the async storage
 
-  useEffect(() => {
-    (async () => {
-      try {
-        await SplashScreen.preventAutoHideAsync();
-        await Font.loadAsync({
-          Montserrat_500Medium,
-          Montserrat_600SemiBold,
-          Montserrat_700Bold,
-          Montserrat_800ExtraBold,
-          Montserrat_900Black,
-        });
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.warn(e);
-      } finally {
-        setAppIsReady(true);
-        SplashScreen.hideAsync();
-      }
-    })();
-  }, []);
+  const [fontsLoaded] = useFonts({
+    Montserrat_500Medium,
+    Montserrat_600SemiBold,
+    Montserrat_700Bold,
+    Montserrat_800ExtraBold,
+    Montserrat_900Black,
+  });
 
-  if (!appIsReady) {
-    return null;
+  if (!fontsLoaded) {
+    return <Splash />;
   }
   return (
     <AuthContextProvider>

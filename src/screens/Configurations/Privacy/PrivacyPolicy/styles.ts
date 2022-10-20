@@ -9,9 +9,10 @@ export const Container = styled.View`
 
 export const PrivacyPolicyContent = styled.View`
   flex: 1;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 16px;
-  padding: 20px 24px; ;
+  padding: 20px 24px;
+  justify-content: center;
 `;
 
 export const Scroll = styled.ScrollView.attrs({
@@ -31,5 +32,4 @@ export const PrivacyPolicyContentText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.gray[500]};
-  text-align: justify;
 `;

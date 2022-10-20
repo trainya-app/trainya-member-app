@@ -6,6 +6,8 @@ export interface BarProps {
 }
 export interface ProgressBarProps extends BarProps {
   progress_percentage: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children?: any;
 }
 
 function getSize(size = 'md') {

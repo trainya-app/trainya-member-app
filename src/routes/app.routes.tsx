@@ -8,7 +8,7 @@ import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
 import { MyWorkouts } from '../screens/MyWorkouts';
-import { AvailableWorkouts } from '../screens/MyWorkouts/screens/AvailableWorkouts';
+import { AvailableClasses } from '../screens/MyWorkouts/screens/AvailableClasses';
 import { ExercisesList } from '../screens/MyWorkouts/screens/ExercisesList';
 import { Workout } from '../screens/MyWorkouts/screens/Workout';
 import { Profile } from '../screens/Profile';
@@ -30,9 +30,11 @@ import ProgressIcon from '../assets/progress_icon.svg';
 import QRIcon from '../assets/qr_icon.svg';
 import WorkoutsIcon from '../assets/halter_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
+import { ScheduleClass } from '../screens/MyWorkouts/screens/ScheduleClass';
+import { Notifications } from '../screens/Notifications';
 
-const Tab: any = createBottomTabNavigator();
-const Stack: any = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const ConfigStack = () => (
   <>
@@ -58,10 +60,10 @@ const HomeStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="Notifications" component={Notifications} />
     {ConfigStack()}
   </Stack.Navigator>
 );
@@ -73,7 +75,6 @@ const ProgressStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="Home" component={Progress} />
@@ -88,7 +89,6 @@ const QRCameraStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="QRCamera" component={QRCamera} />
@@ -96,7 +96,7 @@ const QRCameraStack = () => (
   </Stack.Navigator>
 );
 
-const MyWorkoutsStack = () => (
+const MyWorkoutsStack = ({ route }) => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
@@ -105,10 +105,15 @@ const MyWorkoutsStack = () => (
       headerShown: false,
     }}
   >
-    <Stack.Screen name="MyWorkouts" component={MyWorkouts} />
-    <Stack.Screen name="AvailableWorkouts" component={AvailableWorkouts} />
+    <Stack.Screen
+      name="MyWorkouts"
+      initialParams={{ screen: route.params.screen }}
+      component={MyWorkouts}
+    />
+    <Stack.Screen name="AvailableClasses" component={AvailableClasses} />
     <Stack.Screen name="ExercisesList" component={ExercisesList} />
     <Stack.Screen name="Workout" component={Workout} />
+    <Stack.Screen name="ScheduleClass" component={ScheduleClass} />
     {ConfigStack()}
   </Stack.Navigator>
 );
@@ -120,7 +125,6 @@ const ProfileStack = () => (
         marginTop: 32,
       },
       headerShown: false,
-      animation: 'slide_from_right',
     }}
   >
     <Stack.Screen name="Profile" component={Profile} />
@@ -136,7 +140,8 @@ export const AppRoutes = () => {
     if (
       screen === 'ExercisesList' ||
       screen === 'EditProfile' ||
-      screen === 'Workout'
+      screen === 'Workout' ||
+      screen === 'ChangePassword'
     ) {
       return 'none';
     }
@@ -209,7 +214,9 @@ export const AppRoutes = () => {
       <Tab.Screen
         name="MyWorkoutsStack"
         component={MyWorkoutsStack}
+        initialParams={{ screen: 'WorkoutsPlans' }}
         options={{
+          unmountOnBlur: true,
           tabBarIcon: ({ focused }) => (
             <View style={{ marginLeft: 16 }}>
               <WorkoutsIcon />

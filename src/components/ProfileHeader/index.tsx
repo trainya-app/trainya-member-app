@@ -20,7 +20,7 @@ export const ProfileHeader = ({ onPressEditInfo }: ProfileHeaderProps) => {
   return (
     <Header>
       <ProfileImageContainer>
-        <ProfilePhoto source={{ uri: 'https://i.imgur.com/nRsfy96.png' }} />
+        <ProfilePhoto source={{ uri: user.avatar_url }} />
         <ChangePhotoIconContainer>
           <ChangePhotoIcon />
         </ChangePhotoIconContainer>
