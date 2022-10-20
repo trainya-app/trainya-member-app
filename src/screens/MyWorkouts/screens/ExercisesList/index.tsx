@@ -15,7 +15,9 @@ import {
 } from './styles';
 
 export interface Exercises {
-  title: string;
+  exercise: {
+    name: string;
+  };
   sets: number;
   repetitions: number;
   duration: number;
