@@ -7,7 +7,7 @@ interface IMemberProgress {
   };
 }
 
-export interface IMemberWorkoutPlan {
+interface IMemberWorkoutPlan {
   memberWorkoutPlan: {
     id: number;
     member_id: number;
@@ -60,7 +60,7 @@ class MembersService {
     const { data }: IMemberWorkoutPlanData = await api.get(
       `/memberWorkoutPlans/${user_id}`
     );
-    return data;
+    return data.memberWorkoutPlan;
   }
 
   async getMonthMemberProgresses() {

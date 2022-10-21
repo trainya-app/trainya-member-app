@@ -47,8 +47,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
         user.id
       );
 
-      console.log(memberWorkouts);
-      // setWorkouts(memberWorkouts);
+      setWorkouts(memberWorkouts.workoutPlan.workoutPlanWorkout);
     })();
   }, []);
 
