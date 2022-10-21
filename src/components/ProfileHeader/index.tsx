@@ -31,6 +31,7 @@ export const ProfileHeader = ({ onPressEditInfo }: ProfileHeaderProps) => {
   const { user } = useContext(AuthContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [photoPreview, setPhotoPreview] = useState('');
   const [photo, setPhoto] = useState('');
 
   async function handleChoosePhoto() {
@@ -42,22 +43,27 @@ export const ProfileHeader = ({ onPressEditInfo }: ProfileHeaderProps) => {
     });
 
     if (!result.cancelled) {
-      setPhoto(result.uri);
+      setPhotoPreview(result.uri);
       setIsModalVisible(true);
     }
   }
 
   async function uploadPhoto() {
     setIsLoading(true);
-    await MembersService.updateAvatar(photo);
+    await MembersService.updateAvatar(photoPreview);
+    setPhoto(photoPreview);
     setIsModalVisible(false);
     setIsLoading(false);
+  }
+
+  function getPhoto() {
+    return photo !== '' ? photo : user.avatar_url;
   }
 
   return (
     <Header>
       <ProfileImageContainer>
-        <ProfilePhoto source={{ uri: user.avatar_url }} />
+        <ProfilePhoto source={{ uri: getPhoto() }} />
         <ChangePhotoIconContainer onPress={handleChoosePhoto}>
           <ChangePhotoIcon />
         </ChangePhotoIconContainer>
@@ -79,7 +85,7 @@ export const ProfileHeader = ({ onPressEditInfo }: ProfileHeaderProps) => {
           <ModalContainer>
             <NewPhoto
               source={{
-                uri: photo,
+                uri: photoPreview,
               }}
             />
             <ModalContainerText>Confirmar mudança de foto?</ModalContainerText>
