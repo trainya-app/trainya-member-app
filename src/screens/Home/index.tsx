@@ -40,7 +40,10 @@ import GymServices from '../../services/GymServices';
 export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [gymCapacity, setGymCapacity] = useState({});
+  const [gymCapacity, setGymCapacity] = useState({
+    maxCapacity: '',
+    currentCapacity: '',
+  });
 
   useEffect(() => {
     if (user) {
