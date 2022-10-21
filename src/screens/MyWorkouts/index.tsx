@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { NavigationProps } from '../../types/NavigationProps';
@@ -20,6 +20,7 @@ import {
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 import MembersService from '../../services/MembersService';
 import { IExercises } from './screens/Workout/components/WorkoutCard';
+import { AuthContext } from '../../contexts/AuthContext';
 
 interface IWorkouts {
   workout: {
@@ -31,6 +32,8 @@ interface IWorkouts {
 }
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
+  const { user } = useContext(AuthContext);
+
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false
   );
@@ -40,8 +43,12 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
 
   useEffect(() => {
     (async () => {
-      const memberWorkouts = await MembersService.getAllMemberWorkouts();
-      setWorkouts(memberWorkouts);
+      const memberWorkouts = await MembersService.getAllMemberWorkoutPlans(
+        user.id
+      );
+
+      console.log(memberWorkouts);
+      // setWorkouts(memberWorkouts);
     })();
   }, []);
 

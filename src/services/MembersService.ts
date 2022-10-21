@@ -6,10 +6,61 @@ interface IMemberProgress {
     name: string;
   };
 }
+
+export interface IMemberWorkoutPlan {
+  memberWorkoutPlan: {
+    id: number;
+    member_id: number;
+    workouts_plan_id: number;
+    started_at: Date;
+    finished_at: Date;
+    workoutPlan: {
+      id: number;
+      employee_id: number;
+      goal: string;
+      workoutPlanWorkout: Array<{
+        id: number;
+        workout_id: number;
+        workout: {
+          id: number;
+          employee_id: number;
+          title: string;
+          description: string;
+          type: string;
+          preview_image_url: string;
+          video_url: string;
+          level: number;
+          duration: string;
+          workoutExercise: Array<{
+            id: number;
+            workout_id: number;
+            exercise_id: number;
+            sets: number;
+            repetitions: number;
+            duration: number;
+            exercise: {
+              id: number;
+              name: string;
+              comment: string;
+              needs_equipment: boolean;
+            };
+          }>;
+        };
+      }>;
+    };
+  };
+}
+
+interface IMemberWorkoutPlanData {
+  data: IMemberWorkoutPlan;
+}
+
 class MembersService {
-  async getAllMemberWorkouts() {
-    const { data } = await api.get('/member-workouts');
-    return data.memberWorkouts.workoutPlan.workoutPlanWorkout;
+  async getAllMemberWorkoutPlans(user_id: number) {
+    const { data }: IMemberWorkoutPlanData = await api.get(
+      `/memberWorkoutPlans/${user_id}`
+    );
+    return data;
   }
 
   async getMonthMemberProgresses() {
