@@ -18,17 +18,11 @@ import {
   SliderTitle,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
-import MembersService from '../../services/MembersService';
-import { IExercises } from './screens/Workout/components/WorkoutCard';
+import MembersService, { IWorkout } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
 
 interface IWorkouts {
-  workout: {
-    duration: string;
-    id: number;
-    title: string;
-    workoutExercise: IExercises[];
-  };
+  workout: IWorkout;
 }
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {

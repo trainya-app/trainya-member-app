@@ -4,6 +4,9 @@ import { Heading } from '../../../../components/Heading';
 import { useCustomTheme } from '../../../../hooks/useCustomTheme';
 import {
   Container,
+  Top,
+  Title,
+  Description,
   Scroll,
   ExerciseCard,
   Image,
@@ -47,12 +50,13 @@ export const ExercisesList = ({ navigation, route }: Props) => {
     <>
       <Heading
         onGoBack={() => navigation.goBack()}
-        title={route.params.workoutTitle}
+        title="Treino"
         onPressConfig={() => false}
         hideConfigIcon
         b={theme.colors.shape.main}
       />
       <Container>
+        <Top />
         <Scroll>
           {workoutExercises.map((workoutExercise: Exercises) => (
             <ExerciseCard key={workoutExercise.exercise.name}>

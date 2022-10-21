@@ -11,6 +11,12 @@ export const Container = styled.View`
   padding: 0 24px;
 `;
 
+export const Top = styled.View``;
+
+export const Title = styled.Text``;
+
+export const Description = styled.Text``;
+
 export const Scroll = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   overScrollMode: 'never',

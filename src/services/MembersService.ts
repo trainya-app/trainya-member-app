@@ -7,7 +7,41 @@ interface IMemberProgress {
   };
 }
 
-interface IMemberWorkoutPlan {
+export interface IWorkoutExercise {
+  id: number;
+  workout_id: number;
+  exercise_id: number;
+  sets: number;
+  repetitions: number;
+  duration: number;
+  exercise: {
+    id: number;
+    name: string;
+    comment: string;
+    needs_equipment: boolean;
+  };
+}
+
+export interface IWorkout {
+  id: number;
+  employee_id: number;
+  title: string;
+  description: string;
+  type: string;
+  preview_image_url: string;
+  video_url: string;
+  level: number;
+  duration: string;
+  workoutExercise: IWorkoutExercise[];
+}
+
+export interface IWorkoutPlanWorkout {
+  id: number;
+  workout_id: number;
+  workout: IWorkout;
+}
+
+export interface IMemberWorkoutPlan {
   memberWorkoutPlan: {
     id: number;
     member_id: number;
@@ -18,35 +52,7 @@ interface IMemberWorkoutPlan {
       id: number;
       employee_id: number;
       goal: string;
-      workoutPlanWorkout: Array<{
-        id: number;
-        workout_id: number;
-        workout: {
-          id: number;
-          employee_id: number;
-          title: string;
-          description: string;
-          type: string;
-          preview_image_url: string;
-          video_url: string;
-          level: number;
-          duration: string;
-          workoutExercise: Array<{
-            id: number;
-            workout_id: number;
-            exercise_id: number;
-            sets: number;
-            repetitions: number;
-            duration: number;
-            exercise: {
-              id: number;
-              name: string;
-              comment: string;
-              needs_equipment: boolean;
-            };
-          }>;
-        };
-      }>;
+      workoutPlanWorkout: IWorkoutPlanWorkout[];
     };
   };
 }
@@ -90,13 +96,11 @@ class MembersService {
       type: 'image/jpeg',
     });
 
-    const { data } = await api.put('/members-avatar', formData, {
+    await api.put('/members-avatar', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
-
-    console.log(data);
   }
 }
 
