@@ -26,7 +26,7 @@ export const WorkoutCard = ({
       <WorkoutSquare>
         <WorkoutSquareText>{workoutId}</WorkoutSquareText>
       </WorkoutSquare>
-      <WorkoutName>{workoutName}</WorkoutName>
+      <WorkoutName numberOfLines={1}>{workoutName}</WorkoutName>
       {isActive && (
         <>
           <WorkoutIndicator>Hoje</WorkoutIndicator>
