@@ -29,6 +29,24 @@ class MembersService {
     const { data } = await api.get('/member-classes');
     return data.classes;
   }
+
+  async updateAvatar(imageUri: string) {
+    const formData = new FormData();
+
+    formData.append('avatar', {
+      uri: imageUri,
+      name: 'image.jpg',
+      type: 'image/jpeg',
+    });
+
+    const { data } = await api.put('/members-avatar', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    console.log(data);
+  }
 }
 
 export default new MembersService();

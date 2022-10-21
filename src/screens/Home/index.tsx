@@ -41,8 +41,8 @@ export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const [gymCapacity, setGymCapacity] = useState({
-    maxCapacity: '',
-    currentCapacity: '',
+    maxCapacity: 0,
+    currentCapacity: 0,
   });
 
   useEffect(() => {
