@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
 import {
   Container,
@@ -35,14 +35,26 @@ import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ActivityContainer } from './components/ActivityContainer';
+import MembersService from '../../services/MembersService';
+import GymServices from '../../services/GymServices';
 
 export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [gymCapacity, setGymCapacity] = useState({});
 
   useEffect(() => {
     if (user) {
       setIsLoading(false);
+
+      // Taking gym capacity from api
+      (async () => {
+        const { gym } = await GymServices.getGymData(user.gymId);
+        setGymCapacity({
+          currentCapacity: gym.current_capacity,
+          maxCapacity: gym.max_capacity,
+        });
+      })();
     }
   }, [user]);
 
@@ -196,7 +208,7 @@ export const Home = ({ navigation }: Props) => {
               <Infos>
                 <InfosContainer>
                   <InfoText color={capacityColor()} fontSize={32}>
-                    {capacity_occupied}
+                    {gymCapacity.currentCapacity}
                   </InfoText>
                   <InfoText color={capacityColor()} fontSize={10}>
                     Pessoas
@@ -208,7 +220,7 @@ export const Home = ({ navigation }: Props) => {
                 </InfosContainer>
 
                 <InfosContainer>
-                  <InfoText fontSize={32}>{capacity}</InfoText>
+                  <InfoText fontSize={32}>{gymCapacity.maxCapacity}</InfoText>
                   <InfoText fontSize={10}>Máximo</InfoText>
                 </InfosContainer>
               </Infos>
