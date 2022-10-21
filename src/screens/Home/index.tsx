@@ -35,7 +35,6 @@ import { ProgressBar } from './components/ProgressBar';
 import { Button } from '../../components/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ActivityContainer } from './components/ActivityContainer';
-import MembersService from '../../services/MembersService';
 import GymServices from '../../services/GymServices';
 
 export const Home = ({ navigation }: Props) => {
@@ -100,8 +99,8 @@ export const Home = ({ navigation }: Props) => {
   const workout = 'pernas';
   const total_workouts = 16;
   const workouts_finished = 9;
-  const capacity = 50;
-  const capacity_occupied = Math.round(Math.random() * 50);
+  const capacity = gymCapacity.maxCapacity;
+  const capacity_occupied = gymCapacity.currentCapacity;
 
   const progress_percentage = Math.round(
     (workouts_finished * 100) / total_workouts
@@ -208,7 +207,7 @@ export const Home = ({ navigation }: Props) => {
               <Infos>
                 <InfosContainer>
                   <InfoText color={capacityColor()} fontSize={32}>
-                    {gymCapacity.currentCapacity}
+                    {capacity_occupied}
                   </InfoText>
                   <InfoText color={capacityColor()} fontSize={10}>
                     Pessoas
@@ -220,7 +219,7 @@ export const Home = ({ navigation }: Props) => {
                 </InfosContainer>
 
                 <InfosContainer>
-                  <InfoText fontSize={32}>{gymCapacity.maxCapacity}</InfoText>
+                  <InfoText fontSize={32}>{capacity}</InfoText>
                   <InfoText fontSize={10}>Máximo</InfoText>
                 </InfosContainer>
               </Infos>
