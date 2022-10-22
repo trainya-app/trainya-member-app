@@ -99,6 +99,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                       onPress={() =>
                         navigation.navigate('ExercisesList', {
                           workoutTitle: workout.title,
+                          workoutDescription: workout.description,
                           workoutExercises: workout.workoutExercise,
                         })
                       }

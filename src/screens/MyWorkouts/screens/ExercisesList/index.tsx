@@ -31,6 +31,7 @@ interface Props {
   route: {
     params: {
       workoutTitle: string;
+      workoutDescription: string;
       workoutExercises: Exercises[];
     };
   };
@@ -50,13 +51,15 @@ export const ExercisesList = ({ navigation, route }: Props) => {
     <>
       <Heading
         onGoBack={() => navigation.goBack()}
-        title="Treino"
+        title={route.params.workoutTitle}
         onPressConfig={() => false}
         hideConfigIcon
         b={theme.colors.shape.main}
       />
       <Container>
-        <Top />
+        <Top>
+          <Description>{route.params.workoutDescription}</Description>
+        </Top>
         <Scroll>
           {workoutExercises.map((workoutExercise: Exercises) => (
             <ExerciseCard key={workoutExercise.exercise.name}>

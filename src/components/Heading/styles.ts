@@ -7,6 +7,7 @@ import ConfigIconSVG from '../../assets/config_icon.svg';
 
 interface TitleProps {
   colorMode: string;
+  fontSize: number;
 }
 
 interface ContainerProps {
@@ -25,10 +26,11 @@ export const Container = styled.View<ContainerProps>`
 `;
 
 export const Title = styled.Text<TitleProps>`
-  font-size: ${RFValue(24)}px;
+  font-size: ${({ fontSize }) => RFValue(fontSize)}px;
   font-family: ${({ theme }) => theme.fonts.extrabold};
   color: ${({ colorMode }) => (colorMode === 'light' ? '#000' : '#FFF')};
   right: 10px;
+  text-align: center;
 `;
 
 export const IconWrapper = styled.TouchableOpacity.attrs({

@@ -1,11 +1,7 @@
 import Feather from 'react-native-vector-icons/Feather';
 import { useCustomTheme } from '../../hooks/useCustomTheme';
 
-import {
-  Container,
-  IconWrapper,
-  Title,
-} from './styles';
+import { Container, IconWrapper, Title } from './styles';
 
 interface HeadingProps {
   title: string;
@@ -24,6 +20,22 @@ export const Heading = ({
 }: HeadingProps) => {
   const { colorMode } = useCustomTheme();
 
+  function getFontSize() {
+    if (title.length > 24) {
+      return 12;
+    }
+    if (title.length > 20) {
+      return 16;
+    }
+    if (title.length > 15) {
+      return 20;
+    }
+    if (title.length > 10) {
+      return 22;
+    }
+    return 24;
+  }
+
   return (
     <Container b={b}>
       <IconWrapper onPress={onGoBack}>
@@ -34,7 +46,9 @@ export const Heading = ({
           style={{ right: 16 }}
         />
       </IconWrapper>
-      <Title colorMode={colorMode}>{title}</Title>
+      <Title colorMode={colorMode} fontSize={getFontSize()}>
+        {title}
+      </Title>
       <IconWrapper onPress={onPressConfig}>
         {!hideConfigIcon && (
           <Feather
