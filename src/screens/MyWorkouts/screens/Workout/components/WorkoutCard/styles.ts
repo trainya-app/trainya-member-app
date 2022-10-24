@@ -39,7 +39,7 @@ export const CheckboxContainer = styled.View`
   width: 50%;
   border-radius: 16px;
   bottom: -24px;
-  z-index: 5;
+  z-index: 10;
 `;
 
 export const CheckboxText = styled.Text`
@@ -72,6 +72,7 @@ export const WorkoutInfo = styled.View`
   padding: 48px 24px 24px 24px;
   border-bottom-right-radius: 32px;
   border-bottom-left-radius: 32px;
+  z-index: -5;
 `;
 
 export const WorkoutName = styled.Text`
