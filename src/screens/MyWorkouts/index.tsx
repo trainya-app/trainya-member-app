@@ -37,11 +37,15 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
 
   useEffect(() => {
     (async () => {
-      const memberWorkouts = await MembersService.getAllMemberWorkoutPlans(
-        user.id
-      );
+      try {
+        const memberWorkouts = await MembersService.getAllMemberWorkoutPlans(
+          user.id
+        );
 
-      setWorkouts(memberWorkouts.workoutPlan.workoutPlanWorkout);
+        setWorkouts(memberWorkouts.workoutPlan.workoutPlanWorkout);
+      } catch (error) {
+        setWorkouts([]);
+      }
     })();
   }, []);
 
