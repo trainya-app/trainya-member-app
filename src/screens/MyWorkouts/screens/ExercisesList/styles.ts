@@ -11,6 +11,23 @@ export const Container = styled.View`
   padding: 0 24px;
 `;
 
+export const Top = styled.View``;
+
+export const Title = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(20)}px;
+  color: ${({ theme }) => theme.colors.blue[500]};
+  margin-bottom: 12px;
+`;
+
+export const Description = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.blue[500]};
+  margin-bottom: 24px;
+  text-align: center;
+`;
+
 export const Scroll = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   overScrollMode: 'never',
@@ -32,14 +49,14 @@ export const Image = styled.Image`
 `;
 
 export const Wrapper = styled.View`
-  padding: 0 64px 0 16px;
+  padding: 0 96px 0 16px;
   justify-content: center;
 `;
 
 export const ExerciseName = styled.Text<ThemeProps>`
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${({ colorMode }) => (colorMode === 'light' ? '#2176FF' : '#fff')};
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue(14)}px;
 `;
 
 export const ExerciseSets = styled.Text<ThemeProps>`

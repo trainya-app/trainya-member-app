@@ -22,22 +22,22 @@ export const ScreenSwitcher = ({
   // if active, free workouts is showing, else, workouts plan is showing
   const [isActive, setIsActive] = useState(isAlreadyActive);
 
-  function toggleWorkoutPlanScreen() {
+  function toggleFirstScreen() {
     setIsActive(false);
     toggleIsActive(false);
   }
 
-  function toggleFreeWorkoutsScreen() {
+  function toggleSecondScreen() {
     setIsActive(true);
     toggleIsActive(true);
   }
 
   return (
     <Switcher>
-      <SwitcherButton onPress={toggleWorkoutPlanScreen}>
+      <SwitcherButton onPress={toggleFirstScreen}>
         <SwitcherText isBlack={!isActive}>{firstName}</SwitcherText>
       </SwitcherButton>
-      <SwitcherButton onPress={toggleFreeWorkoutsScreen}>
+      <SwitcherButton onPress={toggleSecondScreen}>
         <SwitcherText isBlack={isActive}>{secondName}</SwitcherText>
       </SwitcherButton>
       <SwitcherIndicator

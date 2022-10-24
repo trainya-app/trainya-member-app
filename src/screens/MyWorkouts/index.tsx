@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { NavigationProps } from '../../types/NavigationProps';
@@ -18,19 +18,16 @@ import {
   SliderTitle,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
-import MembersService from '../../services/MembersService';
-import { IExercises } from './screens/Workout/components/WorkoutCard';
+import MembersService, { IWorkout } from '../../services/MembersService';
+import { AuthContext } from '../../contexts/AuthContext';
 
 interface IWorkouts {
-  workout: {
-    duration: string;
-    id: number;
-    title: string;
-    workoutExercise: IExercises[];
-  };
+  workout: IWorkout;
 }
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
+  const { user } = useContext(AuthContext);
+
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false
   );
@@ -40,8 +37,11 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
 
   useEffect(() => {
     (async () => {
-      const memberWorkouts = await MembersService.getAllMemberWorkouts();
-      setWorkouts(memberWorkouts);
+      const memberWorkouts = await MembersService.getAllMemberWorkoutPlans(
+        user.id
+      );
+
+      setWorkouts(memberWorkouts.workoutPlan.workoutPlanWorkout);
     })();
   }, []);
 
@@ -99,6 +99,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                       onPress={() =>
                         navigation.navigate('ExercisesList', {
                           workoutTitle: workout.title,
+                          workoutDescription: workout.description,
                           workoutExercises: workout.workoutExercise,
                         })
                       }

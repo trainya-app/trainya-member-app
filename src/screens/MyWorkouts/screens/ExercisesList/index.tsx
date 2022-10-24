@@ -4,6 +4,9 @@ import { Heading } from '../../../../components/Heading';
 import { useCustomTheme } from '../../../../hooks/useCustomTheme';
 import {
   Container,
+  Top,
+  Title,
+  Description,
   Scroll,
   ExerciseCard,
   Image,
@@ -28,6 +31,7 @@ interface Props {
   route: {
     params: {
       workoutTitle: string;
+      workoutDescription: string;
       workoutExercises: Exercises[];
     };
   };
@@ -53,6 +57,9 @@ export const ExercisesList = ({ navigation, route }: Props) => {
         b={theme.colors.shape.main}
       />
       <Container>
+        <Top>
+          <Description>{route.params.workoutDescription}</Description>
+        </Top>
         <Scroll>
           {workoutExercises.map((workoutExercise: Exercises) => (
             <ExerciseCard key={workoutExercise.exercise.name}>
