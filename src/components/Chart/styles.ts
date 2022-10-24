@@ -64,6 +64,6 @@ export const VerticalBarShadow = styled.View`
 export const VerticalBar = styled.View<IVerticalBar>`
   background-color: ${({ theme }) => theme.colors.blue[500]};
   border-radius: 12px;
-  height: ${({ progress }) => progress * 10}%;
+  height: ${({ progress }) => progress * 3.2}%;
   width: 48px;
 `;
