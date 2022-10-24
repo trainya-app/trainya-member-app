@@ -43,6 +43,7 @@ export const Home = ({ navigation }: Props) => {
   const [gymCapacity, setGymCapacity] = useState({
     maxCapacity: 0,
     currentCapacity: 0,
+    isLoading: true,
   });
 
   useEffect(() => {
@@ -55,6 +56,7 @@ export const Home = ({ navigation }: Props) => {
         setGymCapacity({
           currentCapacity: gym.current_capacity,
           maxCapacity: gym.max_capacity,
+          isLoading: false,
         });
       })();
     }
@@ -209,12 +211,18 @@ export const Home = ({ navigation }: Props) => {
               <CardTitle>Agora na academia</CardTitle>
               <Infos>
                 <InfosContainer>
-                  <InfoText color={capacityColor()} fontSize={32}>
-                    {capacity_occupied}
-                  </InfoText>
-                  <InfoText color={capacityColor()} fontSize={10}>
-                    Pessoas
-                  </InfoText>
+                  {gymCapacity.isLoading ? (
+                    <Loading size={48} />
+                  ) : (
+                    <>
+                      <InfoText fontSize={32} color={capacityColor()}>
+                        {capacity}
+                      </InfoText>
+                      <InfoText color={capacityColor()} fontSize={10}>
+                        Pessoas
+                      </InfoText>
+                    </>
+                  )}
                 </InfosContainer>
 
                 <InfosContainer>
@@ -222,8 +230,14 @@ export const Home = ({ navigation }: Props) => {
                 </InfosContainer>
 
                 <InfosContainer>
-                  <InfoText fontSize={32}>{capacity}</InfoText>
-                  <InfoText fontSize={10}>Máximo</InfoText>
+                  {gymCapacity.isLoading ? (
+                    <Loading size={48} color="#6C757D" />
+                  ) : (
+                    <>
+                      <InfoText fontSize={32}>{capacity}</InfoText>
+                      <InfoText fontSize={10}>Máximo</InfoText>
+                    </>
+                  )}
                 </InfosContainer>
               </Infos>
             </CardContainer>
