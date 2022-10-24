@@ -216,7 +216,7 @@ export const Home = ({ navigation }: Props) => {
                   ) : (
                     <>
                       <InfoText fontSize={32} color={capacityColor()}>
-                        {capacity}
+                        {capacity_occupied}
                       </InfoText>
                       <InfoText color={capacityColor()} fontSize={10}>
                         Pessoas
