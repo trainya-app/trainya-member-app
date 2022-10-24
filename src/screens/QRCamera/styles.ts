@@ -19,8 +19,8 @@ export const Title = styled.Text`
 
 export const QRContainer = styled.View`
   background-color: #ffffff;
-  width: ${width - 48}px;
-  height: ${width - 48}px;
+  width: ${RFValue(300)}px;
+  height: ${RFValue(300)}px;
   align-items: center;
   justify-content: center;
   border-width: 4px;
