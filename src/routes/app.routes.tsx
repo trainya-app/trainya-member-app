@@ -164,7 +164,7 @@ export const AppRoutes = () => {
           bottom: 25,
           elevation: 0,
           height: height > 700 ? 70 : 60,
-          paddingTop: Platform.OS === 'ios' ? 24 : 0,
+          paddingTop: 0,
         },
       })}
     >
