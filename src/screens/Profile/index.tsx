@@ -95,10 +95,9 @@ export const Profile = ({ navigation }: NavigationProps) => {
           <CardLabel>Favoritados</CardLabel>
           <Slider data={home_workouts} />
 
-          {memberClasses.length !== 0 && (
+          {/* {memberClasses.length !== 0 && (
             <>
               <CardLabel>Suas aulas marcadas</CardLabel>
-              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               <Carousel<any>
                 data={memberClasses || []}
                 renderItem={({ item }) => (
@@ -123,7 +122,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
                 itemWidth={width - 48}
               />
             </>
-          )}
+          )} */}
 
           <CardLabel>Seu progresso</CardLabel>
           <Chart />
