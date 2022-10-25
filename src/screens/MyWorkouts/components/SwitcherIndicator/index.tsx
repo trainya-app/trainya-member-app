@@ -10,7 +10,7 @@ interface ScreenSwitcherProps {
   firstName: string;
   secondName: string;
   toggleIsActive: Dispatch<SetStateAction<boolean>>;
-  isAlreadyActive: boolean;
+  isAlreadyActive?: boolean;
 }
 
 export const ScreenSwitcher = ({
