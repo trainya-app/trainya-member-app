@@ -245,9 +245,10 @@ export const Home = ({ navigation }: Props) => {
             <CardContainerTitle>Sua atividade</CardContainerTitle>
             <ActivityContainer />
 
-            <CardContainerTitle>Aulas Marcadas</CardContainerTitle>
-            <Slider data={schedule_classes} />
-            <CardContainerTitle>Treinos para fazer em casa</CardContainerTitle>
+            {/* <CardContainerTitle>Aulas Marcadas</CardContainerTitle>
+            <Slider data={schedule_classes} /> */}
+
+            <CardContainerTitle>Treinos livres</CardContainerTitle>
             <Slider data={home_workouts} />
           </MainContainer>
         </Scroll>
