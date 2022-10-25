@@ -48,6 +48,7 @@ export const Home = ({ navigation }: Props) => {
 
   useEffect(() => {
     if (user) {
+      console.log(user);
       setIsLoading(false);
 
       // Taking gym capacity from api
