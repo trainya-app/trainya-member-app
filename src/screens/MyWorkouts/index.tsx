@@ -18,12 +18,10 @@ import {
   SliderTitle,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
-import MembersService, { IWorkout } from '../../services/MembersService';
+import MembersService, { IWorkoutPlanWorkout } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
 
-interface IWorkouts {
-  workout: IWorkout;
-}
+
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const { user } = useContext(AuthContext);
@@ -31,7 +29,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false
   );
-  const [workouts, setWorkouts] = useState<IWorkouts[]>([]);
+  const [workouts, setWorkouts] = useState<IWorkoutPlanWorkout[]>([]);
 
   const theme = useTheme();
 
@@ -94,17 +92,17 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
             {workouts.length !== 0 ? (
               <WorkoutsContainer>
                 <Scroll>
-                  {workouts.map(({ workout }, i) => (
+                  {workouts.map((workoutPlanWorkout, i) => (
                     <WorkoutCard
-                      key={workout.id}
-                      workoutName={workout.title}
+                      key={workoutPlanWorkout.id}
+                      workoutName={workoutPlanWorkout.workout.title}
                       workoutId={i + 1}
                       isActive={i === 0 && true}
                       onPress={() =>
                         navigation.navigate('ExercisesList', {
-                          workoutTitle: workout.title,
-                          workoutDescription: workout.description,
-                          workoutExercises: workout.workoutExercise,
+                          workoutTitle: workoutPlanWorkout.workout.title,
+                          workoutDescription: workoutPlanWorkout.workout.description,
+                          workoutExercises: workoutPlanWorkout.workout.workoutExercise,
                         })
                       }
                     />
