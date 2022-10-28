@@ -36,10 +36,12 @@ import { Button } from '../../components/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ActivityContainer } from './components/ActivityContainer';
 import GymServices from '../../services/GymServices';
+import MembersService, { IWorkoutPlanWorkout } from '../../services/MembersService';
 
 export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlanWorkout[]>();
   const [gymCapacity, setGymCapacity] = useState({
     maxCapacity: 0,
     currentCapacity: 0,
@@ -51,7 +53,7 @@ export const Home = ({ navigation }: Props) => {
       console.log(user);
       setIsLoading(false);
 
-      // Taking gym capacity from api
+      // Getting gym capacity from api
       (async () => {
         const { gym } = await GymServices.getGymData(user.gymId);
         setGymCapacity({
@@ -60,6 +62,18 @@ export const Home = ({ navigation }: Props) => {
           isLoading: false,
         });
       })();
+
+      // Getting member workout progress
+      (async () => {
+        try {
+          const data = await MembersService.getAllMemberWorkoutPlans(user.id);
+          setMemberWorkouts(data.workoutPlan.workoutPlanWorkout);
+
+        } catch (error) {
+          
+        }
+        
+        })();
     }
   }, [user]);
 
@@ -103,8 +117,8 @@ export const Home = ({ navigation }: Props) => {
 
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
   const workout = 'pernas';
-  const total_workouts = 16;
-  const workouts_finished = 9;
+  const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
+  const workouts_finished = 0;
   const capacity = gymCapacity.maxCapacity;
   const capacity_occupied = gymCapacity.currentCapacity;
 
