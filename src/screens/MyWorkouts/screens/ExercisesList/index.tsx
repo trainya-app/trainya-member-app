@@ -47,6 +47,13 @@ export const ExercisesList = ({ navigation, route }: Props) => {
 
   const { workoutExercises } = route.params;
 
+  function goToWorkoutScreen(firstItem: number) {
+    navigation.navigate('Workout', {
+      workoutExercises,
+      firstItem
+    })
+  }
+
   return (
     <>
       <Heading
@@ -61,8 +68,8 @@ export const ExercisesList = ({ navigation, route }: Props) => {
           <Description>{route.params.workoutDescription}</Description>
         </Top>
         <Scroll>
-          {workoutExercises.map((workoutExercise: Exercises) => (
-            <ExerciseCard key={workoutExercise.exercise.name}>
+          {workoutExercises.map((workoutExercise: Exercises, index) => (
+            <ExerciseCard key={workoutExercise.exercise.name} onPress={() => goToWorkoutScreen(index)}>
               <Image source={{ uri: 'https://i.imgur.com/5awFGCT.png' }} />
               <Wrapper>
                 <ExerciseName colorMode={colorMode}>
@@ -80,11 +87,7 @@ export const ExercisesList = ({ navigation, route }: Props) => {
           width={100}
           height={60}
           fontSize={16}
-          onPress={() =>
-            navigation.navigate('Workout', {
-              workoutExercises,
-            })
-          }
+          onPress={() => goToWorkoutScreen(0)}
         />
         <FinishWorkoutButton>
           <FinishWorkoutButtonText>Concluir Treino</FinishWorkoutButtonText>

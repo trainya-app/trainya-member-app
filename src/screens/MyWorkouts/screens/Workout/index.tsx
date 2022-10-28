@@ -13,6 +13,7 @@ interface Props {
     params: {
       workoutTitle: string;
       workoutExercises: IExercises[];
+      firstItem: number;
     };
   };
   navigation: {
@@ -22,7 +23,7 @@ interface Props {
 }
 
 export const Workout = ({ navigation, route }: Props) => {
-  const exercises = route.params.workoutExercises;
+  const { workoutExercises: exercises , firstItem } = route.params;
 
   const { width } = Dimensions.get('window');
 
@@ -38,10 +39,11 @@ export const Workout = ({ navigation, route }: Props) => {
         <WorkoutProgress>{`0 de ${exercises.length} concluídos`}</WorkoutProgress>
 
         <Carousel
+          firstItem={firstItem}
           data={exercises}
           renderItem={({ item }) => <WorkoutCard data={item} />}
-          sliderWidth={width - 48}
-          itemWidth={width - 48}
+          sliderWidth={width}
+          itemWidth={width - 64}
         />
       </Container>
     </>

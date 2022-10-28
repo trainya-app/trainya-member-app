@@ -35,7 +35,9 @@ export const Scroll = styled.ScrollView.attrs({
   margin-bottom: 16px;
 `;
 
-export const ExerciseCard = styled.View`
+export const ExerciseCard = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.8
+})`
   background-color: ${({ theme }) => theme.colors.blue[100]};
   padding: 20px 16px;
   flex-direction: row;
