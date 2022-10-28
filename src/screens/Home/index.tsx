@@ -42,6 +42,7 @@ export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlanWorkout[]>();
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const [gymCapacity, setGymCapacity] = useState({
     maxCapacity: 0,
     currentCapacity: 0,
@@ -50,18 +51,36 @@ export const Home = ({ navigation }: Props) => {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
       setIsLoading(false);
 
-      // Getting gym capacity from api
-      (async () => {
-        const { gym } = await GymServices.getGymData(user.gymId);
-        setGymCapacity({
-          currentCapacity: gym.current_capacity,
-          maxCapacity: gym.max_capacity,
-          isLoading: false,
-        });
-      })();
+      // Getting gym capacity from api every 20 seconds
+      if(isFirstRender) {
+        setIsFirstRender(false);
+        (async () => {
+          const { gym } = await GymServices.getGymData(user.gymId);
+          setGymCapacity({
+            currentCapacity: gym.current_capacity,
+            maxCapacity: gym.max_capacity,
+            isLoading: false,
+          });
+        })();
+      }
+
+      const takeGymCapacityEvery20Seconds = setInterval(() => {
+        (async () => {
+          setGymCapacity({
+            currentCapacity: 0,
+            maxCapacity: 0,
+            isLoading: true,
+          })
+          const { gym } = await GymServices.getGymData(user.gymId);
+          setGymCapacity({
+            currentCapacity: gym.current_capacity,
+            maxCapacity: gym.max_capacity,
+            isLoading: false,
+          });
+        })();
+      }, 20000);
 
       // Getting member workout progress
       (async () => {
@@ -70,7 +89,7 @@ export const Home = ({ navigation }: Props) => {
           setMemberWorkouts(data.workoutPlan.workoutPlanWorkout);
 
         } catch (error) {
-          
+          setMemberWorkouts([{}]);
         }
         
         })();
