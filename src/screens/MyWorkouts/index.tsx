@@ -21,6 +21,7 @@ import { ScreenSwitcher } from './components/SwitcherIndicator';
 import MembersService, { IWorkoutPlanWorkout, IWorkoutExercise } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { WorkoutContext } from '../../contexts/WorkoutContext';
+import { WorkoutAlreadyExistsModal } from './screens/Workout/components/WorkoutAlreadyStartedWarningModal';
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const { user } = useContext(AuthContext);
@@ -156,6 +157,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
           </Scroll>
         )}
       </Container>
+      <WorkoutAlreadyExistsModal />
     </>
   );
 };
