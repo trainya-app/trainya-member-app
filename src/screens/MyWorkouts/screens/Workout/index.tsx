@@ -28,6 +28,10 @@ export const Workout = ({ navigation, route }: Props) => {
 
   const { width } = Dimensions.get('window');
 
+  function isExerciseChecked(exerciseId: number) {
+    return exercisesChecked.includes(exerciseId);
+  }
+
   return (
     <>
       <Heading
@@ -42,7 +46,7 @@ export const Workout = ({ navigation, route }: Props) => {
         <Carousel
           firstItem={firstItem}
           data={exercises}
-          renderItem={({ item }) => <WorkoutCard data={item} />}
+          renderItem={({ item }) => <WorkoutCard data={item} isAlreadyChecked={isExerciseChecked}/>}
           sliderWidth={width}
           itemWidth={width - 64}
         />

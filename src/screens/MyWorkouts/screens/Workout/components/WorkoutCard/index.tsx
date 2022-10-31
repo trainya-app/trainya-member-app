@@ -34,11 +34,12 @@ export interface IExercises {
 
 interface IProps {
   data: IExercises;
+  isAlreadyChecked: (exerciseId: number) => boolean;
 }
 
-export const WorkoutCard = ({ data }: IProps) => {
+export const WorkoutCard = ({ data, isAlreadyChecked }: IProps) => {
   const [isModalActive, setIsModalActive] = useState(false);
-  const [finished, setFinished] = useState(false);
+  const [finished, setFinished] = useState(isAlreadyChecked(data.exercise.id));
 
   const { exercisesChecked, setExercisesChecked }
   : 
