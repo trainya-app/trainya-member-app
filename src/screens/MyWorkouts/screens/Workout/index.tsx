@@ -24,6 +24,7 @@ interface Props {
 
 export const Workout = ({ navigation, route }: Props) => {
   const { workoutExercises: exercises , firstItem } = route.params;
+  const [exercisesChecked, setExercisesChecked] = useState<number[]>([]);
 
   const { width } = Dimensions.get('window');
 
@@ -36,12 +37,12 @@ export const Workout = ({ navigation, route }: Props) => {
         hideConfigIcon
       />
       <Container>
-        <WorkoutProgress>{`0 de ${exercises.length} concluídos`}</WorkoutProgress>
+        <WorkoutProgress>{`${exercisesChecked.length} de ${exercises.length} concluídos`}</WorkoutProgress>
 
         <Carousel
           firstItem={firstItem}
           data={exercises}
-          renderItem={({ item }) => <WorkoutCard data={item} />}
+          renderItem={({ item }) => <WorkoutCard data={item} exercisesChecked={exercisesChecked} setExercisesChecked={setExercisesChecked}/>}
           sliderWidth={width}
           itemWidth={width - 64}
         />

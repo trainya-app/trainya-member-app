@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 import {
   Card,
@@ -23,6 +23,7 @@ import { WarningModal } from '../WarningModal';
 
 export interface IExercises {
   exercise: {
+    id: number;
     comment: string;
     name: string;
   };
@@ -32,9 +33,11 @@ export interface IExercises {
 
 interface IProps {
   data: IExercises;
+  exercisesChecked: number[];
+  setExercisesChecked: Dispatch<SetStateAction<number[]>>;
 }
 
-export const WorkoutCard = ({ data }: IProps) => {
+export const WorkoutCard = ({ data, exercisesChecked, setExercisesChecked }: IProps) => {
   const [isModalActive, setIsModalActive] = useState(false);
   const [finished, setFinished] = useState(false);
 
@@ -42,15 +45,24 @@ export const WorkoutCard = ({ data }: IProps) => {
     setIsModalActive(!isModalActive);
   }
 
+  function checkExercise() {
+    setFinished((prev) => !prev);
+    setExercisesChecked((prev) => prev.filter((item) => item !== data.exercise.id));
+
+    if(!exercisesChecked.includes(data.exercise.id)) {
+      setExercisesChecked((prev) => [...prev, data.exercise.id]);
+    }
+  }
+
   return (
     <Card key={data.exercise.name}>
       <Top>
         <WorkoutVideo source={{ uri: 'https://i.imgur.com/b3Gblmw.png' }} />
-        <CheckboxContainer>
+        <CheckboxContainer onPress={() => checkExercise()}>
           <CheckboxText>Terminou?</CheckboxText>
           <Checkbox
             isChecked={finished}
-            onPress={() => setFinished((prev) => !prev)}
+            onPress={() => checkExercise()}
           >
             <CheckActive isChecked />
           </Checkbox>

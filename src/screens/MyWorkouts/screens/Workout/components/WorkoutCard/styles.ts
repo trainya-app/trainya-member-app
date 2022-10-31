@@ -28,7 +28,9 @@ export const WorkoutVideo = styled.Image.attrs({
   height: 150px;
 `;
 
-export const CheckboxContainer = styled.View`
+export const CheckboxContainer = styled.TouchableOpacity.attrs({
+  activeOpacity: 1
+})`
   background-color: ${({ theme }) => theme.colors.blue[100]};
   flex-direction: row;
   position: absolute;
