@@ -20,11 +20,13 @@ import {
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 import MembersService, { IWorkoutPlanWorkout } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
-
-
+import { WorkoutContext } from '../../contexts/WorkoutContext';
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const { user } = useContext(AuthContext);
+  const { exercisesChecked } = useContext(WorkoutContext);
+
+  console.log(exercisesChecked);
 
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false

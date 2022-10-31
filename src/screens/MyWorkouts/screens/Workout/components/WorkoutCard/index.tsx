@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState, useContext } from 'react';
 
 import {
   Card,
@@ -20,6 +20,7 @@ import {
 } from './styles';
 
 import { WarningModal } from '../WarningModal';
+import { WorkoutContext } from '../../../../../../contexts/WorkoutContext';
 
 export interface IExercises {
   exercise: {
@@ -33,13 +34,15 @@ export interface IExercises {
 
 interface IProps {
   data: IExercises;
-  exercisesChecked: number[];
-  setExercisesChecked: Dispatch<SetStateAction<number[]>>;
 }
 
-export const WorkoutCard = ({ data, exercisesChecked, setExercisesChecked }: IProps) => {
+export const WorkoutCard = ({ data }: IProps) => {
   const [isModalActive, setIsModalActive] = useState(false);
   const [finished, setFinished] = useState(false);
+
+  const { exercisesChecked, setExercisesChecked }
+  : 
+  {exercisesChecked: number[], setExercisesChecked: Dispatch<SetStateAction<number[]>>} = useContext(WorkoutContext);
 
   function toggleModalActive() {
     setIsModalActive(!isModalActive);

@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Dimensions } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 import { Heading } from '../../../../components/Heading';
+import { WorkoutContext } from '../../../../contexts/WorkoutContext';
 import { IExercises, WorkoutCard } from './components/WorkoutCard';
-import { WarningModal } from './components/WarningModal';
 
 import { Container, WorkoutProgress } from './styles';
 
@@ -24,7 +24,7 @@ interface Props {
 
 export const Workout = ({ navigation, route }: Props) => {
   const { workoutExercises: exercises , firstItem } = route.params;
-  const [exercisesChecked, setExercisesChecked] = useState<number[]>([]);
+  const { exercisesChecked }  = useContext(WorkoutContext);
 
   const { width } = Dimensions.get('window');
 
@@ -42,7 +42,7 @@ export const Workout = ({ navigation, route }: Props) => {
         <Carousel
           firstItem={firstItem}
           data={exercises}
-          renderItem={({ item }) => <WorkoutCard data={item} exercisesChecked={exercisesChecked} setExercisesChecked={setExercisesChecked}/>}
+          renderItem={({ item }) => <WorkoutCard data={item} />}
           sliderWidth={width}
           itemWidth={width - 64}
         />
