@@ -18,15 +18,13 @@ import {
   SliderTitle,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
-import MembersService, { IWorkoutPlanWorkout } from '../../services/MembersService';
+import MembersService, { IWorkoutPlanWorkout, IWorkoutExercise } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { WorkoutContext } from '../../contexts/WorkoutContext';
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const { user } = useContext(AuthContext);
-  const { exercisesChecked } = useContext(WorkoutContext);
-
-  console.log(exercisesChecked);
+  const { exercisesChecked, prevWorkoutId, setPrevWorkoutId } = useContext(WorkoutContext);
 
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false
@@ -72,6 +70,24 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
     },
   ];
 
+  function handleGoToExercisesList(
+    workoutTitle: string, 
+    workoutDescription: string, 
+    workoutExercises: IWorkoutExercise[],
+    workoutId: number
+    ) {
+    if(prevWorkoutId && workoutId !== prevWorkoutId) {
+      console.log('Treino já iniciado');
+    } else {
+      navigation.navigate('ExercisesList', {
+        workoutTitle,
+        workoutDescription,
+        workoutExercises
+      });
+      setPrevWorkoutId(workoutId);
+    }
+  }
+
   return (
     <>
       <Heading
@@ -100,12 +116,13 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                       workoutName={workoutPlanWorkout.workout.title}
                       workoutId={i + 1}
                       isActive={i === 0 && true}
-                      onPress={() =>
-                        navigation.navigate('ExercisesList', {
-                          workoutTitle: workoutPlanWorkout.workout.title,
-                          workoutDescription: workoutPlanWorkout.workout.description,
-                          workoutExercises: workoutPlanWorkout.workout.workoutExercise,
-                        })
+                      onPress={() => 
+                        handleGoToExercisesList(
+                          workoutPlanWorkout.workout.title, 
+                          workoutPlanWorkout.workout.description, 
+                          workoutPlanWorkout.workout.workoutExercise,
+                          workoutPlanWorkout.workout_id
+                        )
                       }
                     />
                   ))}
