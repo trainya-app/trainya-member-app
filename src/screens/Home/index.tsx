@@ -89,11 +89,13 @@ export const Home = ({ navigation }: Props) => {
           setMemberWorkouts(data.workoutPlan.workoutPlanWorkout);
 
         } catch (error) {
-          setMemberWorkouts([{}]);
+          setMemberWorkouts([]);
         }
         
         })();
     }
+
+    return console.log('oi')
   }, [user]);
 
   const schedule_classes: SliderProps[] = [
@@ -209,7 +211,7 @@ export const Home = ({ navigation }: Props) => {
                 <Label>Progresso</Label>
                 <ProgressPercentage>
                   {/* Adding 0 at the left of the number, in case it's lower than 10 */}
-                  {progress_percentage.toString().length === 1
+                  {progress_percentage > 9
                     ? `0${progress_percentage}`
                     : progress_percentage}
                   %
