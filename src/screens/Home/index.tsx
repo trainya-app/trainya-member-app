@@ -135,7 +135,7 @@ export const Home = ({ navigation }: Props) => {
   ];
 
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
-  const workout = 'pernas';
+  const workout = memberWorkouts ? memberWorkouts[0].workout.title.toLowerCase() : '';
   const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
   const workouts_finished = 0;
   const capacity = gymCapacity.maxCapacity;
