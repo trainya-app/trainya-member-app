@@ -28,7 +28,17 @@ export const WorkoutAlreadyExistsModal = ({ isModalActive, setIsModalActive }: I
                         <View style={{ width: '100%' }}>
                             <Subtitle>Quer descartar o progresso do treino atual e iniciar um novo?</Subtitle>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <Button title="Continuar" fontSize={12} height={32} width={45} style={{ marginTop: 12 }}/>  
+                                <Button 
+                                    title="Continuar" 
+                                    fontSize={12} 
+                                    height={32} 
+                                    width={45} 
+                                    style={{ marginTop: 12 }}
+                                    onPress={() => {
+                                        setIsModalActive(false)
+                                    }}
+                                />
+
                                 <Button 
                                     title="Descartar" 
                                     fontSize={12} 

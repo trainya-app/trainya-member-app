@@ -18,14 +18,18 @@ import {
   SliderTitle,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
-import MembersService, { IWorkoutPlanWorkout, IWorkoutExercise } from '../../services/MembersService';
+import MembersService, {
+  IWorkoutPlanWorkout,
+  IWorkoutExercise,
+} from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { WorkoutContext } from '../../contexts/WorkoutContext';
 import { WorkoutAlreadyExistsModal } from './screens/Workout/components/WorkoutAlreadyStartedWarningModal';
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const { user } = useContext(AuthContext);
-  const { exercisesChecked, prevWorkout, setPrevWorkout } = useContext(WorkoutContext);
+  const { exercisesChecked, prevWorkout, setPrevWorkout } =
+    useContext(WorkoutContext);
 
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false
@@ -74,20 +78,24 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   ];
 
   function handleGoToExercisesList(
-    workoutTitle: string, 
-    workoutDescription: string, 
+    workoutTitle: string,
+    workoutDescription: string,
     workoutExercises: IWorkoutExercise[],
     workoutId: number
+  ) {
+    if (
+      prevWorkout.id &&
+      workoutId !== prevWorkout.id &&
+      exercisesChecked.length > 0
     ) {
-    if(prevWorkout.id && workoutId !== prevWorkout.id) {
       setIsModalActive(true);
     } else {
       navigation.navigate('ExercisesList', {
         workoutTitle,
         workoutDescription,
-        workoutExercises
+        workoutExercises,
       });
-      setPrevWorkout({id: workoutId, title: workoutTitle});
+      setPrevWorkout({ id: workoutId, title: workoutTitle });
     }
   }
 
@@ -119,10 +127,10 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                       workoutName={workoutPlanWorkout.workout.title}
                       workoutId={i + 1}
                       isActive={i === 0 && true}
-                      onPress={() => 
+                      onPress={() =>
                         handleGoToExercisesList(
-                          workoutPlanWorkout.workout.title, 
-                          workoutPlanWorkout.workout.description, 
+                          workoutPlanWorkout.workout.title,
+                          workoutPlanWorkout.workout.description,
                           workoutPlanWorkout.workout.workoutExercise,
                           workoutPlanWorkout.workout_id
                         )
@@ -159,7 +167,10 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
           </Scroll>
         )}
       </Container>
-      <WorkoutAlreadyExistsModal isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
+      <WorkoutAlreadyExistsModal
+        isModalActive={isModalActive}
+        setIsModalActive={setIsModalActive}
+      />
     </>
   );
 };
