@@ -43,7 +43,8 @@ export const CardImage = styled.Image`
 
 export const CardTitleContainer = styled.View`
   height: 25%;
-  width: 55%;
+  padding: 0 24px;
+  min-width: 196px;
   background-color: #fff;
   position: absolute;
   right: 12px;
@@ -55,7 +56,7 @@ export const CardTitleContainer = styled.View`
 
 export const CardTitle = styled.Text`
   color: #99c0ff;
-  font-size: ${RFValue(20)}px;
+  font-size: ${RFValue(14)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
 

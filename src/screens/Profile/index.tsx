@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { Dimensions } from 'react-native';
 import { NavigationProps } from '../../types/NavigationProps';
@@ -23,19 +23,34 @@ import { ActivityContainer } from '../Home/components/ActivityContainer';
 import { Slider, SliderProps } from '../../components/Slider';
 import { PaymentCard } from '../Configurations/Payments/components/PaymentCard';
 import { Chart } from '../../components/Chart';
-import MembersService from '../../services/MembersService';
+import MembersService, { IWorkoutPlan } from '../../services/MembersService';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const { width } = Dimensions.get('window');
 
 export const Profile = ({ navigation }: NavigationProps) => {
-  const [memberClasses, setMemberClasses] = useState([]);
+  const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlan>();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     (async () => {
-      const data = await MembersService.getMemberScheduledClasses();
-      setMemberClasses(data);
+      try {
+        const data = await MembersService.getAllMemberWorkoutPlans(user.id);
+        setMemberWorkouts(data.workoutPlan);
+      } catch (error) {
+        setMemberWorkouts([]);
+      }
     })();
   }, []);
+
+  const finished_workouts = 0;
+  const total_workouts = memberWorkouts?.workoutPlanWorkout.length || 0;
+
+  const workoutPlanName = memberWorkouts?.goal;
+
+  const progress_percentage = Math.round(
+    (finished_workouts * 100) / total_workouts
+  );
 
   const home_workouts: SliderProps[] = [
     {
@@ -82,11 +97,14 @@ export const Profile = ({ navigation }: NavigationProps) => {
             />
             <CardInfo>
               <Label>Progresso</Label>
-              <StrongText>56%</StrongText>
-              <ProgressBar progress_percentage={56} size="sm" />
+              <StrongText>{progress_percentage || 0}%</StrongText>
+              <ProgressBar
+                progress_percentage={progress_percentage || 0}
+                size="sm"
+              />
             </CardInfo>
             <CardTitleContainer>
-              <CardTitle>Braço</CardTitle>
+              <CardTitle>{workoutPlanName}</CardTitle>
             </CardTitleContainer>
           </Card>
           <CardLabel>Sua atividade</CardLabel>

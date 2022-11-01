@@ -36,7 +36,9 @@ import { Button } from '../../components/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ActivityContainer } from './components/ActivityContainer';
 import GymServices from '../../services/GymServices';
-import MembersService, { IWorkoutPlanWorkout } from '../../services/MembersService';
+import MembersService, {
+  IWorkoutPlanWorkout,
+} from '../../services/MembersService';
 
 export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
@@ -54,7 +56,7 @@ export const Home = ({ navigation }: Props) => {
       setIsLoading(false);
 
       // Getting gym capacity from api every 20 seconds
-      if(isFirstRender) {
+      if (isFirstRender) {
         setIsFirstRender(false);
         (async () => {
           const { gym } = await GymServices.getGymData(user.gymId);
@@ -72,7 +74,7 @@ export const Home = ({ navigation }: Props) => {
             currentCapacity: 0,
             maxCapacity: 0,
             isLoading: true,
-          })
+          });
           const { gym } = await GymServices.getGymData(user.gymId);
           setGymCapacity({
             currentCapacity: gym.current_capacity,
@@ -87,15 +89,11 @@ export const Home = ({ navigation }: Props) => {
         try {
           const data = await MembersService.getAllMemberWorkoutPlans(user.id);
           setMemberWorkouts(data.workoutPlan.workoutPlanWorkout);
-
         } catch (error) {
           setMemberWorkouts([]);
         }
-        
-        })();
+      })();
     }
-
-    return console.log('oi')
   }, [user]);
 
   const schedule_classes: SliderProps[] = [
@@ -137,7 +135,9 @@ export const Home = ({ navigation }: Props) => {
   ];
 
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
-  const workout = memberWorkouts ? memberWorkouts[0].workout.title.toLowerCase() : '';
+  const workout = memberWorkouts
+    ? memberWorkouts[0].workout.title.toLowerCase()
+    : '';
   const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
   const workouts_finished = 0;
   const capacity = gymCapacity.maxCapacity;
