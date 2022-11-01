@@ -27,5 +27,5 @@ export const Container = styled.TouchableOpacity<ButtonProps>`
 export const TextButton = styled.Text<TextProps>`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ fontSize }) => RFValue(fontSize)}px;
-  color: ${({ color }) => color ? color : '#ebf2ff'};
+  color: ${({ color }) => color !== ''  ? color : '#ebf2ff'};
 `;

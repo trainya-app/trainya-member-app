@@ -3,19 +3,13 @@ import styled from 'styled-components/native';
 
 export const Modal = styled.Modal.attrs({
     transparent: true,
-    animationType: 'fade',
+    animationType: 'slide',
 })``;
 
 export const Overlay = styled.View`
     flex: 1;
     background-color: rgba(0, 0, 0, 0.5);
 `;
-
-export const NestedModal = styled.Modal.attrs({
-    transparent: true,
-    visible: true,
-    animationType: 'slide',
-})``;
 
 export const ModalContainer = styled.View`
     width: 100%;

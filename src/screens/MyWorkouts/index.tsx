@@ -25,12 +25,14 @@ import { WorkoutAlreadyExistsModal } from './screens/Workout/components/WorkoutA
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const { user } = useContext(AuthContext);
-  const { exercisesChecked, prevWorkoutId, setPrevWorkoutId } = useContext(WorkoutContext);
+  const { exercisesChecked, prevWorkout, setPrevWorkout } = useContext(WorkoutContext);
 
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false
   );
   const [workouts, setWorkouts] = useState<IWorkoutPlanWorkout[]>([]);
+
+  const [isModalActive, setIsModalActive] = useState(false);
 
   const theme = useTheme();
 
@@ -77,15 +79,15 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
     workoutExercises: IWorkoutExercise[],
     workoutId: number
     ) {
-    if(prevWorkoutId && workoutId !== prevWorkoutId) {
-      console.log('Treino já iniciado');
+    if(prevWorkout.id && workoutId !== prevWorkout.id) {
+      setIsModalActive(true);
     } else {
       navigation.navigate('ExercisesList', {
         workoutTitle,
         workoutDescription,
         workoutExercises
       });
-      setPrevWorkoutId(workoutId);
+      setPrevWorkout({id: workoutId, title: workoutTitle});
     }
   }
 
@@ -157,7 +159,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
           </Scroll>
         )}
       </Container>
-      <WorkoutAlreadyExistsModal />
+      <WorkoutAlreadyExistsModal isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
     </>
   );
 };

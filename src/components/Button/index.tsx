@@ -8,7 +8,7 @@ interface ButtonProps extends TouchableOpacityProps {
   width: number;
   height: number;
   fontSize: number;
-  color?: string
+  color?: string;
 }
 
 export const Button = ({
@@ -18,7 +18,7 @@ export const Button = ({
   width,
   height,
   fontSize,
-  color,
+  color = '',
   ...rest
 }: ButtonProps) => (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
