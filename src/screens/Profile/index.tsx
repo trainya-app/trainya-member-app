@@ -89,24 +89,33 @@ export const Profile = ({ navigation }: NavigationProps) => {
         />
         <Scroll>
           <CardLabel>Treino atual</CardLabel>
-          <Card>
-            <CardImage
-              source={{
-                uri: 'https://images.unsplash.com/photo-1601113329251-0aebe217bdbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-              }}
-            />
-            <CardInfo>
-              <Label>Progresso</Label>
-              <StrongText>{progress_percentage || 0}%</StrongText>
-              <ProgressBar
-                progress_percentage={progress_percentage || 0}
-                size="sm"
+          {memberWorkouts?.length ? (
+            <Card>
+              <CardImage
+                source={{
+                  uri: 'https://images.unsplash.com/photo-1601113329251-0aebe217bdbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                }}
               />
-            </CardInfo>
-            <CardTitleContainer>
-              <CardTitle>{workoutPlanName}</CardTitle>
-            </CardTitleContainer>
-          </Card>
+              <CardInfo>
+                <Label>Progresso</Label>
+                <StrongText>{progress_percentage || 0}%</StrongText>
+                <ProgressBar
+                  progress_percentage={progress_percentage || 0}
+                  size="sm"
+                />
+              </CardInfo>
+              <CardTitleContainer>
+                <CardTitle>{workoutPlanName}</CardTitle>
+              </CardTitleContainer>
+            </Card>
+          ) : (
+            <Card style={{ alignItems: 'center', paddingHorizontal: 20 }}>
+              <Label style={{ textAlign: 'center' }}>
+                Ainda não há nenhum plano de treino definido para você, entre em
+                contato com a sua academia
+              </Label>
+            </Card>
+          )}
           <CardLabel>Sua atividade</CardLabel>
           <ActivityContainer />
 
