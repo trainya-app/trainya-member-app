@@ -4,6 +4,7 @@ import { Heading } from '../../components/Heading';
 import { NavigationProps } from '../../types/NavigationProps';
 import { ProgressBar } from '../Home/components/ProgressBar';
 import { ScreenSwitcher } from '../MyWorkouts/components/SwitcherIndicator';
+import { DatePicker } from './components/DatePicker';
 import {
   Container,
   GoalsContainer,
@@ -27,7 +28,7 @@ export const Progress = ({ navigation }: NavigationProps) => {
           secondName="Dados"
           toggleIsActive={setIsScreenSwitched}
         />
-        {isScreenSwitched && (
+        {isScreenSwitched ? (
           <>
             <Chart />
             <GoalsContainer>
@@ -48,6 +49,10 @@ export const Progress = ({ navigation }: NavigationProps) => {
                 <ProgressBarIndicator>20</ProgressBarIndicator>
               </ProgressBar>
             </GoalsContainer>
+          </>
+        ) : (
+          <>
+            <DatePicker />
           </>
         )}
       </Container>

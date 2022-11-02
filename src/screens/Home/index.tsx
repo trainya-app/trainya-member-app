@@ -136,7 +136,7 @@ export const Home = ({ navigation }: Props) => {
 
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
   const workout = memberWorkouts
-    ? memberWorkouts[0].workout.title.toLowerCase()
+    ? memberWorkouts[0]?.workout.title.toLowerCase()
     : '';
   const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
   const workouts_finished = 0;
@@ -172,6 +172,16 @@ export const Home = ({ navigation }: Props) => {
     }
   }, []);
 
+  function getProgressPercentage() {
+    if (memberWorkouts?.length === 0) {
+      return 'Não há um plano de treino ativo';
+    }
+
+    return progress_percentage > 9
+      ? `0${progress_percentage}`
+      : progress_percentage;
+  }
+
   return (
     <Container>
       <Header>
@@ -188,7 +198,11 @@ export const Home = ({ navigation }: Props) => {
           ) : (
             <Loading size={48} color={theme.colors.gray[100]} />
           )}
-          <Subtitle>Seu treino de {workout} está te esperando</Subtitle>
+          <Subtitle>
+            {memberWorkouts?.length === 0
+              ? 'Você ainda não tem um plano de treino'
+              : `Seu treino de ${workout} está te esperando`}
+          </Subtitle>
           <Button
             title="Treinar"
             width={50}
@@ -209,12 +223,9 @@ export const Home = ({ navigation }: Props) => {
             <ProgressSection>
               <Progress>
                 <Label>Progresso</Label>
-                <ProgressPercentage>
+                <ProgressPercentage textLength={getProgressPercentage().length}>
                   {/* Adding 0 at the left of the number, in case it's lower than 10 */}
-                  {progress_percentage > 9
-                    ? `0${progress_percentage}`
-                    : progress_percentage}
-                  %
+                  {getProgressPercentage()}
                 </ProgressPercentage>
               </Progress>
               <Workouts>

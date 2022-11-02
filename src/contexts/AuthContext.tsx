@@ -58,6 +58,9 @@ export const AuthContextProvider = ({ children }: Props) => {
         const { data } = await api.get(`members/${userDecoded.id}`);
         const { gym } = await MembersService.getGymByMemberId();
 
+        console.log(data);
+        console.log(gym);
+
         const userGym = { gym: gym.gym.name, gymId: gym.gym_id };
         setUser({ ...data.member, ...userGym });
 
