@@ -41,6 +41,13 @@ export interface IWorkoutPlanWorkout {
   workout: IWorkout;
 }
 
+export interface IWorkoutPlan {
+  id: number;
+  employee_id: number;
+  goal: string;
+  workoutPlanWorkout: IWorkoutPlanWorkout[];
+}
+
 export interface IMemberWorkoutPlan {
   memberWorkoutPlan: {
     id: number;
@@ -48,12 +55,7 @@ export interface IMemberWorkoutPlan {
     workouts_plan_id: number;
     started_at: Date;
     finished_at: Date;
-    workoutPlan: {
-      id: number;
-      employee_id: number;
-      goal: string;
-      workoutPlanWorkout: IWorkoutPlanWorkout[];
-    };
+    workoutPlan: IWorkoutPlan;
   };
 }
 

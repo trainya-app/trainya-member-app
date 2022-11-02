@@ -33,3 +33,9 @@ export const ProgressBarIndicator = styled.Text`
   font-size: ${RFValue(14)}px;
   color: #fff;
 `;
+
+export const PhotoContainer = styled.Text``;
+
+export const DatePicker = styled.View``;
+
+export const DatePickerText = styled.Text``;

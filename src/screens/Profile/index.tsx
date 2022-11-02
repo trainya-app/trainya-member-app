@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { Dimensions } from 'react-native';
 import { NavigationProps } from '../../types/NavigationProps';
@@ -23,19 +23,34 @@ import { ActivityContainer } from '../Home/components/ActivityContainer';
 import { Slider, SliderProps } from '../../components/Slider';
 import { PaymentCard } from '../Configurations/Payments/components/PaymentCard';
 import { Chart } from '../../components/Chart';
-import MembersService from '../../services/MembersService';
+import MembersService, { IWorkoutPlan } from '../../services/MembersService';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const { width } = Dimensions.get('window');
 
 export const Profile = ({ navigation }: NavigationProps) => {
-  const [memberClasses, setMemberClasses] = useState([]);
+  const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlan>();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     (async () => {
-      const data = await MembersService.getMemberScheduledClasses();
-      setMemberClasses(data);
+      try {
+        const data = await MembersService.getAllMemberWorkoutPlans(user.id);
+        setMemberWorkouts(data.workoutPlan);
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, []);
+
+  const finished_workouts = 0;
+  const total_workouts = memberWorkouts?.workoutPlanWorkout.length || 0;
+
+  const workoutPlanName = memberWorkouts?.goal;
+
+  const progress_percentage = Math.round(
+    (finished_workouts * 100) / total_workouts
+  );
 
   const home_workouts: SliderProps[] = [
     {
@@ -74,31 +89,42 @@ export const Profile = ({ navigation }: NavigationProps) => {
         />
         <Scroll>
           <CardLabel>Treino atual</CardLabel>
-          <Card>
-            <CardImage
-              source={{
-                uri: 'https://images.unsplash.com/photo-1601113329251-0aebe217bdbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-              }}
-            />
-            <CardInfo>
-              <Label>Progresso</Label>
-              <StrongText>56%</StrongText>
-              <ProgressBar progress_percentage={56} size="sm" />
-            </CardInfo>
-            <CardTitleContainer>
-              <CardTitle>Braço</CardTitle>
-            </CardTitleContainer>
-          </Card>
+          {memberWorkouts?.length ? (
+            <Card>
+              <CardImage
+                source={{
+                  uri: 'https://images.unsplash.com/photo-1601113329251-0aebe217bdbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                }}
+              />
+              <CardInfo>
+                <Label>Progresso</Label>
+                <StrongText>{progress_percentage || 0}%</StrongText>
+                <ProgressBar
+                  progress_percentage={progress_percentage || 0}
+                  size="sm"
+                />
+              </CardInfo>
+              <CardTitleContainer>
+                <CardTitle>{workoutPlanName}</CardTitle>
+              </CardTitleContainer>
+            </Card>
+          ) : (
+            <Card style={{ alignItems: 'center', paddingHorizontal: 20 }}>
+              <Label style={{ textAlign: 'center' }}>
+                Ainda não há nenhum plano de treino definido para você, entre em
+                contato com a sua academia
+              </Label>
+            </Card>
+          )}
           <CardLabel>Sua atividade</CardLabel>
           <ActivityContainer />
 
           <CardLabel>Favoritados</CardLabel>
           <Slider data={home_workouts} />
 
-          {memberClasses.length !== 0 && (
+          {/* {memberClasses.length !== 0 && (
             <>
               <CardLabel>Suas aulas marcadas</CardLabel>
-              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               <Carousel<any>
                 data={memberClasses || []}
                 renderItem={({ item }) => (
@@ -123,7 +149,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
                 itemWidth={width - 48}
               />
             </>
-          )}
+          )} */}
 
           <CardLabel>Seu progresso</CardLabel>
           <Chart />

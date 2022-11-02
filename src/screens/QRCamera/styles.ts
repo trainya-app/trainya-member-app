@@ -7,20 +7,22 @@ const { width } = Dimensions.get('window');
 
 export const Container = styled.View`
   flex: 1;
-  padding: 48px 24px 0 24px;
   background-color: ${({ theme }) => theme.colors.blue[100]};
   align-items: center;
+  justify-content: center;
+  padding-bottom: ${RFValue(126)}px;
 `;
 
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(15)}px;
+  height: ${RFValue(20)}px;
 `;
 
 export const QRContainer = styled.View`
   background-color: #ffffff;
-  width: ${width - 48}px;
-  height: ${width - 48}px;
+  width: ${RFValue(300)}px;
+  height: ${RFValue(300)}px;
   align-items: center;
   justify-content: center;
   border-width: 4px;
@@ -28,4 +30,5 @@ export const QRContainer = styled.View`
   margin-top: 32px;
 `;
 
-export const QR = styled(QRCode)``;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const QR = styled(QRCode as any)``;

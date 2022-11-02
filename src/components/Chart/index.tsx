@@ -20,6 +20,8 @@ interface IChartData {
 export const Chart = () => {
   const [chartData, setChartData] = useState([]);
 
+  console.log(chartData);
+
   useEffect(() => {
     (async () => {
       const data = await MembersService.getMonthMemberProgresses();

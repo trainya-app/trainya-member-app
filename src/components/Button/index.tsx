@@ -8,6 +8,7 @@ interface ButtonProps extends TouchableOpacityProps {
   width: number;
   height: number;
   fontSize: number;
+  color?: string;
 }
 
 export const Button = ({
@@ -17,6 +18,7 @@ export const Button = ({
   width,
   height,
   fontSize,
+  color = '',
   ...rest
 }: ButtonProps) => (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,6 +30,6 @@ export const Button = ({
     height={height}
     {...rest}
   >
-    <TextButton fontSize={fontSize}>{title}</TextButton>
+    <TextButton fontSize={fontSize} color={color}>{title}</TextButton>
   </Container>
 );

@@ -10,6 +10,10 @@ interface TextProps {
   fontSize: number;
 }
 
+interface ProgressPercentageProps {
+  textLength: number;
+}
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};
@@ -84,10 +88,12 @@ export const Label = styled.Text`
   color: ${({ theme }) => theme.colors.gray[500]};
 `;
 
-export const ProgressPercentage = styled.Text`
+export const ProgressPercentage = styled.Text<ProgressPercentageProps>`
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(32)}px;
+  font-size: ${({ textLength }) =>
+    textLength > 5 ? RFValue(12) : RFValue(32)}px;
   color: ${({ theme }) => theme.colors.blue[900]};
+  margin: ${({ textLength }) => (textLength > 5 ? RFValue(12) : RFValue(0))}px 0;
 `;
 
 export const Workouts = styled.View``;

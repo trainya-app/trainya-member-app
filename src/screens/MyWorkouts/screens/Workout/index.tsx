@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Dimensions } from 'react-native';
 
-import Carousel from 'react-native-snap-carousel';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { Heading } from '../../../../components/Heading';
+import { WorkoutContext } from '../../../../contexts/WorkoutContext';
 import { IExercises, WorkoutCard } from './components/WorkoutCard';
-import { WarningModal } from './components/WarningModal';
 
 import { Container, WorkoutProgress } from './styles';
 
@@ -13,6 +13,7 @@ interface Props {
     params: {
       workoutTitle: string;
       workoutExercises: IExercises[];
+      firstItem: number;
     };
   };
   navigation: {
@@ -22,9 +23,15 @@ interface Props {
 }
 
 export const Workout = ({ navigation, route }: Props) => {
-  const exercises = route.params.workoutExercises;
+  const { workoutExercises: exercises, firstItem } = route.params;
+  const { exercisesChecked } = useContext(WorkoutContext);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const { width } = Dimensions.get('window');
+
+  function isExerciseChecked(exerciseId: number) {
+    return exercisesChecked.includes(exerciseId);
+  }
 
   return (
     <>
@@ -35,13 +42,40 @@ export const Workout = ({ navigation, route }: Props) => {
         hideConfigIcon
       />
       <Container>
-        <WorkoutProgress>{`0 de ${exercises.length} concluídos`}</WorkoutProgress>
+        <WorkoutProgress>{`${exercisesChecked.length} de ${exercises.length} concluídos`}</WorkoutProgress>
 
         <Carousel
+          firstItem={firstItem}
           data={exercises}
-          renderItem={({ item }) => <WorkoutCard data={item} />}
-          sliderWidth={width - 48}
-          itemWidth={width - 48}
+          renderItem={({ item }) => (
+            <WorkoutCard data={item} isAlreadyChecked={isExerciseChecked} />
+          )}
+          sliderWidth={width}
+          itemWidth={width - 64}
+          onSnapToItem={(index: number) => setActiveSlide(index)}
+        />
+        <Pagination
+          activeDotIndex={activeSlide}
+          dotsLength={exercises.length}
+          containerStyle={{
+            position: 'absolute',
+            alignSelf: 'center',
+            bottom: 200,
+          }}
+          dotStyle={{
+            width: 10,
+            height: 10,
+            borderRadius: 99,
+            borderWidth: 1.7,
+            marginHorizontal: -5,
+            backgroundColor: '#2176FF',
+            borderColor: '#2176FF',
+          }}
+          inactiveDotStyle={{
+            backgroundColor: 'transparent',
+          }}
+          inactiveDotOpacity={1}
+          inactiveDotScale={1}
         />
       </Container>
     </>

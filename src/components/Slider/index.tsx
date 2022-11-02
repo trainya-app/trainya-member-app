@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Dimensions } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import {
@@ -28,6 +28,7 @@ export const Slider = ({ data, seeMoreAction }: Props) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const dataSliced = data.slice(0, 4);
 
+  const carouselRef = useRef<any>(null);
 
   const renderItem = (item: SliderProps, index: number) => (
     index <= 2 ? (
@@ -51,6 +52,7 @@ export const Slider = ({ data, seeMoreAction }: Props) => {
     <Container>
       <SlideContainer>
         <Carousel
+          ref={carouselRef}
           data={dataSliced}
           renderItem={({ item, index }) => renderItem(item, index)}
           sliderWidth={width - 48}

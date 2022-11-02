@@ -36,26 +36,62 @@ import { Button } from '../../components/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ActivityContainer } from './components/ActivityContainer';
 import GymServices from '../../services/GymServices';
+import MembersService, {
+  IWorkoutPlanWorkout,
+} from '../../services/MembersService';
 
 export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlanWorkout[]>();
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const [gymCapacity, setGymCapacity] = useState({
     maxCapacity: 0,
     currentCapacity: 0,
+    isLoading: true,
   });
 
   useEffect(() => {
     if (user) {
       setIsLoading(false);
 
-      // Taking gym capacity from api
+      // Getting gym capacity from api every 20 seconds
+      if (isFirstRender) {
+        setIsFirstRender(false);
+        (async () => {
+          const { gym } = await GymServices.getGymData(user.gymId);
+          setGymCapacity({
+            currentCapacity: gym.current_capacity,
+            maxCapacity: gym.max_capacity,
+            isLoading: false,
+          });
+        })();
+      }
+
+      const takeGymCapacityEvery20Seconds = setInterval(() => {
+        (async () => {
+          setGymCapacity({
+            currentCapacity: 0,
+            maxCapacity: 0,
+            isLoading: true,
+          });
+          const { gym } = await GymServices.getGymData(user.gymId);
+          setGymCapacity({
+            currentCapacity: gym.current_capacity,
+            maxCapacity: gym.max_capacity,
+            isLoading: false,
+          });
+        })();
+      }, 20000);
+
+      // Getting member workout progress
       (async () => {
-        const { gym } = await GymServices.getGymData(user.gymId);
-        setGymCapacity({
-          currentCapacity: gym.current_capacity,
-          maxCapacity: gym.max_capacity,
-        });
+        try {
+          const data = await MembersService.getAllMemberWorkoutPlans(user.id);
+          setMemberWorkouts(data.workoutPlan.workoutPlanWorkout);
+        } catch (error) {
+          setMemberWorkouts([]);
+        }
       })();
     }
   }, [user]);
@@ -99,9 +135,11 @@ export const Home = ({ navigation }: Props) => {
   ];
 
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
-  const workout = 'pernas';
-  const total_workouts = 16;
-  const workouts_finished = 9;
+  const workout = memberWorkouts
+    ? memberWorkouts[0]?.workout.title.toLowerCase()
+    : '';
+  const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
+  const workouts_finished = 0;
   const capacity = gymCapacity.maxCapacity;
   const capacity_occupied = gymCapacity.currentCapacity;
 
@@ -134,6 +172,16 @@ export const Home = ({ navigation }: Props) => {
     }
   }, []);
 
+  function getProgressPercentage() {
+    if (memberWorkouts?.length === 0) {
+      return 'Não há um plano de treino ativo';
+    }
+
+    return progress_percentage > 9
+      ? `0${progress_percentage}%`
+      : `${progress_percentage}%`;
+  }
+
   return (
     <Container>
       <Header>
@@ -150,7 +198,11 @@ export const Home = ({ navigation }: Props) => {
           ) : (
             <Loading size={48} color={theme.colors.gray[100]} />
           )}
-          <Subtitle>Seu treino de {workout} está te esperando</Subtitle>
+          <Subtitle>
+            {memberWorkouts?.length === 0
+              ? 'Você ainda não tem um plano de treino'
+              : `Seu treino de ${workout} está te esperando`}
+          </Subtitle>
           <Button
             title="Treinar"
             width={50}
@@ -171,12 +223,9 @@ export const Home = ({ navigation }: Props) => {
             <ProgressSection>
               <Progress>
                 <Label>Progresso</Label>
-                <ProgressPercentage>
+                <ProgressPercentage textLength={getProgressPercentage().length}>
                   {/* Adding 0 at the left of the number, in case it's lower than 10 */}
-                  {progress_percentage.toString().length === 1
-                    ? `0${progress_percentage}`
-                    : progress_percentage}
-                  %
+                  {memberWorkouts && getProgressPercentage()}
                 </ProgressPercentage>
               </Progress>
               <Workouts>
@@ -209,12 +258,18 @@ export const Home = ({ navigation }: Props) => {
               <CardTitle>Agora na academia</CardTitle>
               <Infos>
                 <InfosContainer>
-                  <InfoText color={capacityColor()} fontSize={32}>
-                    {capacity_occupied}
-                  </InfoText>
-                  <InfoText color={capacityColor()} fontSize={10}>
-                    Pessoas
-                  </InfoText>
+                  {gymCapacity.isLoading ? (
+                    <Loading size={48} />
+                  ) : (
+                    <>
+                      <InfoText fontSize={32} color={capacityColor()}>
+                        {capacity_occupied}
+                      </InfoText>
+                      <InfoText color={capacityColor()} fontSize={10}>
+                        Pessoas
+                      </InfoText>
+                    </>
+                  )}
                 </InfosContainer>
 
                 <InfosContainer>
@@ -222,8 +277,14 @@ export const Home = ({ navigation }: Props) => {
                 </InfosContainer>
 
                 <InfosContainer>
-                  <InfoText fontSize={32}>{capacity}</InfoText>
-                  <InfoText fontSize={10}>Máximo</InfoText>
+                  {gymCapacity.isLoading ? (
+                    <Loading size={48} color="#6C757D" />
+                  ) : (
+                    <>
+                      <InfoText fontSize={32}>{capacity}</InfoText>
+                      <InfoText fontSize={10}>Máximo</InfoText>
+                    </>
+                  )}
                 </InfosContainer>
               </Infos>
             </CardContainer>
@@ -231,9 +292,10 @@ export const Home = ({ navigation }: Props) => {
             <CardContainerTitle>Sua atividade</CardContainerTitle>
             <ActivityContainer />
 
-            <CardContainerTitle>Aulas Marcadas</CardContainerTitle>
-            <Slider data={schedule_classes} />
-            <CardContainerTitle>Treinos para fazer em casa</CardContainerTitle>
+            {/* <CardContainerTitle>Aulas Marcadas</CardContainerTitle>
+            <Slider data={schedule_classes} /> */}
+
+            <CardContainerTitle>Treinos livres</CardContainerTitle>
             <Slider data={home_workouts} />
           </MainContainer>
         </Scroll>
