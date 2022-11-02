@@ -38,7 +38,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
         const data = await MembersService.getAllMemberWorkoutPlans(user.id);
         setMemberWorkouts(data.workoutPlan);
       } catch (error) {
-        setMemberWorkouts([]);
+        console.log(error);
       }
     })();
   }, []);

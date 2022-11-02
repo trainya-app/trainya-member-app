@@ -132,7 +132,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                           workoutPlanWorkout.workout.title,
                           workoutPlanWorkout.workout.description,
                           workoutPlanWorkout.workout.workoutExercise,
-                          workoutPlanWorkout.workout_id
+                          workoutPlanWorkout.id
                         )
                       }
                     />
