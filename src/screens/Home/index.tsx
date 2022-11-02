@@ -179,7 +179,7 @@ export const Home = ({ navigation }: Props) => {
 
     return progress_percentage > 9
       ? `0${progress_percentage}`
-      : progress_percentage;
+      : `${progress_percentage}`;
   }
 
   return (
@@ -225,7 +225,7 @@ export const Home = ({ navigation }: Props) => {
                 <Label>Progresso</Label>
                 <ProgressPercentage textLength={getProgressPercentage().length}>
                   {/* Adding 0 at the left of the number, in case it's lower than 10 */}
-                  {getProgressPercentage()}
+                  {memberWorkouts && getProgressPercentage()}
                 </ProgressPercentage>
               </Progress>
               <Workouts>
