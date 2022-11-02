@@ -178,8 +178,8 @@ export const Home = ({ navigation }: Props) => {
     }
 
     return progress_percentage > 9
-      ? `0${progress_percentage}`
-      : `${progress_percentage}`;
+      ? `0${progress_percentage}%`
+      : `${progress_percentage}%`;
   }
 
   return (
