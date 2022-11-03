@@ -42,7 +42,9 @@ export const DropDownContainer = styled.View`
   margin-top: 40px;
 `;
 
-export const DropDownDateButton = styled.TouchableOpacity<IDropDownButtonProps>`
+export const DropDownDateButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})<IDropDownButtonProps>`
   position: relative;
   background-color: #99c0ff;
   width: ${width * 0.45}px;

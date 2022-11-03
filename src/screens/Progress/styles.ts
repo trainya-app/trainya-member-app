@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};
-  padding: 0 24px;
+  padding: 0 40px;
   padding-bottom: ${RFValue(96)}px;
 `;
 
@@ -34,8 +34,9 @@ export const ProgressBarIndicator = styled.Text`
   color: #fff;
 `;
 
-export const PhotoContainer = styled.Text``;
-
-export const DatePicker = styled.View``;
-
-export const DatePickerText = styled.Text``;
+export const PhotoContainer = styled.View`
+  background-color: #fff;
+  margin-top: 12px;
+  flex: 0.8;
+  border-radius: 24px;
+`;

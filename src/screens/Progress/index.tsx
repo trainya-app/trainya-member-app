@@ -11,6 +11,7 @@ import {
   GoalContainerTitle,
   ProgressBarLabel,
   ProgressBarIndicator,
+  PhotoContainer,
 } from './styles';
 
 export const Progress = ({ navigation }: NavigationProps) => {
@@ -53,7 +54,7 @@ export const Progress = ({ navigation }: NavigationProps) => {
         ) : (
           <>
             <DatePicker />
-            <ProgressBarLabel>Oilaskaoj</ProgressBarLabel>
+            <PhotoContainer></PhotoContainer>
           </>
         )}
       </Container>
