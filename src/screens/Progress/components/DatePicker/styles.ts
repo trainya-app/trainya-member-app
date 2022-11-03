@@ -5,15 +5,15 @@ import { Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-interface IDateButtonProps {
-  isActive: boolean;
+interface IDateProps {
+  isActive?: boolean;
 }
 
 export const Container = styled.View``;
 
 export const DateButton = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
-})<IDateButtonProps>`
+})<IDateProps>`
   background-color: #99c0ff;
   width: ${width * 0.45}px;
   border-radius: ${({ isActive }) => (isActive ? '0px' : '24px')};
@@ -26,11 +26,12 @@ export const DateButton = styled.TouchableOpacity.attrs({
   height: 40px;
 `;
 
-export const DateText = styled.Text`
+export const DateText = styled.Text<IDateProps>`
   padding: 8px;
   font-size: ${RFValue(14)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
-  color: #fff;
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.blue[400] : '#fff'};
 `;
 
 export const Scroll = styled.ScrollView.attrs({

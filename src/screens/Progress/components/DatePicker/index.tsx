@@ -49,7 +49,9 @@ export const DatePicker = () => {
                   setIsActive(false);
                 }}
               >
-                <DateText>{month}</DateText>
+                <DateText isActive={month === months[selectedMonth]}>
+                  {month}
+                </DateText>
               </DropDownDateButton>
             ))}
           </Scroll>
