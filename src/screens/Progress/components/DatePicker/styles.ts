@@ -33,6 +33,10 @@ export const DateText = styled.Text`
   color: #fff;
 `;
 
+export const Scroll = styled.ScrollView.attrs({
+  overScrollMode: 'never',
+})``;
+
 export const DropDownContainer = styled.View`
   position: absolute;
   margin-top: 40px;
@@ -40,6 +44,7 @@ export const DropDownContainer = styled.View`
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
   z-index: 5;
+  max-height: 200px;
 `;
 
 export const DropDownDateButton = styled.TouchableOpacity.attrs({

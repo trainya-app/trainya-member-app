@@ -5,6 +5,7 @@ import {
   Container,
   DateButton,
   DateText,
+  Scroll,
   DropDownContainer,
   DropDownDateButton,
 } from './styles';
@@ -39,17 +40,19 @@ export const DatePicker = () => {
 
       {isActive && (
         <DropDownContainer>
-          {months.map((month, index) => (
-            <DropDownDateButton
-              key={month}
-              onPress={() => {
-                setSelectedMonth(index);
-                setIsActive(false);
-              }}
-            >
-              <DateText>{month}</DateText>
-            </DropDownDateButton>
-          ))}
+          <Scroll>
+            {months.map((month, index) => (
+              <DropDownDateButton
+                key={month}
+                onPress={() => {
+                  setSelectedMonth(index);
+                  setIsActive(false);
+                }}
+              >
+                <DateText>{month}</DateText>
+              </DropDownDateButton>
+            ))}
+          </Scroll>
         </DropDownContainer>
       )}
     </Container>
