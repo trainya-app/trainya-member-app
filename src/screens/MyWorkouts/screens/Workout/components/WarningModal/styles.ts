@@ -34,7 +34,7 @@ export const CloseIcon = styled(CloseIconSVG)`
   position: absolute;
   align-self: center;
   right: 24px;
-  padding: 8px;
+  padding: 10px;
 `;
 
 export const Bottom = styled.View`
