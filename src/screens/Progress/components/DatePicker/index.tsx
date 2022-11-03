@@ -41,7 +41,6 @@ export const DatePicker = () => {
         <DropDownContainer>
           {months.map((month, index) => (
             <DropDownDateButton
-              isTheLast={index === 11}
               key={month}
               onPress={() => {
                 setSelectedMonth(index);

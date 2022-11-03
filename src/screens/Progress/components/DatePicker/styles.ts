@@ -9,10 +9,6 @@ interface IDateButtonProps {
   isActive: boolean;
 }
 
-interface IDropDownButtonProps {
-  isTheLast: boolean;
-}
-
 export const Container = styled.View``;
 
 export const DateButton = styled.TouchableOpacity.attrs({
@@ -40,13 +36,17 @@ export const DateText = styled.Text`
 export const DropDownContainer = styled.View`
   position: absolute;
   margin-top: 40px;
+  background-color: #99c0ff;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  z-index: 5;
 `;
 
 export const DropDownDateButton = styled.TouchableOpacity.attrs({
-  activeOpacity: 1,
-})<IDropDownButtonProps>`
+  activeOpacity: 0.4,
+})`
   position: relative;
-  background-color: #99c0ff;
+
   width: ${width * 0.45}px;
   flex-direction: row;
   align-items: center;
@@ -54,7 +54,4 @@ export const DropDownDateButton = styled.TouchableOpacity.attrs({
   padding: 0 16px;
   z-index: 5;
   height: 40px;
-  border-bottom-left-radius: ${({ isTheLast }) => (isTheLast ? '24px' : '0px')};
-  border-bottom-right-radius: ${({ isTheLast }) =>
-    isTheLast ? '24px' : '0px'};
 `;
