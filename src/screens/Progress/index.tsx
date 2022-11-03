@@ -53,6 +53,7 @@ export const Progress = ({ navigation }: NavigationProps) => {
         ) : (
           <>
             <DatePicker />
+            <ProgressBarLabel>Oilaskaoj</ProgressBarLabel>
           </>
         )}
       </Container>
