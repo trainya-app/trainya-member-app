@@ -26,6 +26,8 @@ export const Progress = ({ navigation }: NavigationProps) => {
   const [memberPhotosProgress, setMemberPhotosProgress] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [selectedMonth, setSelectedMonth] = useState(0);
+
   useEffect(() => {
     (async () => {
       const data = await MembersService.listAllMemberPhotoProgress();
@@ -36,9 +38,15 @@ export const Progress = ({ navigation }: NavigationProps) => {
 
   console.log(memberPhotosProgress);
 
-  const firstPhoto = isLoading ? '' : memberPhotosProgress[0].firstPhoto_url;
-  const secondPhoto = isLoading ? '' : memberPhotosProgress[0].secondPhoto_url;
-  const thirdPhoto = isLoading ? '' : memberPhotosProgress[0].thirdPhoto_url;
+  const firstPhoto = isLoading
+    ? ''
+    : memberPhotosProgress[selectedMonth].firstPhoto_url;
+  const secondPhoto = isLoading
+    ? ''
+    : memberPhotosProgress[selectedMonth].secondPhoto_url;
+  const thirdPhoto = isLoading
+    ? ''
+    : memberPhotosProgress[selectedMonth].thirdPhoto_url;
 
   return (
     <>
@@ -78,7 +86,10 @@ export const Progress = ({ navigation }: NavigationProps) => {
         ) : (
           <>
             <Row>
-              <DatePicker />
+              <DatePicker
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+              />
               <CameraContainer onPress={() => navigation.navigate('Camera')}>
                 <CameraIcon />
               </CameraContainer>

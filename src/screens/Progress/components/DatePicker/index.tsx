@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import {
@@ -10,7 +10,15 @@ import {
   DropDownDateButton,
 } from './styles';
 
-export const DatePicker = () => {
+interface IDatePickerProps {
+  selectedMonth: number;
+  setSelectedMonth: Dispatch<SetStateAction<number>>;
+}
+
+export const DatePicker = ({
+  selectedMonth,
+  setSelectedMonth,
+}: IDatePickerProps) => {
   const months = [
     'Janeiro',
     'Fevereiro',
@@ -26,7 +34,6 @@ export const DatePicker = () => {
     'Dezembro',
   ];
 
-  const [selectedMonth, setSelectedMonth] = useState(0);
   const [isActive, setIsActive] = useState(false);
   return (
     <Container>
