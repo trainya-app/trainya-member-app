@@ -37,6 +37,15 @@ export const ProgressBarIndicator = styled.Text`
 export const PhotoContainer = styled.View`
   background-color: #fff;
   margin-top: 12px;
-  flex: 0.8;
+  flex: 0.95;
   border-radius: 24px;
+  overflow: hidden;
+`;
+
+export const BodyIcon = styled.Image.attrs({
+  resizeMode: 'contain',
+})`
+  height: 100%;
+  width: 100%;
+  background-color: red;
 `;

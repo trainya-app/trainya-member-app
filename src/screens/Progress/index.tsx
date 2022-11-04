@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Carousel from 'react-native-snap-carousel';
 import { Chart } from '../../components/Chart';
 import { Heading } from '../../components/Heading';
 import { NavigationProps } from '../../types/NavigationProps';
@@ -12,10 +13,31 @@ import {
   ProgressBarLabel,
   ProgressBarIndicator,
   PhotoContainer,
+  BodyIcon,
 } from './styles';
+
+import bodyAsideImg from '../../assets/body-aside.png';
+import bodyFrontImg from '../../assets/body-front.png';
+import bodyBackImg from '../../assets/body-back.png';
+import Swiper from 'react-native-swiper';
 
 export const Progress = ({ navigation }: NavigationProps) => {
   const [isScreenSwitched, setIsScreenSwitched] = useState(false);
+
+  const images = [
+    {
+      id: 1,
+      image: bodyFrontImg,
+    },
+    {
+      id: 2,
+      image: bodyBackImg,
+    },
+    {
+      id: 3,
+      image: bodyAsideImg,
+    },
+  ];
   return (
     <>
       <Heading
@@ -54,7 +76,12 @@ export const Progress = ({ navigation }: NavigationProps) => {
         ) : (
           <>
             <DatePicker />
-            <PhotoContainer></PhotoContainer>
+            <PhotoContainer>
+              <Swiper loop={false}>
+                <BodyIcon source={images[2].image} />
+                <BodyIcon source={bodyFrontImg} />
+              </Swiper>
+            </PhotoContainer>
           </>
         )}
       </Container>
