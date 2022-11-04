@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
 
-import { Camera } from 'expo-camera';
+import { Camera, CameraProps } from 'expo-camera';
 import styled from 'styled-components/native';
 
 const { width } = Dimensions.get('window');
