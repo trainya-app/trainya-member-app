@@ -19,11 +19,15 @@ import {
 } from './styles';
 
 import CameraIcon from '../../assets/camera-icon.svg';
-import MembersService from '../../services/MembersService';
+import MembersService, {
+  IMemberPhotosProgress,
+} from '../../services/MembersService';
 
 export const Progress = ({ navigation }: NavigationProps) => {
   const [isScreenSwitched, setIsScreenSwitched] = useState(false);
-  const [memberPhotosProgress, setMemberPhotosProgress] = useState([]);
+  const [memberPhotosProgress, setMemberPhotosProgress] = useState<
+    IMemberPhotosProgress[]
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedMonth, setSelectedMonth] = useState(0);
@@ -36,14 +40,14 @@ export const Progress = ({ navigation }: NavigationProps) => {
     })();
   }, []);
 
-  console.log(memberPhotosProgress);
-
   const firstPhoto = isLoading
     ? ''
     : memberPhotosProgress[selectedMonth].firstPhoto_url;
+
   const secondPhoto = isLoading
     ? ''
     : memberPhotosProgress[selectedMonth].secondPhoto_url;
+
   const thirdPhoto = isLoading
     ? ''
     : memberPhotosProgress[selectedMonth].thirdPhoto_url;
