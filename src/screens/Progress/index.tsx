@@ -80,7 +80,7 @@ export const Progress = ({ navigation }: NavigationProps) => {
           <>
             <Row>
               <DatePicker />
-              <CameraContainer>
+              <CameraContainer onPress={() => navigation.navigate('Camera')}>
                 <CameraIcon />
               </CameraContainer>
             </Row>

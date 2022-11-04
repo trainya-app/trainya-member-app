@@ -44,10 +44,9 @@ const App = () => {
         <ThemeProvider theme={theme[colorMode]}>
           <WorkoutContextProvider>
             <StatusBar backgroundColor="#000" translucent />
-            {/* <NavigationContainer>
+            <NavigationContainer>
               <Routes />
-            </NavigationContainer> */}
-            <CameraScreen />
+            </NavigationContainer>
           </WorkoutContextProvider>
         </ThemeProvider>
       </ThemeContextProvider>

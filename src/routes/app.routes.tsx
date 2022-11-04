@@ -24,6 +24,7 @@ import { ChangePassword } from '../screens/Configurations/ChangePassword';
 import { PrivacyPolicy } from '../screens/Configurations/Privacy/PrivacyPolicy';
 import { TermsAndConditions } from '../screens/Configurations/Privacy/TermsAndConditions';
 import { Payments } from '../screens/Configurations/Payments';
+import { CameraScreen } from '../screens/Progress/screens/Camera';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -78,6 +79,7 @@ const ProgressStack = () => (
     }}
   >
     <Stack.Screen name="Home" component={Progress} />
+    <Stack.Screen name="Camera" component={CameraScreen} />
     {ConfigStack()}
   </Stack.Navigator>
 );
@@ -141,7 +143,8 @@ export const AppRoutes = () => {
       screen === 'ExercisesList' ||
       screen === 'EditProfile' ||
       screen === 'Workout' ||
-      screen === 'ChangePassword'
+      screen === 'ChangePassword' ||
+      screen === 'Camera'
     ) {
       return 'none';
     }
