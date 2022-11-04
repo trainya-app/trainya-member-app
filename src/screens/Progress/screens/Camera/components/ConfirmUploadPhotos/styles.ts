@@ -25,8 +25,13 @@ export const Title = styled.Text`
   font-size: ${RFValue(16)}px;
 `;
 
-export const Photo = styled.Image`
-  height: 410px;
-  width: 270px;
-  align-self: center;
+export const Photo = styled.Image.attrs({
+  resizeMode: 'contain',
+})`
+  flex: 1;
+`;
+
+export const IconWrapper = styled.View`
+  background-color: #2176ff;
+  border-radius: 999px;
 `;
