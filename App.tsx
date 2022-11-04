@@ -20,6 +20,7 @@ import theme from './src/global/styles/theme';
 import { Routes } from './src/routes';
 import { Splash } from './src/screens/Splash';
 import { WorkoutContextProvider } from './src/contexts/WorkoutContext';
+import { CameraScreen } from './src/screens/Progress/screens/Camera';
 
 const App = () => {
   const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
@@ -43,9 +44,10 @@ const App = () => {
         <ThemeProvider theme={theme[colorMode]}>
           <WorkoutContextProvider>
             <StatusBar backgroundColor="#000" translucent />
-            <NavigationContainer>
+            {/* <NavigationContainer>
               <Routes />
-            </NavigationContainer>
+            </NavigationContainer> */}
+            <CameraScreen />
           </WorkoutContextProvider>
         </ThemeProvider>
       </ThemeContextProvider>
