@@ -52,6 +52,8 @@ export const Progress = ({ navigation }: NavigationProps) => {
     ? ''
     : memberPhotosProgress[selectedMonth].thirdPhoto_url;
 
+  const isImagesLoaded = firstPhoto && secondPhoto && thirdPhoto;
+
   return (
     <>
       <Heading
@@ -100,23 +102,29 @@ export const Progress = ({ navigation }: NavigationProps) => {
             </Row>
 
             <PhotoContainer>
-              <Swiper loop={false}>
-                <MemberImage
-                  source={{
-                    uri: firstPhoto,
-                  }}
-                />
-                <MemberImage
-                  source={{
-                    uri: secondPhoto,
-                  }}
-                />
-                <MemberImage
-                  source={{
-                    uri: thirdPhoto,
-                  }}
-                />
-              </Swiper>
+              {isImagesLoaded ? (
+                <Swiper loop={false}>
+                  <MemberImage
+                    source={{
+                      uri: firstPhoto,
+                    }}
+                  />
+                  <MemberImage
+                    source={{
+                      uri: secondPhoto,
+                    }}
+                  />
+                  <MemberImage
+                    source={{
+                      uri: thirdPhoto,
+                    }}
+                  />
+                </Swiper>
+              ) : (
+                <ProgressBarLabel>
+                  Sem fotos para o mês selecionado
+                </ProgressBarLabel>
+              )}
             </PhotoContainer>
           </>
         )}

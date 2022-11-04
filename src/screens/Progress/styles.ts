@@ -40,6 +40,8 @@ export const PhotoContainer = styled.View`
   flex: 0.95;
   border-radius: 24px;
   overflow: hidden;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const MemberImage = styled.Image.attrs({
