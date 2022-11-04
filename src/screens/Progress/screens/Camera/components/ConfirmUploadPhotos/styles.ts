@@ -17,18 +17,18 @@ export const ConfirmPhotosContainer = styled.View`
   border-radius: 24px;
   align-items: center;
   justify-content: center;
+  padding: 24px;
 `;
 
 export const Title = styled.Text`
-  margin-top: 16px;
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(16)}px;
+  margin-bottom: 16px;
 `;
 
-export const Photo = styled.Image.attrs({
-  resizeMode: 'contain',
-})`
+export const Photo = styled.Image.attrs({})`
   flex: 1;
+  border-radius: 24px;
 `;
 
 export const IconWrapper = styled.View`

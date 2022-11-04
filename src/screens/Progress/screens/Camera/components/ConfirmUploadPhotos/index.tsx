@@ -1,6 +1,9 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import Swiper from 'react-native-swiper';
 
 import Entypo from 'react-native-vector-icons/Entypo';
+import { Button } from '../../../../../../components/Button';
 
 import {
   Modal,
@@ -14,11 +17,15 @@ import {
 interface IConfirmUploadPhotosProps {
   visible: boolean;
   memberPhotos: string[];
+  setMemberPhotos: Dispatch<SetStateAction<string[]>>;
+  setVisibility: Dispatch<SetStateAction<boolean>>;
 }
 
 export const ConfirmUploadPhotos = ({
   visible,
   memberPhotos,
+  setMemberPhotos,
+  setVisibility,
 }: IConfirmUploadPhotosProps) => {
   const a = 'a';
   return (
@@ -51,6 +58,18 @@ export const ConfirmUploadPhotos = ({
               />
             ))}
           </Swiper>
+          <Button
+            title="Descartar"
+            fontSize={12}
+            height={32}
+            width={45}
+            color="#EF233C"
+            style={{ marginTop: 12, backgroundColor: '#FFF5F5' }}
+            onPress={() => {
+              setVisibility(false);
+              setMemberPhotos([]);
+            }}
+          />
         </ConfirmPhotosContainer>
       </Overlay>
     </Modal>

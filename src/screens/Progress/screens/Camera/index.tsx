@@ -69,6 +69,8 @@ export const CameraScreen = () => {
       <ConfirmUploadPhotos
         visible={isModalActive}
         memberPhotos={memberPhotos}
+        setMemberPhotos={setMemberPhotos}
+        setVisibility={setIsModalActive}
       />
     </Container>
   );
