@@ -89,7 +89,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
         />
         <Scroll>
           <CardLabel>Treino atual</CardLabel>
-          {memberWorkouts?.length ? (
+          {memberWorkouts ? (
             <Card>
               <CardImage
                 source={{

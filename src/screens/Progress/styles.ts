@@ -49,3 +49,19 @@ export const BodyIcon = styled.Image.attrs({
   width: 100%;
   background-color: red;
 `;
+
+export const CameraContainer = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
+  background-color: #99c0ff;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  height: 40px;
+`;
+
+export const Row = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
