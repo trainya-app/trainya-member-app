@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Swiper from 'react-native-swiper';
 import { Chart } from '../../components/Chart';
 import { Heading } from '../../components/Heading';
@@ -14,33 +14,32 @@ import {
   ProgressBarIndicator,
   PhotoContainer,
   Row,
-  BodyIcon,
+  MemberImage,
   CameraContainer,
 } from './styles';
 
 import CameraIcon from '../../assets/camera-icon.svg';
-
-import bodyAsideImg from '../../assets/body-aside.png';
-import bodyFrontImg from '../../assets/body-front.png';
-import bodyBackImg from '../../assets/body-back.png';
+import MembersService from '../../services/MembersService';
 
 export const Progress = ({ navigation }: NavigationProps) => {
   const [isScreenSwitched, setIsScreenSwitched] = useState(false);
+  const [memberPhotosProgress, setMemberPhotosProgress] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const images = [
-    {
-      id: 1,
-      image: bodyFrontImg,
-    },
-    {
-      id: 2,
-      image: bodyBackImg,
-    },
-    {
-      id: 3,
-      image: bodyAsideImg,
-    },
-  ];
+  useEffect(() => {
+    (async () => {
+      const data = await MembersService.listAllMemberPhotoProgress();
+      setMemberPhotosProgress(data);
+      setIsLoading(false);
+    })();
+  }, []);
+
+  console.log(memberPhotosProgress);
+
+  const firstPhoto = isLoading ? '' : memberPhotosProgress[0].firstPhoto_url;
+  const secondPhoto = isLoading ? '' : memberPhotosProgress[0].secondPhoto_url;
+  const thirdPhoto = isLoading ? '' : memberPhotosProgress[0].thirdPhoto_url;
+
   return (
     <>
       <Heading
@@ -87,9 +86,21 @@ export const Progress = ({ navigation }: NavigationProps) => {
 
             <PhotoContainer>
               <Swiper loop={false}>
-                <BodyIcon source={images[2].image} />
-                <BodyIcon source={bodyFrontImg} />
-                <BodyIcon source={bodyAsideImg} />
+                <MemberImage
+                  source={{
+                    uri: firstPhoto,
+                  }}
+                />
+                <MemberImage
+                  source={{
+                    uri: secondPhoto,
+                  }}
+                />
+                <MemberImage
+                  source={{
+                    uri: thirdPhoto,
+                  }}
+                />
               </Swiper>
             </PhotoContainer>
           </>

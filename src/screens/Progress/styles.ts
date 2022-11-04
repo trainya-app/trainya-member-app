@@ -42,8 +42,8 @@ export const PhotoContainer = styled.View`
   overflow: hidden;
 `;
 
-export const BodyIcon = styled.Image.attrs({
-  resizeMode: 'contain',
+export const MemberImage = styled.Image.attrs({
+  resizeMode: 'cover',
 })`
   height: 100%;
   width: 100%;

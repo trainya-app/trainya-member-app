@@ -104,6 +104,11 @@ class MembersService {
       },
     });
   }
+
+  async listAllMemberPhotoProgress() {
+    const { data } = await api.get('/member-photos-progress');
+    return data.memberPhotosProgress;
+  }
 }
 
 export default new MembersService();
