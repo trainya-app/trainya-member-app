@@ -47,7 +47,6 @@ export const MemberImage = styled.Image.attrs({
 })`
   height: 100%;
   width: 100%;
-  background-color: red;
 `;
 
 export const CameraContainer = styled.TouchableOpacity.attrs({

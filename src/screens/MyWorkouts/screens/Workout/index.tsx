@@ -60,7 +60,7 @@ export const Workout = ({ navigation, route }: Props) => {
           containerStyle={{
             position: 'absolute',
             alignSelf: 'center',
-            bottom: 200,
+            bottom: 24,
           }}
           dotStyle={{
             width: 10,
