@@ -1,4 +1,7 @@
 import Swiper from 'react-native-swiper';
+
+import Entypo from 'react-native-vector-icons/Entypo';
+
 import { Modal, Overlay, ConfirmPhotosContainer, Title, Photo } from './styles';
 
 interface IConfirmUploadPhotosProps {
@@ -21,6 +24,12 @@ export const ConfirmUploadPhotos = ({
             loop={false}
             showsButtons
             showsPagination={false}
+            nextButton={
+              <Entypo name="chevron-right" size={32} color="#2176ff" />
+            }
+            prevButton={
+              <Entypo name="chevron-left" size={32} color="#2176ff" />
+            }
           >
             <Photo
               source={{
