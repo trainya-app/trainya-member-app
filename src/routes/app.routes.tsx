@@ -78,7 +78,7 @@ const ProgressStack = () => (
       headerShown: false,
     }}
   >
-    <Stack.Screen name="Home" component={Progress} />
+    <Stack.Screen name="Progress" component={Progress} />
     <Stack.Screen name="Camera" component={CameraScreen} />
     {ConfigStack()}
   </Stack.Navigator>

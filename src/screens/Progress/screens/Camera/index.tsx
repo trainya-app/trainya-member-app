@@ -5,8 +5,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Camera, CameraType, FlashMode } from 'expo-camera';
 import { CameraComponent, Container, Pressable, Bottom } from './styles';
 import { ConfirmUploadPhotos } from './components/ConfirmUploadPhotos';
+import { NavigationProps } from '../../../../types/NavigationProps';
 
-export const CameraScreen = () => {
+export const CameraScreen = ({ navigation }: NavigationProps) => {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [flash, setFlash] = useState(FlashMode.off);
@@ -71,6 +72,7 @@ export const CameraScreen = () => {
         memberPhotos={memberPhotos}
         setMemberPhotos={setMemberPhotos}
         setVisibility={setIsModalActive}
+        navigate={(screen) => navigation.replace(screen)}
       />
     </Container>
   );

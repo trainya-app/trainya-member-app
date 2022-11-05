@@ -1,9 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 import Swiper from 'react-native-swiper';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import { Button } from '../../../../../../components/Button';
+import MemberProgressPhotosService from '../../../../../../services/MemberProgressPhotosService';
 
 import {
   Modal,
@@ -19,6 +20,7 @@ interface IConfirmUploadPhotosProps {
   memberPhotos: string[];
   setMemberPhotos: Dispatch<SetStateAction<string[]>>;
   setVisibility: Dispatch<SetStateAction<boolean>>;
+  navigate: (screen: string) => void;
 }
 
 export const ConfirmUploadPhotos = ({
@@ -26,8 +28,21 @@ export const ConfirmUploadPhotos = ({
   memberPhotos,
   setMemberPhotos,
   setVisibility,
+  navigate,
 }: IConfirmUploadPhotosProps) => {
-  const a = 'a';
+  const [isUploading, setIsUploading] = useState(false);
+
+  async function uploadPhotos() {
+    setIsUploading(true);
+    await MemberProgressPhotosService.uploadPhotos(
+      memberPhotos[0],
+      memberPhotos[1],
+      memberPhotos[2]
+    );
+    setVisibility(false);
+    navigate('Progress');
+  }
+
   return (
     <Modal transparent visible={visible}>
       <Overlay>
@@ -59,12 +74,21 @@ export const ConfirmUploadPhotos = ({
             ))}
           </Swiper>
           <Button
+            title={isUploading ? 'Enviando...' : 'Enviar'}
+            fontSize={12}
+            height={32}
+            width={45}
+            onPress={() => {
+              uploadPhotos();
+            }}
+          />
+          <Button
             title="Descartar"
             fontSize={12}
             height={32}
             width={45}
             color="#EF233C"
-            style={{ marginTop: 12, backgroundColor: '#FFF5F5' }}
+            style={{ backgroundColor: '#FFF5F5' }}
             onPress={() => {
               setVisibility(false);
               setMemberPhotos([]);
