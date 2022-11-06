@@ -1,6 +1,9 @@
+import { useContext } from 'react';
+
 import { KeyboardAvoidingView } from 'react-native';
 import { useTheme } from 'styled-components';
 import { Heading } from '../../../components/Heading';
+import { AuthContext } from '../../../contexts/AuthContext';
 import { NavigationProps } from '../../../types/NavigationProps';
 import {
   Container,
@@ -15,6 +18,8 @@ import {
 export const EditProfile = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
   const placeholder = `${theme.colors.text.light}`;
+
+  const { user } = useContext(AuthContext);
   return (
     <>
       <Heading
@@ -25,42 +30,38 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
       <Container>
         <KeyboardAvoidingView style={{ flex: 1 }}>
           <Scroll>
-            <BoxRow>
-              <ProfileImageContainer>
-                <ChangePhotoIcon />
-              </ProfileImageContainer>
-              <BoxColumn>
-                <TextInput
-                  placeholder="Nome"
-                  placeholderTextColor={placeholder}
-                />
-                <TextInput
-                  placeholder="Sobrenome"
-                  placeholderTextColor={placeholder}
-                />
-              </BoxColumn>
-            </BoxRow>
+            <ProfileImageContainer>
+              <ChangePhotoIcon />
+            </ProfileImageContainer>
             <TextInput
-              placeholder="E-mail"
+              placeholder="Nome"
               placeholderTextColor={placeholder}
+              defaultValue={user.name}
             />
             <TextInput
               placeholder="Número de Telefone"
               placeholderTextColor={placeholder}
+              defaultValue={user.phone}
+              keyboardType="numeric"
             />
             <TextInput
               placeholder="Data de Nascimento"
               placeholderTextColor={placeholder}
+              defaultValue={user.birth_date}
             />
-            <TextInput
-              placeholder="Gênero"
-              placeholderTextColor={placeholder}
-            />
+
             <TextInput
               placeholder="Altura"
               placeholderTextColor={placeholder}
+              defaultValue={user.height}
+              keyboardType="numeric"
             />
-            <TextInput placeholder="Peso" placeholderTextColor={placeholder} />
+            <TextInput
+              placeholder="Peso"
+              placeholderTextColor={placeholder}
+              defaultValue={`${user.weight}kg`}
+              keyboardType="numeric"
+            />
           </Scroll>
         </KeyboardAvoidingView>
       </Container>

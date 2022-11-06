@@ -22,8 +22,10 @@ export const ProfileImageContainer = styled.View`
   height: ${RFValue(100)}px;
   justify-content: center;
   align-items: center;
+  align-self: center;
   border-radius: 999px;
   background-color: ${({ theme }) => theme.colors.gray[300]};
+  margin-bottom: 16px;
 `;
 
 export const ChangePhotoIcon = styled(EditIcon)``;
