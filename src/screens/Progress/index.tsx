@@ -30,7 +30,7 @@ export const Progress = ({ navigation }: NavigationProps) => {
   >([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [selectedMonth, setSelectedMonth] = useState(0);
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
 
   useEffect(() => {
     (async () => {
