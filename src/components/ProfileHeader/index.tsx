@@ -64,9 +64,9 @@ export const ProfileHeader = ({ onPressEditInfo }: ProfileHeaderProps) => {
     <Header>
       <ProfileImageContainer>
         <ProfilePhoto source={{ uri: getPhoto() }} />
-        <ChangePhotoIconContainer onPress={handleChoosePhoto}>
+        {/* <ChangePhotoIconContainer onPress={handleChoosePhoto}>
           <ChangePhotoIcon />
-        </ChangePhotoIconContainer>
+        </ChangePhotoIconContainer> */}
       </ProfileImageContainer>
       <ProfileInfoContainer>
         <Username>{user.name}</Username>
