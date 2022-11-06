@@ -11,8 +11,6 @@ import {
   Scroll,
   ProfileImageContainer,
   ChangePhotoIcon,
-  BoxRow,
-  BoxColumn,
   TextInput,
   ConfirmChangePhotoModal,
   Overlay,
