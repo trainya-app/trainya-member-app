@@ -3,6 +3,10 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 import EditIcon from '../../../assets/edit_profile_icon.svg';
 
+interface IModalButtonProps {
+  type: 'confirm' | 'cancel';
+}
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};
@@ -28,6 +32,7 @@ export const ProfileImageContainer = styled.TouchableOpacity.attrs({
   border-radius: 999px;
   background-color: ${({ theme }) => theme.colors.gray[300]};
   margin-bottom: 16px;
+  overflow: hidden;
 `;
 
 export const ChangePhotoIcon = styled(EditIcon)``;
@@ -120,3 +125,11 @@ export const ModalButtonText = styled.Text<IModalButtonProps>`
 export const Loading = styled.ActivityIndicator.attrs({
   color: '#FFFFFF',
 })``;
+
+export const UserPhoto = styled.Image`
+  width: ${RFValue(100)}px;
+  height: ${RFValue(100)}px;
+  z-index: -5;
+  background-color: red;
+  position: absolute;
+`;

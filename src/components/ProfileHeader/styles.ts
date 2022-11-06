@@ -3,10 +3,6 @@ import styled from 'styled-components/native';
 
 import EditIcon from '../../assets/edit_profile_icon.svg';
 
-interface IModalButtonProps {
-  type: 'confirm' | 'cancel';
-}
-
 export const Header = styled.View`
   flex-direction: row;
   margin-bottom: 24px;

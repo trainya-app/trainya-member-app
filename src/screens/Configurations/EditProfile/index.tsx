@@ -22,6 +22,7 @@ import {
   ModalButton,
   ModalButtonText,
   Loading,
+  UserPhoto,
 } from './styles';
 
 import MembersService from '../../../services/MembersService';
@@ -33,7 +34,8 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [photoPreview, setPhotoPreview] = useState('');
-  const [photo, setPhoto] = useState('');
+
+  const { user } = useContext(AuthContext);
 
   async function handleChoosePhoto() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -52,12 +54,10 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
   async function uploadPhoto() {
     setIsLoading(true);
     await MembersService.updateAvatar(photoPreview);
-    setPhoto(photoPreview);
     setIsModalVisible(false);
     setIsLoading(false);
   }
 
-  const { user } = useContext(AuthContext);
   return (
     <>
       <Heading
@@ -70,6 +70,7 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
           <Scroll>
             <ProfileImageContainer onPress={() => handleChoosePhoto()}>
               <ChangePhotoIcon />
+              <UserPhoto source={{ uri: user.avatar_url }} />
             </ProfileImageContainer>
             <TextInput
               placeholder="Nome"
