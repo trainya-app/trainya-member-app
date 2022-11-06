@@ -1,6 +1,10 @@
 import { api } from './api';
 
 class MemberProgressPhotosService {
+  getMonth() {
+    return new Date().getMonth() + 1;
+  }
+
   async uploadFirstPhoto(firstPhoto: string) {
     const formData = new FormData();
 
@@ -10,7 +14,7 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put('/member-uploadFirstPhoto', formData, {
+    await api.put(`/member-upLoadThirdPhoto/${this.getMonth()}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -26,7 +30,7 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put('/member-uploadSecondPhoto', formData, {
+    await api.put(`/member-upLoadSecondPhoto/${this.getMonth()}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -42,7 +46,7 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put('/member-uploadThirdPhoto', formData, {
+    await api.put(`/member-upLoadThirdPhoto/${this.getMonth()}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
