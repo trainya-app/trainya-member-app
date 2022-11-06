@@ -21,9 +21,7 @@ export const Scroll = styled.ScrollView.attrs({
   overScrollMode: 'never',
 })``;
 
-export const ProfileImageContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.7,
-})`
+export const ProfileImageContainer = styled.View`
   width: ${RFValue(100)}px;
   height: ${RFValue(100)}px;
   justify-content: center;
@@ -32,7 +30,17 @@ export const ProfileImageContainer = styled.TouchableOpacity.attrs({
   border-radius: 999px;
   background-color: ${({ theme }) => theme.colors.gray[300]};
   margin-bottom: 16px;
-  overflow: hidden;
+`;
+
+export const ChangePhotoIconContainer = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
+  position: absolute;
+  background-color: #fff;
+  padding: 12px;
+  right: 0;
+  bottom: 0;
+  border-radius: 999px;
 `;
 
 export const ChangePhotoIcon = styled(EditIcon)``;
@@ -132,4 +140,5 @@ export const UserPhoto = styled.Image`
   z-index: -5;
   background-color: red;
   position: absolute;
+  border-radius: 999px;
 `;

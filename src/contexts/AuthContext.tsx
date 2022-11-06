@@ -133,6 +133,7 @@ export const AuthContextProvider = ({ children }: Props) => {
       value={{
         token,
         user,
+        setUser,
         login,
         logout,
         updatePassword,

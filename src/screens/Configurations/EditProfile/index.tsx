@@ -10,6 +10,7 @@ import {
   Container,
   Scroll,
   ProfileImageContainer,
+  ChangePhotoIconContainer,
   ChangePhotoIcon,
   TextInput,
   ConfirmChangePhotoModal,
@@ -35,7 +36,7 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [photoPreview, setPhotoPreview] = useState('');
 
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   async function handleChoosePhoto() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -54,6 +55,7 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
   async function uploadPhoto() {
     setIsLoading(true);
     await MembersService.updateAvatar(photoPreview);
+    setUser({ ...user, avatar_url: photoPreview });
     setIsModalVisible(false);
     setIsLoading(false);
   }
@@ -68,8 +70,10 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
       <Container>
         <KeyboardAvoidingView style={{ flex: 1 }}>
           <Scroll>
-            <ProfileImageContainer onPress={() => handleChoosePhoto()}>
-              <ChangePhotoIcon />
+            <ProfileImageContainer>
+              <ChangePhotoIconContainer onPress={() => handleChoosePhoto()}>
+                <ChangePhotoIcon />
+              </ChangePhotoIconContainer>
               <UserPhoto source={{ uri: user.avatar_url }} />
             </ProfileImageContainer>
             <TextInput
