@@ -28,6 +28,7 @@ export const AccountInfos = ({ navigation }: NavigationProps) => {
       <Container>
         <ProfileHeader
           onPressEditInfo={() => navigation.navigate('EditProfile')}
+          type="config"
         />
         <GymLabel>Minha academia:</GymLabel>
         <GymName>{user.gym}</GymName>

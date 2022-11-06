@@ -47,3 +47,18 @@ export const Username = styled.Text`
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.text.default};
 `;
+
+export const GymText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  text-transform: uppercase;
+  font-size: ${RFValue(8)}px;
+  margin-top: 8px;
+  color: #6c757d;
+`;
+
+export const GymName = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.extrabold};
+  text-transform: uppercase;
+  font-size: ${RFValue(16)}px;
+  color: #005ef5;
+`;
