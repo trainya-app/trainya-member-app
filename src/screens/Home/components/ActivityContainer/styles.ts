@@ -52,13 +52,13 @@ export const ActivityUserProgress = styled.View`
   height: 75%;
   margin-right: 20px;
   border-radius: 999px;
-  background-color: ${({ theme }) => theme.colors.blue[500]};
+  background-color: #2176ff;
   position: absolute;
   bottom: 0;
 `;
 
 export const ActivityGreeting = styled.View`
-  background-color: ${({ theme }) => theme.colors.blue[100]};
+  background-color: #ebf2ff;
   width: 100%;
   border-radius: 999px;
   margin-top: 20px;

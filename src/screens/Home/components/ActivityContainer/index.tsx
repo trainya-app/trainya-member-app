@@ -19,9 +19,7 @@ export const ActivityContainer = () => {
           <InfoText color={theme.colors.blue[900]} fontSize={24}>
             01
           </InfoText>
-          <InfoText fontSize={8}>
-            Semanas de treino consecutivas
-          </InfoText>
+          <InfoText fontSize={8}>Semanas de treino consecutivas</InfoText>
         </ActivityInfoWrapper>
 
         <ActivityProgressBar>
@@ -37,10 +35,10 @@ export const ActivityContainer = () => {
       </Infos>
 
       <ActivityGreeting>
-        <InfoText fontSize={10} color={theme.colors.blue[500]}>
+        <InfoText fontSize={10} color="#2176ff">
           Bom trabalho! Assim você vai longe
         </InfoText>
       </ActivityGreeting>
     </CardContainer>
-);
-}
+  );
+};
