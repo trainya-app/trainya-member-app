@@ -96,7 +96,7 @@ export const Progress = ({ navigation }: NavigationProps) => {
                 selectedMonth={selectedMonth}
                 setSelectedMonth={setSelectedMonth}
               />
-              <CameraContainer onPress={() => navigation.push('Camera')}>
+              <CameraContainer onPress={() => navigation.navigate('Camera')}>
                 <CameraIcon />
               </CameraContainer>
             </Row>

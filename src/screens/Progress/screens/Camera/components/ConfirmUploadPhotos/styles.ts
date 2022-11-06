@@ -35,3 +35,10 @@ export const IconWrapper = styled.View`
   background-color: #2176ff;
   border-radius: 999px;
 `;
+
+export const Row = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+  width: 100%;
+`;

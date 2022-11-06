@@ -13,6 +13,7 @@ import {
   Title,
   Photo,
   IconWrapper,
+  Row,
 } from './styles';
 
 interface IConfirmUploadPhotosProps {
@@ -73,27 +74,29 @@ export const ConfirmUploadPhotos = ({
               />
             ))}
           </Swiper>
-          <Button
-            title={isUploading ? 'Enviando...' : 'Enviar'}
-            fontSize={12}
-            height={32}
-            width={45}
-            onPress={() => {
-              uploadPhotos();
-            }}
-          />
-          <Button
-            title="Descartar"
-            fontSize={12}
-            height={32}
-            width={45}
-            color="#EF233C"
-            style={{ backgroundColor: '#FFF5F5' }}
-            onPress={() => {
-              setVisibility(false);
-              setMemberPhotos([]);
-            }}
-          />
+          <Row>
+            <Button
+              title={isUploading ? 'Enviando...' : 'Enviar'}
+              fontSize={12}
+              height={32}
+              width={45}
+              onPress={() => {
+                uploadPhotos();
+              }}
+            />
+            <Button
+              title="Descartar"
+              fontSize={12}
+              height={32}
+              width={45}
+              color="#EF233C"
+              style={{ backgroundColor: '#FFF5F5' }}
+              onPress={() => {
+                setVisibility(false);
+                setMemberPhotos([]);
+              }}
+            />
+          </Row>
         </ConfirmPhotosContainer>
       </Overlay>
     </Modal>
