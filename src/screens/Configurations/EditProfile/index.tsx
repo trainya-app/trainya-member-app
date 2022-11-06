@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import * as ImagePicker from 'expo-image-picker';
 
 import { KeyboardAvoidingView } from 'react-native';
 import { useTheme } from 'styled-components';
@@ -13,11 +14,50 @@ import {
   BoxRow,
   BoxColumn,
   TextInput,
+  ConfirmChangePhotoModal,
+  Overlay,
+  ModalContainer,
+  NewPhoto,
+  ModalContainerText,
+  ModalContainerSubtitle,
+  ModalContainerButtons,
+  ModalButton,
+  ModalButtonText,
+  Loading,
 } from './styles';
+
+import MembersService from '../../../services/MembersService';
 
 export const EditProfile = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
   const placeholder = `${theme.colors.text.light}`;
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [photoPreview, setPhotoPreview] = useState('');
+  const [photo, setPhoto] = useState('');
+
+  async function handleChoosePhoto() {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      setPhotoPreview(result.uri);
+      setIsModalVisible(true);
+    }
+  }
+
+  async function uploadPhoto() {
+    setIsLoading(true);
+    await MembersService.updateAvatar(photoPreview);
+    setPhoto(photoPreview);
+    setIsModalVisible(false);
+    setIsLoading(false);
+  }
 
   const { user } = useContext(AuthContext);
   return (
@@ -30,7 +70,7 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
       <Container>
         <KeyboardAvoidingView style={{ flex: 1 }}>
           <Scroll>
-            <ProfileImageContainer>
+            <ProfileImageContainer onPress={() => handleChoosePhoto()}>
               <ChangePhotoIcon />
             </ProfileImageContainer>
             <TextInput
@@ -63,6 +103,39 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
               keyboardType="numeric"
             />
           </Scroll>
+
+          <ConfirmChangePhotoModal visible={isModalVisible}>
+            <Overlay>
+              <ModalContainer>
+                <NewPhoto
+                  source={{
+                    uri: photoPreview,
+                  }}
+                />
+                <ModalContainerText>
+                  Confirmar mudança de foto?
+                </ModalContainerText>
+                <ModalContainerSubtitle>
+                  Você só poderá alterar novamente daqui a 15 dias
+                </ModalContainerSubtitle>
+
+                <ModalContainerButtons>
+                  <ModalButton type="confirm" onPress={() => uploadPhoto()}>
+                    <ModalButtonText type="confirm">
+                      {isLoading ? <Loading /> : 'Confirmar'}
+                    </ModalButtonText>
+                  </ModalButton>
+                  <ModalButton
+                    type="cancel"
+                    onPress={() => setIsModalVisible(false)}
+                    disabled={isLoading}
+                  >
+                    <ModalButtonText type="cancel">Cancelar</ModalButtonText>
+                  </ModalButton>
+                </ModalContainerButtons>
+              </ModalContainer>
+            </Overlay>
+          </ConfirmChangePhotoModal>
         </KeyboardAvoidingView>
       </Container>
     </>
