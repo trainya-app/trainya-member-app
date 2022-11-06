@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
 import {
   Container,
@@ -95,21 +95,6 @@ export const Home = ({ navigation }: Props) => {
       })();
     }
   }, [user]);
-
-  const schedule_classes: SliderProps[] = [
-    {
-      title: 'Natação',
-      url: 'https://i.imgur.com/1gCjdZo.jpeg',
-    },
-    {
-      title: 'Boxe',
-      url: 'https://i.imgur.com/pil1SdG.jpeg',
-    },
-    {
-      title: 'Pilates',
-      url: 'https://i.imgur.com/JLiVcK8.jpeg',
-    },
-  ];
 
   const home_workouts: SliderProps[] = [
     {

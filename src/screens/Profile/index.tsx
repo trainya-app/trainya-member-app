@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import Carousel from 'react-native-snap-carousel';
-import { Dimensions } from 'react-native';
 import { NavigationProps } from '../../types/NavigationProps';
 import {
   Container,
@@ -13,7 +11,6 @@ import {
   CardInfo,
   Label,
   StrongText,
-  TimeText,
 } from './styles';
 
 import { Heading } from '../../components/Heading';
@@ -26,8 +23,6 @@ import { Chart } from '../../components/Chart';
 import MembersService, { IWorkoutPlan } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
 
-const { width } = Dimensions.get('window');
-
 export const Profile = ({ navigation }: NavigationProps) => {
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlan>();
   const { user } = useContext(AuthContext);
@@ -38,6 +33,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
         const data = await MembersService.getAllMemberWorkoutPlans(user.id);
         setMemberWorkouts(data.workoutPlan);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
       }
     })();

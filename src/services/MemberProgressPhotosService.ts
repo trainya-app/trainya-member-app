@@ -1,11 +1,7 @@
 import { api } from './api';
 
 class MemberProgressPhotosService {
-  getMonth() {
-    return new Date().getMonth() + 1;
-  }
-
-  async uploadFirstPhoto(firstPhoto: string) {
+  async uploadFirstPhoto(firstPhoto: string, month: number) {
     const formData = new FormData();
 
     formData.append('photo', {
@@ -14,14 +10,14 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put(`/member-upLoadThirdPhoto/${this.getMonth()}`, formData, {
+    await api.put(`/member-upLoadFirstPhoto/${month}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
   }
 
-  async uploadSecondPhoto(secondPhoto: string) {
+  async uploadSecondPhoto(secondPhoto: string, month: number) {
     const formData = new FormData();
 
     formData.append('photo', {
@@ -30,14 +26,14 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put(`/member-upLoadSecondPhoto/${this.getMonth()}`, formData, {
+    await api.put(`/member-upLoadSecondPhoto/${month}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
   }
 
-  async uploadThirdPhoto(thirdPhoto: string) {
+  async uploadThirdPhoto(thirdPhoto: string, month: number) {
     const formData = new FormData();
 
     formData.append('photo', {
@@ -46,7 +42,7 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put(`/member-upLoadThirdPhoto/${this.getMonth()}`, formData, {
+    await api.put(`/member-upLoadThirdPhoto/${month}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -58,9 +54,10 @@ class MemberProgressPhotosService {
     secondPhoto: string,
     thirdPhoto: string
   ) {
-    await this.uploadFirstPhoto(firstPhoto);
-    await this.uploadSecondPhoto(secondPhoto);
-    await this.uploadThirdPhoto(thirdPhoto);
+    const month = new Date().getMonth() + 1;
+    await this.uploadFirstPhoto(firstPhoto, month);
+    await this.uploadSecondPhoto(secondPhoto, month);
+    await this.uploadThirdPhoto(thirdPhoto, month);
   }
 }
 
