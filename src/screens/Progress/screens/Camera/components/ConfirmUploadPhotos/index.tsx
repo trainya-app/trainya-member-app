@@ -83,6 +83,7 @@ export const ConfirmUploadPhotos = ({
               onPress={() => {
                 uploadPhotos();
               }}
+              disabled={isUploading}
             />
             <Button
               title="Descartar"
@@ -95,6 +96,7 @@ export const ConfirmUploadPhotos = ({
                 setVisibility(false);
                 setMemberPhotos([]);
               }}
+              disabled={isUploading}
             />
           </Row>
         </ConfirmPhotosContainer>
