@@ -7,7 +7,7 @@ interface IVerticalBar {
 
 export const Container = styled.View`
   flex: 1;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.text.inverted};
   height: 250px;
   margin-top: 24px;
   margin-bottom: 32px;
@@ -23,6 +23,7 @@ export const ChartContainer = styled.View`
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(16)}px;
+  background-color: ${({ theme }) => theme.colors.text.inverted};
 `;
 
 export const Scroll = styled.ScrollView.attrs({
@@ -48,6 +49,7 @@ export const Label = styled.Text`
   font-family: ${({ theme }) => theme.fonts.extrabold};
   font-size: 12px;
   margin-top: 12px;
+  color: ${({ theme }) => theme.colors.text.default};
 `;
 
 export const VerticalBarWrapper = styled.View`
