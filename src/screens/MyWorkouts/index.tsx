@@ -150,20 +150,11 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
           </>
         ) : (
           <Scroll>
-            <SliderTitle>Favoritados</SliderTitle>
+            <SliderTitle>Grupos musculares</SliderTitle>
             <Slider data={home_workouts} />
 
-            <SliderTitle>Favoritados</SliderTitle>
+            <SliderTitle>Treinos de fortalecimento</SliderTitle>
             <Slider data={home_workouts} />
-
-            <SliderTitle>Favoritados</SliderTitle>
-            <Slider data={home_workouts} />
-
-            <SliderTitle>Aulas</SliderTitle>
-            <Slider
-              data={home_workouts}
-              seeMoreAction={() => navigation.navigate('AvailableClasses')}
-            />
           </Scroll>
         )}
       </Container>

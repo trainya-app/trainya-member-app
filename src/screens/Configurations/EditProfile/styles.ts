@@ -138,7 +138,7 @@ export const UserPhoto = styled.Image`
   width: ${RFValue(100)}px;
   height: ${RFValue(100)}px;
   z-index: -5;
-  background-color: red;
+  background-color: #2176ff;
   position: absolute;
   border-radius: 999px;
 `;
