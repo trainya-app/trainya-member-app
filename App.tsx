@@ -32,7 +32,7 @@ const App = () => {
       console.log(storagedColorMode);
 
       if (storagedColorMode) {
-        setColorMode(storagedColorMode);
+        setColorMode(storagedColorMode as 'light' | 'dark');
       }
     })();
   }, []);
