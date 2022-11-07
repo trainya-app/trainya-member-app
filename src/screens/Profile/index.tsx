@@ -116,8 +116,8 @@ export const Profile = ({ navigation }: NavigationProps) => {
           <CardLabel>Sua atividade</CardLabel>
           <ActivityContainer />
 
-          <CardLabel>Favoritados</CardLabel>
-          <Slider data={home_workouts} />
+          {/* <CardLabel>Favoritados</CardLabel>
+          <Slider data={home_workouts} /> */}
 
           {/* {memberClasses.length !== 0 && (
             <>
