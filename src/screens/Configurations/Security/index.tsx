@@ -21,13 +21,14 @@ export const Security = ({ navigation }: NavigationProps) => (
           icon={<PasswordIcon />}
           title="Senha"
           onPress={() => navigation.navigate('ChangePassword')}
+          isLastOption
         />
-        <Item
+        {/* <Item
           icon={<TwoFactorsIcon />}
           title="Login em duas etapas"
           actionComponent={<ToggleButton />}
           isLastOption
-        />
+        /> */}
       </OptionsContainer>
     </Container>
   </>
