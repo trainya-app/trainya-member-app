@@ -8,6 +8,10 @@ interface CheckboxProps {
   isChecked: boolean;
 }
 
+interface IColorMode {
+  colorMode: 'light' | 'dark';
+}
+
 export const Container = styled.View`
   flex: 1;
 `;
@@ -29,7 +33,7 @@ export const WorkoutVideo = styled.Image.attrs({
 `;
 
 export const CheckboxContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: 1
+  activeOpacity: 1,
 })`
   background-color: ${({ theme }) => theme.colors.blue[100]};
   flex-direction: row;
@@ -44,10 +48,10 @@ export const CheckboxContainer = styled.TouchableOpacity.attrs({
   z-index: 10;
 `;
 
-export const CheckboxText = styled.Text`
+export const CheckboxText = styled.Text<IColorMode>`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(15)}px;
-  color: ${({ theme }) => theme.colors.blue[500]};
+  color: ${({ colorMode }) => (colorMode === 'light' ? '#2176FF' : '#FFFFFF')};
 `;
 
 export const Checkbox = styled.TouchableOpacity.attrs({
@@ -69,18 +73,19 @@ export const CheckActive = styled(CheckActiveIcon)<CheckboxProps>`
   opacity: ${({ isChecked }) => (isChecked ? '1' : '0')};
 `;
 
-export const WorkoutInfo = styled.View`
-  background-color: white;
+export const WorkoutInfo = styled.View<IColorMode>`
+  background-color: ${({ colorMode }) =>
+    colorMode === 'light' ? '#FFFFFF' : '#001941'};
   padding: 48px 24px 24px 24px;
   border-bottom-right-radius: 32px;
   border-bottom-left-radius: 32px;
   z-index: -5;
 `;
 
-export const WorkoutName = styled.Text`
+export const WorkoutName = styled.Text<IColorMode>`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.blue[500]};
+  color: ${({ colorMode }) => (colorMode === 'light' ? '#2176FF' : '#FFFFFF')};
 `;
 
 export const Details = styled.View`
