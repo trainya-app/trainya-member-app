@@ -15,7 +15,6 @@ import {
   Details,
   Row,
   Sets,
-  PaperIcon,
   Reps,
   Label,
   Text,

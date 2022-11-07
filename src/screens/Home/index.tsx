@@ -8,7 +8,6 @@ import {
   Loading,
   LoadingContainer,
   Subtitle,
-  NotificationIcon,
   ConfigIcon,
   HeaderContent,
   Scroll,

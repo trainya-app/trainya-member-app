@@ -1,5 +1,5 @@
 import { NavigationProps } from '../../../types/NavigationProps';
-import { Container, UserIcon, PaymentsIcon } from './styles';
+import { Container, UserIcon } from './styles';
 
 import { Heading } from '../../../components/Heading';
 import {

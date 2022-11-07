@@ -1,9 +1,6 @@
 import styled from 'styled-components/native';
 import QRCode from 'react-native-qrcode-svg';
-import { Dimensions } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-
-const { width } = Dimensions.get('window');
 
 export const Container = styled.View`
   flex: 1;

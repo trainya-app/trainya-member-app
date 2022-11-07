@@ -17,8 +17,6 @@ import { Heading } from '../../components/Heading';
 import { ProfileHeader } from '../../components/ProfileHeader';
 import { ProgressBar } from '../Home/components/ProgressBar';
 import { ActivityContainer } from '../Home/components/ActivityContainer';
-import { Slider, SliderProps } from '../../components/Slider';
-import { PaymentCard } from '../Configurations/Payments/components/PaymentCard';
 import { Chart } from '../../components/Chart';
 import MembersService, { IWorkoutPlan } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -47,29 +45,6 @@ export const Profile = ({ navigation }: NavigationProps) => {
   const progress_percentage = Math.round(
     (finished_workouts * 100) / total_workouts
   );
-
-  const home_workouts: SliderProps[] = [
-    {
-      title: 'Cardio',
-      url: 'https://i.imgur.com/kvD2fSZ.jpg',
-    },
-    {
-      title: 'Força',
-      url: 'https://i.imgur.com/M4n35v8.png',
-    },
-    {
-      title: 'Flexibilidade',
-      url: 'https://i.imgur.com/uoQYf1c.jpg',
-    },
-    {
-      title: 'Pilates',
-      url: 'https://i.imgur.com/JLiVcK8.jpeg',
-    },
-    {
-      title: 'Pilates',
-      url: 'https://i.imgur.com/JLiVcK8.jpeg',
-    },
-  ];
 
   return (
     <>

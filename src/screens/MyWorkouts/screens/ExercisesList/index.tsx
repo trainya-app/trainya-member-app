@@ -5,7 +5,6 @@ import { useCustomTheme } from '../../../../hooks/useCustomTheme';
 import {
   Container,
   Top,
-  Title,
   Description,
   Scroll,
   ExerciseCard,
@@ -50,8 +49,8 @@ export const ExercisesList = ({ navigation, route }: Props) => {
   function goToWorkoutScreen(firstItem: number) {
     navigation.navigate('Workout', {
       workoutExercises,
-      firstItem
-    })
+      firstItem,
+    });
   }
 
   return (
@@ -69,7 +68,10 @@ export const ExercisesList = ({ navigation, route }: Props) => {
         </Top>
         <Scroll>
           {workoutExercises.map((workoutExercise: Exercises, index) => (
-            <ExerciseCard key={workoutExercise.exercise.name} onPress={() => goToWorkoutScreen(index)}>
+            <ExerciseCard
+              key={workoutExercise.exercise.name}
+              onPress={() => goToWorkoutScreen(index)}
+            >
               <Image source={{ uri: 'https://i.imgur.com/5awFGCT.png' }} />
               <Wrapper>
                 <ExerciseName colorMode={colorMode}>

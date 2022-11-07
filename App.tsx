@@ -29,7 +29,6 @@ const App = () => {
   useEffect(() => {
     (async () => {
       const storagedColorMode = await AsyncStorage.getItem('@trainyaapp:theme');
-      console.log(storagedColorMode);
 
       if (storagedColorMode) {
         setColorMode(storagedColorMode as 'light' | 'dark');
