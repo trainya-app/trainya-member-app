@@ -151,4 +151,5 @@ export const LabelInput = styled.Text`
   position: absolute;
   right: 24px;
   font-family: ${({ theme }) => theme.fonts.bold};
+  color: #2176ff;
 `;
