@@ -13,7 +13,15 @@ export const ChangePassword = ({ navigation }: NavigationProps) => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
   async function handleUpdatePassword() {
-    await updatePassword(password, newPassword, confirmNewPassword);
+    const passwordChanged = await updatePassword(
+      password,
+      newPassword,
+      confirmNewPassword
+    );
+
+    if (passwordChanged) {
+      navigation.goBack();
+    }
   }
 
   const theme = useTheme();
