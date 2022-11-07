@@ -11,9 +11,16 @@ export const Container = styled.View`
   background-color: #000;
 `;
 
+export const BodyImage = styled.Image`
+  transform: scale(1.3);
+  margin-bottom: 24px;
+`;
+
 export const CameraComponent = styled(Camera)`
   width: ${width}px;
   height: ${width * 1.78}px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Pressable = styled.TouchableOpacity``;

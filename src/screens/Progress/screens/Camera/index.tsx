@@ -3,9 +3,19 @@ import { useState, useRef, useEffect } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Camera, CameraType, FlashMode } from 'expo-camera';
-import { CameraComponent, Container, Pressable, Bottom } from './styles';
+import {
+  CameraComponent,
+  Container,
+  BodyImage,
+  Pressable,
+  Bottom,
+} from './styles';
 import { ConfirmUploadPhotos } from './components/ConfirmUploadPhotos';
 import { NavigationProps } from '../../../../types/NavigationProps';
+
+import bodyFrontImg from '../../../../assets/body-front.png';
+import bodyBackImg from '../../../../assets/body-back.png';
+import bodyAsideImg from '../../../../assets/body-aside.png';
 
 export const CameraScreen = ({ navigation }: NavigationProps) => {
   const [type, setType] = useState(CameraType.back);
@@ -43,6 +53,17 @@ export const CameraScreen = ({ navigation }: NavigationProps) => {
     setMemberPhotos((prev) => [...prev, uri]);
   }
 
+  function getBodyImage() {
+    switch (memberPhotos.length) {
+      case 0:
+        return bodyFrontImg;
+      case 1:
+        return bodyBackImg;
+      default:
+        return bodyAsideImg;
+    }
+  }
+
   return (
     <Container>
       <CameraComponent
@@ -51,6 +72,7 @@ export const CameraScreen = ({ navigation }: NavigationProps) => {
         type={type}
         ref={cameraRef}
       >
+        <BodyImage source={getBodyImage()} />
         <Bottom>
           <Pressable onPress={() => toggleFlashMode()}>
             <Ionicons
