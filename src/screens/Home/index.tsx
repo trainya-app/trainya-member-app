@@ -174,33 +174,38 @@ export const Home = ({ navigation }: Props) => {
         {/* <NotificationIcon
           onPress={() => navigation.navigate('Notifications')}
         /> */}
-        <ConfigIcon onPress={() => navigation.navigate('Configurations')} />
-        <HeaderContent>
-          {!isLoading ? (
-            <Title>
-              {greeting}, {user.name.split(' ')[0]}
-            </Title>
-          ) : (
+
+        {!isLoading ? (
+          <>
+            <ConfigIcon onPress={() => navigation.navigate('Configurations')} />
+            <HeaderContent>
+              <Title>
+                {greeting}, {user.name.split(' ')[0]}
+              </Title>
+              <Subtitle>
+                {memberWorkouts?.length === 0
+                  ? 'Você ainda não tem um plano de treino'
+                  : `Seu treino de ${workout} está te esperando`}
+              </Subtitle>
+              <Button
+                title="Treinar"
+                width={50}
+                height={40}
+                style={{ marginTop: 24 }}
+                fontSize={16}
+                onPress={() =>
+                  navigation.navigate('MyWorkoutsStack', {
+                    screen: 'AvailableWorkouts',
+                  })
+                }
+              />
+            </HeaderContent>
+          </>
+        ) : (
+          <LoadingContainer>
             <Loading size={48} color={theme.colors.gray[100]} />
-          )}
-          <Subtitle>
-            {memberWorkouts?.length === 0
-              ? 'Você ainda não tem um plano de treino'
-              : `Seu treino de ${workout} está te esperando`}
-          </Subtitle>
-          <Button
-            title="Treinar"
-            width={50}
-            height={40}
-            style={{ marginTop: 24 }}
-            fontSize={16}
-            onPress={() =>
-              navigation.navigate('MyWorkoutsStack', {
-                screen: 'AvailableWorkouts',
-              })
-            }
-          />
-        </HeaderContent>
+          </LoadingContainer>
+        )}
       </Header>
       {!isLoading ? (
         <Scroll>

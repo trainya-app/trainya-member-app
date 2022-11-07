@@ -44,7 +44,9 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.extrabold};
 `;
 
-export const Loading = styled.ActivityIndicator``;
+export const Loading = styled.ActivityIndicator`
+  align-self: center;
+`;
 
 export const Subtitle = styled.Text`
   color: #ffffff;
