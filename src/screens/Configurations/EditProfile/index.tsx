@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
+import { VStack, useToast } from 'native-base';
 
 import { KeyboardAvoidingView } from 'react-native';
 import { useTheme } from 'styled-components';
@@ -38,6 +39,8 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [photoPreview, setPhotoPreview] = useState('');
+
+  const toast = useToast();
 
   const { user, setUser } = useContext(AuthContext);
 
@@ -83,6 +86,17 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
 
     if (data.message === 'Dados atualizados!') {
       setRequestSended(false);
+
+      toast.show({
+        title: 'Dados atualizados!',
+        placement: 'bottom',
+        style: {
+          marginBottom: 90,
+        },
+        bgColor: 'green.500',
+        duration: 2000,
+      });
+
       navigation.goBack();
     }
   }
