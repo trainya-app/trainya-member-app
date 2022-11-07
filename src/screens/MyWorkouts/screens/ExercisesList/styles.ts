@@ -36,9 +36,9 @@ export const Scroll = styled.ScrollView.attrs({
 `;
 
 export const ExerciseCard = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.8
+  activeOpacity: 0.8,
 })`
-  background-color: ${({ theme }) => theme.colors.blue[100]};
+  background-color: ${({ theme }) => theme.colors.shape.light};
   padding: 20px 16px;
   flex-direction: row;
   border-radius: 24px;
@@ -63,7 +63,7 @@ export const ExerciseName = styled.Text<ThemeProps>`
 
 export const ExerciseSets = styled.Text<ThemeProps>`
   font-family: ${({ theme }) => theme.fonts.semibold};
-  color: ${({ colorMode }) => (colorMode === 'light' ? '#00378F' : '#6C757D')};
+  color: ${({ colorMode }) => (colorMode === 'light' ? '#00378F' : '#EBF2FF')};
   font-size: ${RFValue(12)}px;
 `;
 
