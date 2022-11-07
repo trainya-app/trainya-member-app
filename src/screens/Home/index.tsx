@@ -167,6 +167,14 @@ export const Home = ({ navigation }: Props) => {
       : `${progress_percentage}%`;
   }
 
+  function getUserWorkoutInfo() {
+    return `${
+      workout.split(' ')[0] === 'treino'
+        ? `Seu ${workout}`
+        : `Seu treino de ${workout}`
+    } está te esperando`;
+  }
+
   return (
     <Container>
       <Header>
@@ -185,7 +193,7 @@ export const Home = ({ navigation }: Props) => {
               <Subtitle>
                 {memberWorkouts?.length === 0
                   ? 'Você ainda não tem um plano de treino'
-                  : `Seu treino de ${workout} está te esperando`}
+                  : getUserWorkoutInfo()}
               </Subtitle>
               <Button
                 title="Treinar"
