@@ -17,6 +17,7 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(15)}px;
   height: ${RFValue(20)}px;
+  color: ${({ theme }) => theme.colors.text.default};
 `;
 
 export const QRContainer = styled.View`
@@ -27,6 +28,7 @@ export const QRContainer = styled.View`
   justify-content: center;
   border-width: 4px;
   border-radius: 24px;
+  border-color: ${({ theme }) => theme.colors.text.default};
   margin-top: 32px;
 `;
 
