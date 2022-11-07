@@ -20,13 +20,14 @@ export const MyAccount = ({ navigation }: NavigationProps) => (
           icon={<UserIcon />}
           title="Informações pessoais"
           onPress={() => navigation.navigate('AccountInfos')}
+          isLastOption
         />
-        <Item
+        {/* <Item
           icon={<PaymentsIcon />}
           title="Pagamentos"
           onPress={() => navigation.navigate('Payments')}
           isLastOption
-        />
+        /> */}
       </OptionsContainer>
     </Container>
   </>

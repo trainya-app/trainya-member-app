@@ -150,12 +150,12 @@ export const Profile = ({ navigation }: NavigationProps) => {
 
           <CardLabel>Seu progresso</CardLabel>
           <Chart />
-          <CardLabel>Pagamentos</CardLabel>
+          {/* <CardLabel>Pagamentos</CardLabel>
           <PaymentCard
             date="25 de setembro de 2022"
             paymentStatus="pending"
             paymentValue={129.9}
-          />
+          /> */}
         </Scroll>
       </Container>
     </>
