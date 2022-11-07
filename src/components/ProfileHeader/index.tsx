@@ -22,6 +22,7 @@ export const ProfileHeader = ({
   type,
 }: ProfileHeaderProps) => {
   const { user } = useContext(AuthContext);
+  const username = user.name.split(' ');
 
   return (
     <Header>
@@ -32,7 +33,7 @@ export const ProfileHeader = ({
         </ChangePhotoIconContainer> */}
       </ProfileImageContainer>
       <ProfileInfoContainer>
-        <Username>{user.name}</Username>
+        <Username>{`${username[0]} ${username[username.length - 1]}`}</Username>
         {type === 'profile' ? (
           <>
             <GymText>Minha academia</GymText>
