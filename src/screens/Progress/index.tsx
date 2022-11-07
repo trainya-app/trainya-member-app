@@ -62,12 +62,12 @@ export const Progress = ({ navigation }: NavigationProps) => {
         onPressConfig={() => navigation.navigate('Configurations')}
       />
       <Container>
-        <ScreenSwitcher
+        {/* <ScreenSwitcher
           firstName="Fotos"
           secondName="Dados"
           toggleIsActive={setIsScreenSwitched}
-        />
-        {isScreenSwitched ? (
+        /> */}
+        {/* {isScreenSwitched ? (
           <>
             <Chart />
             <GoalsContainer>
@@ -89,45 +89,45 @@ export const Progress = ({ navigation }: NavigationProps) => {
               </ProgressBar>
             </GoalsContainer>
           </>
-        ) : (
-          <>
-            <Row>
-              <DatePicker
-                selectedMonth={selectedMonth}
-                setSelectedMonth={setSelectedMonth}
-              />
-              <CameraContainer onPress={() => navigation.navigate('Camera')}>
-                <CameraIcon />
-              </CameraContainer>
-            </Row>
+        ) : ( */}
+        <>
+          <Row>
+            <DatePicker
+              selectedMonth={selectedMonth}
+              setSelectedMonth={setSelectedMonth}
+            />
+            <CameraContainer onPress={() => navigation.navigate('Camera')}>
+              <CameraIcon />
+            </CameraContainer>
+          </Row>
 
-            <PhotoContainer>
-              {isImagesLoaded ? (
-                <Swiper loop={false}>
-                  <MemberImage
-                    source={{
-                      uri: firstPhoto,
-                    }}
-                  />
-                  <MemberImage
-                    source={{
-                      uri: secondPhoto,
-                    }}
-                  />
-                  <MemberImage
-                    source={{
-                      uri: thirdPhoto,
-                    }}
-                  />
-                </Swiper>
-              ) : (
-                <ProgressBarLabel>
-                  Sem fotos para o mês selecionado
-                </ProgressBarLabel>
-              )}
-            </PhotoContainer>
-          </>
-        )}
+          <PhotoContainer>
+            {isImagesLoaded ? (
+              <Swiper loop={false}>
+                <MemberImage
+                  source={{
+                    uri: firstPhoto,
+                  }}
+                />
+                <MemberImage
+                  source={{
+                    uri: secondPhoto,
+                  }}
+                />
+                <MemberImage
+                  source={{
+                    uri: thirdPhoto,
+                  }}
+                />
+              </Swiper>
+            ) : (
+              <ProgressBarLabel>
+                Sem fotos para o mês selecionado
+              </ProgressBarLabel>
+            )}
+          </PhotoContainer>
+        </>
+        {/* )} */}
       </Container>
     </>
   );
