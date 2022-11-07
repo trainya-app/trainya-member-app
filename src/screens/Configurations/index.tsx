@@ -35,12 +35,13 @@ export const Configurations = ({ navigation }: NavigationProps) => {
             <Item
               title="Minha Conta"
               onPress={() => navigation.navigate('MyAccount')}
+              isLastOption
             />
-            <Item
+            {/* <Item
               title="Favoritos"
               isLastOption
               onPress={() => navigation.navigate('Favorites')}
-            />
+            /> */}
           </OptionsContainer>
           <OptionsContainer label="Preferências">
             <Item title="Tema" actionComponent={<ToggleThemeButton />} />
