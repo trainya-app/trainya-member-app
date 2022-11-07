@@ -19,6 +19,8 @@ import {
   Text,
 } from './styles';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import { WarningModal } from '../WarningModal';
 import { WorkoutContext } from '../../../../../../contexts/WorkoutContext';
 import { useCustomTheme } from '../../../../../../hooks/useCustomTheme';
@@ -93,7 +95,12 @@ export const WorkoutCard = ({ data, isAlreadyChecked }: IProps) => {
               <Text>{data.repetitions}</Text>
             </Reps>
           </Row>
-          <PaperIcon onPress={() => toggleModalActive()} />
+          <Ionicons
+            name="newspaper"
+            size={24}
+            color={colorMode === 'light' ? '#000' : '#FFF'}
+            onPress={() => toggleModalActive()}
+          />
         </Details>
       </WorkoutInfo>
       <WarningModal
