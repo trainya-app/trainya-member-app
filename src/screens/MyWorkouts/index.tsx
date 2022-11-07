@@ -126,6 +126,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                       key={workoutPlanWorkout.id}
                       workoutName={workoutPlanWorkout.workout.title}
                       workoutId={i + 1}
+                      isActive={false}
                       onPress={() =>
                         handleGoToExercisesList(
                           workoutPlanWorkout.workout.title,
