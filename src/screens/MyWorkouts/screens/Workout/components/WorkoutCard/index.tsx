@@ -1,5 +1,7 @@
 import { Dispatch, SetStateAction, useState, useContext } from 'react';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import {
   Card,
   Top,
@@ -18,8 +20,6 @@ import {
   Label,
   Text,
 } from './styles';
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { WarningModal } from '../WarningModal';
 import { WorkoutContext } from '../../../../../../contexts/WorkoutContext';
