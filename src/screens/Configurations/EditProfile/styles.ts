@@ -142,3 +142,13 @@ export const UserPhoto = styled.Image`
   position: absolute;
   border-radius: 999px;
 `;
+
+export const InputContainer = styled.View`
+  justify-content: center;
+`;
+
+export const LabelInput = styled.Text`
+  position: absolute;
+  right: 24px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+`;

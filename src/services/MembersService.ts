@@ -126,6 +126,25 @@ class MembersService {
     );
     return data.memberPhotosProgress;
   }
+
+  async editMemberProfileInfo(
+    memberId: number,
+    name: string,
+    email: string,
+    phone: string,
+    weight: number,
+    height: number
+  ) {
+    const { data } = await api.put(`/members/${memberId}`, {
+      name,
+      email,
+      phone,
+      weight,
+      height,
+    });
+
+    return data;
+  }
 }
 
 export default new MembersService();

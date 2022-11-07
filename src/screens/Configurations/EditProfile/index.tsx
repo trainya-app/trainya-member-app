@@ -24,9 +24,12 @@ import {
   ModalButtonText,
   Loading,
   UserPhoto,
+  InputContainer,
+  LabelInput,
 } from './styles';
 
 import MembersService from '../../../services/MembersService';
+import { Button } from '../../../components/Button';
 
 export const EditProfile = ({ navigation }: NavigationProps) => {
   const theme = useTheme();
@@ -37,6 +40,13 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
   const [photoPreview, setPhotoPreview] = useState('');
 
   const { user, setUser } = useContext(AuthContext);
+
+  const [inputName, setInputName] = useState(user.name);
+  const [inputPhone, setInputPhone] = useState(user.phone);
+  const [inputHeight, setInputHeight] = useState(user.height);
+  const [inputWeight, setInputWeight] = useState(user.weight);
+
+  const [requestSended, setRequestSended] = useState(false);
 
   async function handleChoosePhoto() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -60,6 +70,23 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
     setIsLoading(false);
   }
 
+  async function handleEditProfile() {
+    setRequestSended(true);
+    const data = await MembersService.editMemberProfileInfo(
+      user.id,
+      inputName,
+      user.email,
+      inputPhone,
+      inputWeight,
+      inputHeight
+    );
+
+    if (data.message === 'Dados atualizados!') {
+      setRequestSended(false);
+      navigation.goBack();
+    }
+  }
+
   return (
     <>
       <Heading
@@ -69,7 +96,7 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
       />
       <Container>
         <KeyboardAvoidingView style={{ flex: 1 }}>
-          <Scroll>
+          <Scroll keyboardShouldPersistTaps="always">
             <ProfileImageContainer>
               <ChangePhotoIconContainer onPress={() => handleChoosePhoto()}>
                 <ChangePhotoIcon />
@@ -79,31 +106,44 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
             <TextInput
               placeholder="Nome"
               placeholderTextColor={placeholder}
-              defaultValue={user.name}
+              onChangeText={(text) => setInputName(text)}
+              defaultValue={inputName}
             />
             <TextInput
               placeholder="Número de Telefone"
               placeholderTextColor={placeholder}
-              defaultValue={user.phone}
+              defaultValue={inputPhone}
+              onChangeText={(text) => setInputPhone(text)}
               keyboardType="numeric"
             />
-            <TextInput
-              placeholder="Data de Nascimento"
-              placeholderTextColor={placeholder}
-              defaultValue={user.birth_date}
-            />
-
-            <TextInput
-              placeholder="Altura"
-              placeholderTextColor={placeholder}
-              defaultValue={user.height}
-              keyboardType="numeric"
-            />
-            <TextInput
-              placeholder="Peso"
-              placeholderTextColor={placeholder}
-              defaultValue={`${user.weight}kg`}
-              keyboardType="numeric"
+            <InputContainer>
+              <TextInput
+                placeholder="Altura"
+                placeholderTextColor={placeholder}
+                defaultValue={inputHeight}
+                onChangeText={(text) => setInputHeight(text)}
+                keyboardType="numeric"
+              />
+              <LabelInput>cm</LabelInput>
+            </InputContainer>
+            <InputContainer>
+              <TextInput
+                placeholder="Peso"
+                placeholderTextColor={placeholder}
+                defaultValue={inputWeight}
+                onChangeText={(text) => setInputWeight(text)}
+                keyboardType="numeric"
+              />
+              <LabelInput>kg</LabelInput>
+            </InputContainer>
+            <Button
+              fontSize={12}
+              height={48}
+              title="Salvar edição"
+              width={100}
+              style={{ marginTop: 24 }}
+              onPress={() => handleEditProfile()}
+              disabled={requestSended}
             />
           </Scroll>
 
