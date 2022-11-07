@@ -148,7 +148,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
             </>
           )} */}
 
-          <CardLabel>Seu progresso</CardLabel>
+          <CardLabel>Sua frequência de dias</CardLabel>
           <Chart />
           {/* <CardLabel>Pagamentos</CardLabel>
           <PaymentCard
