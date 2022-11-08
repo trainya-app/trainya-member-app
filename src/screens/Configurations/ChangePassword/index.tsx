@@ -23,7 +23,7 @@ export const ChangePassword = ({ navigation }: NavigationProps) => {
       duration: 2500,
       placement: 'bottom',
       style: {
-        marginBottom: 90,
+        marginBottom: status === 'success' ? 90 : 0,
       },
     });
   }
@@ -34,14 +34,13 @@ export const ChangePassword = ({ navigation }: NavigationProps) => {
       newPassword,
       confirmNewPassword
     );
-    console.log(passwordChanged);
 
-    if (passwordChanged.sucess) {
+    if (passwordChanged.success) {
       showToast(passwordChanged.message, 'success');
       navigation.goBack();
+    } else {
+      showToast(passwordChanged.message, 'error');
     }
-
-    showToast(passwordChanged.message, 'error');
   }
 
   const theme = useTheme();
