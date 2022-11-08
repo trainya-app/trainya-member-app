@@ -92,6 +92,10 @@ export const Home = ({ navigation }: Props) => {
           setMemberWorkouts([]);
         }
       })();
+
+      return () => {
+        clearInterval(takeGymCapacityEvery20Seconds);
+      };
     }
   }, [user]);
 
@@ -293,9 +297,14 @@ export const Home = ({ navigation }: Props) => {
             <Slider data={schedule_classes} /> */}
 
             <CardContainerTitle>Treinos livres</CardContainerTitle>
-            <Slider data={home_workouts} seeMoreAction={()=> navigation.navigate('MyWorkoutsStack', {
-                    screen: 'AvailableWorkouts',
-                  })}/>
+            <Slider
+              data={home_workouts}
+              seeMoreAction={() =>
+                navigation.navigate('MyWorkoutsStack', {
+                  screen: 'AvailableWorkouts',
+                })
+              }
+            />
           </MainContainer>
         </Scroll>
       ) : (
