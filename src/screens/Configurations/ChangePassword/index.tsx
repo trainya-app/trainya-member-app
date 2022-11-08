@@ -23,7 +23,7 @@ export const ChangePassword = ({ navigation }: NavigationProps) => {
       duration: 2500,
       placement: 'bottom',
       style: {
-        marginBottom: status === 'success' ? 90 : 0,
+        marginBottom: 90,
       },
     });
   }

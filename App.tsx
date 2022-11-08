@@ -13,6 +13,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { NativeBaseProvider } from 'native-base';
 import { ThemeProvider } from 'styled-components/native';
 import { AuthContextProvider } from './src/contexts/AuthContext';
 import { ThemeContextProvider } from './src/contexts/ThemeContext';
@@ -21,7 +22,6 @@ import theme from './src/global/styles/theme';
 import { Routes } from './src/routes';
 import { Splash } from './src/screens/Splash';
 import { WorkoutContextProvider } from './src/contexts/WorkoutContext';
-import { NativeBaseProvider } from 'native-base';
 
 const App = () => {
   const [colorMode, setColorMode] = useState('light' as 'light' | 'dark');
