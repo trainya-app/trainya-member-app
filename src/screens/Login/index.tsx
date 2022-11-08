@@ -62,9 +62,9 @@ export const Login = () => {
           width={100}
           fontSize={14}
         />
-        <ForgotPasswordWrapper>
+        {/* <ForgotPasswordWrapper>
           <ForgotPasswordText>Esqueceu sua senha?</ForgotPasswordText>
-        </ForgotPasswordWrapper>
+        </ForgotPasswordWrapper> */}
       </LoginContent>
     </Container>
   );
