@@ -14,6 +14,7 @@ import {
   ChangePhotoIconContainer,
   ChangePhotoIcon,
   TextInput,
+  TextInputMasked,
   ConfirmChangePhotoModal,
   Overlay,
   ModalContainer,
@@ -49,6 +50,8 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
   const [inputHeight, setInputHeight] = useState(user.height);
   const [inputWeight, setInputWeight] = useState(user.weight);
 
+  const [error, setError] = useState(false);
+
   const [requestSended, setRequestSended] = useState(false);
 
   async function handleChoosePhoto() {
@@ -74,6 +77,20 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
   }
 
   async function handleEditProfile() {
+    if (inputPhone.length < 15) {
+      setError(true);
+      toast.show({
+        title: 'Telefone inválido',
+        placement: 'bottom',
+        style: {
+          marginBottom: 90,
+        },
+        bgColor: 'red.500',
+        duration: 2500,
+      });
+      return;
+    }
+
     setRequestSended(true);
     const data = await MembersService.editMemberProfileInfo(
       user.id,
@@ -130,12 +147,19 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
               onChangeText={(text) => setInputName(text)}
               defaultValue={inputName}
             />
-            <TextInput
+            <TextInputMasked
               placeholder="Número de Telefone"
               placeholderTextColor={placeholder}
-              defaultValue={inputPhone}
-              onChangeText={(text) => setInputPhone(text)}
+              value={inputPhone}
+              onChangeText={(text: string) => setInputPhone(text)}
+              error={error}
               keyboardType="numeric"
+              type="cel-phone"
+              options={{
+                maskType: 'BRL',
+                withDDD: true,
+                dddMask: '(99) ',
+              }}
             />
             <InputContainer>
               <TextInput

@@ -1,10 +1,16 @@
 import styled from 'styled-components/native';
+import { TextInputMask } from 'react-native-masked-text';
+
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import EditIcon from '../../../assets/edit_profile_icon.svg';
 
 interface IModalButtonProps {
   type: 'confirm' | 'cancel';
+}
+
+interface ITextInputMasked {
+  error: boolean;
 }
 
 export const Container = styled.View`
@@ -66,6 +72,19 @@ export const TextInput = styled.TextInput`
   padding: 16px 16px;
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(12)}px;
+`;
+
+export const TextInputMasked = styled(TextInputMask)<ITextInputMasked>`
+  background-color: ${({ theme }) => theme.colors.text.inverted};
+  color: ${({ theme }) => theme.colors.text.default};
+  height: 52px;
+  border-radius: 16px;
+  elevation: 2;
+  margin: 8px 0;
+  padding: 16px 16px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(12)}px;
+  border: ${({ theme, error }) => (error ? `1px solid red` : `0`)};
 `;
 
 export const ConfirmChangePhotoModal = styled.Modal.attrs({
