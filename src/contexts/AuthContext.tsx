@@ -115,12 +115,11 @@ export const AuthContextProvider = ({ children }: Props) => {
         firstNewPassword,
         secondNewPassword,
       });
-      showToast(data.message, 'success');
+      return { success: true, message: data.message };
       return true;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      showToast(error.response.data.message, 'error');
-      return false;
+      return { success: false, message: error.response.data.message };
     }
   }
 

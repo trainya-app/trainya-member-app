@@ -1,5 +1,7 @@
 import { useContext, useState } from 'react';
 import { useTheme } from 'styled-components';
+import { useToast } from 'native-base';
+
 import { Button } from '../../../components/Button';
 import { Heading } from '../../../components/Heading';
 import { AuthContext } from '../../../contexts/AuthContext';
@@ -12,16 +14,34 @@ export const ChangePassword = ({ navigation }: NavigationProps) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
+  const toast = useToast();
+
+  function showToast(text: string, status: 'success' | 'error') {
+    toast.show({
+      title: text,
+      bgColor: status === 'success' ? 'green.500' : 'red.500',
+      duration: 2500,
+      placement: 'bottom',
+      style: {
+        marginBottom: status === 'success' ? 90 : 0,
+      },
+    });
+  }
+
   async function handleUpdatePassword() {
     const passwordChanged = await updatePassword(
       password,
       newPassword,
       confirmNewPassword
     );
+    console.log(passwordChanged);
 
-    if (passwordChanged) {
+    if (passwordChanged.sucess) {
+      showToast(passwordChanged.message, 'success');
       navigation.goBack();
     }
+
+    showToast(passwordChanged.message, 'error');
   }
 
   const theme = useTheme();
