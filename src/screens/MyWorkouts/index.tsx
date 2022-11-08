@@ -126,7 +126,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                       key={workoutPlanWorkout.id}
                       workoutName={workoutPlanWorkout.workout.title}
                       workoutId={i + 1}
-                      isActive={i === 0 && true}
+                      isActive={false}
                       onPress={() =>
                         handleGoToExercisesList(
                           workoutPlanWorkout.workout.title,
@@ -150,19 +150,36 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
           </>
         ) : (
           <Scroll>
-            <SliderTitle>Favoritados</SliderTitle>
-            <Slider data={home_workouts} />
-
-            <SliderTitle>Favoritados</SliderTitle>
-            <Slider data={home_workouts} />
-
-            <SliderTitle>Favoritados</SliderTitle>
-            <Slider data={home_workouts} />
-
-            <SliderTitle>Aulas</SliderTitle>
+            <SliderTitle>Grupos musculares</SliderTitle>
             <Slider
-              data={home_workouts}
-              seeMoreAction={() => navigation.navigate('AvailableClasses')}
+              data={[
+                {
+                  title: 'Membros Inferiores',
+                  url: 'https://images.unsplash.com/photo-1434608519344-49d77a699e1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80',
+                },
+                {
+                  title: 'Membros superiores',
+                  url: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fHdvcmtvdXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                },
+              ]}
+            />
+
+            <SliderTitle>Treinos de fortalecimento</SliderTitle>
+            <Slider
+              data={[
+                {
+                  title: 'Força',
+                  url: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHdvcmtvdXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                },
+                {
+                  title: 'Impulsão',
+                  url: 'https://i.imgur.com/GklxPuk.png',
+                },
+                {
+                  title: 'Resistência',
+                  url: 'https://musculacaoonline.com.br/wp-content/uploads/2016/08/Treino-com-resistência-variável-para-hipertrofia-muscular.jpg',
+                },
+              ]}
             />
           </Scroll>
         )}

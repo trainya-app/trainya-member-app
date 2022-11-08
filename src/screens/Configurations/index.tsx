@@ -35,12 +35,13 @@ export const Configurations = ({ navigation }: NavigationProps) => {
             <Item
               title="Minha Conta"
               onPress={() => navigation.navigate('MyAccount')}
+              isLastOption
             />
-            <Item
+            {/* <Item
               title="Favoritos"
               isLastOption
               onPress={() => navigation.navigate('Favorites')}
-            />
+            /> */}
           </OptionsContainer>
           <OptionsContainer label="Preferências">
             <Item title="Tema" actionComponent={<ToggleThemeButton />} />
@@ -51,12 +52,13 @@ export const Configurations = ({ navigation }: NavigationProps) => {
             <Item
               title="Segurança"
               onPress={() => navigation.navigate('Security')}
+              isLastOption
             />
-            <Item
+            {/* <Item
               title="Notificações"
               onPress={() => navigation.navigate('NotificationsConfig')}
               isLastOption
-            />
+            /> */}
           </OptionsContainer>
           <LogoutButtonContainer onPress={logout}>
             <LogoutButtonText>Sair</LogoutButtonText>

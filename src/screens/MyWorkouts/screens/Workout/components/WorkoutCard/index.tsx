@@ -1,5 +1,7 @@
 import { Dispatch, SetStateAction, useState, useContext } from 'react';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import {
   Card,
   Top,
@@ -13,7 +15,6 @@ import {
   Details,
   Row,
   Sets,
-  PaperIcon,
   Reps,
   Label,
   Text,
@@ -21,6 +22,7 @@ import {
 
 import { WarningModal } from '../WarningModal';
 import { WorkoutContext } from '../../../../../../contexts/WorkoutContext';
+import { useCustomTheme } from '../../../../../../hooks/useCustomTheme';
 
 export interface IExercises {
   exercise: {
@@ -41,9 +43,15 @@ export const WorkoutCard = ({ data, isAlreadyChecked }: IProps) => {
   const [isModalActive, setIsModalActive] = useState(false);
   const [finished, setFinished] = useState(isAlreadyChecked(data.exercise.id));
 
-  const { exercisesChecked, setExercisesChecked }
-  : 
-  {exercisesChecked: number[], setExercisesChecked: Dispatch<SetStateAction<number[]>>} = useContext(WorkoutContext);
+  const {
+    exercisesChecked,
+    setExercisesChecked,
+  }: {
+    exercisesChecked: number[];
+    setExercisesChecked: Dispatch<SetStateAction<number[]>>;
+  } = useContext(WorkoutContext);
+
+  const { colorMode } = useCustomTheme();
 
   function toggleModalActive() {
     setIsModalActive(!isModalActive);
@@ -51,9 +59,11 @@ export const WorkoutCard = ({ data, isAlreadyChecked }: IProps) => {
 
   function checkExercise() {
     setFinished((prev) => !prev);
-    setExercisesChecked((prev) => prev.filter((item) => item !== data.exercise.id));
+    setExercisesChecked((prev) =>
+      prev.filter((item) => item !== data.exercise.id)
+    );
 
-    if(!exercisesChecked.includes(data.exercise.id)) {
+    if (!exercisesChecked.includes(data.exercise.id)) {
       setExercisesChecked((prev) => [...prev, data.exercise.id]);
     }
   }
@@ -63,18 +73,15 @@ export const WorkoutCard = ({ data, isAlreadyChecked }: IProps) => {
       <Top>
         <WorkoutVideo source={{ uri: 'https://i.imgur.com/b3Gblmw.png' }} />
         <CheckboxContainer onPress={() => checkExercise()}>
-          <CheckboxText>Terminou?</CheckboxText>
-          <Checkbox
-            isChecked={finished}
-            onPress={() => checkExercise()}
-          >
+          <CheckboxText colorMode={colorMode}>Terminou?</CheckboxText>
+          <Checkbox isChecked={finished} onPress={() => checkExercise()}>
             <CheckActive isChecked />
           </Checkbox>
         </CheckboxContainer>
       </Top>
 
-      <WorkoutInfo>
-        <WorkoutName>{data.exercise.name}</WorkoutName>
+      <WorkoutInfo colorMode={colorMode}>
+        <WorkoutName colorMode={colorMode}>{data.exercise.name}</WorkoutName>
 
         <Details>
           <Row>
@@ -87,7 +94,12 @@ export const WorkoutCard = ({ data, isAlreadyChecked }: IProps) => {
               <Text>{data.repetitions}</Text>
             </Reps>
           </Row>
-          <PaperIcon onPress={() => toggleModalActive()} />
+          <Ionicons
+            name="newspaper"
+            size={24}
+            color={colorMode === 'light' ? '#000' : '#FFF'}
+            onPress={() => toggleModalActive()}
+          />
         </Details>
       </WorkoutInfo>
       <WarningModal

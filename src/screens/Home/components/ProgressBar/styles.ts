@@ -35,5 +35,5 @@ export const Progress = styled.View<ProgressBarProps>`
   width: ${({ progress_percentage }) => progress_percentage}%;
   height: ${({ size }) => getSize(size)}px;
   border-radius: 30px;
-  background-color: ${({ theme }) => theme.colors.blue[500]};
+  background-color: '${({ theme }) => theme.colors.blue[500]}';
 `;

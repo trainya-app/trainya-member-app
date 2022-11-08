@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import Carousel from 'react-native-snap-carousel';
-import { Dimensions } from 'react-native';
 import { NavigationProps } from '../../types/NavigationProps';
 import {
   Container,
@@ -13,20 +11,15 @@ import {
   CardInfo,
   Label,
   StrongText,
-  TimeText,
 } from './styles';
 
 import { Heading } from '../../components/Heading';
 import { ProfileHeader } from '../../components/ProfileHeader';
 import { ProgressBar } from '../Home/components/ProgressBar';
 import { ActivityContainer } from '../Home/components/ActivityContainer';
-import { Slider, SliderProps } from '../../components/Slider';
-import { PaymentCard } from '../Configurations/Payments/components/PaymentCard';
 import { Chart } from '../../components/Chart';
 import MembersService, { IWorkoutPlan } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
-
-const { width } = Dimensions.get('window');
 
 export const Profile = ({ navigation }: NavigationProps) => {
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlan>();
@@ -38,6 +31,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
         const data = await MembersService.getAllMemberWorkoutPlans(user.id);
         setMemberWorkouts(data.workoutPlan);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
       }
     })();
@@ -52,29 +46,6 @@ export const Profile = ({ navigation }: NavigationProps) => {
     (finished_workouts * 100) / total_workouts
   );
 
-  const home_workouts: SliderProps[] = [
-    {
-      title: 'Cardio',
-      url: 'https://i.imgur.com/kvD2fSZ.jpg',
-    },
-    {
-      title: 'Força',
-      url: 'https://i.imgur.com/M4n35v8.png',
-    },
-    {
-      title: 'Flexibilidade',
-      url: 'https://i.imgur.com/uoQYf1c.jpg',
-    },
-    {
-      title: 'Pilates',
-      url: 'https://i.imgur.com/JLiVcK8.jpeg',
-    },
-    {
-      title: 'Pilates',
-      url: 'https://i.imgur.com/JLiVcK8.jpeg',
-    },
-  ];
-
   return (
     <>
       <Heading
@@ -86,10 +57,11 @@ export const Profile = ({ navigation }: NavigationProps) => {
       <Container>
         <ProfileHeader
           onPressEditInfo={() => navigation.navigate('EditProfile')}
+          type="profile"
         />
         <Scroll>
           <CardLabel>Treino atual</CardLabel>
-          {memberWorkouts?.length ? (
+          {memberWorkouts ? (
             <Card>
               <CardImage
                 source={{
@@ -119,8 +91,8 @@ export const Profile = ({ navigation }: NavigationProps) => {
           <CardLabel>Sua atividade</CardLabel>
           <ActivityContainer />
 
-          <CardLabel>Favoritados</CardLabel>
-          <Slider data={home_workouts} />
+          {/* <CardLabel>Favoritados</CardLabel>
+          <Slider data={home_workouts} /> */}
 
           {/* {memberClasses.length !== 0 && (
             <>
@@ -151,14 +123,14 @@ export const Profile = ({ navigation }: NavigationProps) => {
             </>
           )} */}
 
-          <CardLabel>Seu progresso</CardLabel>
+          <CardLabel>Sua frequência de dias</CardLabel>
           <Chart />
-          <CardLabel>Pagamentos</CardLabel>
+          {/* <CardLabel>Pagamentos</CardLabel>
           <PaymentCard
             date="25 de setembro de 2022"
             paymentStatus="pending"
             paymentValue={129.9}
-          />
+          /> */}
         </Scroll>
       </Container>
     </>

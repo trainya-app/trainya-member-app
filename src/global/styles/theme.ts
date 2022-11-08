@@ -36,7 +36,7 @@ export default {
         bg: '#FFFAF0',
         main: '#F4A52D',
       },
-      shape:  {
+      shape: {
         main: '#FFFFFF',
         light: '#EBF2FF',
         dark: '#FFFFFF',
@@ -45,7 +45,7 @@ export default {
       text: {
         default: '#000000',
         light: '#6C757D',
-        inverted: '#FFFFFF'
+        inverted: '#FFFFFF',
       },
     },
     fonts: {
@@ -75,7 +75,7 @@ export default {
         200: '#1A202C',
         300: '#2D3748',
         400: '#4A5568',
-        500: '#6C757D',
+        500: '#FFFFFF',
         600: '#A0AEC0',
         700: '#CBD5E0',
         800: '#E2E8F0',
@@ -93,17 +93,17 @@ export default {
         bg: '#FFFAF0',
         main: '#F4A52D',
       },
-      shape:  {
+      shape: {
         main: '#001029',
         light: '#002766',
-        dark: '#002766',
+        dark: '#00378F',
       },
       progressbar: '#013259',
       text: {
         default: '#FFFFFF',
         light: '#FFFFFF',
-        inverted: '#000000'
-      }
+        inverted: '#000000',
+      },
     },
     fonts: {
       medium: 'Montserrat_500Medium',

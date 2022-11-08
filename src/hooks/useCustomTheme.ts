@@ -5,7 +5,6 @@ export const useCustomTheme = () => {
   const { colorMode, setColorMode } = useContext(ThemeContext);
 
   const handleToggleColorMode = useCallback(() => {
-    // TODO: save in async storage
     setColorMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   }, []);
 

@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
-import { Dimensions, Platform, View } from 'react-native';
+import { Dimensions, Platform, View, StatusBar } from 'react-native';
 import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
@@ -24,6 +24,7 @@ import { ChangePassword } from '../screens/Configurations/ChangePassword';
 import { PrivacyPolicy } from '../screens/Configurations/Privacy/PrivacyPolicy';
 import { TermsAndConditions } from '../screens/Configurations/Privacy/TermsAndConditions';
 import { Payments } from '../screens/Configurations/Payments';
+import { CameraScreen } from '../screens/Progress/screens/Camera';
 
 import HomeIcon from '../assets/home_icon.svg';
 import ProgressIcon from '../assets/progress_icon.svg';
@@ -57,7 +58,7 @@ const HomeStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
@@ -72,12 +73,13 @@ const ProgressStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
   >
-    <Stack.Screen name="Home" component={Progress} />
+    <Stack.Screen name="Progress" component={Progress} />
+    <Stack.Screen name="Camera" component={CameraScreen} />
     {ConfigStack()}
   </Stack.Navigator>
 );
@@ -86,7 +88,7 @@ const QRCameraStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
@@ -100,7 +102,7 @@ const MyWorkoutsStack = ({ route }) => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
@@ -122,7 +124,7 @@ const ProfileStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
@@ -141,7 +143,8 @@ export const AppRoutes = () => {
       screen === 'ExercisesList' ||
       screen === 'EditProfile' ||
       screen === 'Workout' ||
-      screen === 'ChangePassword'
+      screen === 'ChangePassword' ||
+      screen === 'Camera'
     ) {
       return 'none';
     }

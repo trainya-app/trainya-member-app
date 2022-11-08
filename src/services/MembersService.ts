@@ -63,6 +63,21 @@ interface IMemberWorkoutPlanData {
   data: IMemberWorkoutPlan;
 }
 
+export interface IMemberPhotosProgress {
+  month: {
+    name: string;
+  };
+  firstPhoto_url: string;
+  secondPhoto_url: string;
+  thirdPhoto_url: string;
+}
+
+interface IMemberPhotosProgressData {
+  data: {
+    memberPhotosProgress: IMemberPhotosProgress[];
+  };
+}
+
 class MembersService {
   async getAllMemberWorkoutPlans(user_id: number) {
     const { data }: IMemberWorkoutPlanData = await api.get(
@@ -103,6 +118,32 @@ class MembersService {
         'Content-Type': 'multipart/form-data',
       },
     });
+  }
+
+  async listAllMemberPhotoProgress() {
+    const { data }: IMemberPhotosProgressData = await api.get(
+      '/member-photos-progress'
+    );
+    return data.memberPhotosProgress;
+  }
+
+  async editMemberProfileInfo(
+    memberId: number,
+    name: string,
+    email: string,
+    phone: string,
+    weight: number,
+    height: number
+  ) {
+    const { data } = await api.put(`/members/${memberId}`, {
+      name,
+      email,
+      phone,
+      weight,
+      height,
+    });
+
+    return data;
   }
 }
 

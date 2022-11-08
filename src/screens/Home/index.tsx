@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
 import {
   Container,
@@ -8,7 +8,6 @@ import {
   Loading,
   LoadingContainer,
   Subtitle,
-  NotificationIcon,
   ConfigIcon,
   HeaderContent,
   Scroll,
@@ -93,23 +92,12 @@ export const Home = ({ navigation }: Props) => {
           setMemberWorkouts([]);
         }
       })();
+
+      return () => {
+        clearInterval(takeGymCapacityEvery20Seconds);
+      };
     }
   }, [user]);
-
-  const schedule_classes: SliderProps[] = [
-    {
-      title: 'Natação',
-      url: 'https://i.imgur.com/1gCjdZo.jpeg',
-    },
-    {
-      title: 'Boxe',
-      url: 'https://i.imgur.com/pil1SdG.jpeg',
-    },
-    {
-      title: 'Pilates',
-      url: 'https://i.imgur.com/JLiVcK8.jpeg',
-    },
-  ];
 
   const home_workouts: SliderProps[] = [
     {
@@ -182,40 +170,53 @@ export const Home = ({ navigation }: Props) => {
       : `${progress_percentage}%`;
   }
 
+  function getUserWorkoutInfo() {
+    return `${
+      workout.split(' ')[0] === 'treino'
+        ? `Seu ${workout}`
+        : `Seu treino de ${workout}`
+    } está te esperando`;
+  }
+
   return (
     <Container>
       <Header>
         <HeaderImage source={{ uri: image_url }} />
-        <NotificationIcon
+        {/* <NotificationIcon
           onPress={() => navigation.navigate('Notifications')}
-        />
-        <ConfigIcon onPress={() => navigation.navigate('Configurations')} />
-        <HeaderContent>
-          {!isLoading ? (
-            <Title>
-              {greeting}, {user.name.split(' ')[0]}
-            </Title>
-          ) : (
+        /> */}
+
+        {!isLoading ? (
+          <>
+            <ConfigIcon onPress={() => navigation.navigate('Configurations')} />
+            <HeaderContent>
+              <Title>
+                {greeting}, {user.name.split(' ')[0]}
+              </Title>
+              <Subtitle>
+                {memberWorkouts?.length === 0
+                  ? 'Você ainda não tem um plano de treino'
+                  : getUserWorkoutInfo()}
+              </Subtitle>
+              <Button
+                title="Treinar"
+                width={50}
+                height={40}
+                style={{ marginTop: 24 }}
+                fontSize={16}
+                onPress={() =>
+                  navigation.navigate('MyWorkoutsStack', {
+                    screen: 'AvailableWorkouts',
+                  })
+                }
+              />
+            </HeaderContent>
+          </>
+        ) : (
+          <LoadingContainer>
             <Loading size={48} color={theme.colors.gray[100]} />
-          )}
-          <Subtitle>
-            {memberWorkouts?.length === 0
-              ? 'Você ainda não tem um plano de treino'
-              : `Seu treino de ${workout} está te esperando`}
-          </Subtitle>
-          <Button
-            title="Treinar"
-            width={50}
-            height={40}
-            style={{ marginTop: 24 }}
-            fontSize={16}
-            onPress={() =>
-              navigation.navigate('MyWorkoutsStack', {
-                screen: 'AvailableWorkouts',
-              })
-            }
-          />
-        </HeaderContent>
+          </LoadingContainer>
+        )}
       </Header>
       {!isLoading ? (
         <Scroll>
@@ -296,7 +297,14 @@ export const Home = ({ navigation }: Props) => {
             <Slider data={schedule_classes} /> */}
 
             <CardContainerTitle>Treinos livres</CardContainerTitle>
-            <Slider data={home_workouts} />
+            <Slider
+              data={home_workouts}
+              seeMoreAction={() =>
+                navigation.navigate('MyWorkoutsStack', {
+                  screen: 'AvailableWorkouts',
+                })
+              }
+            />
           </MainContainer>
         </Scroll>
       ) : (

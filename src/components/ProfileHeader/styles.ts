@@ -3,10 +3,6 @@ import styled from 'styled-components/native';
 
 import EditIcon from '../../assets/edit_profile_icon.svg';
 
-interface IModalButtonProps {
-  type: 'confirm' | 'cancel';
-}
-
 export const Header = styled.View`
   flex-direction: row;
   margin-bottom: 24px;
@@ -52,68 +48,17 @@ export const Username = styled.Text`
   color: ${({ theme }) => theme.colors.text.default};
 `;
 
-export const ConfirmChangePhotoModal = styled.Modal.attrs({
-  transparent: true,
-})``;
-
-export const Overlay = styled.View`
-  flex: 1;
-  background: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: center;
-  padding: 0 24px;
-`;
-
-export const ModalContainer = styled.View`
-  background-color: white;
-  padding: 24px 48px;
-  border-radius: 24px;
-`;
-
-export const NewPhoto = styled.Image`
-  width: ${RFValue(200)}px;
-  height: ${RFValue(200)}px;
-  align-self: center;
-  margin-bottom: 24px;
-  border-radius: 999px;
-`;
-
-export const ModalContainerText = styled.Text`
+export const GymText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(14)}px;
-`;
-
-export const ModalContainerSubtitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.medium};
-  color: ${({ theme }) => theme.colors.red.main};
-  font-size: ${RFValue(10)}px;
-  text-align: center;
+  text-transform: uppercase;
+  font-size: ${RFValue(8)}px;
   margin-top: 8px;
+  color: #6c757d;
 `;
 
-export const ModalContainerButtons = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 24px;
+export const GymName = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.extrabold};
+  text-transform: uppercase;
+  font-size: ${RFValue(16)}px;
+  color: #005ef5;
 `;
-
-export const ModalButton = styled.TouchableOpacity<IModalButtonProps>`
-  width: 45%;
-  height: ${RFValue(32)}px;
-  align-items: center;
-  justify-content: center;
-  background: ${({ theme, type }) =>
-    type === 'cancel' ? theme.colors.red.bg : theme.colors.blue[500]};
-  border-radius: 12px;
-`;
-
-export const ModalButtonText = styled.Text<IModalButtonProps>`
-  font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(12)}px;
-  color: ${({ theme, type }) =>
-    type === 'cancel' ? theme.colors.red.main : '#FFFFFF'};
-`;
-
-export const Loading = styled.ActivityIndicator.attrs({
-  color: '#FFFFFF',
-})``;

@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const PrivacyPolicyContent = styled.View`
   flex: 1;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.text.inverted};
   border-radius: 16px;
   padding: 20px 24px;
   justify-content: center;

@@ -5,6 +5,7 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.blue[100]};
   padding: 0 24px;
+  padding-bottom: ${RFValue(96)}px;
 `;
 
 export const GymLabel = styled.Text`
