@@ -23,6 +23,13 @@ export const ConfirmPhotosContainer = styled.View`
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(16)}px;
+  margin-bottom: 4px;
+`;
+
+export const Subtitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${RFValue(12)}px;
+  color: ${({ theme }) => theme.colors.red.main};
   margin-bottom: 16px;
 `;
 

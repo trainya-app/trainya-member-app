@@ -11,6 +11,7 @@ import {
   Overlay,
   ConfirmPhotosContainer,
   Title,
+  Subtitle,
   Photo,
   IconWrapper,
   Row,
@@ -49,6 +50,7 @@ export const ConfirmUploadPhotos = ({
       <Overlay>
         <ConfirmPhotosContainer>
           <Title>Deseja enviar essas fotos?</Title>
+          <Subtitle>Não será possível alterá-las depois</Subtitle>
           <Swiper
             style={{ height: '100%' }}
             loop={false}

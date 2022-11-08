@@ -114,7 +114,8 @@ export const Progress = ({ navigation }: NavigationProps) => {
             />
             <CameraContainer
               onPress={() =>
-                !isImagesLoaded && memberPhotosProgress.length > 0
+                !memberPhotosProgress[new Date().getMonth()] &&
+                memberPhotosProgress.length > 0
                   ? navigation.navigate('Camera')
                   : showToast(
                       'Não é possível alterar as imagens do mês atual',
@@ -128,7 +129,7 @@ export const Progress = ({ navigation }: NavigationProps) => {
 
           <PhotoContainer>
             {isImagesLoaded ? (
-              <Swiper loop={false}>
+              <Swiper loop={false} index={0}>
                 <MemberImage
                   source={{
                     uri: firstPhoto,
