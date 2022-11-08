@@ -293,7 +293,9 @@ export const Home = ({ navigation }: Props) => {
             <Slider data={schedule_classes} /> */}
 
             <CardContainerTitle>Treinos livres</CardContainerTitle>
-            <Slider data={home_workouts} />
+            <Slider data={home_workouts} seeMoreAction={()=> navigation.navigate('MyWorkoutsStack', {
+                    screen: 'AvailableWorkouts',
+                  })}/>
           </MainContainer>
         </Scroll>
       ) : (
