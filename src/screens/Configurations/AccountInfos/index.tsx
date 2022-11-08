@@ -42,11 +42,7 @@ export const AccountInfos = ({ navigation }: NavigationProps) => {
           {/* TODO: take the birthdate from the user} */}
           <CardContainer title="Data de nascimento" value={user.birth_date} />
           <BoxDirectionRow>
-            <CardContainer
-              title="Altura"
-              value={convertHeightNumberToString(user.height)}
-              half
-            />
+            <CardContainer title="Altura" value={`${user.height}cm`} half />
             <CardContainer title="Peso" value={`${user.weight}kg`} half />
           </BoxDirectionRow>
         </Scroll>
