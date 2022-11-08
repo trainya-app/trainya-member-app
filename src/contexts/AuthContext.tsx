@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
+import { useToast } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ToastAndroid } from 'react-native';
 
@@ -66,10 +67,6 @@ export const AuthContextProvider = ({ children }: Props) => {
     })();
   }, [token]);
 
-  function showToast(text: string) {
-    ToastAndroid.showWithGravity(text, ToastAndroid.SHORT, ToastAndroid.TOP);
-  }
-
   async function login({
     email,
     password,
@@ -89,10 +86,10 @@ export const AuthContextProvider = ({ children }: Props) => {
 
       api.defaults.headers.Authorization = `Bearer ${data.token}`;
 
-      showToast('Login realizado com sucesso!');
+      return { auth: true, message: 'Login realizado com sucesso!' };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      showToast(error.response.data.message);
+      return { auth: false, message: error.response.data.message };
     }
   }
 
@@ -118,11 +115,11 @@ export const AuthContextProvider = ({ children }: Props) => {
         firstNewPassword,
         secondNewPassword,
       });
-      showToast(data.message);
+      showToast(data.message, 'success');
       return true;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      showToast(error.response.data.message);
+      showToast(error.response.data.message, 'error');
       return false;
     }
   }

@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { useToast } from 'native-base';
 
 import {
   Container,
@@ -20,8 +21,23 @@ export const Login = () => {
 
   const { login } = useContext(AuthContext);
 
-  function handleLogin(email: string, password: string) {
-    login({ email, password });
+  const toast = useToast();
+
+  function showToast(text: string, status: 'success' | 'error') {
+    toast.show({
+      title: text,
+      bgColor: status === 'success' ? 'green.500' : 'red.500',
+      duration: 2500,
+      placement: 'bottom',
+      style: {
+        marginBottom: status === 'success' ? 90 : 0,
+      },
+    });
+  }
+
+  async function handleLogin(email: string, password: string) {
+    const isLoggedIn = await login({ email, password });
+    showToast(isLoggedIn.message, isLoggedIn.auth ? 'success' : 'error');
   }
   return (
     <Container>

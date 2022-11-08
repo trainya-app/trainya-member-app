@@ -86,6 +86,13 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
 
     if (data.message === 'Dados atualizados!') {
       setRequestSended(false);
+      setUser({
+        ...user,
+        name: inputName,
+        phone: inputPhone,
+        weight: inputWeight,
+        height: inputHeight,
+      });
 
       toast.show({
         title: 'Dados atualizados!',
@@ -94,7 +101,7 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
           marginBottom: 90,
         },
         bgColor: 'green.500',
-        duration: 2000,
+        duration: 2500,
       });
 
       navigation.goBack();
