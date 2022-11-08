@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
-import { Dimensions, Platform, View } from 'react-native';
+import { Dimensions, Platform, View, StatusBar } from 'react-native';
 import { Home } from '../screens/Home';
 import { Progress } from '../screens/Progress';
 import { QRCamera } from '../screens/QRCamera';
@@ -58,7 +58,7 @@ const HomeStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
@@ -73,7 +73,7 @@ const ProgressStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
@@ -88,7 +88,7 @@ const QRCameraStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
@@ -102,7 +102,7 @@ const MyWorkoutsStack = ({ route }) => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
@@ -124,7 +124,7 @@ const ProfileStack = () => (
   <Stack.Navigator
     screenOptions={{
       contentStyle: {
-        marginTop: 32,
+        marginTop: StatusBar.currentHeight,
       },
       headerShown: false,
     }}
