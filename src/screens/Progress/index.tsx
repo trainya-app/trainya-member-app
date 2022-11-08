@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useToast } from 'native-base';
+
 import Swiper from 'react-native-swiper';
 import { Chart } from '../../components/Chart';
 import { Heading } from '../../components/Heading';
@@ -31,6 +33,20 @@ export const Progress = ({ navigation }: NavigationProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+
+  const toast = useToast();
+
+  function showToast(text: string, sucess: 'succes' | 'error') {
+    toast.show({
+      title: text,
+      placement: 'bottom',
+      bgColor: sucess === 'succes' ? 'green.500' : 'red.500',
+      duration: 2500,
+      style: {
+        marginBottom: 64,
+      },
+    });
+  }
 
   useEffect(() => {
     (async () => {
@@ -96,7 +112,16 @@ export const Progress = ({ navigation }: NavigationProps) => {
               selectedMonth={selectedMonth}
               setSelectedMonth={setSelectedMonth}
             />
-            <CameraContainer onPress={() => navigation.navigate('Camera')}>
+            <CameraContainer
+              onPress={() =>
+                !isImagesLoaded && memberPhotosProgress.length > 0
+                  ? navigation.navigate('Camera')
+                  : showToast(
+                      'Não é possível alterar as imagens do mês atual',
+                      'error'
+                    )
+              }
+            >
               <CameraIcon />
             </CameraContainer>
           </Row>
