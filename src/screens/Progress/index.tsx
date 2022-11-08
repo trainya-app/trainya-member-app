@@ -114,7 +114,7 @@ export const Progress = ({ navigation }: NavigationProps) => {
             />
             <CameraContainer
               onPress={() =>
-                memberPhotosProgress[new Date().getMonth()] &&
+                !memberPhotosProgress[new Date().getMonth()].firstPhoto_url &&
                 selectedMonth === new Date().getMonth() &&
                 memberPhotosProgress.length > 0
                   ? navigation.navigate('Camera')
