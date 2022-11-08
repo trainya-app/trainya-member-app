@@ -164,6 +164,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
               ]}
             />
 
+            <SliderTitle>Treinos de fortalecimento</SliderTitle>
             <Slider
               data={[
                 {
