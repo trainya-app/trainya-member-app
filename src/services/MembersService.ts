@@ -145,6 +145,12 @@ class MembersService {
 
     return data;
   }
+
+  async getWorkoutPlanWorkoutsFinished() {
+    const { data } = await api.get('/member-finished-workouts');
+
+    return data;
+  }
 }
 
 export default new MembersService();
