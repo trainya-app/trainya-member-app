@@ -4,7 +4,7 @@ import {
   WorkoutSquareText,
   WorkoutName,
   WorkoutIndicator,
-  ArrowIcon,
+  CheckIcon,
 } from './styles';
 
 interface WorkoutCardProps {
@@ -27,12 +27,7 @@ export const WorkoutCard = ({
         <WorkoutSquareText>{workoutId}</WorkoutSquareText>
       </WorkoutSquare>
       <WorkoutName numberOfLines={1}>{workoutName}</WorkoutName>
-      {isActive && (
-        <>
-          <WorkoutIndicator>Hoje</WorkoutIndicator>
-          <ArrowIcon />
-        </>
-      )}
+      {isActive && <CheckIcon name="checkcircle" color="#2176FF" size={24} />}
     </Container>
   );
 };

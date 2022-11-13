@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
-import { RFValue } from 'react-native-responsive-fontsize';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import ArrowIconSVG from '../../../../assets/arrow_icon.svg';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 interface ContainerProps {
   isActive: boolean;
@@ -60,7 +60,7 @@ export const WorkoutIndicator = styled.Text`
   font-size: ${RFValue(10)}px;
 `;
 
-export const ArrowIcon = styled(ArrowIconSVG)`
+export const CheckIcon = styled(AntDesign)`
   margin-left: auto;
   margin-right: 20px;
 `;
