@@ -14,6 +14,7 @@ export const WorkoutContextProvider = ({ children }: IProps) => {
   });
 
   const [workoutsFinished, setWorkoutsFinished] = useState<number[]>([]);
+  console.log(workoutsFinished);
 
   function clearPrevWorkout() {
     setPrevWorkout({

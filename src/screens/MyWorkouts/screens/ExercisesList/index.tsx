@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { useTheme } from 'styled-components';
 import { useToast } from 'native-base';
 import { Button } from '../../../../components/Button';
@@ -17,6 +18,7 @@ import {
   FinishWorkoutButton,
   FinishWorkoutButtonText,
 } from './styles';
+import { WorkoutContext } from '../../../../contexts/WorkoutContext';
 
 export interface Exercises {
   exercise: {
@@ -46,6 +48,7 @@ interface Props {
 export const ExercisesList = ({ navigation, route }: Props) => {
   const theme = useTheme();
   const { colorMode } = useCustomTheme();
+  const { setWorkoutsFinished } = useContext(WorkoutContext);
 
   const toast = useToast();
 
@@ -75,6 +78,14 @@ export const ExercisesList = ({ navigation, route }: Props) => {
       await MembersService.setWorkoutPlanWorkoutFinished(
         route.params.workoutPlanWorkoutId
       );
+
+      setWorkoutsFinished((prev: any) => [
+        ...prev,
+        {
+          isTrained: true,
+          workoutPlanWorkoutId: route.params.workoutPlanWorkoutId,
+        },
+      ]);
 
       showToast('Treino finalizado com sucesso!', 'success');
     } catch (error: any) {
