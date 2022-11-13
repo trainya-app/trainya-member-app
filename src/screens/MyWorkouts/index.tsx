@@ -105,6 +105,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
         workoutTitle,
         workoutDescription,
         workoutExercises,
+        workoutPlanWorkoutId: workoutId,
       });
       setPrevWorkout({ id: workoutId, title: workoutTitle });
     }

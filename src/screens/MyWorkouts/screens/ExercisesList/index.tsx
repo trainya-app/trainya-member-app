@@ -1,7 +1,9 @@
 import { useTheme } from 'styled-components';
+import { useToast } from 'native-base';
 import { Button } from '../../../../components/Button';
 import { Heading } from '../../../../components/Heading';
 import { useCustomTheme } from '../../../../hooks/useCustomTheme';
+import MembersService from '../../../../services/MembersService';
 import {
   Container,
   Top,
@@ -31,6 +33,7 @@ interface Props {
     params: {
       workoutTitle: string;
       workoutDescription: string;
+      workoutPlanWorkoutId: number;
       workoutExercises: Exercises[];
     };
   };
@@ -44,6 +47,8 @@ export const ExercisesList = ({ navigation, route }: Props) => {
   const theme = useTheme();
   const { colorMode } = useCustomTheme();
 
+  const toast = useToast();
+
   const { workoutExercises } = route.params;
 
   function goToWorkoutScreen(firstItem: number) {
@@ -51,6 +56,30 @@ export const ExercisesList = ({ navigation, route }: Props) => {
       workoutExercises,
       firstItem,
     });
+  }
+
+  function showToast(text: string, status: 'success' | 'error') {
+    toast.show({
+      title: text,
+      bgColor: status === 'success' ? 'green.500' : 'red.500',
+      duration: 2500,
+      placement: 'bottom',
+      style: {
+        marginBottom: 90,
+      },
+    });
+  }
+
+  async function handleSetWorkoutPlanWorkoutAsFinished() {
+    try {
+      await MembersService.setWorkoutPlanWorkoutFinished(
+        route.params.workoutPlanWorkoutId
+      );
+
+      showToast('Treino finalizado com sucesso!', 'success');
+    } catch (error: any) {
+      showToast(error.response.data.message, 'error');
+    }
   }
 
   return (
@@ -91,7 +120,7 @@ export const ExercisesList = ({ navigation, route }: Props) => {
           fontSize={16}
           onPress={() => goToWorkoutScreen(0)}
         />
-        <FinishWorkoutButton>
+        <FinishWorkoutButton onPress={handleSetWorkoutPlanWorkoutAsFinished}>
           <FinishWorkoutButtonText>Concluir Treino</FinishWorkoutButtonText>
         </FinishWorkoutButton>
       </Container>
