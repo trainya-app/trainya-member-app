@@ -38,12 +38,13 @@ import GymServices from '../../services/GymServices';
 import MembersService, {
   IWorkoutPlanWorkout,
 } from '../../services/MembersService';
+import { WorkoutContext } from '../../contexts/WorkoutContext';
 
 export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
+  const { workoutsFinished, setWorkoutsFinished } = useContext(WorkoutContext);
   const [isLoading, setIsLoading] = useState(true);
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlanWorkout[]>();
-  const [finishedWorkouts, setFinishedWorkouts] = useState([]);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const [gymCapacity, setGymCapacity] = useState({
     maxCapacity: 0,
@@ -88,7 +89,7 @@ export const Home = ({ navigation }: Props) => {
       (async () => {
         try {
           const data = await MembersService.getAllMemberWorkoutPlans(user.id);
-          setFinishedWorkouts(
+          setWorkoutsFinished(
             await MembersService.getWorkoutPlanWorkoutsFinished()
           );
           setMemberWorkouts(data.workoutPlan.workoutPlanWorkout);
@@ -131,7 +132,7 @@ export const Home = ({ navigation }: Props) => {
     ? memberWorkouts[0]?.workout.title.toLowerCase()
     : '';
   const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
-  const workouts_finished = finishedWorkouts.length;
+  const workouts_finished = workoutsFinished.length;
   const capacity = gymCapacity.maxCapacity;
   const capacity_occupied = gymCapacity.currentCapacity;
 

@@ -33,16 +33,13 @@ interface IFinishedWorkouts {
 
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const { user } = useContext(AuthContext);
-  const { exercisesChecked, prevWorkout, setPrevWorkout } =
+  const { exercisesChecked, prevWorkout, setPrevWorkout, workoutsFinished } =
     useContext(WorkoutContext);
 
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false
   );
   const [workouts, setWorkouts] = useState<IWorkoutPlanWorkout[]>([]);
-  const [finishedWorkouts, setFinishedWorkouts] = useState<IFinishedWorkouts[]>(
-    []
-  );
 
   const [isModalActive, setIsModalActive] = useState(false);
 
@@ -51,9 +48,6 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   useEffect(() => {
     (async () => {
       try {
-        setFinishedWorkouts(
-          await MembersService.getWorkoutPlanWorkoutsFinished()
-        );
         const memberWorkouts = await MembersService.getAllMemberWorkoutPlans(
           user.id
         );
@@ -138,7 +132,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                       key={workoutPlanWorkout.id}
                       workoutName={workoutPlanWorkout.workout.title}
                       workoutId={i + 1}
-                      isActive={finishedWorkouts
+                      isActive={workoutsFinished
                         .map(
                           (finishedWorkout) =>
                             finishedWorkout.isTrained &&
