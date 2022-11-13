@@ -173,9 +173,10 @@ export const Home = ({ navigation }: Props) => {
       return 'Não há um plano de treino ativo';
     }
 
-    return progress_percentage > 9
-      ? `0${progress_percentage}%`
-      : `${progress_percentage}%`;
+    if (progress_percentage < 9) {
+      return progress_percentage === 0 ? '0%' : `0${progress_percentage}%`;
+    }
+    return `${progress_percentage}%`;
   }
 
   function getUserWorkoutInfo() {
