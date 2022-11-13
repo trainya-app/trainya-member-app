@@ -173,8 +173,8 @@ export const Home = ({ navigation }: Props) => {
       return 'Não há um plano de treino ativo';
     }
 
-    if (progress_percentage < 9) {
-      return progress_percentage === 0 ? '0%' : `0${progress_percentage}%`;
+    if (progress_percentage < 9 && progress_percentage > 0) {
+      return `0${progress_percentage}%`;
     }
     return `${progress_percentage}%`;
   }
