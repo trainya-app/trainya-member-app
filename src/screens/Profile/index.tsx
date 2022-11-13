@@ -20,10 +20,12 @@ import { ActivityContainer } from '../Home/components/ActivityContainer';
 import { Chart } from '../../components/Chart';
 import MembersService, { IWorkoutPlan } from '../../services/MembersService';
 import { AuthContext } from '../../contexts/AuthContext';
+import { WorkoutContext } from '../../contexts/WorkoutContext';
 
 export const Profile = ({ navigation }: NavigationProps) => {
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlan>();
   const { user } = useContext(AuthContext);
+  const { workoutsFinished } = useContext(WorkoutContext);
 
   useEffect(() => {
     (async () => {
@@ -37,7 +39,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
     })();
   }, []);
 
-  const finished_workouts = 0;
+  const finished_workouts = workoutsFinished.length;
   const total_workouts = memberWorkouts?.workoutPlanWorkout.length || 0;
 
   const workoutPlanName = memberWorkouts?.goal;

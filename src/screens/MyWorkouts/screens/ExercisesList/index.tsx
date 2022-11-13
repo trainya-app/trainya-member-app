@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import { useTheme } from 'styled-components';
+import { useToast } from 'native-base';
 import { Button } from '../../../../components/Button';
 import { Heading } from '../../../../components/Heading';
 import { useCustomTheme } from '../../../../hooks/useCustomTheme';
+import MembersService from '../../../../services/MembersService';
 import {
   Container,
   Top,
@@ -15,6 +18,7 @@ import {
   FinishWorkoutButton,
   FinishWorkoutButtonText,
 } from './styles';
+import { WorkoutContext } from '../../../../contexts/WorkoutContext';
 
 export interface Exercises {
   exercise: {
@@ -31,6 +35,7 @@ interface Props {
     params: {
       workoutTitle: string;
       workoutDescription: string;
+      workoutPlanWorkoutId: number;
       workoutExercises: Exercises[];
     };
   };
@@ -43,14 +48,63 @@ interface Props {
 export const ExercisesList = ({ navigation, route }: Props) => {
   const theme = useTheme();
   const { colorMode } = useCustomTheme();
+  const { setWorkoutsFinished, workoutsFinished } = useContext(WorkoutContext);
+
+  const toast = useToast();
 
   const { workoutExercises } = route.params;
+
+  function isWorkoutFinished() {
+    return workoutsFinished
+      .map(
+        (finishedWorkout) =>
+          finishedWorkout.isTrained && finishedWorkout.workoutPlanWorkoutId
+      )
+      .includes(route.params.workoutPlanWorkoutId);
+  }
 
   function goToWorkoutScreen(firstItem: number) {
     navigation.navigate('Workout', {
       workoutExercises,
+      workoutPlanWorkoutId: route.params.workoutPlanWorkoutId,
       firstItem,
     });
+  }
+
+  function showToast(text: string, status: 'success' | 'error') {
+    toast.show({
+      title: text,
+      bgColor: status === 'success' ? 'green.500' : 'red.500',
+      duration: 2500,
+      placement: 'bottom',
+      style: {
+        translateY: -90,
+      },
+    });
+  }
+
+  async function handleSetWorkoutPlanWorkoutAsFinished() {
+    try {
+      if (!isWorkoutFinished()) {
+        await MembersService.setWorkoutPlanWorkoutFinished(
+          route.params.workoutPlanWorkoutId
+        );
+
+        setWorkoutsFinished((prev: any) => [
+          ...prev,
+          {
+            isTrained: true,
+            workoutPlanWorkoutId: route.params.workoutPlanWorkoutId,
+          },
+        ]);
+
+        return showToast('Treino finalizado com sucesso!', 'success');
+      }
+
+      return showToast('Treino já finalizado', 'error');
+    } catch (error: any) {
+      showToast(error.response.data.message, 'error');
+    }
   }
 
   return (
@@ -91,7 +145,7 @@ export const ExercisesList = ({ navigation, route }: Props) => {
           fontSize={16}
           onPress={() => goToWorkoutScreen(0)}
         />
-        <FinishWorkoutButton>
+        <FinishWorkoutButton onPress={handleSetWorkoutPlanWorkoutAsFinished}>
           <FinishWorkoutButtonText>Concluir Treino</FinishWorkoutButtonText>
         </FinishWorkoutButton>
       </Container>

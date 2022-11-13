@@ -78,6 +78,18 @@ interface IMemberPhotosProgressData {
   };
 }
 
+interface IWorkoutsFinished {
+  id: number;
+  is_complete: boolean;
+  workoutPlanWorkoutId: number;
+}
+
+interface IWorkoutsFinishedData {
+  data: {
+    finishedWorkouts: IWorkoutsFinished[];
+  };
+}
+
 class MembersService {
   async getAllMemberWorkoutPlans(user_id: number) {
     const { data }: IMemberWorkoutPlanData = await api.get(
@@ -141,6 +153,25 @@ class MembersService {
       phone,
       weight,
       height,
+    });
+
+    return data;
+  }
+
+  async getWorkoutPlanWorkoutsFinished() {
+    const { data }: IWorkoutsFinishedData = await api.get(
+      '/member-finished-workouts'
+    );
+
+    return data.finishedWorkouts.map((item) => ({
+      workoutPlanWorkoutId: item.workoutPlanWorkoutId,
+      isTrained: item.is_complete,
+    }));
+  }
+
+  async setWorkoutPlanWorkoutFinished(workoutPlanWorkoutId: number) {
+    const { data } = await api.post('/member-finish-workout', {
+      workoutPlanWorkoutId,
     });
 
     return data;

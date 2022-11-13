@@ -38,9 +38,11 @@ import GymServices from '../../services/GymServices';
 import MembersService, {
   IWorkoutPlanWorkout,
 } from '../../services/MembersService';
+import { WorkoutContext } from '../../contexts/WorkoutContext';
 
 export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
+  const { workoutsFinished, setWorkoutsFinished } = useContext(WorkoutContext);
   const [isLoading, setIsLoading] = useState(true);
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlanWorkout[]>();
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -87,6 +89,9 @@ export const Home = ({ navigation }: Props) => {
       (async () => {
         try {
           const data = await MembersService.getAllMemberWorkoutPlans(user.id);
+          setWorkoutsFinished(
+            await MembersService.getWorkoutPlanWorkoutsFinished()
+          );
           setMemberWorkouts(data.workoutPlan.workoutPlanWorkout);
         } catch (error) {
           setMemberWorkouts([]);
@@ -127,7 +132,7 @@ export const Home = ({ navigation }: Props) => {
     ? memberWorkouts[0]?.workout.title.toLowerCase()
     : '';
   const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
-  const workouts_finished = 0;
+  const workouts_finished = workoutsFinished.length;
   const capacity = gymCapacity.maxCapacity;
   const capacity_occupied = gymCapacity.currentCapacity;
 
@@ -165,9 +170,10 @@ export const Home = ({ navigation }: Props) => {
       return 'Não há um plano de treino ativo';
     }
 
-    return progress_percentage > 9
-      ? `0${progress_percentage}%`
-      : `${progress_percentage}%`;
+    if (progress_percentage < 9 && progress_percentage > 0) {
+      return `0${progress_percentage}%`;
+    }
+    return `${progress_percentage}%`;
   }
 
   function getUserWorkoutInfo() {

@@ -25,7 +25,7 @@ export const WorkoutsContainer = styled.View`
 `;
 
 export const WarningContainer = styled.View`
-  padding: 24px 24px; ;
+  padding: 24px 24px;
 `;
 
 export const WarningText = styled.Text`
@@ -48,3 +48,8 @@ export const SliderTitle = styled.Text`
   font-size: ${RFValue(16)}px;
   margin-right: auto;
 `;
+
+export const Loading = styled.ActivityIndicator.attrs({
+  size: 48,
+  color: '#2176ff',
+})``;
