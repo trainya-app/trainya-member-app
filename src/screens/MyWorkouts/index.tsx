@@ -16,6 +16,7 @@ import {
   WarningText,
   Scroll,
   SliderTitle,
+  Loading,
 } from './styles';
 import { ScreenSwitcher } from './components/SwitcherIndicator';
 import MembersService, {
@@ -39,6 +40,9 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const [isSwitcherActive, setIsSwitcherActive] = useState(
     route.params.screen === 'AvailableWorkouts' ? true : false
   );
+
+  const [loadingWorkouts, setLoadingWorkouts] = useState(false);
+
   const [workouts, setWorkouts] = useState<IWorkoutPlanWorkout[]>([]);
 
   const [isModalActive, setIsModalActive] = useState(false);
@@ -47,14 +51,17 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
 
   useEffect(() => {
     (async () => {
+      setLoadingWorkouts(true);
       try {
         const memberWorkouts = await MembersService.getAllMemberWorkoutPlans(
           user.id
         );
 
         setWorkouts(memberWorkouts.workoutPlan.workoutPlanWorkout);
+        setLoadingWorkouts(false);
       } catch (error) {
         setWorkouts([]);
+        setLoadingWorkouts(false);
       }
     })();
   }, []);
@@ -124,40 +131,46 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
           <>
             <DateScroll />
             <Separator />
-            {workouts.length !== 0 ? (
-              <WorkoutsContainer>
-                <Scroll>
-                  {workouts.map((workoutPlanWorkout, i) => (
-                    <WorkoutCard
-                      key={workoutPlanWorkout.id}
-                      workoutName={workoutPlanWorkout.workout.title}
-                      workoutId={i + 1}
-                      isActive={workoutsFinished
-                        .map(
-                          (finishedWorkout) =>
-                            finishedWorkout.isTrained &&
-                            finishedWorkout.workoutPlanWorkoutId
-                        )
-                        .includes(workoutPlanWorkout.id)}
-                      onPress={() =>
-                        handleGoToExercisesList(
-                          workoutPlanWorkout.workout.title,
-                          workoutPlanWorkout.workout.description,
-                          workoutPlanWorkout.workout.workoutExercise,
-                          workoutPlanWorkout.id
-                        )
-                      }
-                    />
-                  ))}
-                </Scroll>
-              </WorkoutsContainer>
-            ) : (
+            {loadingWorkouts ? (
               <WarningContainer>
-                <WarningText>
-                  Não há treinos para exibir, tente novamente mais tarde ou
-                  entre em contato com a sua academia
-                </WarningText>
+                <Loading />
               </WarningContainer>
+            ) : (
+              <WorkoutsContainer>
+                {workouts.length !== 0 ? (
+                  <Scroll>
+                    {workouts.map((workoutPlanWorkout, i) => (
+                      <WorkoutCard
+                        key={workoutPlanWorkout.id}
+                        workoutName={workoutPlanWorkout.workout.title}
+                        workoutId={i + 1}
+                        isActive={workoutsFinished
+                          .map(
+                            (finishedWorkout) =>
+                              finishedWorkout.isTrained &&
+                              finishedWorkout.workoutPlanWorkoutId
+                          )
+                          .includes(workoutPlanWorkout.id)}
+                        onPress={() =>
+                          handleGoToExercisesList(
+                            workoutPlanWorkout.workout.title,
+                            workoutPlanWorkout.workout.description,
+                            workoutPlanWorkout.workout.workoutExercise,
+                            workoutPlanWorkout.id
+                          )
+                        }
+                      />
+                    ))}
+                  </Scroll>
+                ) : (
+                  <WarningContainer>
+                    <WarningText>
+                      Não há treinos para exibir, tente novamente mais tarde ou
+                      entre em contato com a sua academia
+                    </WarningText>
+                  </WarningContainer>
+                )}
+              </WorkoutsContainer>
             )}
           </>
         ) : (
