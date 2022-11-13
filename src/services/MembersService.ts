@@ -149,7 +149,10 @@ class MembersService {
   async getWorkoutPlanWorkoutsFinished() {
     const { data } = await api.get('/member-finished-workouts');
 
-    return data;
+    return data.finishedWorkouts.map((item) => ({
+      workoutPlanWorkoutId: item.workoutPlanWorkoutId,
+      isTrained: item.is_complete,
+    }));
   }
 }
 
