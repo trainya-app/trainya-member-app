@@ -48,11 +48,20 @@ interface Props {
 export const ExercisesList = ({ navigation, route }: Props) => {
   const theme = useTheme();
   const { colorMode } = useCustomTheme();
-  const { setWorkoutsFinished } = useContext(WorkoutContext);
+  const { setWorkoutsFinished, workoutsFinished } = useContext(WorkoutContext);
 
   const toast = useToast();
 
   const { workoutExercises } = route.params;
+
+  function isWorkoutFinished() {
+    return workoutsFinished
+      .map(
+        (finishedWorkout) =>
+          finishedWorkout.isTrained && finishedWorkout.workoutPlanWorkoutId
+      )
+      .includes(route.params.workoutPlanWorkoutId);
+  }
 
   function goToWorkoutScreen(firstItem: number) {
     navigation.navigate('Workout', {
@@ -69,26 +78,30 @@ export const ExercisesList = ({ navigation, route }: Props) => {
       duration: 2500,
       placement: 'bottom',
       style: {
-        marginBottom: 90,
+        translateY: -90,
       },
     });
   }
 
   async function handleSetWorkoutPlanWorkoutAsFinished() {
     try {
-      await MembersService.setWorkoutPlanWorkoutFinished(
-        route.params.workoutPlanWorkoutId
-      );
+      if (!isWorkoutFinished()) {
+        await MembersService.setWorkoutPlanWorkoutFinished(
+          route.params.workoutPlanWorkoutId
+        );
 
-      setWorkoutsFinished((prev: any) => [
-        ...prev,
-        {
-          isTrained: true,
-          workoutPlanWorkoutId: route.params.workoutPlanWorkoutId,
-        },
-      ]);
+        setWorkoutsFinished((prev: any) => [
+          ...prev,
+          {
+            isTrained: true,
+            workoutPlanWorkoutId: route.params.workoutPlanWorkoutId,
+          },
+        ]);
 
-      showToast('Treino finalizado com sucesso!', 'success');
+        return showToast('Treino finalizado com sucesso!', 'success');
+      }
+
+      return showToast('Treino já finalizado', 'error');
     } catch (error: any) {
       showToast(error.response.data.message, 'error');
     }
