@@ -23,11 +23,15 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 export const Profile = ({ navigation }: NavigationProps) => {
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlan>();
+  const [finishedWorkouts, setFinishedWorkouts] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
     (async () => {
       try {
+        setFinishedWorkouts(
+          await MembersService.getWorkoutPlanWorkoutsFinished()
+        );
         const data = await MembersService.getAllMemberWorkoutPlans(user.id);
         setMemberWorkouts(data.workoutPlan);
       } catch (error) {
@@ -37,7 +41,7 @@ export const Profile = ({ navigation }: NavigationProps) => {
     })();
   }, []);
 
-  const finished_workouts = 0;
+  const finished_workouts = finishedWorkouts.length;
   const total_workouts = memberWorkouts?.workoutPlanWorkout.length || 0;
 
   const workoutPlanName = memberWorkouts?.goal;

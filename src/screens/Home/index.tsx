@@ -92,10 +92,6 @@ export const Home = ({ navigation }: Props) => {
             await MembersService.getWorkoutPlanWorkoutsFinished()
           );
           setMemberWorkouts(data.workoutPlan.workoutPlanWorkout);
-
-          console.log(
-            data.workoutPlan.workoutPlanWorkout.map((workout) => workout.id)
-          );
         } catch (error) {
           setMemberWorkouts([]);
         }
