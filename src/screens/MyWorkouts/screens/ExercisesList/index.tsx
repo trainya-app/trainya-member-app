@@ -57,6 +57,7 @@ export const ExercisesList = ({ navigation, route }: Props) => {
   function goToWorkoutScreen(firstItem: number) {
     navigation.navigate('Workout', {
       workoutExercises,
+      workoutPlanWorkoutId: route.params.workoutPlanWorkoutId,
       firstItem,
     });
   }

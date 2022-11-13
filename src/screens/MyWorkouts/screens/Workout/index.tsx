@@ -12,6 +12,7 @@ interface Props {
   route: {
     params: {
       workoutTitle: string;
+      workoutPlanWorkoutId: number;
       workoutExercises: IExercises[];
       firstItem: number;
     };
@@ -23,13 +24,30 @@ interface Props {
 }
 
 export const Workout = ({ navigation, route }: Props) => {
-  const { workoutExercises: exercises, firstItem } = route.params;
-  const { exercisesChecked } = useContext(WorkoutContext);
+  const {
+    workoutExercises: exercises,
+    firstItem,
+    workoutPlanWorkoutId,
+  } = route.params;
+  const { exercisesChecked, workoutsFinished } = useContext(WorkoutContext);
   const [activeSlide, setActiveSlide] = useState(0);
 
   const { width } = Dimensions.get('window');
 
+  function isWorkoutFinished() {
+    return workoutsFinished
+      .map(
+        (finishedWorkout) =>
+          finishedWorkout.isTrained && finishedWorkout.workoutPlanWorkoutId
+      )
+      .includes(workoutPlanWorkoutId);
+  }
+
   function isExerciseChecked(exerciseId: number) {
+    if (isWorkoutFinished()) {
+      return true;
+    }
+
     return exercisesChecked.includes(exerciseId);
   }
 
@@ -42,7 +60,9 @@ export const Workout = ({ navigation, route }: Props) => {
         hideConfigIcon
       />
       <Container>
-        <WorkoutProgress>{`${exercisesChecked.length} de ${exercises.length} concluídos`}</WorkoutProgress>
+        <WorkoutProgress>{`${
+          isWorkoutFinished() ? exercises.length : exercisesChecked.length
+        } de ${exercises.length} concluídos`}</WorkoutProgress>
 
         <Carousel
           firstItem={firstItem}

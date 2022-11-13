@@ -72,9 +72,16 @@ export const WorkoutCard = ({ data, isAlreadyChecked }: IProps) => {
     <Card key={data.exercise.name}>
       <Top>
         <WorkoutVideo source={{ uri: 'https://i.imgur.com/b3Gblmw.png' }} />
-        <CheckboxContainer onPress={() => checkExercise()}>
+        <CheckboxContainer
+          onPress={() => checkExercise()}
+          disabled={isAlreadyChecked()}
+        >
           <CheckboxText colorMode={colorMode}>Terminou?</CheckboxText>
-          <Checkbox isChecked={finished} onPress={() => checkExercise()}>
+          <Checkbox
+            isChecked={finished}
+            onPress={() => checkExercise()}
+            disabled={isAlreadyChecked()}
+          >
             <CheckActive isChecked />
           </Checkbox>
         </CheckboxContainer>
