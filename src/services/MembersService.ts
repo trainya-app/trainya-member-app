@@ -78,6 +78,18 @@ interface IMemberPhotosProgressData {
   };
 }
 
+interface IWorkoutsFinished {
+  id: number;
+  is_complete: boolean;
+  workoutPlanWorkoutId: number;
+}
+
+interface IWorkoutsFinishedData {
+  data: {
+    finishedWorkouts: IWorkoutsFinished[];
+  };
+}
+
 class MembersService {
   async getAllMemberWorkoutPlans(user_id: number) {
     const { data }: IMemberWorkoutPlanData = await api.get(
@@ -147,7 +159,9 @@ class MembersService {
   }
 
   async getWorkoutPlanWorkoutsFinished() {
-    const { data } = await api.get('/member-finished-workouts');
+    const { data }: IWorkoutsFinishedData = await api.get(
+      '/member-finished-workouts'
+    );
 
     return data.finishedWorkouts.map((item) => ({
       workoutPlanWorkoutId: item.workoutPlanWorkoutId,

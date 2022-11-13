@@ -26,6 +26,11 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { WorkoutContext } from '../../contexts/WorkoutContext';
 import { WorkoutAlreadyExistsModal } from './screens/Workout/components/WorkoutAlreadyStartedWarningModal';
 
+interface IFinishedWorkouts {
+  isTrained: boolean;
+  workoutPlanWorkoutId: number;
+}
+
 export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   const { user } = useContext(AuthContext);
   const { exercisesChecked, prevWorkout, setPrevWorkout } =
@@ -35,7 +40,9 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
     route.params.screen === 'AvailableWorkouts' ? true : false
   );
   const [workouts, setWorkouts] = useState<IWorkoutPlanWorkout[]>([]);
-  const [finishedWorkouts, setFinishedWorkouts] = useState([]);
+  const [finishedWorkouts, setFinishedWorkouts] = useState<IFinishedWorkouts[]>(
+    []
+  );
 
   const [isModalActive, setIsModalActive] = useState(false);
 
