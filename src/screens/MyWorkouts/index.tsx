@@ -35,6 +35,7 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
     route.params.screen === 'AvailableWorkouts' ? true : false
   );
   const [workouts, setWorkouts] = useState<IWorkoutPlanWorkout[]>([]);
+  const [finishedWorkouts, setFinishedWorkouts] = useState([]);
 
   const [isModalActive, setIsModalActive] = useState(false);
 
@@ -43,6 +44,9 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
   useEffect(() => {
     (async () => {
       try {
+        setFinishedWorkouts(
+          await MembersService.getWorkoutPlanWorkoutsFinished()
+        );
         const memberWorkouts = await MembersService.getAllMemberWorkoutPlans(
           user.id
         );
@@ -126,7 +130,13 @@ export const MyWorkouts = ({ navigation, route }: NavigationProps) => {
                       key={workoutPlanWorkout.id}
                       workoutName={workoutPlanWorkout.workout.title}
                       workoutId={i + 1}
-                      isActive={false}
+                      isActive={finishedWorkouts
+                        .map(
+                          (finishedWorkout) =>
+                            finishedWorkout.isTrained &&
+                            finishedWorkout.workoutPlanWorkoutId
+                        )
+                        .includes(workoutPlanWorkout.id)}
                       onPress={() =>
                         handleGoToExercisesList(
                           workoutPlanWorkout.workout.title,
