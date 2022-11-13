@@ -168,6 +168,14 @@ class MembersService {
       isTrained: item.is_complete,
     }));
   }
+
+  async setWorkoutPlanWorkoutFinished(workoutPlanWorkoutId: number) {
+    const { data } = await api.post('/member-finish-workout', {
+      workoutPlanWorkoutId,
+    });
+
+    return data;
+  }
 }
 
 export default new MembersService();
