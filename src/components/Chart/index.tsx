@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import { useState, useEffect } from 'react';
 import { Dimensions } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
