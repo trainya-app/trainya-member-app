@@ -9,6 +9,7 @@ import {
   Pressable,
   IndicatorWrapper,
   Indicator,
+  IndicatorText,
   MonthLabelWrapper,
   MonthLabel,
 } from './styles';
@@ -128,7 +129,9 @@ export const Chart = () => {
                   key={item.month}
                   onPress={() => setSelectedMonth(index + 1)}
                 >
-                  <Indicator opacity={index + 1 === selectedMonth ? 1 : 0} />
+                  <Indicator opacity={index + 1 === selectedMonth ? 1 : 0}>
+                    <IndicatorText>{item.progress}</IndicatorText>
+                  </Indicator>
                 </Pressable>
               ))}
               <Indicator opacity={0} />

@@ -59,6 +59,16 @@ export const Indicator = styled.View<IIndicatorProps>`
   width: ${width / 7.7}px;
   opacity: ${({ opacity }) => opacity};
   background-color: #609dff50;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const IndicatorText = styled.Text`
+  color: #2176ff;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: 24px;
+  position: absolute;
+  bottom: 48px;
 `;
 
 export const MonthLabelWrapper = styled.View`
