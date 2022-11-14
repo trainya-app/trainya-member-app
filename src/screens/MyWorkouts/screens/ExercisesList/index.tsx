@@ -103,7 +103,7 @@ export const ExercisesList = ({ navigation, route }: Props) => {
 
       return showToast('Treino já finalizado', 'error');
     } catch (error: any) {
-      showToast(error.response.data.message, 'error');
+      return showToast(error.response.data.message, 'error');
     }
   }
 

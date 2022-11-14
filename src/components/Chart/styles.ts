@@ -1,23 +1,22 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 
-interface IVerticalBar {
-  progress: number;
+const { width } = Dimensions.get('window');
+
+interface IIndicatorProps {
+  opacity: number;
 }
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.text.inverted};
-  height: 250px;
   margin-top: 24px;
   margin-bottom: 32px;
   border-radius: 24px;
   align-items: center;
   justify-content: center;
-`;
-
-export const ChartContainer = styled.View`
-  width: 90%;
+  height: 250px;
 `;
 
 export const Title = styled.Text`
@@ -31,41 +30,46 @@ export const Scroll = styled.ScrollView.attrs({
   showsHorizontalScrollIndicator: false,
   overScrollMode: 'never',
   contentContainerStyle: {
-    alignItems: 'flex-end',
-    padding: 24,
-    paddingRight: 12,
+    paddingTop: 32,
   },
-})``;
+})`
+  bottom: 0;
+  position: absolute;
+  margin-left: -64px;
+  margin-right: 12px;
+  padding-left: 3px;
+`;
 
-export const BarContainer = styled.View`
-  width: 48px;
+export const IndicatorWrapper = styled.View`
   height: 100%;
-  align-items: center;
-  justify-content: flex-end;
-  margin-right: 16px;
+  width: 100%;
+  flex-direction: row;
+  position: absolute;
+  opacity: 0.4;
+  z-index: 0;
+  margin-left: 13px;
 `;
 
-export const Label = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.extrabold};
-  font-size: 12px;
-  margin-top: 12px;
-  color: ${({ theme }) => theme.colors.text.default};
+export const Pressable = styled.Pressable`
+  z-index: 20;
 `;
 
-export const VerticalBarWrapper = styled.View`
-  flex: 1;
+export const Indicator = styled.View<IIndicatorProps>`
+  height: 100%;
+  width: ${width / 7.7}px;
+  opacity: ${({ opacity }) => opacity};
+  background-color: #609dff50;
 `;
 
-export const VerticalBarShadow = styled.View`
-  background-color: ${({ theme }) => theme.colors.gray[100]}BB;
-  flex: 1;
-  border-radius: 12px;
-  justify-content: flex-end;
+export const MonthLabelWrapper = styled.View`
+  position: absolute;
+  top: 24px;
+  flex-direction: row;
 `;
 
-export const VerticalBar = styled.View<IVerticalBar>`
-  background-color: ${({ theme }) => theme.colors.blue[500]};
-  border-radius: 12px;
-  height: ${({ progress }) => progress * 3.2}%;
-  width: 48px;
+export const MonthLabel = styled.Text`
+  width: ${width / 7.7}px;
+  text-align: center;
+  bottom: 24px;
+  font-family: ${({ theme }) => theme.fonts.bold};
 `;
