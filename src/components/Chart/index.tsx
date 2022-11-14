@@ -23,7 +23,6 @@ const { width } = Dimensions.get('window');
 export const Chart = () => {
   const [chartData, setChartData] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
-  const [translateXValue, setTranslateXValue] = useState(16);
 
   const chartConfig = {
     backgroundGradientFrom: '#fff',
@@ -116,7 +115,6 @@ export const Chart = () => {
               })}
               onDataPointClick={(value) => {
                 setSelectedMonth(value.index);
-                setTranslateXValue(value.x - 49);
               }}
               style={{
                 marginLeft: width / 2 - 50 * 4.5,
