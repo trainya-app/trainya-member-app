@@ -29,6 +29,7 @@ export interface IExercises {
     id: number;
     comment: string;
     name: string;
+    video_url?: string;
   };
   repetitions: number;
   sets: number;
@@ -71,7 +72,11 @@ export const WorkoutCard = ({ data, isAlreadyChecked }: IProps) => {
   return (
     <Card key={data.exercise.name}>
       <Top>
-        <WorkoutVideo source={{ uri: 'https://i.imgur.com/b3Gblmw.png' }} />
+        <WorkoutVideo
+          source={{
+            uri: data.exercise?.video_url || 'https://i.imgur.com/b3Gblmw.png',
+          }}
+        />
         <CheckboxContainer
           onPress={() => checkExercise()}
           disabled={isAlreadyChecked(data.exercise.id)}

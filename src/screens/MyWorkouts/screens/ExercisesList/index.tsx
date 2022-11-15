@@ -23,6 +23,7 @@ import { WorkoutContext } from '../../../../contexts/WorkoutContext';
 export interface Exercises {
   exercise: {
     name: string;
+    video_url?: string;
   };
   sets: number;
   repetitions: number;
@@ -126,7 +127,13 @@ export const ExercisesList = ({ navigation, route }: Props) => {
               key={workoutExercise.exercise.name}
               onPress={() => goToWorkoutScreen(index)}
             >
-              <Image source={{ uri: 'https://i.imgur.com/5awFGCT.png' }} />
+              <Image
+                source={{
+                  uri:
+                    workoutExercise?.exercise?.video_url ||
+                    'https://i.imgur.com/5awFGCT.png',
+                }}
+              />
               <Wrapper>
                 <ExerciseName colorMode={colorMode}>
                   {workoutExercise.exercise.name}

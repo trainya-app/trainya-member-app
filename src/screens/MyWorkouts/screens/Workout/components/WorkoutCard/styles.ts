@@ -27,8 +27,10 @@ export const Top = styled.View`
 `;
 
 export const WorkoutVideo = styled.Image.attrs({
-  resizeMode: 'stretch',
+  resizeMode: 'cover',
 })`
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   height: 150px;
 `;
 

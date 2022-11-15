@@ -48,6 +48,7 @@ export const ExerciseCard = styled.TouchableOpacity.attrs({
 export const Image = styled.Image`
   height: 64px;
   width: 30%;
+  border-radius: 14px;
 `;
 
 export const Wrapper = styled.View`
