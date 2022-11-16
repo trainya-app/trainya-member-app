@@ -30,17 +30,16 @@ export const Scroll = styled.ScrollView.attrs({
   showsHorizontalScrollIndicator: false,
   overScrollMode: 'never',
   contentContainerStyle: {
-    paddingTop: 32,
+    paddingTop: 32
   },
 })`
   bottom: 0;
   position: absolute;
-  margin-left: -64px;
-  margin-right: 12px;
-  padding-left: 3px;
 `;
 
-export const IndicatorWrapper = styled.View`
+export const IndicatorWrapper = styled.View.attrs({
+  paddingLeft: 21 + 30.4
+})`
   height: 100%;
   width: 100%;
   flex-direction: row;
@@ -54,9 +53,10 @@ export const Pressable = styled.Pressable`
   z-index: 20;
 `;
 
-export const Indicator = styled.View<IIndicatorProps>`
+export const Indicator = styled.View.attrs({
+  width: 60.8,
+})<IIndicatorProps>`
   height: 100%;
-  width: ${width / 7.7}px;
   opacity: ${({ opacity }) => opacity};
   background-color: #609dff50;
   align-items: center;
@@ -75,11 +75,12 @@ export const MonthLabelWrapper = styled.View`
   position: absolute;
   top: 24px;
   flex-direction: row;
+  padding-left: 52px;
 `;
 
 export const MonthLabel = styled.Text`
-  width: ${width / 7.7}px;
   text-align: center;
+  width: 60.8px;
   bottom: 24px;
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${({ theme }) => theme.colors.text.default};
