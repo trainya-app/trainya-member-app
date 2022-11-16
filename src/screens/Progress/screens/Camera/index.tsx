@@ -49,7 +49,11 @@ export const CameraScreen = ({ navigation }: NavigationProps) => {
   }
 
   async function takePicture() {
-    const { uri }: { uri: string } = await cameraRef.current.takePictureAsync();
+    const { uri }: { uri: string } = await cameraRef.current.takePictureAsync({
+      base64: true,
+      quality: 0,
+      skipProcessing: true,
+    });
     setMemberPhotos((prev) => [...prev, uri]);
   }
 
@@ -71,6 +75,7 @@ export const CameraScreen = ({ navigation }: NavigationProps) => {
         ratio="16:9"
         type={type}
         ref={cameraRef}
+
       >
         <BodyImage source={getBodyImage()} />
         <Bottom>
