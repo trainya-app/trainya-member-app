@@ -82,4 +82,5 @@ export const MonthLabel = styled.Text`
   text-align: center;
   bottom: 24px;
   font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.text.default};
 `;

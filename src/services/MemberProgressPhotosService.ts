@@ -10,7 +10,7 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put(`/member-upLoadFirstPhoto/${month}`, formData, {
+    await api.put(`/member-uploadFirstPhoto/${month}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -26,7 +26,7 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put(`/member-upLoadSecondPhoto/${month}`, formData, {
+    await api.put(`/member-uploadSecondPhoto/${month}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -42,7 +42,7 @@ class MemberProgressPhotosService {
       type: 'image/jpeg',
     });
 
-    await api.put(`/member-upLoadThirdPhoto/${month}`, formData, {
+    await api.put(`/member-uploadThirdPhoto/${month}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
