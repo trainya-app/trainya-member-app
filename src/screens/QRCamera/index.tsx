@@ -19,7 +19,7 @@ export const QRCamera = ({ navigation }: NavigationProps) => {
       />
       <Container>
         <Title>Apresente esse código na academia</Title>
-        <Title>para liberar a sua entrada</Title>
+        <Title>para liberar a sua entrada e/ou saída</Title>
         <QRContainer>
           <QR value={String(user.id)} size={RFValue(250)} />
         </QRContainer>
