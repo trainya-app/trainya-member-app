@@ -14,9 +14,16 @@ import {
 import { NavigationProps } from '../../types/NavigationProps';
 import { ToggleThemeButton } from './components/ToggleThemeButton';
 import { AuthContext } from '../../contexts/AuthContext';
+import { WorkoutContext } from '../../contexts/WorkoutContext';
 
 export const Configurations = ({ navigation }: NavigationProps) => {
   const { logout } = useContext(AuthContext);
+  const { setWorkoutsFinished } = useContext(WorkoutContext);
+
+  function handleLogout() {
+    setWorkoutsFinished([]);
+    logout();
+  }
 
   return (
     <>
@@ -60,7 +67,7 @@ export const Configurations = ({ navigation }: NavigationProps) => {
               isLastOption
             /> */}
           </OptionsContainer>
-          <LogoutButtonContainer onPress={logout}>
+          <LogoutButtonContainer onPress={handleLogout}>
             <LogoutButtonText>Sair</LogoutButtonText>
           </LogoutButtonContainer>
         </Scroll>
