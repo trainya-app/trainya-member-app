@@ -129,7 +129,7 @@ export const Home = ({ navigation }: Props) => {
 
   const image_url = 'https://i.imgur.com/XLcRuY4.png';
   const workout = memberWorkouts
-    ? memberWorkouts[0]?.workout.title.toLowerCase()
+    ? memberWorkouts[0]?.workout.title
     : '';
   const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
   const workouts_finished = workoutsFinished.length;
@@ -177,11 +177,15 @@ export const Home = ({ navigation }: Props) => {
   }
 
   function getUserWorkoutInfo() {
-    return `${
-      workout.split(' ')[0] === 'treino'
+    let workoutFormated = `${
+      workout.split(' ')[0] === 'treino' || 'Treino'
         ? `Seu ${workout}`
         : `Seu treino de ${workout}`
     } está te esperando`;
+
+    workoutFormated = workoutFormated.replace('Treino', 'treino');
+
+    return workoutFormated;
   }
 
   return (
@@ -230,10 +234,14 @@ export const Home = ({ navigation }: Props) => {
             <ProgressSection>
               <Progress>
                 <Label>Progresso</Label>
-                <ProgressPercentage textLength={getProgressPercentage().length}>
+                {memberWorkouts === undefined ? (
+                  <Loading size={48} color="#2176ff" style={{alignSelf: 'flex-start'}}/>
+                ): (
+                  <ProgressPercentage textLength={getProgressPercentage().length}>
                   {/* Adding 0 at the left of the number, in case it's lower than 10 */}
                   {memberWorkouts && getProgressPercentage()}
                 </ProgressPercentage>
+                )}
               </Progress>
               <Workouts>
                 <Label>

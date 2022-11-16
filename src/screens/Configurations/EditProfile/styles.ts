@@ -47,6 +47,7 @@ export const ChangePhotoIconContainer = styled.TouchableOpacity.attrs({
   right: 0;
   bottom: 0;
   border-radius: 999px;
+  z-index: 10;
 `;
 
 export const ChangePhotoIcon = styled(EditIcon)``;
@@ -171,4 +172,20 @@ export const LabelInput = styled.Text`
   right: 24px;
   font-family: ${({ theme }) => theme.fonts.bold};
   color: #2176ff;
+`;
+
+export const DefaultPhoto = styled.View`
+  background-color: #2176ff20;
+  width: ${RFValue(100)}px;
+  height: ${RFValue(100)}px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Username = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.extrabold};
+  font-size: 28px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.text.default};
 `;

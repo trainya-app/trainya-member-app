@@ -74,7 +74,7 @@ export const Scroll = styled.ScrollView.attrs({
 })``;
 
 export const MainContainer = styled.View`
-  padding: 12px 24px;
+  padding:12px 24px;
 `;
 
 export const ProgressSection = styled.View`
@@ -82,7 +82,8 @@ export const ProgressSection = styled.View`
   justify-content: space-between;
 `;
 
-export const Progress = styled.View``;
+export const Progress = styled.View`
+`;
 
 export const Label = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};

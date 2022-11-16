@@ -30,7 +30,7 @@ export const Chart = () => {
     backgroundGradientFrom: '#fff',
     backgroundGradientFromOpacity: 0,
     backgroundGradientTo: '#fff',
-    backgroundGradientToOpacity: 0.5,
+    backgroundGradientToOpacity: 0,
 
     fillShadowGradient: '#bed7ff',
     fillShadowGradientOpacity: 0.3,
