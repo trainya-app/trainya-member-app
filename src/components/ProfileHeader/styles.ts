@@ -41,6 +41,14 @@ export const ProfileInfoContainer = styled.View`
   justify-content: center;
 `;
 
+export const DefaultPhoto = styled.View`
+  background-color: #2176ff20;
+  flex: 1;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Username = styled.Text`
   font-family: ${({ theme }) => theme.fonts.extrabold};
   font-size: 28px;

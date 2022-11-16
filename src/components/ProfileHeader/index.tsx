@@ -5,6 +5,7 @@ import {
   ProfileImageContainer,
   ProfilePhoto,
   ProfileInfoContainer,
+  DefaultPhoto,
   Username,
   GymText,
   GymName,
@@ -27,7 +28,13 @@ export const ProfileHeader = ({
   return (
     <Header>
       <ProfileImageContainer>
-        <ProfilePhoto source={{ uri: user.avatar_url }} />
+        {user.avatar_url ? (
+            <ProfilePhoto source={{ uri: user.avatar_url }} />
+          ) : (
+            <DefaultPhoto>
+              <Username style={{fontSize: 40, color: '#2176ff'}}>{username[0].charAt(0) + username[username.length - 1].charAt(0)}</Username>
+            </DefaultPhoto>
+          )}
         {/* <ChangePhotoIconContainer onPress={handleChoosePhoto}>
           <ChangePhotoIcon />
         </ChangePhotoIconContainer> */}
