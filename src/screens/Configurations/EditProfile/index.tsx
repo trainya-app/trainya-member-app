@@ -28,6 +28,8 @@ import {
   UserPhoto,
   InputContainer,
   LabelInput,
+  DefaultPhoto,
+  Username
 } from './styles';
 
 import MembersService from '../../../services/MembersService';
@@ -125,6 +127,8 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
     }
   }
 
+  const username = user.name.split(' ');
+
   return (
     <>
       <Heading
@@ -139,7 +143,15 @@ export const EditProfile = ({ navigation }: NavigationProps) => {
               <ChangePhotoIconContainer onPress={() => handleChoosePhoto()}>
                 <ChangePhotoIcon />
               </ChangePhotoIconContainer>
+
+
+            {user.avatar_url ? (
               <UserPhoto source={{ uri: user.avatar_url }} />
+            ) : (
+              <DefaultPhoto>
+                <Username style={{fontSize: 40, color: '#2176ff'}}>{username[0].charAt(0) + username[username.length - 1].charAt(0)}</Username>
+              </DefaultPhoto>
+            )}
             </ProfileImageContainer>
             <TextInput
               placeholder="Nome"
