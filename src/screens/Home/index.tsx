@@ -230,10 +230,14 @@ export const Home = ({ navigation }: Props) => {
             <ProgressSection>
               <Progress>
                 <Label>Progresso</Label>
-                <ProgressPercentage textLength={getProgressPercentage().length}>
+                {memberWorkouts === undefined ? (
+                  <Loading size={48} color="#2176ff" style={{alignSelf: 'flex-start'}}/>
+                ): (
+                  <ProgressPercentage textLength={getProgressPercentage().length}>
                   {/* Adding 0 at the left of the number, in case it's lower than 10 */}
                   {memberWorkouts && getProgressPercentage()}
                 </ProgressPercentage>
+                )}
               </Progress>
               <Workouts>
                 <Label>
