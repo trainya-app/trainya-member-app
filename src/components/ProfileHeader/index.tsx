@@ -23,16 +23,17 @@ export const ProfileHeader = ({
   type,
 }: ProfileHeaderProps) => {
   const { user } = useContext(AuthContext);
-  const username = user.name.split(' ');
+  const username = user?.name.split(' ');
+  console.log(username);
 
   return (
     <Header>
       <ProfileImageContainer>
-        {user.avatar_url ? (
-            <ProfilePhoto source={{ uri: user.avatar_url }} />
+        {user?.avatar_url ? (
+            <ProfilePhoto source={{ uri: user?.avatar_url }} />
           ) : (
             <DefaultPhoto>
-              <Username style={{fontSize: 40, color: '#2176ff'}}>{username[0].charAt(0) + username[username.length - 1].charAt(0)}</Username>
+              <Username style={{fontSize: 40, color: '#2176ff'}}>{username ? (username[0].charAt(0) + username[username.length - 1].charAt(0)) : ''}</Username>
             </DefaultPhoto>
           )}
         {/* <ChangePhotoIconContainer onPress={handleChoosePhoto}>
@@ -40,11 +41,11 @@ export const ProfileHeader = ({
         </ChangePhotoIconContainer> */}
       </ProfileImageContainer>
       <ProfileInfoContainer>
-        <Username>{`${username[0]} ${username[username.length - 1]}`}</Username>
+        <Username>{`${username ? username[0] : ''} ${username ? username[username.length - 1] : ''}`}</Username>
         {type === 'profile' ? (
           <>
             <GymText>Minha academia</GymText>
-            <GymName>{user.gym}</GymName>
+            <GymName>{user?.gym}</GymName>
           </>
         ) : (
           <Button
