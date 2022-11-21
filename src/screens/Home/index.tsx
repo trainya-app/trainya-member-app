@@ -50,8 +50,8 @@ export const Home = ({ navigation }: Props) => {
   const { workoutsFinished, setWorkoutsFinished } = useContext(WorkoutContext);
   const [isLoading, setIsLoading] = useState(true);
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlanWorkout[]>();
-  const [capacity, setCapacity] = useState(null);
-  const [capacityOccupied, setCapacityOccupied] = useState(null);
+  const [capacity, setCapacity] = useState(-1);
+  const [capacityOccupied, setCapacityOccupied] = useState(-1);
 
   useEffect(() => {
     if (user) {
@@ -82,17 +82,9 @@ export const Home = ({ navigation }: Props) => {
 
   function toggleGymCapacity(isLeaving: boolean) {
     if(isLeaving){
-      setGymCapacity({
-        currentCapacity: gymCapacity.currentCapacity - 1,
-        maxCapacity: gymCapacity.maxCapacity,
-        isLoading: false,
-      })
+      setCapacityOccupied((prev) => prev - 1);
     } else {
-      setGymCapacity({
-        currentCapacity: gymCapacity.currentCapacity + 1,
-        maxCapacity: gymCapacity.maxCapacity,
-        isLoading: false,
-      })
+      setCapacityOccupied((prev) => prev + 1);
     }
   }
 
@@ -269,7 +261,7 @@ export const Home = ({ navigation }: Props) => {
               <CardTitle>Agora na academia</CardTitle>
               <Infos>
                 <InfosContainer>
-                  {!capacity && !capacityOccupied ? (
+                  {capacity === -1 && capacityOccupied === -1 ? (
                     <Loading size={48} />
                   ) : (
                     <>
@@ -288,7 +280,7 @@ export const Home = ({ navigation }: Props) => {
                 </InfosContainer>
 
                 <InfosContainer>
-                  {!capacity && !capacityOccupied ? (
+                  {capacity === -1 && capacityOccupied === -1 ? (
                     <Loading size={48} color="#6C757D" />
                   ) : (
                     <>
