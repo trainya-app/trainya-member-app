@@ -50,49 +50,20 @@ export const Home = ({ navigation }: Props) => {
   const { workoutsFinished, setWorkoutsFinished } = useContext(WorkoutContext);
   const [isLoading, setIsLoading] = useState(true);
   const [memberWorkouts, setMemberWorkouts] = useState<IWorkoutPlanWorkout[]>();
-  const [isFirstRender, setIsFirstRender] = useState(true);
-  const [gymCapacity, setGymCapacity] = useState({
-    maxCapacity: 0,
-    currentCapacity: 0,
-    isLoading: true,
-  });
-
-  useEffect(() => {
-    socket.emit('question', {question: 'a'});
-  }, [socket])
+  const [capacity, setCapacity] = useState(null);
+  const [capacityOccupied, setCapacityOccupied] = useState(null);
 
   useEffect(() => {
     if (user) {
       setIsLoading(false);
+      socket.emit('join-gym', user?.gymId);
 
-      // Getting gym capacity from api every 20 seconds
-      if (isFirstRender) {
-        setIsFirstRender(false);
-        (async () => {
-          const { gym } = await GymServices.getGymData(user.gymId);
-          setGymCapacity({
-            currentCapacity: gym.current_capacity,
-            maxCapacity: gym.max_capacity,
-            isLoading: false,
-          });
-        })();
-      }
+      (async () => {
+        const { gym } = await GymServices.getGymData(user.gymId);
 
-      const takeGymCapacityEvery20Seconds = setInterval(() => {
-        (async () => {
-          setGymCapacity({
-            currentCapacity: 0,
-            maxCapacity: 0,
-            isLoading: true,
-          });
-          const { gym } = await GymServices.getGymData(user.gymId);
-          setGymCapacity({
-            currentCapacity: gym.current_capacity,
-            maxCapacity: gym.max_capacity,
-            isLoading: false,
-          });
-        })();
-      }, 20000);
+        setCapacityOccupied(gym.current_capacity);
+        setCapacity(gym.max_capacity);
+      })();
 
       // Getting member workout progress
       (async () => {
@@ -106,12 +77,30 @@ export const Home = ({ navigation }: Props) => {
           setMemberWorkouts([]);
         }
       })();
-
-      return () => {
-        clearInterval(takeGymCapacityEvery20Seconds);
-      };
     }
   }, [user]);
+
+  function toggleGymCapacity(isLeaving: boolean) {
+    if(isLeaving){
+      setGymCapacity({
+        currentCapacity: gymCapacity.currentCapacity - 1,
+        maxCapacity: gymCapacity.maxCapacity,
+        isLoading: false,
+      })
+    } else {
+      setGymCapacity({
+        currentCapacity: gymCapacity.currentCapacity + 1,
+        maxCapacity: gymCapacity.maxCapacity,
+        isLoading: false,
+      })
+    }
+  }
+
+  useEffect(() => {
+    socket.on('update-capacity', (data) => {
+      toggleGymCapacity(data.isLeaving);
+    });
+  }, [socket])
 
   const home_workouts: SliderProps[] = [
     {
@@ -142,8 +131,6 @@ export const Home = ({ navigation }: Props) => {
     : '';
   const total_workouts = memberWorkouts ? memberWorkouts.length : 0;
   const workouts_finished = workoutsFinished.length;
-  const capacity = gymCapacity.maxCapacity;
-  const capacity_occupied = gymCapacity.currentCapacity;
 
   const progress_percentage = Math.round(
     (workouts_finished * 100) / total_workouts
@@ -153,10 +140,10 @@ export const Home = ({ navigation }: Props) => {
   const time = new Date().getHours();
 
   function capacityColor() {
-    if (capacity_occupied === capacity) {
+    if (capacityOccupied === capacity) {
       return '#EF233C';
     }
-    if (capacity_occupied >= capacity / 2) {
+    if (capacityOccupied >= capacity / 2) {
       return '#F4A52D';
     }
     return '#05CA77';
@@ -282,12 +269,12 @@ export const Home = ({ navigation }: Props) => {
               <CardTitle>Agora na academia</CardTitle>
               <Infos>
                 <InfosContainer>
-                  {gymCapacity.isLoading ? (
+                  {!capacity && !capacityOccupied ? (
                     <Loading size={48} />
                   ) : (
                     <>
                       <InfoText fontSize={32} color={capacityColor()}>
-                        {capacity_occupied}
+                        {capacityOccupied}
                       </InfoText>
                       <InfoText color={capacityColor()} fontSize={10}>
                         Pessoas
@@ -301,7 +288,7 @@ export const Home = ({ navigation }: Props) => {
                 </InfosContainer>
 
                 <InfosContainer>
-                  {gymCapacity.isLoading ? (
+                  {!capacity && !capacityOccupied ? (
                     <Loading size={48} color="#6C757D" />
                   ) : (
                     <>
