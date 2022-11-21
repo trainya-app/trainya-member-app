@@ -24,7 +24,6 @@ export const ProfileHeader = ({
 }: ProfileHeaderProps) => {
   const { user } = useContext(AuthContext);
   const username = user?.name.split(' ');
-  console.log(username);
 
   return (
     <Header>

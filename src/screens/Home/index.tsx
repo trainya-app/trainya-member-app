@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
+import { io } from 'socket.io-client';
+
 import {
   Container,
   Header,
@@ -40,6 +42,9 @@ import MembersService, {
 } from '../../services/MembersService';
 import { WorkoutContext } from '../../contexts/WorkoutContext';
 
+const socket = io("http://192.168.15.143:8080");
+
+
 export const Home = ({ navigation }: Props) => {
   const { user } = useContext(AuthContext);
   const { workoutsFinished, setWorkoutsFinished } = useContext(WorkoutContext);
@@ -51,6 +56,10 @@ export const Home = ({ navigation }: Props) => {
     currentCapacity: 0,
     isLoading: true,
   });
+
+  useEffect(() => {
+    socket.emit('question', {question: 'a'});
+  }, [socket])
 
   useEffect(() => {
     if (user) {
