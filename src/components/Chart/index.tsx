@@ -77,7 +77,6 @@ export const Chart = () => {
                 marginLeft: 12.3,
               }}
             >
-              <MonthLabel>{''}</MonthLabel>
               {chartData.map((item: IChartData) => (
                 <MonthLabel key={item.month}>
                   {item.month.slice(' ', 3)}
@@ -102,7 +101,7 @@ export const Chart = () => {
                   },
                 ],
               }}
-              width={(width / 6) * 12}
+              width={915}
               height={200}
               bezier
               chartConfig={chartConfig}
@@ -119,12 +118,11 @@ export const Chart = () => {
                 setSelectedMonth(value.index);
               }}
               style={{
-                marginLeft: width / 2 - 50 * 4.5,
+                marginLeft: -29,
               }}
               hidePointsAtIndex={[0, chartData.length + 1]}
             />
             <IndicatorWrapper>
-              <Indicator opacity={0} />
               {chartData.map((item: IChartData, index: number) => (
                 <Pressable
                   key={item.month}
