@@ -42,7 +42,7 @@ import MembersService, {
 } from '../../services/MembersService';
 import { WorkoutContext } from '../../contexts/WorkoutContext';
 
-const socket = io("http://192.168.15.143:8080");
+const socket = io("https://trainya.up.railway.app");
 
 
 export const Home = ({ navigation }: Props) => {
